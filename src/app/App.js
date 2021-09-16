@@ -1,9 +1,9 @@
+import React from 'react';
+import AppRouter from './Routes/AppRouter';
 
 function App() {
   return (
-    <div className="App">
-      Onde sentam as Rotas e o Context App
-    </div>
+    <AppRouter/>
   );
 }
 
