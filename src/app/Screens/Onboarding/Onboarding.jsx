@@ -1,14 +1,20 @@
 import React from 'react';
-import {useStore} from '../../Hooks/useStore';
+import { useStore } from '../../Hooks/useStore';
 
-const Onboarding =() => {
-  const {phone, setPhone} = useStore();
+const Onboarding = () => {
+  const { phone, setPhone } = useStore();
 
   return (
-    <React.Fragment>
-      Contador: {phone} -- <span onClick={() => setPhone(phone+1)}>Contador</span>
-    </React.Fragment>
-  )
-}
+    <>
+      Contador:
+      {' '}
+      {phone}
+      {' '}
+      --
+      {' '}
+      <span onClick={() => setPhone(phone + 1)}>Contador</span>
+    </>
+  );
+};
 
 export default Onboarding;

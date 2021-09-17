@@ -11,12 +11,12 @@ import AppContextProvider from './Store/AppStore';
  */
 function App() {
   return (
-    <React.Fragment>
+    <>
       <AppStoreContainer
         component={AppRouter}
         provider={AppContextProvider}
       />
-    </React.Fragment>
+    </>
   );
 }
 
