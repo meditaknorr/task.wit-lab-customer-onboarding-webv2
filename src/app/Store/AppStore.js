@@ -4,10 +4,14 @@ import PropTypes from 'prop-types';
 const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
+  const [browserlanguage, setBrowserlanguage] = useState('');
   const [phone, setPhone] = useState(0);
 
   return (
-    <AppContext.Provider value={{ phone, setPhone }}>
+    <AppContext.Provider value={{
+      phone, setPhone, browserlanguage, setBrowserlanguage,
+    }}
+    >
       {children}
     </AppContext.Provider>
   );

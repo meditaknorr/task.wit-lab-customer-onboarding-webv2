@@ -10,8 +10,19 @@ const useStore = () => {
     );
   }
 
-  const { phone, setPhone } = context;
-  return { phone, setPhone };
+  const {
+    phone,
+    setPhone,
+    browserlanguage,
+    setBrowserlanguage,
+  } = context;
+
+  return {
+    phone,
+    setPhone,
+    browserlanguage,
+    setBrowserlanguage,
+  };
 };
 
 export { useStore };
