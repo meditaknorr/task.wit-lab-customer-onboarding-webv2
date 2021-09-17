@@ -1,17 +1,17 @@
-import {useContext} from 'react';
-import {AppContext} from '../Store/AppStore';
+import { useContext } from 'react';
+import { AppContext } from '../Store/AppStore';
 
 const useStore = () => {
   const context = useContext(AppContext);
 
   if (!context) {
-    throw new console.error(
-      "[STORE:ERROR]: Sorry, something went wrong."
+    throw new Error(
+      '[STORE:ERROR]: Sorry, something went wrong.',
     );
   }
 
-  const {phone, setPhone} = context;
-  return {phone, setPhone};
-}
+  const { phone, setPhone } = context;
+  return { phone, setPhone };
+};
 
-export {useStore};
+export { useStore };

@@ -2,17 +2,12 @@ import React from 'react';
 import { useStore } from '../../Hooks/useStore';
 
 const Onboarding = () => {
-  const { phone, setPhone } = useStore();
+  const { phone } = useStore();
 
   return (
     <>
-      Contador:
-      {' '}
+      Onboarding Counter:
       {phone}
-      {' '}
-      --
-      {' '}
-      <span onClick={() => setPhone(phone + 1)}>Contador</span>
     </>
   );
 };

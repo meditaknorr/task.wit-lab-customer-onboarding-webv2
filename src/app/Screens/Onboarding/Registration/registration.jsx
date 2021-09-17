@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Registration = () => {
+  const [page, setPage] = useState(0);
+
   return (
-    <React.Fragment>
+    <>
       Registration
-    </React.Fragment>
-  )
-}
+    </>
+  );
+};
 
 export default Registration;
