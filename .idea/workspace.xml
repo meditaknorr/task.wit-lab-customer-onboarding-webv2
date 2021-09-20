@@ -5,33 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80c35755-d7d8-42e8-a0eb-26e6ff8f4f15" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/Assets/Images/icons/w_logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Assets/Images/icons/wit_logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Components/Header/Header.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Components/Logo/Logo.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Components/Logo/Style.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Components/Progressbar/Progressbar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Components/Progressbar/Style.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Hooks/useStore.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Configs/Lang/languageProvider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Configs/Themes/themeProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Button/component.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Checkbox/component.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Footer/component.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Header/component.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Header/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Components/Header/style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/TextInput/component.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Configs/Themes/app.theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Configs/Themes/app.theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Hooks/useDimension.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Hooks/useDimension.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Hooks/useStore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Layouts/WebView/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Layouts/WebView/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Routes/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Routes/AppRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Configs/Lang/app.localization.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Configs/Themes/app.theme.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Screens/Onboarding/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Store/AppStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Store/AppStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/.sass-cache/9eb4853de800f5230481469b5ee8cc890955b1ef/global.scssc" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/.sass-cache/9eb4853de800f5230481469b5ee8cc890955b1ef/global.scssc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/global.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/global.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/styles/global.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +82,10 @@
       <workItem from="1631867857236" duration="5618000" />
       <workItem from="1631875346926" duration="16064000" />
       <workItem from="1631896780066" duration="8951000" />
-      <workItem from="1631906942245" duration="8304000" />
+      <workItem from="1631906942245" duration="9026000" />
+      <workItem from="1631974992435" duration="764000" />
+      <workItem from="1632073487563" duration="159000" />
+      <workItem from="1632120159033" duration="19528000" />
     </task>
     <servers />
   </component>

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { Px2Rem } from '../../Hooks/useDimension';
+import { themeProvider } from '../../Configs/Themes/themeProvider';
 
 export const Component = styled.header`
   grid-area: header;
   width: 100%;
   height: ${Px2Rem(56)};
   padding: 0 ${Px2Rem(24)};
-  overflow: hidden;
   position: relative;
   display: flex;
   align-items: center;
@@ -15,8 +15,8 @@ export const Component = styled.header`
   /* image size scalled to try fit well on screen*/
   div.logo {
     display: ${(props) => (props.log ? 'inline-block' : 'none')};
-    width: ${Px2Rem(40)};
-    height: ${Px2Rem(30)};
+    width: ${Px2Rem(35)};
+    height: ${Px2Rem(25)};
   }
 
   div.back {
@@ -39,12 +39,47 @@ export const Component = styled.header`
 
   /* font size scalled up to try fit well on screens*/
   div.language {
+    position: relative;
     display: ${(props) => (props.lan ? 'flex' : 'none')};
-    width: ${Px2Rem(60)};
+    width: ${Px2Rem(50)};
     height: ${Px2Rem(42)};
-    font-size: ${Px2Rem(15)};
+    font-size: ${Px2Rem(14)};
+    padding: 0 0 0 ${Px2Rem(12)}!important;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+
+    div.switcher {
+      position: absolute;
+      top: ${Px2Rem(38)};
+      right: ${Px2Rem(-10)};
+      display: ${(props) => (props.swi ? 'inline-block' : 'none')};
+      box-shadow: 0 ${Px2Rem(4)} ${Px2Rem(10)} 0 rgba(${themeProvider.day.fontColor}, 0.32);
+      border-radius: ${Px2Rem(7)};
+      width: ${Px2Rem(180)};
+      z-index: 100;
+      overflow: hidden;
+
+      div.languages {
+        background: ${themeProvider.day.backgroundColor};
+        list-style: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        div.option {
+          padding: 0 ${Px2Rem(10)};
+          width: 100%;
+          height: ${Px2Rem(47)};
+          border: ${Px2Rem(1)} solid rgba(${themeProvider.day.fontColor}, 0.1);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
   }
 
   div.progress {

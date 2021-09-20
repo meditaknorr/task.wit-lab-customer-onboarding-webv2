@@ -8,7 +8,7 @@ const AppRouter = () => {
 
   useEffect(() => {
     setBrowserlanguage(((window.navigator.language).slice(0, 2)).toUpperCase());
-  });
+  }, []);
 
   return (
     <Router>
