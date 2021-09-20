@@ -13,6 +13,7 @@ const Onboarding = () => {
     <WebView>
       <OnborardingScreen>
         <Header log={1} bac={0} lab={0} lan={1} pro={1} />
+        Demo ::
         {localization.demo}
       </OnborardingScreen>
     </WebView>

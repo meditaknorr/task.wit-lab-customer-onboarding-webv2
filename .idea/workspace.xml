@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80c35755-d7d8-42e8-a0eb-26e6ff8f4f15" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/Configs/Lang/languageProvider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Configs/Themes/themeProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Configs/Lang/app.localization.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Configs/Themes/app.theme.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/Screens/Onboarding/Onboarding.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/Screens/Onboarding/Onboarding.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
