@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80c35755-d7d8-42e8-a0eb-26e6ff8f4f15" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_chevron_down.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Hooks/useLocale.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Locales/strings.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Locales/whitelist.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Components/Header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Header/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Components/Header/style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Progressbar/Progressbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Components/Progressbar/Progressbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Progressbar/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Components/Progressbar/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Configs/Lang/languageProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Configs/Lang/languageProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Hooks/useDimension.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Hooks/useDimension.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Hooks/useStore.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Hooks/useStore.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Layouts/WebView/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Layouts/WebView/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Layouts/WebView/WebView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Layouts/WebView/WebView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Routes/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Routes/AppRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Screens/Onboarding/Style.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Store/AppStore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Store/AppStore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Store/AppStoreContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Store/AppStoreContainer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +127,7 @@
       <workItem from="1632156871229" duration="3657000" />
       <workItem from="1632222404638" duration="40844000" />
       <workItem from="1632295997050" duration="5009000" />
-      <workItem from="1632302579049" duration="19822000" />
+      <workItem from="1632302579049" duration="23073000" />
     </task>
     <servers />
   </component>
