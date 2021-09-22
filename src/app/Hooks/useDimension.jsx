@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
 /**
- * React useDimension Custom Hooks
+ * React Custom Hooks For Dynamically set Height and Width on WebView and others
+ * High Order Components
  * @returns { height, width }
  */
 const useDimension = () => {
@@ -24,6 +25,6 @@ const useDimension = () => {
  * @returns string
  * @constructor
  */
-const Px2Rem = (pixel) => `${(pixel / 16)}rem`;
+const ConvertorPixel2Rem = (pixel) => `${(pixel / 16)}rem`;
 
-export { useDimension, Px2Rem };
+export { useDimension, ConvertorPixel2Rem };

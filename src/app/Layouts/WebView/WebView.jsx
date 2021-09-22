@@ -4,9 +4,9 @@ import { useDimension } from '../../Hooks/useDimension';
 import { WebActivity } from './Style';
 
 const WebView = ({ children }) => {
-  const { width, height, PxRem } = useDimension();
+  const { width, height } = useDimension();
   return (
-    <WebActivity w={width} h={height} p={PxRem}>
+    <WebActivity width={width} height={height}>
       {children}
     </WebActivity>
   );

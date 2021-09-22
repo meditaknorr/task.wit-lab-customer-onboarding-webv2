@@ -1,6 +1,10 @@
 import { useContext } from 'react';
 import { AppContext } from '../Store/AppStore';
 
+/**
+ * React Custom Hooks to Share Store
+ * @returns State
+ */
 const useStore = () => {
   const context = useContext(AppContext);
 
@@ -13,15 +17,15 @@ const useStore = () => {
   const {
     phone,
     setPhone,
-    browserlanguage,
-    setBrowserlanguage,
+    language,
+    setLanguage,
   } = context;
 
   return {
     phone,
     setPhone,
-    browserlanguage,
-    setBrowserlanguage,
+    language,
+    setLanguage,
   };
 };
 
