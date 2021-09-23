@@ -1,26 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AppContextProvider from './AppStore';
 
 /**
- * Retorna um componente que serve de ponte de ligação leve entre o store e os demais componentes
+ * Return a Store Container for the pages/screens
  * @param provider
  * @param component
  * @returns {JSX.Element}
  * @constructor
  */
-const AppStoreContainer = ({ provider, component }) => {
-  const Provider = provider;
+const AppStoreContainer = ({ component }) => {
   const Component = component;
   return (
-    <Provider>
+    <AppContextProvider>
       <Component />
-    </Provider>
+    </AppContextProvider>
   );
 };
 
 AppStoreContainer.propTypes = {
-  provider: PropTypes.element.isRequired,
-  component: PropTypes.element.isRequired,
+  component: PropTypes.func.isRequired,
 };
 
 export default AppStoreContainer;
