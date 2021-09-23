@@ -31,7 +31,7 @@
         ]
       }
     ],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": 0,
     "global-require": "off",
     "import/prefer-default-export": "off",
     "no-unused-expressions": [
