@@ -2,20 +2,21 @@ import { translations } from '../Locales/translations';
 
 /**
  * React Custom Hooks For Injecting dynamically translation texts to  the App
- * @param browserlanguage
+ * >> appStrings returns strings to be rendered in whole app
+ * >> appLanguages returns strings to be rendered only in the dropdown
+ * param browserLanguage
  * @returns { appString, appLanguages}
  */
-export const useLocale = () => {
-  const browserLanguage = (window.navigator.language).slice(0, 2);
+export const useLocale = (browserLanguage) => {
   const appString = translations.filter((data) => (data.code === browserLanguage));
+  // .map((data, keys) => ([{ key: keys, code: data.code, name: data.name }]))
 
   /**
    * Return all languages that can be selected by the user
    * Except its browser language
    * @type Array
    */
-  const appLanguages = translations.filter((data) => (data.code !== 'browserlanguage'))
-    .map((data, keys) => ([{ key: keys, code: data.code, name: data.name }]));
+  const appLanguages = translations.filter((data) => (data.code === browserLanguage));
 
   return {
     appString,

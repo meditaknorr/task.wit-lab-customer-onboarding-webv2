@@ -29,7 +29,7 @@ const Header = ({
   languageSetter,
 }) => {
   const [trigger, setTrigger] = useState(false);
-  const { appLanguages, appString } = useLocale();
+  const { appLanguages, appString } = useLocale(language);
 
   const languageSwitcher = () => setTrigger(!trigger);
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
@@ -56,10 +56,10 @@ const Header = ({
             <div className="Trigger-Pane">
 
               {
-                appLanguages.map((string) => (
+                (appLanguages[0].other).map((string) => (
                   <div
-                    key={string[0].key}
-                    id={string[0].code}
+                    key={string.id}
+                    id={string.code}
                     className="Trigger-Pane__Option"
                     onClick={languageSelector}
                     onKeyPress={languageSelector}
@@ -67,9 +67,9 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
-                      <img src={countryFlagHelper(string[0].code)} alt="img" />
+                      <img src={countryFlagHelper(string.code)} alt="img" />
                     </div>
-                    <span className="Pane-Name">{string[0].name}</span>
+                    <span className="Pane-Name">{string.name}</span>
                     <div className="Pane-Check" />
                   </div>
                 ))

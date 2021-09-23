@@ -1,29 +1,28 @@
-import english from '../Assets/Images/icons/ic_en_lang.svg';
-import portuguese from '../Assets/Images/icons/ic_pt_lang.svg';
-import italian from '../Assets/Images/icons/ic_it_lang.svg';
-
 export const translations = [
   {
     id: 1,
     code: 'en',
     name: 'english',
-    other: {
-      1: {
+    other: [
+      {
+        id: 11,
         code: 'pt',
         name: 'portuguese',
-        flag: portuguese,
       },
-      2: {
-        code: 'en',
+      {
+        id: 12,
+        code: 'it',
         name: 'italian',
-        flag: italian,
       },
-    },
+      {
+        id: 13,
+        code: 'en',
+        name: 'english',
+      },
+    ],
     trans:
       {
         header: {
-          pt: 'portuguese',
-          it: 'italian',
           phoneNumber: 'phone number',
         },
         createYour: 'Create your',
@@ -35,23 +34,26 @@ export const translations = [
     id: 2,
     code: 'pt',
     name: 'portuguese',
-    other: {
-      1: {
+    other: [
+      {
+        id: 21,
         code: 'it',
         name: 'italiano',
-        flag: italian,
       },
-      2: {
+      {
+        id: 22,
         code: 'en',
         name: 'inglês',
-        flag: english,
       },
-    },
+      {
+        id: 33,
+        code: 'pt',
+        name: 'português',
+      },
+    ],
     trans:
       {
         header: {
-          it: 'Italiano',
-          en: 'inglês',
           phoneNumber: 'número de Telefone',
         },
         createYour: 'Crie sua',
@@ -63,17 +65,31 @@ export const translations = [
     id: 3,
     code: 'it',
     name: 'Italian',
-    other: {
-      1: {
+    other: [
+      {
+        id: 31,
         code: 'en',
         name: 'inglese',
-        flag: english,
       },
-      2: {
+      {
+        id: 32,
         code: 'pt',
         name: 'portoghese',
-        flag: portuguese,
       },
-    },
+      {
+        id: 33,
+        code: 'it',
+        name: 'italiano',
+      },
+    ],
+    trans:
+      {
+        header: {
+          phoneNumber: 'numero di telefono',
+        },
+        createYour: 'Crea il tuo',
+        witAccount: 'account WIT',
+        demo: 'dimostrazione della funzionalità di cambio lingua',
+      },
   },
 ];
