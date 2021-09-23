@@ -75,9 +75,5 @@ export const translations = [
         flag: portuguese,
       },
     },
-    trans:
-      {
-        teste: 1,
-      },
   },
 ];
