@@ -13,6 +13,8 @@
 /.idea/**
 .idea/
 .vscode/
+.idea/workspace.xml
+/.idea/workspace.xml
 
 # production
 /build
