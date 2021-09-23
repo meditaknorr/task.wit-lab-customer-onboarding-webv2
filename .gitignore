@@ -11,6 +11,8 @@
 #IDE environment files
 /.idea
 /.idea/**
+.idea/
+.vscode/
 
 # production
 /build
