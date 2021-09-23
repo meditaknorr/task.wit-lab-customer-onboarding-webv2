@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../Hooks/useLocale';
 import Logo from '../Logo/Logo';
-import ProgressBar from '../Progressbar/Progressbar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import { AppHeader } from './Style';
 import Eng from '../../Assets/Images/icons/ic_en_lang.svg';
 
