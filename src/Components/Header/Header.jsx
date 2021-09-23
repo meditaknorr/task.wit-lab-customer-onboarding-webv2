@@ -4,11 +4,7 @@ import { useLocale } from '../../Hooks/useLocale';
 import Logo from '../Logo/Logo';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import { AppHeader } from './Style';
-<<<<<<<< HEAD:src/Components/Header/Header.jsx
 import Eng from '../../Assets/Images/icons/ic_en_lang.svg';
-========
-import eng from '../../Assets/Images/icons/ic_en_lang.svg';
->>>>>>>> origin/feature/CO-312:src/app/Components/Header/Header.jsx
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
@@ -71,11 +67,7 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
-<<<<<<<< HEAD:src/Components/Header/Header.jsx
                       <img src={Eng} alt="img" />
-========
-                      <img src={eng} alt="img" />
->>>>>>>> origin/feature/CO-312:src/app/Components/Header/Header.jsx
                     </div>
                     <span className="Pane-Name">{string[0].name}</span>
                     <div className="Pane-Check" />

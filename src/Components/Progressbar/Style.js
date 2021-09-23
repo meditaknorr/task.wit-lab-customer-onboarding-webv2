@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 
-export const Loading = styled.div`
+export const LoadingBar = styled.div`
   position: relative;
   width: 100%;
   height: ${ConvertorPixel2Rem(2)};
