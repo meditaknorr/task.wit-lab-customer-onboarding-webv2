@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80c35755-d7d8-42e8-a0eb-26e6ff8f4f15" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_check.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Contexts/AppStoreContexts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Store/Store.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_en_lang.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_pt_lang.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Components/Header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Components/Header/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Components/Header/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Components/Header/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Hooks/useLocale.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Hooks/useLocale.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Locales/strings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Locales/strings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Routes/AppRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Routes/AppRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +140,7 @@
       <workItem from="1632222404638" duration="40844000" />
       <workItem from="1632295997050" duration="5009000" />
       <workItem from="1632302579049" duration="23073000" />
+      <workItem from="1632381133973" duration="18174000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>D04FBE9C-06F7-4926-8032-38C6BB910237</title>
+    <g id="POC" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="00.00.03-Onboarding:-Insert-Number" transform="translate(-24.000000, -89.000000)">
+            <g id="Group" transform="translate(0.000000, 73.000000)">
+                <g id="arrow_left" transform="translate(24.000000, 16.000000)">
+                    <polygon id="bg" fill-opacity="0" fill="#D8D8D8" transform="translate(12.000000, 12.000000) rotate(90.000000) translate(-12.000000, -12.000000) " points="0 0 24 0 24 24 0 24"></polygon>
+                    <polyline id="Shape" stroke="#333333" stroke-linecap="round" stroke-linejoin="round" points="11 3.5 2.5 12 11 20.5"></polyline>
+                    <line x1="2.5" y1="12" x2="21.5" y2="12" id="Shape" stroke="#333333" stroke-linecap="round" stroke-linejoin="round"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
