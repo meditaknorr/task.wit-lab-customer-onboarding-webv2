@@ -2,7 +2,7 @@ import english from '../Assets/Images/icons/ic_en_lang.svg';
 import portuguese from '../Assets/Images/icons/ic_pt_lang.svg';
 import italian from '../Assets/Images/icons/ic_it_lang.svg';
 
-export const strings = [
+export const translations = [
   {
     id: 1,
     code: 'en',

@@ -29,7 +29,7 @@ const Header = ({
   languageSetter,
 }) => {
   const [trigger, setTrigger] = useState(false);
-  const { appLanguages, appString } = useLocale('pt');
+  const { appLanguages, appString } = useLocale((window.navigator.language).slice(0, 2));
 
   const languageSwitcher = () => setTrigger(!trigger);
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
