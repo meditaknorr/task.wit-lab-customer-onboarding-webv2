@@ -3,6 +3,7 @@ import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 import ArrowDown from '../../Assets/Images/icons/ic_chevron_down.svg';
 import ArrowLeft from '../../Assets/Images/icons/ic_arrow_left.svg';
+import CheckSignal from '../../Assets/Images/icons/ic_check.png';
 
 export const AppHeader = styled.header`
   grid-area: header;
@@ -110,17 +111,23 @@ export const AppHeader = styled.header`
             overflow: hidden;
             display: flex;
             align-items: center;
-            justify-content: space-between;
             text-transform: capitalize;
           }
           div.Pane-Check {
-            width: ${ConvertorPixel2Rem(27)};
-            height: ${ConvertorPixel2Rem(27)};
+            width: ${ConvertorPixel2Rem(16)};
+            height: ${ConvertorPixel2Rem(12)};
+            background: url(${CheckSignal}) no-repeat center;
+            background-size: contain;
+            margin: 0 ${ConvertorPixel2Rem(8)} 0 0;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border: 1px solid red;
+          }
+          div.Pane-GhostCheck {
+            width: ${ConvertorPixel2Rem(27)};
+            height: ${ConvertorPixel2Rem(27)};
+            overflow: hidden;
           }
         }
       }

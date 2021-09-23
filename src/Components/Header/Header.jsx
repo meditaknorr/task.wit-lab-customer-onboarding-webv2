@@ -70,7 +70,7 @@ const Header = ({
                       <img src={countryFlagHelper(string.code)} alt="img" />
                     </div>
                     <span className="Pane-Name">{string.name}</span>
-                    <div className="Pane-Check" />
+                    {(language === string.code) ? <div className="Pane-Check" /> : <div className="Pane-GhostCheck" />}
                   </div>
                 ))
               }
