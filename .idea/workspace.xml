@@ -5,59 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80c35755-d7d8-42e8-a0eb-26e6ff8f4f15" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_arrow_left.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_chevron_down.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_details.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_en_lang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_pt_lang.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_scan.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/ic_selfie.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/w_logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Assets/Images/icons/wit_logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Button/Button.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Button/style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Checkbox/Checkbox.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Checkbox/style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Footer/Footer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Footer/style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Header/Header.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Header/style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Logo/Logo.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Logo/Style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Progressbar/Progressbar.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/Progressbar/Style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/TextInput/Textinput.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Components/TextInput/style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Configs/Themes/themeProvider.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Hooks/useDimension.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Hooks/useLocale.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Hooks/useStore.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Layouts/WebView/Style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Layouts/WebView/WebView.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Locales/strings.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Locales/whitelist.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Routes/AppRouter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Onboarding.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Registration/Details/Details.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Registration/Details/Style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Registration/Status/Status.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Registration/Status/Style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Registration/Style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Registration/Validation/Style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Registration/Validation/Validation.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Registration/registration.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Screens/Onboarding/Style.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Store/AppStore.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Store/AppStoreContainer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/.sass-cache/9eb4853de800f5230481469b5ee8cc890955b1ef/global.scssc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/global.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/styles/global.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +53,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="feature/CO-311" />
-                    <option name="lastUsedInstant" value="1632244241" />
+                    <option name="lastUsedInstant" value="1632400829" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="feature/CO-312" />
