@@ -12,12 +12,12 @@ const AppRouter = () => {
    * >> Determines if the detected language
    * Is available to be used on the app or not
    * Return detected browser language or the default 'eng' language
-   * @param browserlanguage
+   * @param browserLanguage
    * @returns string
    */
-  const whitelistChecker = (browserlanguage) => {
-    const result = whitelist.filter((data) => (data === browserlanguage));
-    return (result[0] ? browserlanguage : 'en');
+  const whitelistChecker = (browserLanguage) => {
+    const result = whitelist.filter((data) => (data === browserLanguage));
+    return (result[0] ? browserLanguage : 'en');
   };
 
   useEffect(() => {

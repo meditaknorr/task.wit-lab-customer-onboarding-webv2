@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Loading } from './Style';
+import { LoadingBar } from './Style';
 
 /**
  * Returns a React Progress Component
@@ -10,9 +10,9 @@ import { Loading } from './Style';
  * @constructor
  */
 const ProgressBar = ({ percent }) => (
-  <Loading percent={percent}>
+  <LoadingBar percent={percent}>
     <div className="Loading-Signal" />
-  </Loading>
+  </LoadingBar>
 );
 
 ProgressBar.propTypes = {

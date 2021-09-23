@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../Hooks/useLocale';
 import Logo from '../Logo/Logo';
-import ProgressBar from '../Progressbar/Progressbar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import { AppHeader } from './Style';
+<<<<<<<< HEAD:src/Components/Header/Header.jsx
+import Eng from '../../Assets/Images/icons/ic_en_lang.svg';
+========
 import eng from '../../Assets/Images/icons/ic_en_lang.svg';
+>>>>>>>> origin/feature/CO-312:src/app/Components/Header/Header.jsx
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
@@ -12,9 +16,9 @@ import eng from '../../Assets/Images/icons/ic_en_lang.svg';
  * >> [1] means is visible, open.
  * >> Display selectable only languages that are not equal to the device's browser.
  * @param logo {0/1}
- * @param backbutton {0/1}
- * @param screenlabel {0/1}
- * @param languagebutton {0/1}
+ * @param backButton {0/1}
+ * @param screenLabel {0/1}
+ * @param languageButton {0/1}
  * @param language {string}
  * @param languageSetter {setter}
  * @returns {JSX.Element}
@@ -22,14 +26,14 @@ import eng from '../../Assets/Images/icons/ic_en_lang.svg';
  */
 const Header = ({
   logo,
-  backbutton,
-  screenlabel,
-  languagebutton,
+  backButton,
+  screenLabel,
+  languageButton,
   language,
   languageSetter,
 }) => {
   const [trigger, setTrigger] = useState(false);
-  const { appLanguages, appString } = useLocale('pt');
+  const { appLanguages, appString } = useLocale((window.navigator.language).slice(0, 2));
 
   const languageSwitcher = () => setTrigger(!trigger);
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
@@ -39,10 +43,10 @@ const Header = ({
     <>
       <AppHeader
         logo={logo}
-        backbutton={backbutton}
-        screenlabel={screenlabel}
+        backbutton={backButton}
+        screenlabel={screenLabel}
         trigger={trigger}
-        languagebutton={languagebutton}
+        languagebutton={languageButton}
       >
 
         <div className="App-logo"><Logo /></div>
@@ -67,7 +71,11 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
+<<<<<<<< HEAD:src/Components/Header/Header.jsx
+                      <img src={Eng} alt="img" />
+========
                       <img src={eng} alt="img" />
+>>>>>>>> origin/feature/CO-312:src/app/Components/Header/Header.jsx
                     </div>
                     <span className="Pane-Name">{string[0].name}</span>
                     <div className="Pane-Check" />
@@ -88,9 +96,9 @@ const Header = ({
 
 Header.propTypes = {
   logo: PropTypes.number.isRequired,
-  backbutton: PropTypes.number.isRequired,
-  screenlabel: PropTypes.number.isRequired,
-  languagebutton: PropTypes.number.isRequired,
+  backButton: PropTypes.number.isRequired,
+  screenLabel: PropTypes.number.isRequired,
+  languageButton: PropTypes.number.isRequired,
   language: PropTypes.string.isRequired,
   languageSetter: PropTypes.func.isRequired,
 };

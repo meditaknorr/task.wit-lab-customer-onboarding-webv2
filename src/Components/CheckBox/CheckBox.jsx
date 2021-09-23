@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const component = () => {
+const CheckBox = () => {
   const [page, setPage] = useState(0);
 
   return (
@@ -10,4 +10,4 @@ const component = () => {
   );
 };
 
-export default component;
+export default CheckBox;

@@ -34,9 +34,9 @@ const Onboarding = () => {
       <OnborardingScreen>
         <Header
           logo={1}
-          backbutton={0}
-          screenlabel={0}
-          languagebutton={1}
+          backButton={0}
+          screenLabel={0}
+          languageButton={1}
           language={language[0].language}
           languageSetter={languageSetter}
         />
