@@ -9,13 +9,14 @@ const images = {
 };
 
 /**
- * Country Icon Flag Provider
- * Icon image mapping function
+ * Country Icon Flag Helper,
+ * Will help by providing providing icons references dynamically in our app
+ * >> Icon image mapping function
  * @param code
  * @returns {*}
  */
-function countryFlagProvider(code) {
+function countryFlagHelper(code) {
   return images[code];
 }
 
-export default countryFlagProvider;
+export default countryFlagHelper;

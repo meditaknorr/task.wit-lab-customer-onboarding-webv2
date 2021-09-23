@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useLocale } from '../../Hooks/useLocale';
-import Logo from '../Logo/Logo';
-import ProgressBar from '../ProgressBar/ProgressBar';
 import { AppHeader } from './Style';
-import Eng from '../../Assets/Images/icons/ic_en_lang.svg';
+import { useLocale } from '../../Hooks/useLocale';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import Logo from '../Logo/Logo';
+import countryFlagHelper from '../../Helpers/countryFlagHelper';
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
@@ -67,7 +67,7 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
-                      <img src={Eng} alt="img" />
+                      <img src={countryFlagHelper(string[0].code)} alt="img" />
                     </div>
                     <span className="Pane-Name">{string[0].name}</span>
                     <div className="Pane-Check" />
