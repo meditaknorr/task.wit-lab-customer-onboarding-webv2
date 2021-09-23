@@ -56,7 +56,7 @@ export const translations = [
         },
         createYour: 'Crie sua',
         witAccount: 'Conta WIT',
-        demo: 'demostração da funcionalidade de troca de linguagem',
+        demo: 'demonstração da funcionalidade de troca de linguagem',
       },
   },
   {

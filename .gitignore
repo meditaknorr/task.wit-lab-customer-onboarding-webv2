@@ -8,13 +8,14 @@
 # testing
 /coverage
 
-#IDE environment files
+# IDE environment files
 /.idea
 /.idea/**
 .idea/
 .vscode/
 .idea/workspace.xml
 /.idea/workspace.xml
+.idea
 
 # production
 /build
