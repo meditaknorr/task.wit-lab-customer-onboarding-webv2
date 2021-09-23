@@ -12,7 +12,7 @@ const AppContextProvider = ({ children }) => {
       phone, setPhone, browserlanguage, setBrowserlanguage,
     }}
     >
-      {children}
+      {children }
     </AppContext.Provider>
   );
 };

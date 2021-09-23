@@ -13,7 +13,7 @@ const useDimension = () => {
       setHeight(window.innerHeight);
     }
     window.addEventListener('resize', handleResize);
-  });
+  }, [window]);
 
   return { height, width };
 };
