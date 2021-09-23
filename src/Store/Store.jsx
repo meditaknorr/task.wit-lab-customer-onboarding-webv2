@@ -8,7 +8,7 @@ import { StateContext, DispatchContext } from '../Contexts/AppStoreContexts';
  */
 const initialState = [
   {
-    language: 'en',
+    language: (window.navigator.language).slice(0, 2),
     id: 1,
   },
 ];
