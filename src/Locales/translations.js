@@ -25,9 +25,17 @@ export const translations = [
         header: {
           phoneNumber: 'phone number',
         },
-        createYour: 'Create your',
-        witAccount: 'WIT Account',
-        demo: 'demo of localization feature',
+        onboarding: {
+          createYour: 'Create your',
+          witAccount: 'WIT Account',
+          toOpen: 'To open your account, you need to:',
+          validatePhone: 'Validate your phone number',
+          scanDocument: 'Scan your voter card',
+          takeSelfie: 'Take a selfie',
+          buttonStart: 'Lets start',
+          alreadyRegstered: 'Already Registered?',
+          seeStatus: 'See status',
+        },
       },
   },
   {
@@ -56,9 +64,17 @@ export const translations = [
         header: {
           phoneNumber: 'número de Telefone',
         },
-        createYour: 'Crie sua',
-        witAccount: 'Conta WIT',
-        demo: 'demonstração da funcionalidade de troca de linguagem',
+        onboarding: {
+          createYour: 'Crie a sua',
+          witAccount: 'Conta WIT',
+          toOpen: 'Para poder criar a sua conta, você precisa:',
+          validatePhone: 'Validar o seu número de telefone.',
+          scanDocument: 'Digitalizar o seu cartão de eleitor.',
+          takeSelfie: 'Tire ou carregar uma foto sua, selfie.',
+          buttonStart: 'Criar uma conta',
+          alreadyRegstered: 'já se registrou?',
+          seeStatus: 'Verifique o estado',
+        },
       },
   },
   {
@@ -87,9 +103,17 @@ export const translations = [
         header: {
           phoneNumber: 'numero di telefono',
         },
-        createYour: 'Crea il tuo',
-        witAccount: 'account WIT',
-        demo: 'dimostrazione della funzionalità di cambio lingua',
+        onboarding: {
+          createYour: 'Crea il tuo',
+          witAccount: 'Conto WIT',
+          toOpen: 'Per aprire il tuo account, devi:',
+          validatePhone: 'Convalida il tuo numero di telefono',
+          scanDocument: 'Scansiona la tua tessera elettorale',
+          takeSelfie: 'Fai un selfie',
+          buttonStart: 'Creare un account',
+          alreadyRegstered: 'Già Registrato?',
+          seeStatus: 'Vedi stato',
+        },
       },
   },
 ];
