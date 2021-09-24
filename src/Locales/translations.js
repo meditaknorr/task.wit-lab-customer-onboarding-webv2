@@ -32,7 +32,7 @@ export const translations = [
           validatePhone: 'Validate your phone number',
           scanDocument: 'Scan your voter card',
           takeSelfie: 'Take a selfie',
-          buttonStart: 'Lets start',
+          buttonStart: 'Let\'s start',
           alreadyRegstered: 'Already Registered?',
           seeStatus: 'See status',
         },
