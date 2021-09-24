@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Textinput = () => {
+const TextInput = () => {
   const [page, setPage] = useState(0);
 
   return (
@@ -10,4 +10,4 @@ const Textinput = () => {
   );
 };
 
-export default Textinput;
+export default TextInput;

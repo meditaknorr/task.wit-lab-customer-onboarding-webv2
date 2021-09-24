@@ -5,11 +5,9 @@ import AppRouter from './Routes/AppRouter';
 
 function App() {
   return (
-    <>
-      <Store>
-        <AppRouter />
-      </Store>
-    </>
+    <Store>
+      <AppRouter />
+    </Store>
   );
 }
 

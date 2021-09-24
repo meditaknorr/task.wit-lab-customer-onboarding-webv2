@@ -2,7 +2,7 @@ import english from '../Assets/Images/icons/ic_en_lang.svg';
 import portuguese from '../Assets/Images/icons/ic_pt_lang.svg';
 import italian from '../Assets/Images/icons/ic_it_lang.svg';
 
-export const strings = [
+export const translations = [
   {
     id: 1,
     code: 'en',
@@ -56,7 +56,7 @@ export const strings = [
         },
         createYour: 'Crie sua',
         witAccount: 'Conta WIT',
-        demo: 'demostração da funcionalidade de troca de linguagem',
+        demo: 'demonstração da funcionalidade de troca de linguagem',
       },
   },
   {
@@ -75,9 +75,5 @@ export const strings = [
         flag: portuguese,
       },
     },
-    trans:
-      {
-        teste: 1,
-      },
   },
 ];

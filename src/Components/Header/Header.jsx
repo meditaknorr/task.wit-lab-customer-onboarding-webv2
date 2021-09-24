@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLocale } from '../../Hooks/useLocale';
 import Logo from '../Logo/Logo';
-import ProgressBar from '../Progressbar/Progressbar';
+import ProgressBar from '../ProgressBar/ProgressBar';
 import { AppHeader } from './Style';
 import Eng from '../../Assets/Images/icons/ic_en_lang.svg';
 
@@ -29,7 +29,7 @@ const Header = ({
   languageSetter,
 }) => {
   const [trigger, setTrigger] = useState(false);
-  const { appLanguages, appString } = useLocale('pt');
+  const { appLanguages, appString } = useLocale((window.navigator.language).slice(0, 2));
 
   const languageSwitcher = () => setTrigger(!trigger);
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
