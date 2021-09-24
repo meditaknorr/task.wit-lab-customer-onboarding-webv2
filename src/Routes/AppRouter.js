@@ -23,15 +23,7 @@ const AppRouter = () => {
   useEffect(() => {
     dispatch(
       {
-        type: 'REMOVE_STATE',
-        payload: {
-          id: 1,
-        },
-      },
-    );
-    dispatch(
-      {
-        type: 'ADD_STATE',
+        type: 'CHANGE_APP_LANGUAGE',
         payload: {
           language: whitelistChecker((window.navigator.language).slice(0, 2)),
           id: 1,

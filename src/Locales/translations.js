@@ -45,8 +45,8 @@ export const translations = [
     other: [
       {
         id: 21,
-        code: 'it',
-        name: 'italiano',
+        code: 'pt',
+        name: 'português',
       },
       {
         id: 22,
@@ -54,9 +54,9 @@ export const translations = [
         name: 'inglês',
       },
       {
-        id: 33,
-        code: 'pt',
-        name: 'português',
+        id: 23,
+        code: 'it',
+        name: 'italiano',
       },
     ],
     trans:
@@ -89,13 +89,14 @@ export const translations = [
       },
       {
         id: 32,
-        code: 'pt',
-        name: 'portoghese',
+        code: 'it',
+        name: 'italiano',
+
       },
       {
         id: 33,
-        code: 'it',
-        name: 'italiano',
+        code: 'pt',
+        name: 'portoghese',
       },
     ],
     trans:

@@ -15,15 +15,7 @@ const Onboarding = () => {
   const languageSetter = (selectedLanguage) => {
     dispatch(
       {
-        type: 'REMOVE_STATE',
-        payload: {
-          id: 1,
-        },
-      },
-    );
-    dispatch(
-      {
-        type: 'ADD_STATE',
+        type: 'CHANGE_APP_LANGUAGE',
         payload: {
           language: selectedLanguage,
           id: 1,
