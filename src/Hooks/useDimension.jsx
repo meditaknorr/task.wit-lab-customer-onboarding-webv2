@@ -14,6 +14,7 @@ const useDimension = () => {
       setHeight(window.innerHeight);
     }
     window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [window]);
 
   return { height, width };
