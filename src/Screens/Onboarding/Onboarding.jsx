@@ -37,31 +37,31 @@ const Onboarding = () => {
         />
         <Main>
           <div className="HeadingText">
-            <h1>{appString[0].trans.onboarding.createYour}</h1>
-            <h1>{appString[0].trans.onboarding.witAccount}</h1>
+            <h1>{appString[0].translations.onboarding.createYour}</h1>
+            <h1>{appString[0].translations.onboarding.witAccount}</h1>
           </div>
-          <h2>{appString[0].trans.onboarding.toOpen}</h2>
+          <h2>{appString[0].translations.onboarding.toOpen}</h2>
           <div className="Registration">
             <div className="Registration-Step">
               <div className="Registration-Step__Icon" />
-              <p>{appString[0].trans.onboarding.validatePhone}</p>
+              <p>{appString[0].translations.onboarding.validatePhone}</p>
             </div>
             <div className="Registration-Step">
               <div className="Registration-Step__Icon" />
-              <p>{appString[0].trans.onboarding.scanDocument}</p>
+              <p>{appString[0].translations.onboarding.scanDocument}</p>
             </div>
             <div className="Registration-Step">
               <div className="Registration-Step__Icon" />
-              <p>{appString[0].trans.onboarding.takeSelfie}</p>
+              <p>{appString[0].translations.onboarding.takeSelfie}</p>
             </div>
           </div>
           <div className="ActionButton">
             <Button type="button" className="ActionButton-StartRegistration">
-              {appString[0].trans.onboarding.buttonStart}
+              {appString[0].translations.onboarding.buttonStart}
             </Button>
             <div className="ActionButton-CheckStatus">
-              <p>{appString[0].trans.onboarding.alreadyRegstered}</p>
-              <p>{appString[0].trans.onboarding.seeStatus}</p>
+              <p>{appString[0].translations.onboarding.alreadyRegstered}</p>
+              <p>{appString[0].translations.onboarding.seeStatus}</p>
             </div>
           </div>
         </Main>

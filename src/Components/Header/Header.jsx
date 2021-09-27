@@ -4,7 +4,6 @@ import { AppHeader } from './Style';
 import { useLocale } from '../../Hooks/useLocale';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Logo from '../Logo/Logo';
-import countryFlagHelper from '../../Helpers/countryFlagHelper';
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
@@ -29,7 +28,7 @@ const Header = ({
   languageSetter,
 }) => {
   const [trigger, setTrigger] = useState(false);
-  const { appLanguages, appString } = useLocale(language);
+  const { appLanguages, appLanguagesFlag, appString } = useLocale(language);
 
   const languageSwitcher = () => setTrigger(!trigger);
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
@@ -44,10 +43,9 @@ const Header = ({
         trigger={trigger}
         languagebutton={languageButton}
       >
-
         <div className="App-logo"><Logo /></div>
         <div className="App-BackButton" />
-        <div className="App-ScreenLabel">{appString[0].trans.header.phoneNumber}</div>
+        <div className="App-ScreenLabel">{appString[0].translations.header.phoneNumber}</div>
 
         <div className="App-LanguageSwitcher" onClick={languageSwitcher} onKeyPress={languageSwitcher} role="button" tabIndex="0">
           <span className="App-Language__Current">{language}</span>
@@ -56,7 +54,7 @@ const Header = ({
             <div className="Trigger-Pane">
 
               {
-                (appLanguages[0].other).map((string) => (
+                (appLanguages.translatedAvailableLanguages).map((string) => (
                   <div
                     key={string.id}
                     id={string.code}
@@ -67,7 +65,7 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
-                      <img src={countryFlagHelper(string.code)} alt="img" />
+                      <img src={appLanguagesFlag(string.code)} alt="img" />
                     </div>
                     <span className="Pane-Name">{string.name}</span>
                     {(language === string.code) ? <div className="Pane-Check" /> : <div className="Pane-GhostCheck" />}

@@ -15,10 +15,19 @@ export const useLocale = (browserLanguage) => {
    * Except its browser language
    * @type Array
    */
-  const appLanguages = translations.filter((data) => (data.code === browserLanguage));
+  const appLanguages = (translations.filter((data) => (data.code === browserLanguage)))[0];
+
+  /**
+   * Return all flags from languages that can be selected by the user
+   * @type Object
+   */
+  function appLanguagesFlag(languageCode) {
+    return (translations.filter((data) => (data.code === languageCode)))[0].flag;
+  }
 
   return {
     appString,
     appLanguages,
+    appLanguagesFlag,
   };
 };

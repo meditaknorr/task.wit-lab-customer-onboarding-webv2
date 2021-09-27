@@ -1,9 +1,14 @@
+import en from '../Assets/Images/icons/ic_en_lang.svg';
+import pt from '../Assets/Images/icons/ic_pt_lang.svg';
+import it from '../Assets/Images/icons/ic_it_lang.svg';
+
 export const translations = [
   {
     id: 1,
     code: 'en',
     name: 'english',
-    other: [
+    flag: en,
+    translatedAvailableLanguages: [
       {
         id: 11,
         code: 'pt',
@@ -20,7 +25,7 @@ export const translations = [
         name: 'english',
       },
     ],
-    trans:
+    translations:
       {
         header: {
           phoneNumber: 'phone number',
@@ -41,8 +46,9 @@ export const translations = [
   {
     id: 2,
     code: 'pt',
+    flag: pt,
     name: 'portuguese',
-    other: [
+    translatedAvailableLanguages: [
       {
         id: 21,
         code: 'pt',
@@ -59,7 +65,7 @@ export const translations = [
         name: 'italiano',
       },
     ],
-    trans:
+    translations:
       {
         header: {
           phoneNumber: 'número de Telefone',
@@ -81,7 +87,8 @@ export const translations = [
     id: 3,
     code: 'it',
     name: 'Italian',
-    other: [
+    flag: it,
+    translatedAvailableLanguages: [
       {
         id: 31,
         code: 'en',
@@ -99,7 +106,7 @@ export const translations = [
         name: 'portoghese',
       },
     ],
-    trans:
+    translations:
       {
         header: {
           phoneNumber: 'numero di telefono',
