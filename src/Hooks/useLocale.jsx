@@ -9,7 +9,6 @@ import { translations } from '../Locales/translations';
  */
 export const useLocale = (browserLanguage) => {
   const appString = translations.filter((data) => (data.code === browserLanguage));
-  // .map((data, keys) => ([{ key: keys, code: data.code, name: data.name }]))
 
   /**
    * Return all languages that can be selected by the user
