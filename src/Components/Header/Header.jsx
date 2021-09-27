@@ -44,11 +44,9 @@ const Header = ({
         trigger={trigger}
         languagebutton={languageButton}
       >
-
         <div className="App-logo"><Logo /></div>
         <div className="App-BackButton" />
-        <div className="App-ScreenLabel">{appString[0].trans.header.phoneNumber}</div>
-
+        <div className="App-ScreenLabel">{appString.translations.header.phoneNumber}</div>
         <div className="App-LanguageSwitcher" onClick={languageSwitcher} onKeyPress={languageSwitcher} role="button" tabIndex="0">
           <span className="App-Language__Current">{language}</span>
           <div className="App-Language__ArrowDown" />
@@ -56,7 +54,7 @@ const Header = ({
             <div className="Trigger-Pane">
 
               {
-                (appLanguages[0].other).map((string) => (
+                (appLanguages.translatedAvailableLanguages).map((string) => (
                   <div
                     key={string.id}
                     id={string.code}

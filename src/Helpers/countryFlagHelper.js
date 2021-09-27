@@ -1,12 +1,4 @@
-import en from '../Assets/Images/icons/ic_en_lang.svg';
-import pt from '../Assets/Images/icons/ic_pt_lang.svg';
-import it from '../Assets/Images/icons/ic_it_lang.svg';
-
-const images = {
-  en,
-  pt,
-  it,
-};
+import { translations } from '../Locales/translations';
 
 /**
  * Country Icon Flag Helper,
@@ -16,7 +8,7 @@ const images = {
  * @returns {*}
  */
 function countryFlagHelper(code) {
-  return images[code];
+  return (translations.filter((data) => (data.code === code)))[0].flag;
 }
 
 export default countryFlagHelper;
