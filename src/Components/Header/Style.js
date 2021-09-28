@@ -37,6 +37,7 @@ export const AppHeader = styled.header`
     width: ${ConvertorPixel2Rem(200)};
     height: ${ConvertorPixel2Rem(42)};
     font-size: ${ConvertorPixel2Rem(16)};
+    text-transform: capitalize;
     font-weight: 400;
     align-items: center;
     justify-content: center;
@@ -46,10 +47,9 @@ export const AppHeader = styled.header`
   div.App-LanguageSwitcher {
     position: relative;
     display: ${(props) => (props.languagebutton ? 'flex' : 'none')};
-    width: ${ConvertorPixel2Rem(50)};
-    height: ${ConvertorPixel2Rem(42)};
+    width: ${ConvertorPixel2Rem(35)};
+    height: ${ConvertorPixel2Rem(35)};
     font-size: ${ConvertorPixel2Rem(14)};
-    padding: 0 0 0 ${ConvertorPixel2Rem(15)}!important;
     align-items: center;
     justify-content: space-between;
 
@@ -61,7 +61,7 @@ export const AppHeader = styled.header`
     div.App-Language__ArrowDown {
       position: absolute;
       right: 0;
-      bottom: ${ConvertorPixel2Rem(12)};
+      bottom: ${ConvertorPixel2Rem(7)};
       width: ${ConvertorPixel2Rem(14)};
       height: ${ConvertorPixel2Rem(14)};
       background: url(${ArrowDown}) no-repeat center;
@@ -70,7 +70,7 @@ export const AppHeader = styled.header`
 
     div.App-Language__Trigger {
       position: absolute;
-      top: ${ConvertorPixel2Rem(38)};
+      top: ${ConvertorPixel2Rem(34)};
       right: ${ConvertorPixel2Rem(-10)};
       display: ${(props) => (props.trigger ? 'inline-block' : 'none')};
       box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 0 rgba(${themeProvider.day.fontColor}, 0.32);
