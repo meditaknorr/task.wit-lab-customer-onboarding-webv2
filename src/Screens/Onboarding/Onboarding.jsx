@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import { StateContext, DispatchContext } from '../../Contexts/AppStoreContexts';
 import Header from '../../Components/Header/Header';
@@ -7,6 +8,7 @@ import { OnborardingScreen, Main } from './Style';
 import { useLocale } from '../../Hooks/useLocale';
 
 const Onboarding = () => {
+  const history = useHistory();
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
   const language = (state.filter((data) => data.id === 1))[0];
@@ -56,7 +58,7 @@ const Onboarding = () => {
             </div>
           </div>
           <div className="ActionButton">
-            <Button type="button" className="ActionButton-StartRegistration">
+            <Button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/home')}>
               {appString.translations.onboarding.buttonStart}
             </Button>
             <div className="ActionButton-CheckStatus">
