@@ -1,17 +1,8 @@
-/*
-* Import pattern for country flag icons
-* Import [languageCode] from '..Assets/Images/icons/ic_[languageCode]_lang.svg
- */
-import en from '../Assets/Images/icons/ic_en_lang.svg';
-import pt from '../Assets/Images/icons/ic_pt_lang.svg';
-import it from '../Assets/Images/icons/ic_it_lang.svg';
-
 export const translations = [
   {
     id: 1,
     code: 'en',
     name: 'english',
-    flag: en,
     translatedAvailableLanguages: [
       {
         id: 11,
@@ -50,7 +41,6 @@ export const translations = [
   {
     id: 2,
     code: 'pt',
-    flag: pt,
     name: 'portuguese',
     translatedAvailableLanguages: [
       {
@@ -91,7 +81,6 @@ export const translations = [
     id: 3,
     code: 'it',
     name: 'Italian',
-    flag: it,
     translatedAvailableLanguages: [
       {
         id: 31,
