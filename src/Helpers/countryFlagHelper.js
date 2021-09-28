@@ -1,5 +1,3 @@
-import { translations } from '../Locales/translations';
-
 /**
  * Country Icon Flag Helper,
  * Will help by providing providing icons references dynamically in our app
@@ -8,7 +6,7 @@ import { translations } from '../Locales/translations';
  * @returns {*}
  */
 function countryFlagHelper(code) {
-  return (translations.filter((data) => (data.code === code)))[0].flag;
+  return `../resources/images/icons/ic_${code}_lange.svg`;
 }
 
 export default countryFlagHelper;
