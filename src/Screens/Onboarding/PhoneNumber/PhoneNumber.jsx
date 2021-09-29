@@ -112,7 +112,7 @@ const PhoneNumber = () => {
           <div className="ActionButton">
             <Button
               type="button"
-              onClick={() => history.push('/registration/onboarding/phonenumber/otp')}
+              onClick={() => history.push('/registration/onboarding/phonenumber/confirmation')}
               className="ActionButton-StartRegistration"
               disabled={(validPhone) ? null : true}
             >
