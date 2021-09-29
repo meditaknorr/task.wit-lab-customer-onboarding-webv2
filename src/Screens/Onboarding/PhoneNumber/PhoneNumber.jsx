@@ -32,6 +32,8 @@ const PhoneNumber = () => {
     );
   };
   const countryCodeSetter = (e) => {
+    setPhoneNumber('');
+    setValidPhone(false);
     const CountryCodeNumber = (parseInt(((e.target.value).slice(1)), 10));
     dispatch(
       {
