@@ -20,17 +20,6 @@ const PhoneNumber = () => {
   const { appString } = useLocale(language.language);
   const { countryCode } = (state.filter((data) => data.id === 2))[0];
 
-  const languageSetter = (selectedLanguage) => {
-    dispatch(
-      {
-        type: 'CHANGE_APP_LANGUAGE',
-        payload: {
-          language: selectedLanguage,
-          id: 1,
-        },
-      },
-    );
-  };
   const countryCodeSetter = (e) => {
     setPhoneNumber('');
     setValidPhone(false);
@@ -54,6 +43,7 @@ const PhoneNumber = () => {
       setValidPhone(false);
     }
   };
+  const errorSignalizer = () => (phoneNumber.length >= targetCountryHelper('nationalNumberLength', countryCode) && !validPhone);
 
   return (
     <WebView>
@@ -64,9 +54,8 @@ const PhoneNumber = () => {
           screenLabel={1}
           languageButton={1}
           language={language.language}
-          languageSetter={languageSetter}
         />
-        <Main>
+        <Main checkSignal={validPhone} phoneLength={(phoneNumber.length)} nnumberLenght={targetCountryHelper('nationalNumberLength', countryCode)}>
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.enterPhone}</h1>
             <h2>{appString.translations.onboarding.forAccountSettup}</h2>
@@ -91,10 +80,8 @@ const PhoneNumber = () => {
                   ))
                 }
               </select>
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="CountryCode" className="PhoneNumber__CountryCodeField-Label">{appString.translations.onboarding.code}</label>
             </div>
-
             <div className="PhoneNumber__NumberField">
               <input
                 type="tel"
@@ -107,17 +94,21 @@ const PhoneNumber = () => {
                 value={phoneNumber}
                 onChange={phonenumberChecker}
               />
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-              <label htmlFor="phoneNumber" className="PhoneNumber__NumberField-Label">{appString.translations.onboarding.mobilePhone}</label>
+              <label
+                htmlFor="phoneNumber"
+                className="PhoneNumber__NumberField-Label"
+              >
+                {appString.translations.onboarding.mobilePhone}
+              </label>
               <div className="PhoneNumber__NumberField-Status" />
             </div>
-
             <div className="PhoneNumber__ErrorText">
               {
-                (phoneNumber.length >= targetCountryHelper('nationalNumberLength', countryCode) && !validPhone) && `${appString.translations.onboarding.validNumber}`
+                errorSignalizer() && `${appString.translations.onboarding.validNumber}`
               }
             </div>
           </div>
+
           <div className="ActionButton">
             <Button
               type="button"

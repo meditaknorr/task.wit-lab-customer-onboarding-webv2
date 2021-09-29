@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { themeProvider } from '../../../Configs/Themes/themeProvider';
 import { ConvertorPixel2Rem } from '../../../Hooks/useDimension';
-import Success from '../../../Assets/Images/icons/ic_check_green.png';
-// import Error from '../../../Assets/Images/icons/ic_alert_red.png';
+import Success from '../../../Assets/Images/icons/ic_check_green.svg';
+import Error from '../../../Assets/Images/icons/ic_alert_red.svg';
 
 export const PhoneNumberScreen = styled.div`
   width: 100%;
@@ -128,6 +128,7 @@ export const Main = styled.main`
       }
       label.PhoneNumber__NumberField-Label {
         padding: ${ConvertorPixel2Rem(3)};
+        color: (${(props) => (props.checkSignal ? Success : Error)}) no-repeat;
         background-color: ${themeProvider.day.backgroundColor};
         font-size: ${ConvertorPixel2Rem(12)};
         position: absolute;
@@ -135,10 +136,10 @@ export const Main = styled.main`
         top: ${ConvertorPixel2Rem(-15)};
       }
       div.PhoneNumber__NumberField-Status {
-        display: none;
+        display: ${(props) => (props.phoneLength >= props.nnumberLenght ? 'inline-block' : 'none')};
         width: ${ConvertorPixel2Rem(20)};
         height: ${ConvertorPixel2Rem(20)};
-        background: url(${Success}) no-repeat;
+        background: url(${(props) => (props.checkSignal ? Success : Error)}) no-repeat;
         background-size: cover;
         position: absolute;
         right: ${ConvertorPixel2Rem(15)};
@@ -146,8 +147,9 @@ export const Main = styled.main`
       }
     }
     div.PhoneNumber__ErrorText {
-      width: ${ConvertorPixel2Rem(315)};
-      height: ${ConvertorPixel2Rem(18)};
+      display: block;
+      width: ${ConvertorPixel2Rem(200)};
+      height: ${ConvertorPixel2Rem(30)};
       font-size: ${ConvertorPixel2Rem(14)};
       padding: ${ConvertorPixel2Rem(5)} 0;
       color: rgba(${themeProvider.day.errorColor}, 1.0);
