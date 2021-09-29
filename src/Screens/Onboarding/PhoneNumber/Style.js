@@ -24,7 +24,7 @@ export const Main = styled.main`
 
   div.HeadingText {
     width: ${ConvertorPixel2Rem(312)};
-    color: rgba(${themeProvider.day.fontColor}, 1.0);
+    color: ${themeProvider.day.fontColor};
     letter-spacing: 0;
     margin: ${ConvertorPixel2Rem(17)} 0 0 0;
 
@@ -67,20 +67,20 @@ export const Main = styled.main`
         background-color: ${themeProvider.day.backgroundColor};
         padding: 0 ${ConvertorPixel2Rem(15)};
         border-radius: ${ConvertorPixel2Rem(6)};
-        border: ${ConvertorPixel2Rem(1)} solid rgba(${themeProvider.day.fontColor}, 1.0);
-        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColorRGBA} !important;
+        border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
+        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
         overflow: hidden;
         option {
           width: 100px;
           text-align: right;
         }
         &:focus {
-          border: 1px solid rgba(${themeProvider.day.highlightColor}, 1.0);
+          border: 1px solid ${themeProvider.day.highlightColor};
           font-size: ${ConvertorPixel2Rem(16)};
 
           & + label {
             display: inline-block;
-            color: rgba(${themeProvider.day.highlightColor}, 1.0);
+            color: ${themeProvider.day.highlightColor};
           }
         }
       }
@@ -89,7 +89,7 @@ export const Main = styled.main`
         background-color: ${themeProvider.day.backgroundColor};
         font-size: ${ConvertorPixel2Rem(12)};
         position: absolute;
-        color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColorRGBA}!important;
+        color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor}!important;
         left: ${ConvertorPixel2Rem(10)};
         top: ${ConvertorPixel2Rem(-15)};
       }
@@ -121,35 +121,35 @@ export const Main = styled.main`
         height: 100%;
         padding: 0 ${ConvertorPixel2Rem(15)};
         border-radius: ${ConvertorPixel2Rem(6)};
-        border: ${ConvertorPixel2Rem(1)} solid rgba(${themeProvider.day.fontColor}, 1.0);
-        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColorRGBA} !important;
+        border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
+        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
 
         &:focus {
-          border: 1px solid rgba(${themeProvider.day.highlightColor}, 1.0);
+          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor};
           font-size: ${ConvertorPixel2Rem(16)};
 
           & + label {
             display: inline-block;
-            color: rgba(${themeProvider.day.highlightColor}, 1.0);
+            color: ${themeProvider.day.highlightColor};
           }
         }
 
         &::-webkit-input-placeholder {
-          color: rgba(${themeProvider.day.disableColor}, 1.0);
+          color: ${themeProvider.day.disableColor};
         }
 
         &:-ms-input-placeholder {
-          color: rgba(${themeProvider.day.disableColor}, 1.0);
+          color: ${themeProvider.day.disableColor};
         }
 
         &::placeholder {
-          color: rgba(${themeProvider.day.disableColor}, 1.0);
+          color: ${themeProvider.day.disableColor};
         }
       }
 
       label.PhoneNumber__NumberField-Label {
         padding: ${ConvertorPixel2Rem(3)};
-        color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColorRGBA} !important;
+        color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor}!important;
         background-color: ${themeProvider.day.backgroundColor};
         font-size: ${ConvertorPixel2Rem(12)};
         position: absolute;
@@ -175,7 +175,7 @@ export const Main = styled.main`
       height: ${ConvertorPixel2Rem(30)};
       font-size: ${ConvertorPixel2Rem(14)};
       padding: ${ConvertorPixel2Rem(5)} 0;
-      color: rgba(${themeProvider.day.errorColor}, 1.0);
+      color: ${themeProvider.day.errorColor};
     }
   }
 
@@ -184,13 +184,13 @@ export const Main = styled.main`
     margin: 0 auto;
     button {
       width: 100%;
-      background-color: rgba(${themeProvider.day.highlightColor});
+      background-color: ${themeProvider.day.highlightColor};
       font-size: ${ConvertorPixel2Rem(16)};
       height: ${ConvertorPixel2Rem(44)};
       border-radius: ${ConvertorPixel2Rem(6)};
       border: 0;
       &[disabled] {
-        background-color: rgba(${themeProvider.day.disableColor});
+        background-color: ${themeProvider.day.disableColor};
       }
     }
   }
