@@ -128,7 +128,7 @@ export const Main = styled.main`
       }
       label.PhoneNumber__NumberField-Label {
         padding: ${ConvertorPixel2Rem(3)};
-        color: (${(props) => (props.checkSignal ? Success : Error)}) no-repeat;
+        color: ${(props) => props.phoneLength >= props.nnumberLenght && 'red'};
         background-color: ${themeProvider.day.backgroundColor};
         font-size: ${ConvertorPixel2Rem(12)};
         position: absolute;
