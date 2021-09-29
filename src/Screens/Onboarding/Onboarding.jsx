@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button } from 'reactstrap';
-import { StateContext, DispatchContext } from '../../Contexts/AppStoreContexts';
+import { StateContext } from '../../Contexts/AppStoreContexts';
 import Header from '../../Components/Header/Header';
 import WebView from '../../Layouts/WebView/WebView';
 import { OnborardingScreen, Main } from './Style';
@@ -10,21 +10,8 @@ import { useLocale } from '../../Hooks/useLocale';
 const Onboarding = () => {
   const history = useHistory();
   const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
   const language = (state.filter((data) => data.id === 1))[0];
   const { appString } = useLocale(language.language);
-
-  const languageSetter = (selectedLanguage) => {
-    dispatch(
-      {
-        type: 'CHANGE_APP_LANGUAGE',
-        payload: {
-          language: selectedLanguage,
-          id: 1,
-        },
-      },
-    );
-  };
 
   return (
     <WebView>
@@ -35,7 +22,6 @@ const Onboarding = () => {
           screenLabel={0}
           languageButton={1}
           language={language.language}
-          languageSetter={languageSetter}
         />
         <Main>
           <div className="HeadingText">
