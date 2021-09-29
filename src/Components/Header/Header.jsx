@@ -77,7 +77,7 @@ const Header = ({
           </div>
         </div>
         <div className="App-ProgressBar">
-          <ProgressBar percent={0} />
+          <ProgressBar />
         </div>
       </AppHeader>
     </>
