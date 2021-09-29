@@ -58,7 +58,7 @@ const Onboarding = () => {
             </div>
           </div>
           <div className="ActionButton">
-            <Button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/home')}>
+            <Button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/registration/onboarding/phonenumber')}>
               {appString.translations.onboarding.buttonStart}
             </Button>
             <div className="ActionButton-CheckStatus">
