@@ -11,6 +11,7 @@ export const themeProvider = {
     successColor: '#2A52E5',
     disableColor: '#CCCCCC',
     shadowColor: '#9E9E9E',
+    pinBorderColor: '#999999',
   },
   night: {},
 };

@@ -46,11 +46,26 @@ export const Main = styled.main`
   }
 
   div.OneTimePin {
-    width: ${ConvertorPixel2Rem(200)};
-    height: ${ConvertorPixel2Rem(50)};
+    width: ${ConvertorPixel2Rem(230)};
+    height: ${ConvertorPixel2Rem(60)};
     margin: ${ConvertorPixel2Rem(36)} 0 0 0;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    border: 1px solid red;
+    input {
+      width: ${ConvertorPixel2Rem(50)};
+      height: ${ConvertorPixel2Rem(50)};
+      border-radius: ${ConvertorPixel2Rem(6)};
+      overflow: hidden;
+      text-align: center;
+      font-weight: bold;
+      font-size: ${ConvertorPixel2Rem(18)};
+      border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.pinBorderColor};
+      &:focus {
+        content: "";
+        border: ${ConvertorPixel2Rem(2)} solid ${themeProvider.day.highlightColor};
+      }
+    }
   }
 `;
