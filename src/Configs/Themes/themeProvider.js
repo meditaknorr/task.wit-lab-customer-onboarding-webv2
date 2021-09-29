@@ -10,6 +10,7 @@ export const themeProvider = {
     errorColor: '#E60000',
     successColor: '#2A52E5',
     disableColor: '#CCCCCC',
+    shadowColor: '#9E9E9E',
   },
   night: {},
 };

@@ -74,7 +74,7 @@ export const AppHeader = styled.header`
       top: ${ConvertorPixel2Rem(34)};
       right: ${ConvertorPixel2Rem(-10)};
       display: ${(props) => (props.trigger ? 'inline-block' : 'none')};
-      box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 0 ${themeProvider.day.fontColor};
+      box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 0 ${themeProvider.day.shadowColor};
       border-radius: ${ConvertorPixel2Rem(7)};
       width: ${ConvertorPixel2Rem(180)};
       z-index: 100;
@@ -92,7 +92,7 @@ export const AppHeader = styled.header`
           text-transform: uppercase;
           height: ${ConvertorPixel2Rem(47)};
           padding: 0 ${ConvertorPixel2Rem(10)};
-          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
+          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
           display: flex;
           align-items: center;
           justify-content: space-between;
