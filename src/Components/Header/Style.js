@@ -3,6 +3,7 @@ import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 import ArrowDown from '../../Assets/Images/icons/ic_chevron_down.svg';
 import ArrowLeft from '../../Assets/Images/icons/ic_arrow_left.svg';
+import CheckSignal from '../../Assets/Images/icons/ic_check.png';
 
 export const AppHeader = styled.header`
   grid-area: header;
@@ -100,23 +101,33 @@ export const AppHeader = styled.header`
           div.Pane-IconFlag {
             width: ${ConvertorPixel2Rem(27)};
             height: ${ConvertorPixel2Rem(27)};
-            border-radius: ${ConvertorPixel2Rem(17.5)};
+            border-radius: ${ConvertorPixel2Rem(13.5)};
             overflow: hidden;
-            border: 1px solid red;
           }
           span.Pane-Name {
             width: 100px;
             height: ${ConvertorPixel2Rem(27)};
-            padding: 0 ${ConvertorPixel2Rem(5)};
-            border: ${ConvertorPixel2Rem(1)} solid red;
+            padding: 0 ${ConvertorPixel2Rem(10)};
             overflow: hidden;
+            display: flex;
+            align-items: center;
             text-transform: capitalize;
           }
           div.Pane-Check {
+            width: ${ConvertorPixel2Rem(16)};
+            height: ${ConvertorPixel2Rem(12)};
+            background: url(${CheckSignal}) no-repeat center;
+            background-size: contain;
+            margin: 0 ${ConvertorPixel2Rem(8)} 0 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          div.Pane-GhostCheck {
             width: ${ConvertorPixel2Rem(27)};
             height: ${ConvertorPixel2Rem(27)};
             overflow: hidden;
-            border: 1px solid red;
           }
         }
       }

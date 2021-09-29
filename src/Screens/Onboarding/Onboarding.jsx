@@ -1,26 +1,21 @@
 import React, { useContext } from 'react';
+import { Button } from 'reactstrap';
 import { StateContext, DispatchContext } from '../../Contexts/AppStoreContexts';
 import Header from '../../Components/Header/Header';
 import WebView from '../../Layouts/WebView/WebView';
-import { OnborardingScreen } from './Style';
+import { OnborardingScreen, Main } from './Style';
+import { useLocale } from '../../Hooks/useLocale';
 
 const Onboarding = () => {
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
-  const language = (state.filter((data) => data.id === 1));
+  const language = (state.filter((data) => data.id === 1))[0];
+  const { appString } = useLocale(language.language);
 
   const languageSetter = (selectedLanguage) => {
     dispatch(
       {
-        type: 'REMOVE_STATE',
-        payload: {
-          id: 1,
-        },
-      },
-    );
-    dispatch(
-      {
-        type: 'ADD_STATE',
+        type: 'CHANGE_APP_LANGUAGE',
         payload: {
           language: selectedLanguage,
           id: 1,
@@ -37,10 +32,39 @@ const Onboarding = () => {
           backButton={0}
           screenLabel={0}
           languageButton={1}
-          language={language[0].language}
+          language={language.language}
           languageSetter={languageSetter}
         />
-        {language[0].language}
+        <Main>
+          <div className="HeadingText">
+            <h1>{appString.translations.onboarding.createYour}</h1>
+            <h1>{appString.translations.onboarding.witAccount}</h1>
+          </div>
+          <h2>{appString.translations.onboarding.toOpen}</h2>
+          <div className="Registration">
+            <div className="Registration-Step">
+              <div className="Registration-Step__Icon" />
+              <p>{appString.translations.onboarding.validatePhone}</p>
+            </div>
+            <div className="Registration-Step">
+              <div className="Registration-Step__Icon" />
+              <p>{appString.translations.onboarding.scanDocument}</p>
+            </div>
+            <div className="Registration-Step">
+              <div className="Registration-Step__Icon" />
+              <p>{appString.translations.onboarding.takeSelfie}</p>
+            </div>
+          </div>
+          <div className="ActionButton">
+            <Button type="button" className="ActionButton-StartRegistration">
+              {appString.translations.onboarding.buttonStart}
+            </Button>
+            <div className="ActionButton-CheckStatus">
+              <p>{appString.translations.onboarding.alreadyRegstered}</p>
+              <p>{appString.translations.onboarding.seeStatus}</p>
+            </div>
+          </div>
+        </Main>
       </OnborardingScreen>
     </WebView>
   );

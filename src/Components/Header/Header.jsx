@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useLocale } from '../../Hooks/useLocale';
-import Logo from '../Logo/Logo';
-import ProgressBar from '../ProgressBar/ProgressBar';
 import { AppHeader } from './Style';
-import Eng from '../../Assets/Images/icons/ic_en_lang.svg';
+import { useLocale } from '../../Hooks/useLocale';
+import ProgressBar from '../ProgressBar/ProgressBar';
+import Logo from '../Logo/Logo';
+import countryFlagHelper from '../../Helpers/countryFlagHelper';
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
@@ -29,7 +29,7 @@ const Header = ({
   languageSetter,
 }) => {
   const [trigger, setTrigger] = useState(false);
-  const { appLanguages, appString } = useLocale((window.navigator.language).slice(0, 2));
+  const { appLanguages, appString } = useLocale(language);
 
   const languageSwitcher = () => setTrigger(!trigger);
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
@@ -44,11 +44,9 @@ const Header = ({
         trigger={trigger}
         languagebutton={languageButton}
       >
-
         <div className="App-logo"><Logo /></div>
         <div className="App-BackButton" />
-        <div className="App-ScreenLabel">{appString[0].trans.header.phoneNumber}</div>
-
+        <div className="App-ScreenLabel">{appString.translations.header.phoneNumber}</div>
         <div className="App-LanguageSwitcher" onClick={languageSwitcher} onKeyPress={languageSwitcher} role="button" tabIndex="0">
           <span className="App-Language__Current">{language}</span>
           <div className="App-Language__ArrowDown" />
@@ -56,10 +54,10 @@ const Header = ({
             <div className="Trigger-Pane">
 
               {
-                appLanguages.map((string) => (
+                (appLanguages.translatedAvailableLanguages).map((string) => (
                   <div
-                    key={string[0].key}
-                    id={string[0].code}
+                    key={string.id}
+                    id={string.code}
                     className="Trigger-Pane__Option"
                     onClick={languageSelector}
                     onKeyPress={languageSelector}
@@ -67,10 +65,10 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
-                      <img src={Eng} alt="img" />
+                      <img src={countryFlagHelper(string.code)} alt="img" />
                     </div>
-                    <span className="Pane-Name">{string[0].name}</span>
-                    <div className="Pane-Check" />
+                    <span className="Pane-Name">{string.name}</span>
+                    {(language === string.code) ? <div className="Pane-Check" /> : <div className="Pane-GhostCheck" />}
                   </div>
                 ))
               }
