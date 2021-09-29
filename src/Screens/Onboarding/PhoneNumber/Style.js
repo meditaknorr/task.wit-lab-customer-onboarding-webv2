@@ -20,6 +20,7 @@ export const Main = styled.main`
   width: 100%;
   padding: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(27)};
   display: flex;
+  align-items: center;
   flex-flow: column;
 
   div.HeadingText {
@@ -33,7 +34,7 @@ export const Main = styled.main`
       height: ${ConvertorPixel2Rem(60)};
       font-size: ${ConvertorPixel2Rem(24)};
       line-height: ${ConvertorPixel2Rem(29)};
-      margin: 0 0 ${ConvertorPixel2Rem(20)} 0;
+      margin: 0 0 ${ConvertorPixel2Rem(14)} 0;
       font-weight: bold;
     }
     h2 {
@@ -47,7 +48,7 @@ export const Main = styled.main`
   }
 
   div.PhoneNumber {
-    width: ${ConvertorPixel2Rem(315)};
+    width: ${ConvertorPixel2Rem(312)};
     margin: ${ConvertorPixel2Rem(59)} 0 ${ConvertorPixel2Rem(70)} 0;
 
     div.PhoneNumber__CountryCodeField{
@@ -55,7 +56,8 @@ export const Main = styled.main`
       display: inline-block;
       width: ${ConvertorPixel2Rem(96)};
       height: ${ConvertorPixel2Rem(49)};
-      margin: 0 ${ConvertorPixel2Rem(10)} 0 0;
+      margin: 0 ${ConvertorPixel2Rem(13)} 0 0;
+
       select.PhoneNumber__CountryCodeField-SelectBox {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -113,7 +115,7 @@ export const Main = styled.main`
     div.PhoneNumber__NumberField {
       position: relative;
       display: inline-block;
-      width: ${ConvertorPixel2Rem(208)};
+      width: ${ConvertorPixel2Rem(202)};
       height: ${ConvertorPixel2Rem(49)};
 
       input.PhoneNumber__NumberField-Input {
@@ -171,7 +173,7 @@ export const Main = styled.main`
 
     div.PhoneNumber__ErrorText {
       display: block;
-      width: ${ConvertorPixel2Rem(200)};
+      width: ${ConvertorPixel2Rem(312)};
       height: ${ConvertorPixel2Rem(30)};
       font-size: ${ConvertorPixel2Rem(14)};
       padding: ${ConvertorPixel2Rem(5)} 0;
@@ -180,7 +182,7 @@ export const Main = styled.main`
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(315)};
+    width: ${ConvertorPixel2Rem(312)};
     margin: 0 auto;
     button {
       width: 100%;

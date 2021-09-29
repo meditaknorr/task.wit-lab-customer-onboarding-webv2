@@ -21,6 +21,7 @@ export const Main = styled.main`
   width: 100%;
   padding: ${ConvertorPixel2Rem(27)};
   display: flex;
+  align-items: center;
   flex-flow: column;
 
   div.HeadingText {
@@ -28,12 +29,13 @@ export const Main = styled.main`
     font-weight: bold;
     line-height: ${ConvertorPixel2Rem(40)};
     height: ${ConvertorPixel2Rem(80)};
-    width: ${ConvertorPixel2Rem(210)};
+    width: ${ConvertorPixel2Rem(312)};
     color: ${themeProvider.day.fontColor};
     letter-spacing: 0;
     margin: ${ConvertorPixel2Rem(17)} 0 ${ConvertorPixel2Rem(40)} 0;
 
     h1:nth-of-type(2) {
+      width: 100%;
       font-size: ${ConvertorPixel2Rem(32)};
       color: ${themeProvider.day.highlightColor};
       font-weight: bolder;
@@ -44,13 +46,13 @@ export const Main = styled.main`
     font-size: ${ConvertorPixel2Rem(16)};
     font-weight: normal;
     height: ${ConvertorPixel2Rem(25)};
-    width: ${ConvertorPixel2Rem(296)};
+    width: ${ConvertorPixel2Rem(312)};
     display: flex;
     align-items: center;
   }
 
   div.Registration {
-    width: ${ConvertorPixel2Rem(296)};
+    width: ${ConvertorPixel2Rem(312)};
     height: ${ConvertorPixel2Rem(180)};
     display: flex;
     flex-flow: column;
@@ -101,24 +103,32 @@ export const Main = styled.main`
   }
 
   div.ActionButton {
-    width: 100%;
+    width: ${ConvertorPixel2Rem(312)};
 
     button.ActionButton-StartRegistration {
       width: 100%;
-      height: 44px;
+      height: ${ConvertorPixel2Rem(44)}
       margin: 0 0 ${ConvertorPixel2Rem(15)} 0;
       background-color: ${themeProvider.day.highlightColor};
     }
     div.ActionButton-CheckStatus {
-      font-size: ${ConvertorPixel2Rem(16)};
       width: 100%;
-      height: 44px;
+      font-size: ${ConvertorPixel2Rem(16)};
+      height: ${ConvertorPixel2Rem(44)}
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      p:nth-of-type(2) {
-        color: ${themeProvider.day.highlightColor};
-        margin: 0 0 0 ${ConvertorPixel2Rem(10)};
+      p {
+        width: ${ConvertorPixel2Rem(130)};
+        display: inline-block;
+        text-align: right;
+        margin: ${ConvertorPixel2Rem(16)} 0 0 ${ConvertorPixel2Rem(10)};
+        &:nth-of-type(2) {
+          text-align: left;
+          color: ${themeProvider.day.highlightColor};
+          margin: 0 0 0 ${ConvertorPixel2Rem(10)};
+          width: ${ConvertorPixel2Rem(150)};
+        }
       }
     }
   }
