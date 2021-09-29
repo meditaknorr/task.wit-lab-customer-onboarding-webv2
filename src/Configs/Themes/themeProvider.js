@@ -8,6 +8,7 @@ export const themeProvider = {
     lineColor: '69, 69, 69',
     errorColor: '230, 0, 0',
     successColor: '0, 153, 0',
+    disableColor: '204, 204, 204',
   },
   night: {},
 };
