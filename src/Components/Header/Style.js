@@ -9,6 +9,7 @@ export const AppHeader = styled.header`
   grid-area: header;
   width: 100%;
   height: ${ConvertorPixel2Rem(56)};
+  background-color: ${(props) => (props.screenlabel ? themeProvider.day.headerColor : themeProvider.day.backgroundColor)};
   padding: 0 ${ConvertorPixel2Rem(24)};
   position: relative;
   display: flex;
@@ -73,7 +74,7 @@ export const AppHeader = styled.header`
       top: ${ConvertorPixel2Rem(34)};
       right: ${ConvertorPixel2Rem(-10)};
       display: ${(props) => (props.trigger ? 'inline-block' : 'none')};
-      box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 0 rgba(${themeProvider.day.fontColor}, 0.32);
+      box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 0 ${themeProvider.day.fontColor};
       border-radius: ${ConvertorPixel2Rem(7)};
       width: ${ConvertorPixel2Rem(180)};
       z-index: 100;
@@ -91,7 +92,7 @@ export const AppHeader = styled.header`
           text-transform: uppercase;
           height: ${ConvertorPixel2Rem(47)};
           padding: 0 ${ConvertorPixel2Rem(10)};
-          border: ${ConvertorPixel2Rem(1)} solid rgba(${themeProvider.day.fontColor}, 0.1);
+          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
           display: flex;
           align-items: center;
           justify-content: space-between;
