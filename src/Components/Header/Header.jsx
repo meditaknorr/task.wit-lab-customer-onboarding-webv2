@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { AppHeader } from './Style';
 import { useLocale } from '../../Hooks/useLocale';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Logo from '../Logo/Logo';
 import countryFlagHelper from '../../Helpers/countryFlagHelper';
+import { DispatchContext } from '../../Contexts/AppStoreContexts';
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
@@ -26,11 +27,22 @@ const Header = ({
   screenLabel,
   languageButton,
   language,
-  languageSetter,
 }) => {
   const [trigger, setTrigger] = useState(false);
   const { appLanguages, appString } = useLocale(language);
 
+  const dispatch = useContext(DispatchContext);
+  const languageSetter = (selectedLanguage) => {
+    dispatch(
+      {
+        type: 'CHANGE_APP_LANGUAGE',
+        payload: {
+          language: selectedLanguage,
+          id: 1,
+        },
+      },
+    );
+  };
   const languageSwitcher = () => setTrigger(!trigger);
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
     ? languageSetter(`${e.target.id}`) : languageSetter(`${e.target.parentNode.id}`));
@@ -90,7 +102,6 @@ Header.propTypes = {
   screenLabel: PropTypes.number.isRequired,
   languageButton: PropTypes.number.isRequired,
   language: PropTypes.string.isRequired,
-  languageSetter: PropTypes.func.isRequired,
 };
 
 export default Header;
