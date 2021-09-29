@@ -7,6 +7,7 @@ export const themeProvider = {
     fontColor: '69, 69, 69',
     lineColor: '69, 69, 69',
     errorColor: '230, 0, 0',
+    errorColorRGBA: 'rgba(230, 0, 0, 1.0)',
     successColor: '0, 153, 0',
     disableColor: '204, 204, 204',
   },
