@@ -53,6 +53,13 @@ export const translations = [
       selfie:{
         selfie: 'Selfie',
         takeSelfie: 'Take a selfie'
+      },
+      submitAndValidate:{
+        scanVoterID: 'Scan ID card',
+        validating: 'Just a momment we are validating your identity.',
+        photoUnclear: 'The photo is not clear',
+        photoUnclearDescription1:'There was a problem submiting data.',
+        photoUnclearDescription2: 'Please try again.'
       }
     },
   },
@@ -110,6 +117,13 @@ export const translations = [
       selfie: {
         selfie: 'Selfie',
         takeSelfie: 'Tirar uma selfie'
+      },
+      submitAndValidate: {
+        scanVoterID: 'Digitalizar cartão de eleitor',
+        validating: 'Aguarde um momento, estamos validando a sua identidade.',
+        photoUnclear: 'A foto não é nítida',
+        photoUnclearDescription1: 'Ocorreu um problema ao enviar dados.',
+        photoUnclearDescription2: 'Por favor tente novamente.'
       }
     },
   },
@@ -168,6 +182,13 @@ export const translations = [
       selfie: {
         selfie: 'Selfie',
         takeSelfie: 'Fatti un selfie'
+      },
+      submitAndValidate: {
+        scanVoterID: 'Scansione carta d\'identità',
+        validating: 'Solo un momento stiamo convalidando la tua identità',
+        photoUnclear: 'La foto non è chiara.',
+        photoUnclearDescription1: 'Si è verificato un problema durante l\'invio dei dati.',
+        photoUnclearDescription2: 'Per favore riprova.'
       }
     },
   },

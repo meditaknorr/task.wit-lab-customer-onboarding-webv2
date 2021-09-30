@@ -3,7 +3,7 @@ import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 
 export const ButtonComponent = styled.button`
-    width: ${({ width }) => width || '100%'};
+    width: ${({ width }) => width || ConvertorPixel2Rem(312)};
 	display: block;
 	font-family: 'Inter', sans-serif;
 	font-size: ${({ fontSize }) => fontSize || ConvertorPixel2Rem(16)};
