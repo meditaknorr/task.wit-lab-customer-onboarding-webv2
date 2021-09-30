@@ -113,7 +113,7 @@ const PhoneNumber = () => {
             <Button
               type="button"
               onClick={() => history.push('/registration/onboarding/phonenumber/confirmation')}
-              className="ActionButton-StartRegistration"
+              className="ActionButton-ContinueRegistration"
               disabled={(validPhone) ? null : true}
             >
               {appString.translations.onboarding.continue}
