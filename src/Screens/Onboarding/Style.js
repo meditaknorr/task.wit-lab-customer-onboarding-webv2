@@ -114,20 +114,18 @@ export const Main = styled.main`
     div.ActionButton-CheckStatus {
       width: 100%;
       font-size: ${ConvertorPixel2Rem(16)};
-      height: ${ConvertorPixel2Rem(44)}
+      height: ${ConvertorPixel2Rem(44)};
+      margin: ${ConvertorPixel2Rem(14)} 0 0 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      p {
-        width: ${ConvertorPixel2Rem(130)};
-        display: inline-block;
+
+      span {
         text-align: right;
-        margin: ${ConvertorPixel2Rem(16)} 0 0 ${ConvertorPixel2Rem(10)};
         &:nth-of-type(2) {
           text-align: left;
           color: ${themeProvider.day.highlightColor};
           margin: 0 0 0 ${ConvertorPixel2Rem(10)};
-          width: ${ConvertorPixel2Rem(150)};
         }
       }
     }

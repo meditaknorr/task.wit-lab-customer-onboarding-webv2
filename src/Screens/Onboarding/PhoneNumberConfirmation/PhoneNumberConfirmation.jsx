@@ -89,11 +89,8 @@ const PhoneNumberConfirmation = () => {
             <h1>{appString.translations.onboarding.pleaseConfirm}</h1>
             <h2>
               {appString.translations.onboarding.verificationSentTo}
-              <span>
-                {userData.callingCode}
-              </span>
+              <span>{userData.callingCode}</span>
               {userData.userPhoneNumber}
-              .
             </h2>
           </div>
 

@@ -1,20 +1,6 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { StateContext, DispatchContext } from '../Contexts/AppStoreContexts';
-import { whitelist } from '../Locales/whitelist';
-
-/**
- * Language White List Checker
- * >> Determines if the detected language
- * Is available to be used on the app or not
- * Return detected browser language or the default 'eng' language
- * @param browserLanguage
- * @returns string
- */
-const whitelistChecker = (browserLanguage) => {
-  const result = whitelist.filter((data) => (data === browserLanguage));
-  return (result[0] ? browserLanguage : 'en');
-};
 
 /**
  *  State Filter
@@ -35,7 +21,7 @@ const stateFilter = (oldState, actionId) => {
  */
 const initialState = [
   {
-    language: whitelistChecker((window.navigator.language).slice(0, 2)),
+    language: 'en',
     id: 1,
   },
   {
@@ -45,7 +31,7 @@ const initialState = [
   },
   {
     callingCode: '+258',
-    userPhoneNumber: '0',
+    userPhoneNumber: '8200000001',
     id: 3,
   },
 ];
