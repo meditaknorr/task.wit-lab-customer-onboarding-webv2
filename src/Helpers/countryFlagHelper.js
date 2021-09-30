@@ -6,7 +6,7 @@
  * @returns {*}
  */
 function countryFlagHelper(code) {
-  return `../resources/images/icons/ic_${code}_lang.svg`;
+  return `/resources/images/icons/ic_${code}_lang.svg`;
 }
 
 export default countryFlagHelper;

@@ -5,7 +5,7 @@ import Onboarding from '../Screens/Onboarding/Onboarding';
 const AppRouter = () => (
   <Router>
     <Switch>
-      <Route exact path="/" component={Onboarding} />
+      <Route exact path="/registration/onboarding/" component={Onboarding} />
       <Route path="/home" component="Home" />
     </Switch>
   </Router>
