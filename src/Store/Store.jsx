@@ -26,7 +26,7 @@ const whitelistChecker = (browserLanguage) => {
  */
 const stateFilter = (oldState, actionId) => {
   const newState = oldState.filter((dataserver) => dataserver.id !== actionId);
-  return newState;
+  return newState[0];
 };
 
 /**
@@ -38,14 +38,22 @@ const initialState = [
     language: whitelistChecker((window.navigator.language).slice(0, 2)),
     id: 1,
   },
+  {
+    countryName: 'Mozambique',
+    countryCode: 258,
+    id: 2,
+  },
 ];
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_STATE':
-      return [
-        ...state, action.payload,
-      ];
+      let alreadyExists = state.find(item => item.id === action.payload.id)
+      if (alreadyExists)
+        alreadyExists = action.payload
+      else
+        state.push(action.payload)
+      return state;
     case 'UPDATE_STATE':
       return [
         ...state, action.payload,
@@ -53,6 +61,11 @@ const reducer = (state, action) => {
     case 'REMOVE_STATE':
       return [state.filter((dataserver) => dataserver.id !== action.payload.id)];
     case 'CHANGE_APP_LANGUAGE':
+      return [
+        stateFilter(state, action.payload.id),
+        action.payload,
+      ];
+    case 'CHANGE_APP_COUNTRY':
       return [
         stateFilter(state, action.payload.id),
         action.payload,
