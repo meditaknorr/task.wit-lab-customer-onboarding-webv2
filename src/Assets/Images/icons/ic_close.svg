@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>0A6721EE-3D25-47E0-9154-308B9A57AF29</title>
+    <g id="POC" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="00.00.08-Confirm-Phone-Number:-Code-incorrect" transform="translate(-296.000000, -366.000000)">
+            <g id="Group-2" transform="translate(32.000000, 352.000000)">
+                <g id="close" transform="translate(264.000000, 14.000000)">
+                    <polygon id="bg" fill-opacity="0" fill="#D8D8D8" points="0 0 18 0 18 18 0 18"></polygon>
+                    <line x1="15" y1="3" x2="3" y2="15" id="Shape" stroke="#333333" stroke-width="0.923076923" stroke-linecap="round"></line>
+                    <line x1="3" y1="3" x2="15" y2="15" id="Shape" stroke="#333333" stroke-width="0.923076923" stroke-linecap="round"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

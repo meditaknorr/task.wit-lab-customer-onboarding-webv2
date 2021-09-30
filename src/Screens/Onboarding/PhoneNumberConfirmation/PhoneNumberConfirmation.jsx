@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import { StateContext } from '../../../Contexts/AppStoreContexts';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
-import { PhoneNumberConfirmationScreen, Main } from './Style';
+import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
 
 const PhoneNumberConfirmation = () => {
   const state = useContext(StateContext);
@@ -16,6 +16,7 @@ const PhoneNumberConfirmation = () => {
   });
   const [pin, setPin] = useState(0);
   const language = (state.filter((data) => data.id === 1))[0];
+  const userData = (state.filter((data) => data.id === 3))[0];
 
   const confirmationPinChecker = (e) => {
     if ((e.target.value).length > 0) {
@@ -26,7 +27,8 @@ const PhoneNumberConfirmation = () => {
       if (e.target.nextSibling) {
         e.target.nextSibling.focus();
       }
-    } else if ((e.target.value).length < 1) {
+      setPinCounter(pinCounter + 1);
+    } else if ((e.target.value) === '') {
       setConfirmationPin({
         ...confirmationPin,
         [`${e.target.id}`]: '',
@@ -36,18 +38,20 @@ const PhoneNumberConfirmation = () => {
         setPinCounter(0);
       }
     }
-
-    // console.log((e.target.value).length >= 4);
-    console.log(pin);
-    console.log(confirmationPin);
     setPin(`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
+    console.log(pin);
   };
 
   const clickCounter = () => {
-    setPinCounter(pinCounter + 1);
+    setPinCounter(pinCounter + 0);
   };
 
   const actionButtonHandler = () => {
+    // eslint-disable-next-line max-len
+    // const thePin = `${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`;
+  };
+
+  const closeModal = () => {
     // eslint-disable-next-line max-len
     // const thePin = `${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`;
   };
@@ -62,11 +66,29 @@ const PhoneNumberConfirmation = () => {
           languageButton={1}
           language={language.language}
         />
+        <Modal>
+          <div className="Modal__Pane">
+            <div className="Modal__Pane-CloseButton" onClick={closeModal} />
+            <div className="Modal__Pane-Icon" />
+            <div className="Modal__Pane-Information">
+              <h1>Photo or code are incorrect</h1>
+              <h2>Please try again to insert another number or code.</h2>
+            </div>
+          </div>
+        </Modal>
         <Main>
           <div className="HeadingText">
             <h1>Confirm your phone number</h1>
-            <h2>We’ve just sent a verification code to +242 818 801 443.</h2>
+            <h2>
+              We’ve just sent a verification code to
+              <span>
+                {userData.callingCode}
+              </span>
+              {userData.userPhoneNumber}
+              .
+            </h2>
           </div>
+
           <div className="OneTimePin">
             <input
               id="one"
@@ -119,8 +141,11 @@ const PhoneNumberConfirmation = () => {
               autoComplete="off"
             />
           </div>
+
           <div className="ActionButton">
-            <div className="ActionButton-ResendPin">Resend code</div>
+            <div className="ActionButton-ResendPin">
+              {(pinCounter >= 6) ? 'Resend code' : null}
+            </div>
             <Button
               type="button"
               onClick={actionButtonHandler}
