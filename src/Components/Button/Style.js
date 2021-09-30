@@ -18,8 +18,8 @@ export const ButtonComponent = styled.button`
 	outline: none;
 	padding: ${ConvertorPixel2Rem(12)} auto;
 	transition: 0.3s;
-    color: ${({ mode }) => { return mode === 'flat' ? themeProvider.day.font : themeProvider.day.background }};
-    background-color: ${({ mode }) => { return mode === 'flat' ? themeProvider.day.background : themeProvider.day.highlight }};
+    color: ${({ mode }) => { return mode === 'flat' ? themeProvider.day.fontColor : themeProvider.day.backgroundColor }};
+    background-color: ${({ mode }) => { return mode === 'flat' ? themeProvider.day.backgroundColor : themeProvider.day.highlightColor }};
 	cursor: pointer;
     margin-bottom: ${ConvertorPixel2Rem(16)};
          

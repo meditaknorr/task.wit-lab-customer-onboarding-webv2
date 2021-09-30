@@ -19,7 +19,7 @@ export const ConfirmPhotoScreen = styled.div`
         font-weight: bold;
         font-size: ${ConvertorPixel2Rem(18)};
         line-height: 1.3;
-        color: ${themeProvider.day.font};
+        color: ${themeProvider.day.fontColor};
     }
 
     .confirm-photo__image-wrapper{

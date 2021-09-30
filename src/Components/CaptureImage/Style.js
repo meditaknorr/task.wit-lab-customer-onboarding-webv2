@@ -11,7 +11,7 @@ export const CaptureImageScreen = styled.div`
     grid-gap: ${ConvertorPixel2Rem(10)};
     overflow-x: hidden;
     text-align: center;
-    color: ${themeProvider.day.background};
+    color: ${themeProvider.day.backgroundColor};
 
     .video-background{
         position: absolute;
@@ -92,7 +92,7 @@ export const CaptureImageScreen = styled.div`
             width: ${ConvertorPixel2Rem(64)};
             background-color: transparent;
             height: ${ConvertorPixel2Rem(64)};
-            border: ${ConvertorPixel2Rem(4)} solid ${themeProvider.day.background};
+            border: ${ConvertorPixel2Rem(4)} solid ${themeProvider.day.backgroundColor};
             border-radius: 50%;
             display: block;
             z-index: 2000;
