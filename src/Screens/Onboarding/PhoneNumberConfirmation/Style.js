@@ -20,7 +20,7 @@ export const Modal = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   width: 100vw;
   height: 100vh;
-  display: ${(props) => (props.modal ? 'flex' : 'none')};
+  display: ${(props) => (props.status ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Button } from 'reactstrap';
 import { StateContext } from '../../../Contexts/AppStoreContexts';
 import Header from '../../../Components/Header/Header';
@@ -7,50 +7,53 @@ import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
 
 const PhoneNumberConfirmation = () => {
   const state = useContext(StateContext);
+  const language = (state.filter((data) => data.id === 1))[0];
+  const userData = (state.filter((data) => data.id === 3))[0];
+  const [isValidPin, setIsValidPin] = useState(false);
   const [modal, setModal] = useState(false);
-  const [pinCounter, setPinCounter] = useState(0);
   const [confirmationPin, setConfirmationPin] = useState({
     one: '',
     two: '',
     three: '',
     four: '',
   });
-  const [pin, setPin] = useState(0);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const userData = (state.filter((data) => data.id === 3))[0];
+
+  useEffect(() => {
+    setIsValidPin(!(Object.values(confirmationPin).indexOf('') <= -1));
+  }, [confirmationPin]);
+
+  const handle = (e) => {
+    setConfirmationPin((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
 
   const confirmationPinChecker = (e) => {
     if ((e.target.value).length > 0) {
-      setConfirmationPin({
-        ...confirmationPin,
-        [`${e.target.id}`]: e.target.value,
-      });
       if (e.target.nextSibling) {
         e.target.nextSibling.focus();
       }
-      setPinCounter(pinCounter + 1);
+      handle(e);
     } else if ((e.target.value) === '') {
-      setConfirmationPin({
-        ...confirmationPin,
-        [`${e.target.id}`]: '',
-      });
       if (e.target.previousSibling) {
         e.target.previousSibling.focus();
-        setPinCounter(0);
+        setConfirmationPin((prevState) => ({
+          ...prevState,
+          [e.target.id]: '',
+        }));
+      } else {
+        setConfirmationPin((prevState) => ({
+          ...prevState,
+          [e.target.id]: '',
+        }));
       }
     }
-    setPin(`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
-    console.log(pin);
-  };
-
-  const clickCounter = () => {
-    setPinCounter(pinCounter + 0);
   };
 
   const actionButtonHandler = () => {
-    if (!pin === 1234) {
-      setModal(false);
-    }
+    const thePin = (`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
+    setModal(thePin !== '1010');
   };
 
   const closeModal = () => {
@@ -100,8 +103,6 @@ const PhoneNumberConfirmation = () => {
               maxLength={1}
               size={3}
               value={confirmationPin.one}
-              onKeyDown={clickCounter}
-              onBlur={confirmationPinChecker}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
               autoComplete="off"
@@ -113,7 +114,6 @@ const PhoneNumberConfirmation = () => {
               maxLength={1}
               size={1}
               value={confirmationPin.two}
-              onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
               autoComplete="off"
@@ -125,7 +125,6 @@ const PhoneNumberConfirmation = () => {
               maxLength={1}
               size={1}
               value={confirmationPin.three}
-              onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
               autoComplete="off"
@@ -137,8 +136,6 @@ const PhoneNumberConfirmation = () => {
               maxLength={1}
               size={1}
               value={confirmationPin.four}
-              onBlur={confirmationPinChecker}
-              onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
               autoComplete="off"
@@ -147,13 +144,13 @@ const PhoneNumberConfirmation = () => {
 
           <div className="ActionButton">
             <div className="ActionButton-ResendPin">
-              {(pinCounter >= 6) ? 'Resend code' : null}
+              {(isValidPin) ? null : 'Resend code' }
             </div>
             <Button
               type="button"
               onClick={actionButtonHandler}
               className="ActionButton-ContinueRegistration"
-              disabled={(pinCounter >= 4) ? null : true}
+              disabled={(isValidPin)}
             >
               Continue
             </Button>
