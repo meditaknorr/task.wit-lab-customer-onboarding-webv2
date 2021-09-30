@@ -29,13 +29,13 @@ export const Main = styled.main`
     line-height: ${ConvertorPixel2Rem(40)};
     height: ${ConvertorPixel2Rem(80)};
     width: ${ConvertorPixel2Rem(210)};
-    color: rgba(${themeProvider.day.fontColor}, 1.0);
+    color: ${themeProvider.day.fontColor};
     letter-spacing: 0;
     margin: ${ConvertorPixel2Rem(17)} 0 ${ConvertorPixel2Rem(40)} 0;
 
     h1:nth-of-type(2) {
       font-size: ${ConvertorPixel2Rem(32)};
-      color: rgba(${themeProvider.day.highlightColor}, 1.0);
+      color: ${themeProvider.day.highlightColor};
       font-weight: bolder;
     }
   }
@@ -107,7 +107,7 @@ export const Main = styled.main`
       width: 100%;
       height: 44px;
       margin: 0 0 ${ConvertorPixel2Rem(15)} 0;
-      background-color: rgba(${themeProvider.day.highlightColor}, 1.0);
+      background-color: ${themeProvider.day.highlightColor};
     }
     div.ActionButton-CheckStatus {
       font-size: ${ConvertorPixel2Rem(16)};
@@ -117,7 +117,7 @@ export const Main = styled.main`
       align-items: flex-start;
       justify-content: center;
       p:nth-of-type(2) {
-        color: rgba(${themeProvider.day.highlightColor}, 1.0);
+        color: ${themeProvider.day.highlightColor};
         margin: 0 0 0 ${ConvertorPixel2Rem(10)};
       }
     }

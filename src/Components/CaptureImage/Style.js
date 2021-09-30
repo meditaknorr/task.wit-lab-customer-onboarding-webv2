@@ -9,12 +9,12 @@ export const CaptureImageScreen = styled.div`
     grid-template-columns: 100%;
     align-content: space-between;
     grid-gap: ${ConvertorPixel2Rem(10)};
-    overflow-x: hidden;
+    overflow: hidden;
     text-align: center;
     color: ${themeProvider.day.backgroundColor};
 
     .video-background{
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
