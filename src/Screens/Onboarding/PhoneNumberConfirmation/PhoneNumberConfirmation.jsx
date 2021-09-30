@@ -79,6 +79,7 @@ const PhoneNumberConfirmation = () => {
               onBlur={confirmationPinChecker}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
+              autoComplete="off"
             />
             <input
               id="two"
@@ -90,6 +91,7 @@ const PhoneNumberConfirmation = () => {
               onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
+              autoComplete="off"
             />
             <input
               id="three"
@@ -101,6 +103,7 @@ const PhoneNumberConfirmation = () => {
               onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
+              autoComplete="off"
             />
             <input
               id="four"
@@ -113,6 +116,7 @@ const PhoneNumberConfirmation = () => {
               onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
+              autoComplete="off"
             />
           </div>
           <div className="ActionButton">

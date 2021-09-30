@@ -93,6 +93,7 @@ const PhoneNumber = () => {
                 className="PhoneNumber__NumberField-Input"
                 value={phoneNumber}
                 onChange={phonenumberChecker}
+                autoComplete="off"
               />
               <label
                 htmlFor="phoneNumber"
