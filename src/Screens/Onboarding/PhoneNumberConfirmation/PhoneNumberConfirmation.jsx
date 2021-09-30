@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
+import { Button } from 'reactstrap';
 import { StateContext } from '../../../Contexts/AppStoreContexts';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
 import { PhoneNumberConfirmationScreen, Main } from './Style';
 
 const PhoneNumberConfirmation = () => {
+  const state = useContext(StateContext);
+  const [pinCounter, setPinCounter] = useState(0);
   const [confirmationPin, setConfirmationPin] = useState({
     one: '',
     two: '',
@@ -12,7 +15,6 @@ const PhoneNumberConfirmation = () => {
     four: '',
   });
   const [pin, setPin] = useState(0);
-  const state = useContext(StateContext);
   const language = (state.filter((data) => data.id === 1))[0];
 
   const confirmationPinChecker = (e) => {
@@ -31,11 +33,23 @@ const PhoneNumberConfirmation = () => {
       });
       if (e.target.previousSibling) {
         e.target.previousSibling.focus();
+        setPinCounter(0);
       }
     }
+
+    // console.log((e.target.value).length >= 4);
     console.log(pin);
     console.log(confirmationPin);
     setPin(`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
+  };
+
+  const clickCounter = () => {
+    setPinCounter(pinCounter + 1);
+  };
+
+  const actionButtonHandler = () => {
+    // eslint-disable-next-line max-len
+    // const thePin = `${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`;
   };
 
   return (
@@ -60,7 +74,9 @@ const PhoneNumberConfirmation = () => {
               minLength={1}
               maxLength={1}
               size={3}
-              pattern="[0-9]+"
+              value={confirmationPin.one}
+              onKeyDown={clickCounter}
+              onBlur={confirmationPinChecker}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
             />
@@ -70,7 +86,8 @@ const PhoneNumberConfirmation = () => {
               minLength={1}
               maxLength={1}
               size={1}
-              pattern="[0-9]+"
+              value={confirmationPin.two}
+              onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
             />
@@ -80,7 +97,8 @@ const PhoneNumberConfirmation = () => {
               minLength={1}
               maxLength={1}
               size={1}
-              pattern="[0-9]+"
+              value={confirmationPin.three}
+              onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
             />
@@ -90,11 +108,24 @@ const PhoneNumberConfirmation = () => {
               minLength={1}
               maxLength={1}
               size={1}
+              value={confirmationPin.four}
+              onBlur={confirmationPinChecker}
+              onKeyDown={clickCounter}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
             />
           </div>
-
+          <div className="ActionButton">
+            <div className="ActionButton-ResendPin">Resend code</div>
+            <Button
+              type="button"
+              onClick={actionButtonHandler}
+              className="ActionButton-ContinueRegistration"
+              disabled={(pinCounter >= 4) ? null : true}
+            >
+              Continue
+            </Button>
+          </div>
         </Main>
       </PhoneNumberConfirmationScreen>
     </WebView>

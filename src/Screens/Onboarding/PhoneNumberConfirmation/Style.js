@@ -68,4 +68,27 @@ export const Main = styled.main`
       }
     }
   }
+
+  div.ActionButton {
+    width: ${ConvertorPixel2Rem(312)};
+
+    div.ActionButton-ResendPin {
+      width: 80%;
+      text-align: center;
+      font-size: ${ConvertorPixel2Rem(14)};
+      margin: ${ConvertorPixel2Rem(38)} auto ${ConvertorPixel2Rem(16)} auto;
+      color: ${themeProvider.day.errorColor};
+    }
+    button {
+      width: 100%;
+      background-color: ${themeProvider.day.highlightColor};
+      font-size: ${ConvertorPixel2Rem(16)};
+      height: ${ConvertorPixel2Rem(44)};
+      border-radius: ${ConvertorPixel2Rem(6)};
+      border: 0;
+      &[disabled] {
+        background-color: ${themeProvider.day.disableColor};
+      }
+    }
+  }
 `;
