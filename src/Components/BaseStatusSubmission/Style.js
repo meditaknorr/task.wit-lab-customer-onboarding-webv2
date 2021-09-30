@@ -32,7 +32,7 @@ export const BaseStatusScreen = styled.div`
     }
 
     .submission-status__description{
-        width: ${ConvertorPixel2Rem(200)};
+        width: ${ConvertorPixel2Rem(250)};
         margin: ${ConvertorPixel2Rem(18)} auto;
         color: ${themeProvider.day.secondaryTextColor};
         text-align: center;
