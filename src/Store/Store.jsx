@@ -43,6 +43,11 @@ const initialState = [
     countryCode: 258,
     id: 2,
   },
+  {
+    callingCode: '+258',
+    userPhoneNumber: '0',
+    id: 3,
+  },
 ];
 
 const reducer = (state, action) => {
@@ -53,7 +58,8 @@ const reducer = (state, action) => {
       ];
     case 'UPDATE_STATE':
       return [
-        ...state, action.payload,
+        stateFilter(state, action.payload.id),
+        action.payload,
       ];
     case 'REMOVE_STATE':
       return [state.filter((dataserver) => dataserver.id !== action.payload.id)];
