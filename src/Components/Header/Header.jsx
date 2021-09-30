@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { AppHeader } from './Style';
 import { useLocale } from '../../Hooks/useLocale';
-import ProgressBar from '../ProgressBar/ProgressBar';
+import ProgressBar from '../ProgressBar/Progressbar';
 import Logo from '../Logo/Logo';
 import countryFlagHelper from '../../Helpers/countryFlagHelper';
 import { DispatchContext } from '../../Contexts/AppStoreContexts';

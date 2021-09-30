@@ -22,7 +22,7 @@ const SubmitAndValidate = () => {
             description1: appString.translations.submitAndValidate.validating,
         }
     });
-    
+
 
     const restartTheSubmissionProcess = () => {
         dispatch({ type: 'REMOVE_STATE', payload: { id: 4 } });
@@ -32,26 +32,25 @@ const SubmitAndValidate = () => {
         router.push('/registration/validation/scan-voter-card-front')
     }
 
+
     useEffect(() => {
-        setTimeout(() => {
-            if (submissionResult)
-                router.push('/registration/details/review-details');
-            else {
-                setShowHeader(true);
-                setSubmissionStatus({
-                    image: errorImage,
-                    alt: 'Icon that inddicates that an error occured during the submission',
-                    title: appString.translations.submitAndValidate.photoUnclear,
-                    description: {
-                        description1: appString.translations.submitAndValidate.photoUnclearDescription1,
-                        description2: appString.translations.submitAndValidate.photoUnclearDescription2,
-                    },
-                    buttonText: appString.translations.submitAndValidate.scanVoterID,
-                    action: restartTheSubmissionProcess
-                });
-            }
-        }, 3500);
-    }, [submissionResult]);
+        if (submissionResult)
+            router.push('/registration/details/review-details');
+        else {
+            setShowHeader(true);
+            setSubmissionStatus({
+                image: errorImage,
+                alt: 'Icon that inddicates that an error occured during the submission',
+                title: appString.translations.submitAndValidate.photoUnclear,
+                description: {
+                    description1: appString.translations.submitAndValidate.photoUnclearDescription1,
+                    description2: appString.translations.submitAndValidate.photoUnclearDescription2,
+                },
+                buttonText: appString.translations.submitAndValidate.scanVoterID,
+                action: restartTheSubmissionProcess
+            });
+        }
+    }, [submissionResult, appString]);
 
     return (
         <>
@@ -63,7 +62,7 @@ const SubmitAndValidate = () => {
                 language={language.language}
                 progressBarPercent={5}
             />)
-                
+
             }
             <BaseStatusSubmission
                 submissionStatus={submissionStatus}

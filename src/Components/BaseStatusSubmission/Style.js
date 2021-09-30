@@ -52,19 +52,17 @@ export const BaseStatusScreen = styled.div`
 
     .submission-status__button{
         width: 100%;
-        position: fixed;
-        margin: auto;
-        bottom: 20px;
+        padding: 0 ${ConvertorPixel2Rem(24)};
+        margin: ${ConvertorPixel2Rem(165)} auto auto auto;
         justify-content:center;
         text-align:center;
-        display: grid;
         font-family: Inter;
-        font-size: 16px;
+        font-size: ${ConvertorPixel2Rem(16)};
         font-weight: 500;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
-        letter-spacing: 0.5px;        
+        letter-spacing: ${ConvertorPixel2Rem(0.5)};
     }
 `;
 
