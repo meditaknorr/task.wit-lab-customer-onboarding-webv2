@@ -4,11 +4,13 @@ import { StateContext } from '../../../Contexts/AppStoreContexts';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
 import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
+import { useLocale } from '../../../Hooks/useLocale';
 
 const PhoneNumberConfirmation = () => {
   const state = useContext(StateContext);
   const language = (state.filter((data) => data.id === 1))[0];
   const userData = (state.filter((data) => data.id === 3))[0];
+  const { appString } = useLocale(language.language);
   const [isValidPin, setIsValidPin] = useState(false);
   const [modal, setModal] = useState(false);
   const [confirmationPin, setConfirmationPin] = useState({
@@ -77,16 +79,16 @@ const PhoneNumberConfirmation = () => {
             <div className="Modal__Pane-CloseButton" role="button" onClick={closeModal} />
             <div className="Modal__Pane-Icon" />
             <div className="Modal__Pane-Information">
-              <h1>Photo or code are incorrect</h1>
-              <h2>Please try again to insert another number or code.</h2>
+              <h1>{appString.translations.onboarding.codeIncorrect}</h1>
+              <h2>{appString.translations.onboarding.tryAgainCode}</h2>
             </div>
           </div>
         </Modal>
         <Main>
           <div className="HeadingText">
-            <h1>Confirm your phone number</h1>
+            <h1>{appString.translations.onboarding.pleaseConfirm}</h1>
             <h2>
-              We’ve just sent a verification code to
+              {appString.translations.onboarding.verificationSentTo}
               <span>
                 {userData.callingCode}
               </span>
@@ -144,7 +146,7 @@ const PhoneNumberConfirmation = () => {
 
           <div className="ActionButton">
             <div className="ActionButton-ResendPin">
-              {(isValidPin) ? null : 'Resend code' }
+              {(isValidPin) ? null : appString.translations.onboarding.resendCode }
             </div>
             <Button
               type="button"
@@ -152,7 +154,7 @@ const PhoneNumberConfirmation = () => {
               className="ActionButton-ContinueRegistration"
               disabled={(isValidPin)}
             >
-              Continue
+              {appString.translations.onboarding.continue}
             </Button>
           </div>
         </Main>

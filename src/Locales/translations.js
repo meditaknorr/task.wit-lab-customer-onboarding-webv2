@@ -1,17 +1,8 @@
-/*
-* Import pattern for country flag icons
-* Import [languageCode] from '..Assets/Images/icons/ic_[languageCode]_lang.svg
- */
-import en from '../Assets/Images/icons/ic_en_lang.svg';
-import pt from '../Assets/Images/icons/ic_pt_lang.svg';
-import it from '../Assets/Images/icons/ic_it_lang.svg';
-
 export const translations = [
   {
     id: 1,
     code: 'en',
     name: 'english',
-    flag: en,
     translatedAvailableLanguages: [
       {
         id: 11,
@@ -50,13 +41,17 @@ export const translations = [
           validNumber: 'Please insert a valid mobile number.',
           mobilePhone: 'Mobile Phone Number',
           forAccountSettup: 'We will need you phone number for account setup and for security purposes.',
+          pleaseConfirm: 'Confirm your phone number.',
+          verificationSentTo: 'We’ve just sent a verification code to',
+          codeIncorrect: 'Photo or code are incorrect',
+          tryAgainCode: 'Please try again to insert another number or code.',
+          resendCode: 'Resend code',
         },
       },
   },
   {
     id: 2,
     code: 'pt',
-    flag: pt,
     name: 'portuguese',
     translatedAvailableLanguages: [
       {
@@ -96,6 +91,11 @@ export const translations = [
           validNumber: 'Insira um número válido.',
           mobilePhone: 'Número de telemóvel',
           forAccountSettup: 'Precisamos do seu número de telemóvel (celular) para configurar a conta e para fins de segurança.',
+          pleaseConfirm: 'Confirme o seu número de telefone.',
+          verificationSentTo: 'Enviamos um código de verificação de para',
+          codeIncorrect: 'Foto ou código incorreto',
+          tryAgainCode: 'Por favor, tente inserir outro número de código. Use a opcao de reenviar código.',
+          resendCode: 'Reenviar código',
         },
       },
   },
@@ -103,7 +103,6 @@ export const translations = [
     id: 3,
     code: 'it',
     name: 'Italian',
-    flag: it,
     translatedAvailableLanguages: [
       {
         id: 31,
@@ -143,6 +142,11 @@ export const translations = [
           validNumber: 'Inserisci un numero di cellulare valido.',
           mobilePhone: 'Numero di cellulare',
           forAccountSettup: "Abbiamo bisogno del tuo numero di telefono per la configurazione dell'account e per motivi di sicurezza.",
+          pleaseConfirm: 'Conferma il tuo numero di telefono.',
+          verificaSentTo: 'Abbiamo appena inviato un codice di verifica a',
+          codeIncorrect: 'Immagine o codice errato',
+          tryAgainCode: "Prova a inserire un altro numero di codice. Usa l'opzione di reinvio del codice.",
+          reendCode: 'Reinvia codice',
         },
       },
   },
