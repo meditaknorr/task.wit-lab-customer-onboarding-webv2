@@ -7,6 +7,7 @@ import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
 
 const PhoneNumberConfirmation = () => {
   const state = useContext(StateContext);
+  const [modal, setModal] = useState(false);
   const [pinCounter, setPinCounter] = useState(0);
   const [confirmationPin, setConfirmationPin] = useState({
     one: '',
@@ -47,13 +48,13 @@ const PhoneNumberConfirmation = () => {
   };
 
   const actionButtonHandler = () => {
-    // eslint-disable-next-line max-len
-    // const thePin = `${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`;
+    if (!pin === 1234) {
+      setModal(false);
+    }
   };
 
   const closeModal = () => {
-    // eslint-disable-next-line max-len
-    // const thePin = `${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`;
+    setModal(false);
   };
 
   return (
@@ -66,9 +67,11 @@ const PhoneNumberConfirmation = () => {
           languageButton={1}
           language={language.language}
         />
-        <Modal>
+        <Modal status={modal}>
           <div className="Modal__Pane">
-            <div className="Modal__Pane-CloseButton" onClick={closeModal} />
+            {/* eslint-disable-next-line max-len */}
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label,jsx-a11y/interactive-supports-focus */}
+            <div className="Modal__Pane-CloseButton" role="button" onClick={closeModal} />
             <div className="Modal__Pane-Icon" />
             <div className="Modal__Pane-Information">
               <h1>Photo or code are incorrect</h1>

@@ -13,6 +13,7 @@ const PhoneNumber = () => {
   const history = useHistory();
   const [validPhone, setValidPhone] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [countryCallingCode, setCountryCallingCode] = useState('');
 
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
@@ -24,6 +25,7 @@ const PhoneNumber = () => {
     setPhoneNumber('');
     setValidPhone(false);
     const CountryCodeNumber = (parseInt(((e.target.value).slice(1)), 10));
+    setCountryCallingCode(e.target.value);
     dispatch(
       {
         type: 'CHANGE_APP_COUNTRY',
@@ -42,6 +44,19 @@ const PhoneNumber = () => {
     } else {
       setValidPhone(false);
     }
+  };
+  const continueButton = () => {
+    dispatch(
+      {
+        type: 'UPDATE_STATE',
+        payload: {
+          callingCode: (countryCallingCode || `+${countryCode}`),
+          userPhoneNumber: phoneNumber,
+          id: 3,
+        },
+      },
+    );
+    history.push('/registration/onboarding/phonenumber/confirmation');
   };
   const errorSignalizer = () => (phoneNumber.length >= targetCountryHelper('nationalNumberLength', countryCode) && !validPhone);
 
@@ -113,7 +128,7 @@ const PhoneNumber = () => {
           <div className="ActionButton">
             <Button
               type="button"
-              onClick={() => history.push('/registration/onboarding/phonenumber/confirmation')}
+              onClick={continueButton}
               className="ActionButton-ContinueRegistration"
               disabled={(validPhone) ? null : true}
             >
