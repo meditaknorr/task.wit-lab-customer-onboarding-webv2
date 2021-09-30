@@ -37,10 +37,10 @@ export const translations = [
         seeStatus: 'See status',
       },
       scanVoterCard: {
-        scanCard: "Scan voter ID card",
-        takePhotoFront: "Take a photo of the front side o your voter card",
-        takePhotoBack: "Take a photo of the back side o your voter card",
-        centerPhoto: "Move and center the card inside the frame"
+        scanCard: 'Scan voter ID card',
+        takePhotoFront: 'Take a photo of the front side o your voter card',
+        takePhotoBack: 'Take a photo of the back side o your voter card',
+        centerPhoto: 'Move and center the card inside the frame'
       },
       confirmPhoto:
       {
@@ -91,10 +91,10 @@ export const translations = [
         seeStatus: 'Verifique o estado',
       },
       scanVoterCard: {
-        scanCard: "Digitalize o cartão de eleitor",
-        takePhotoFront: "Tire uma foto da frente do seu cartão de eleitor",
-        takePhotoBack: "Tire uma foto do verso do seu cartão de eleitor",
-        centerPhoto: "Mova e centralize o cartão dentro da moldura"
+        scanCard: 'Digitalize o cartão de eleitor',
+        takePhotoFront: 'Tire uma foto da frente do seu cartão de eleitor',
+        takePhotoBack: 'Tire uma foto do verso do seu cartão de eleitor',
+        centerPhoto: 'Mova e centralize o cartão dentro da moldura'
       },
       confirmPhoto:
       {
@@ -145,10 +145,10 @@ export const translations = [
         seeStatus: 'Vedi stato',
       },
       scanVoterCard: {
-        scanCard: "Scansiona la tessera elettorale",
-        takePhotoFront: "Scatta una foto della parte anteriore della tua tessera elettorale",
-        takePhotoBack: "Scatta una foto del retro della tua tessera elettorale",
-        centerPhoto: "Sposta e centra la carta all'interno della cornice"
+        scanCard: 'Scansiona la tessera elettorale',
+        takePhotoFront: 'Scatta una foto della parte anteriore della tua tessera elettorale',
+        takePhotoBack: 'Scatta una foto del retro della tua tessera elettorale',
+        centerPhoto: 'Sposta e centra la carta all\'interno della cornice'
       },
       confirmPhoto:
       {
