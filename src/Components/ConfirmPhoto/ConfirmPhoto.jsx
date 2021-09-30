@@ -45,8 +45,7 @@ const ConfirmPhoto = ({ description, photo, usePhoto, takeAnotherPhoto, storePro
                 backButton={1}
                 screenLabel={screenLabel}
                 languageButton={1}
-                language={language[0].language}
-                languageSetter={languageSetter}
+                language={language.language}
                 progressBarPercent={progressBar}
             />
             <ConfirmPhotoScreen overlayMode={overlayMode}>

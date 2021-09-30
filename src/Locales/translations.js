@@ -36,6 +36,11 @@ export const translations = [
         alreadyRegstered: 'Already Registered?',
         seeStatus: 'See status',
       },
+      scanVoterCard: {
+        scanCard: "Scan voter ID card",
+        takePhotoFront: "Take a photo of the front side o your voter card",
+        centerPhoto: "Move and center the card inside the frame"
+      },
       confirmPhoto:
       {
         voterCard: 'Voter card',
@@ -84,6 +89,11 @@ export const translations = [
         alreadyRegstered: 'já se registrou?',
         seeStatus: 'Verifique o estado',
       },
+      scanVoterCard: {
+        scanCard: "Digitalize o cartão de eleitor",
+        takePhotoFront: "Tire uma foto da frente do seu cartão de eleitor",
+        centerPhoto: "Mova e centralize o cartão dentro da moldura"
+      },
       confirmPhoto:
       {
         voterCard: 'Cartão de eleitor',
@@ -131,6 +141,11 @@ export const translations = [
         buttonStart: 'Creare un account',
         alreadyRegstered: 'Già Registrato?',
         seeStatus: 'Vedi stato',
+      },
+      scanVoterCard: {
+        scanCard: "Scansiona la tessera elettorale",
+        takePhotoFront: "Scatta una foto della parte anteriore della tua tessera elettorale",
+        centerPhoto: "Sposta e centra la carta all'interno della cornice"
       },
       confirmPhoto:
       {
