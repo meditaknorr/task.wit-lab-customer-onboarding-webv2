@@ -9,11 +9,15 @@ import { LoadingBar } from './Style';
  * @returns {JSX.Element}
  * @constructor
  */
-const ProgressBar = ({ percent }) => (
-  <LoadingBar percent={percent}>
-    <div className="Loading-Signal" />
-  </LoadingBar>
-);
+const ProgressBar = ({ percent }) =>{
+console.log(percent)
+  return (
+  <>
+     <LoadingBar percent={percent}>
+       <div className="Loading-Signal" />
+     </LoadingBar>
+  </>
+)};
 
 ProgressBar.propTypes = {
   percent: PropTypes.number.isRequired,

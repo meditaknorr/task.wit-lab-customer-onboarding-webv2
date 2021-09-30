@@ -49,8 +49,11 @@ export const translations = [
         backSidePhoto: 'Photo of the back side of your voter card',
         usePhoto: 'Use this photo',
         takeAnotherPhoto: 'Take another photo',
-        selie: 'Selfie'
       },
+      selfie:{
+        selfie: 'Selfie',
+        takeSelfie: 'Take a selfie'
+      }
     },
   },
   {
@@ -104,6 +107,10 @@ export const translations = [
         usePhoto: 'Usar esta foto',
         takeAnotherPhoto: 'Tirar outra foto',
       },
+      selfie: {
+        selfie: 'Selfie',
+        takeSelfie: 'Tirar uma selfie'
+      }
     },
   },
   {
@@ -158,6 +165,10 @@ export const translations = [
         usePhoto: 'Usa questa foto',
         takeAnotherPhoto: 'Fai un\'altra foto',
       },
+      selfie: {
+        selfie: 'Selfie',
+        takeSelfie: 'Fatti un selfie'
+      }
     },
   },
 ];

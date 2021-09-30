@@ -31,7 +31,7 @@ const Header = ({
   progressBarPercent,
 }) => {
   const [trigger, setTrigger] = useState(false);
-  const { appLanguages, appString } = useLocale(language);
+  const { appLanguages } = useLocale(language);
 
   const dispatch = useContext(DispatchContext);
   const languageSetter = (selectedLanguage) => {

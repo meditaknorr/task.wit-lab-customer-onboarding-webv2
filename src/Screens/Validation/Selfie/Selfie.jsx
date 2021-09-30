@@ -6,48 +6,49 @@ import ConfirmPhoto from '../../../Components/ConfirmPhoto/ConfirmPhoto';
 import { useHistory } from 'react-router-dom';
 
 
-const ScanVoterCardBack = () => {
+const Selfie = () => {
     const state = useContext(StateContext);
     const dispatch = useContext(DispatchContext);
     const language = (state.filter((data) => data.id === 1))[0];
     const { appString } = useLocale(language.language);
     const router = useHistory();
-    const [photo, setPhoto] = useState(state.find(storeProperty => (storeProperty.id === 5 && storeProperty.voterCardBack)));
-    const voterCardBack = { id: 5, storePropertyName: 'voterCardBack' };
-    const overlayMode = 0;
-
+    const [photo, setPhoto] = useState(state.find(storeProperty => (storeProperty.id === 6 && storeProperty.selfie)));
+    const selfie = { id: 6, storePropertyName: 'selfie' };
+    const overlayMode = 1;
+  
     const takeAnotherPhoto = () => {
         dispatch({
             type: 'UPDATE_STATE',
             payload: {
-                id: 5,
-                [voterCardBack.storePropertyName]: null
+                id: 6,
+                [selfie.storePropertyName]: null
             }
         });
         setPhoto(null)
     }
 
+
     return (
         <>
             {!photo ?
                 <CaptureImage
-                    title={appString.translations.scanVoterCard.scanCard}
-                    type={appString.translations.scanVoterCard.takePhotoBack}
-                    footer={appString.translations.scanVoterCard.centerPhoto}
+                    title={appString.translations.selfie.selfie}
+                    type={appString.translations.selfie.takeSelfie}
+                    footer={''}
                     overlayMode={overlayMode}
                     setPhoto={setPhoto}
-                    closeCamera={() => { router.push('/registration/validation/scan-voter-card-front') }}
-                    storeProperty={voterCardBack}
+                    closeCamera={() => { router.push('/registration/validation/scan-voter-card-back') }}
+                    storeProperty={selfie}
                 />
                 :
                 <ConfirmPhoto
-                    description={appString.translations.confirmPhoto.backSidePhoto}
+                    description={appString.translations.selfie.selfie}
                     photo={photo}
                     takeAnotherPhoto={takeAnotherPhoto}
-                    usePhoto={() => { router.push('/registration/validation/selfie') }}
-                    storeProperty={voterCardBack}
-                    screenLabel={appString.translations.confirmPhoto.voterCard}
-                    progressBar={2}
+                    usePhoto={() => { console.log('TODO -> redirect to review details') }}
+                    storeProperty={selfie}
+                    screenLabel={appString.translations.selfie.selfie}
+                    progressBar={4}
                     overlayMode={overlayMode}
                 />
             }
@@ -55,4 +56,4 @@ const ScanVoterCardBack = () => {
     );
 };
 
-export default ScanVoterCardBack;
+export default Selfie;

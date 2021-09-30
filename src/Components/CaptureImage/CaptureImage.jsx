@@ -28,7 +28,7 @@ const CaptureImage = ({
   const videoRef = useRef(null);
   const photoRef = useRef(null);
   const overlayRef = useRef();
-
+  let video;
 
   const getVideo = () => {
     navigator.mediaDevices.getUserMedia({
@@ -41,7 +41,7 @@ const CaptureImage = ({
     })
       .then(stream => {
 
-        let video = videoRef.current
+        video = videoRef.current
         video.srcObject = stream
         video.play()
       })
@@ -52,6 +52,16 @@ const CaptureImage = ({
 
   useEffect(() => {
     getVideo()
+    return function cleanup() {
+      const stream = video.srcObject;
+      const camera = stream.getTracks();
+      
+      camera.forEach(function (track) {
+        track.stop();
+      });
+
+      video.srcObject = null;
+    }
   }, [videoRef, window.screen.height, window.screen.width]);
 
   const takePhoto = () => {
