@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { StateContext, DispatchContext } from '../../../Contexts/AppStoreContexts';
@@ -21,6 +21,14 @@ const PhoneNumber = () => {
   const { appString } = useLocale(language.language);
   const { countryCode } = (state.filter((data) => data.id === 2))[0];
 
+  useEffect(() => {
+    if ((phoneNumber.length) === targetCountryHelper('nationalNumberLength', countryCode)) {
+      setValidPhone(phoneNumberValidator((phoneNumber), countryCode));
+    } else {
+      setValidPhone(false);
+    }
+  }, [phoneNumber]);
+
   const countryCodeSetter = (e) => {
     setPhoneNumber('');
     setValidPhone(false);
@@ -39,8 +47,8 @@ const PhoneNumber = () => {
   };
   const phonenumberChecker = (e) => {
     setPhoneNumber(e.target.value);
-    if ((e.target.value.length) === targetCountryHelper('nationalNumberLength', countryCode)) {
-      setValidPhone(phoneNumberValidator((e.target.value), countryCode));
+    if ((phoneNumber.length) === targetCountryHelper('nationalNumberLength', countryCode)) {
+      setValidPhone(phoneNumberValidator((phoneNumber), countryCode));
     } else {
       setValidPhone(false);
     }
