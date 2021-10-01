@@ -6,7 +6,7 @@ export const LoadingBar = styled.div`
   position: relative;
   width: 100%;
   height: ${ConvertorPixel2Rem(2)};
-  background-color: rgba(${themeProvider.day.lineColor}, 0.10);
+  background-color: ${themeProvider.day.lineColor};
 
   div.Loading-Signal {
     position: absolute;
@@ -14,6 +14,6 @@ export const LoadingBar = styled.div`
     left: 0;
     width: ${(props) => `${props.percent * 10}%`};
     height: ${ConvertorPixel2Rem(2)};
-    background-color: rgba(${themeProvider.day.highlightColor}, 0.5);
+    background-color: ${themeProvider.day.highlightColor};
   }
 `;
