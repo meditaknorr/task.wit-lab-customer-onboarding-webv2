@@ -18,7 +18,6 @@ export const OnborardingScreen = styled.div`
 
 export const Main = styled.main`
   grid-area: main;
-  width: 100%;
   padding: ${ConvertorPixel2Rem(27)};
   display: flex;
   align-items: center;

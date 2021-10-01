@@ -14,6 +14,9 @@ const ProgressBar = () => {
       case '/registration/onboarding/phonenumber':
         setProgressLevel(1);
         break;
+      case '/registration/onboarding/phonenumber/confirmation':
+        setProgressLevel(2);
+        break;
       default:
         setProgressLevel(0);
         break;
