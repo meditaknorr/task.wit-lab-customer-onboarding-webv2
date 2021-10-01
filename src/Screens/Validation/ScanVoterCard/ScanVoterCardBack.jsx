@@ -1,26 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StateContext, DispatchContext } from '../../../Contexts/AppStoreContexts';
+import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import CaptureImage from '../../../Components/CaptureImage/CaptureImage';
 import ConfirmPhoto from '../../../Components/ConfirmPhoto/ConfirmPhoto';
 
 const ScanVoterCardBack = () => {
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const { appString } = useLocale(language.language);
+  const dispatch = storeSetter();
+  const { app, user } = storeGetter();
   const router = useHistory();
-  // eslint-disable-next-line max-len
-  const [photo, setPhoto] = useState(state.find((storeProperty) => (storeProperty.id === 5 && storeProperty.voterCardBack)));
-  const voterCardBack = { id: 5, storePropertyName: 'voterCardBack' };
+  const { appString } = useLocale(app.language);
+  const [photo, setPhoto] = useState(user.id === 2 && user.voterCardBack);
+  const voterCardBack = { id: 2, storePropertyName: 'voterCardBack' };
   const overlayMode = 0;
 
   const takeAnotherPhoto = () => {
     dispatch({
-      type: 'UPDATE_STATE',
+      type: 'SET_USER',
       payload: {
-        id: 5,
         [voterCardBack.storePropertyName]: null,
       },
     });

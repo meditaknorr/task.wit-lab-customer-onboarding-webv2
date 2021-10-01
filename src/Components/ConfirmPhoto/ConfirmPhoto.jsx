@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { StateContext, DispatchContext } from '../../Contexts/AppStoreContexts';
-import Header from '../Header/Header';
+import { storeGetter, storeSetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
+import Header from '../Header/Header';
 import { ConfirmPhotoScreen } from './Style';
 import Button from '../Button/Button';
 
@@ -33,14 +33,13 @@ const ConfirmPhoto = ({
   progressBar,
   overlayMode,
 }) => {
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const { appString } = useLocale(language.language);
+  const dispatch = storeSetter();
+  const { app } = storeGetter();
+  const { appString } = useLocale(app.language);
 
   const useThisPhoto = () => {
     dispatch({
-      type: 'ADD_STATE',
+      type: 'SET_USER',
       payload: {
         id: storeProperty.id,
         [storeProperty.storePropertyName]: photo[storeProperty.storePropertyName],
@@ -56,7 +55,7 @@ const ConfirmPhoto = ({
         backButton={1}
         screenLabel={screenLabel}
         languageButton={1}
-        language={language.language}
+        language={app.language}
         progressBarPercent={progressBar}
       />
       <ConfirmPhotoScreen overlayMode={overlayMode}>

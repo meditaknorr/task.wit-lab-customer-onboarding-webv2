@@ -24,7 +24,14 @@ export const initialState = {
   user: {
     id: 2,
     phoneCallingCode: null,
-    phone: null,
+    countryCode: null,
+    phoneNumber: null,
+    countryName: null,
+    storePropertyName: null,
+    voterCardFront: null,
+    voterCardBack: null,
+    selfie: null,
+    OTP: '1010',
     personalDetails: [],
   },
 };

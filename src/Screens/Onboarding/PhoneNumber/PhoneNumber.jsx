@@ -1,72 +1,74 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import { StateContext, DispatchContext } from '../../../Contexts/AppStoreContexts';
-import { availableCountries, phoneNumberValidator, targetCountryHelper } from '../../../Helpers/targetCountryHelper';
+import { storeGetter, storeSetter } from '../../../Hooks/useStore';
+import { useLocale } from '../../../Hooks/useLocale';
 import countryFlagHelper from '../../../Helpers/countryFlagHelper';
+import { availableCountries, phoneNumberValidator, targetCountryHelper } from '../../../Helpers/targetCountryHelper';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
-import { useLocale } from '../../../Hooks/useLocale';
 import { PhoneNumberScreen, Main } from './Style';
 
 const PhoneNumber = () => {
+  const dispatch = storeSetter();
+  const { app, user } = storeGetter();
   const history = useHistory();
+  const { appString } = useLocale(app.language);
   const [validPhone, setValidPhone] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCallingCode, setCountryCallingCode] = useState('');
 
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const { appString } = useLocale(language.language);
-  const { countryCode } = (state.filter((data) => data.id === 2))[0];
-
   useEffect(() => {
-    if ((phoneNumber.length) === targetCountryHelper('nationalNumberLength', countryCode)) {
-      setValidPhone(phoneNumberValidator((phoneNumber), countryCode));
+    if ((phoneNumber.length) === targetCountryHelper('nationalNumberLength', (user.countryCode || app.defaultCountryCode))) {
+      // eslint-disable-next-line max-len
+      setValidPhone(phoneNumberValidator((phoneNumber), (user.countryCode || app.defaultCountryCode)));
     } else {
       setValidPhone(false);
     }
-  }, [phoneNumber]);
+
+    if ((phoneNumber.length) === 0) {
+      dispatch(
+        {
+          type: 'SET_USER',
+          payload: {
+            phoneCallingCode: countryCallingCode,
+            countryCode: (parseInt((countryCallingCode.slice(1)), 10)),
+          },
+        },
+      );
+    }
+  }, [phoneNumber, countryCallingCode]);
 
   const countryCodeSetter = (e) => {
+    setCountryCallingCode(e.target.value);
     setPhoneNumber('');
     setValidPhone(false);
-    const CountryCodeNumber = (parseInt(((e.target.value).slice(1)), 10));
-    setCountryCallingCode(e.target.value);
-    dispatch(
-      {
-        type: 'CHANGE_APP_COUNTRY',
-        payload: {
-          countryName: targetCountryHelper('CountryName', CountryCodeNumber),
-          countryCode: CountryCodeNumber,
-          id: 2,
-        },
-      },
-    );
   };
+
   const phonenumberChecker = (e) => {
     setPhoneNumber(e.target.value);
-    if ((phoneNumber.length) === targetCountryHelper('nationalNumberLength', countryCode)) {
-      setValidPhone(phoneNumberValidator((phoneNumber), countryCode));
+    if ((phoneNumber.length) === targetCountryHelper('nationalNumberLength', (user.countryCode || app.defaultCountryCode))) {
+      // eslint-disable-next-line max-len
+      setValidPhone(phoneNumberValidator((phoneNumber), (user.countryCode || app.defaultCountryCode)));
     } else {
       setValidPhone(false);
     }
   };
+
   const continueButton = () => {
     dispatch(
       {
-        type: 'UPDATE_STATE',
+        type: 'SET_USER',
         payload: {
-          callingCode: (countryCallingCode || `+${countryCode}`),
-          userPhoneNumber: phoneNumber,
-          id: 3,
+          countryName: targetCountryHelper('CountryName', (user.countryCode || app.defaultCountryCode)),
+          phone: phoneNumber,
         },
       },
     );
     history.push('/registration/onboarding/phonenumber/confirmation');
   };
-  const errorSignalizer = () => (phoneNumber.length >= targetCountryHelper('nationalNumberLength', countryCode) && !validPhone);
+
+  const errorSignalizer = () => (phoneNumber.length >= targetCountryHelper('nationalNumberLength', (user.countryCode || app.defaultCountryCode)) && !validPhone);
 
   return (
     <WebView>
@@ -76,9 +78,9 @@ const PhoneNumber = () => {
           backButton={1}
           screenLabel={1}
           languageButton={1}
-          language={language.language}
+          language={app.language}
         />
-        <Main checkSignal={validPhone} phoneLength={(phoneNumber.length)} nnumberLenght={targetCountryHelper('nationalNumberLength', countryCode)}>
+        <Main checkSignal={validPhone} phoneLength={(phoneNumber.length)} nnumberLenght={targetCountryHelper('nationalNumberLength', (user.countryCode || app.defaultCountryCode))}>
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.enterPhone}</h1>
             <h2>{appString.translations.onboarding.forAccountSettup}</h2>
@@ -87,7 +89,7 @@ const PhoneNumber = () => {
           <div className="PhoneNumber">
             <div className="PhoneNumber__CountryCodeField">
               <div className="PhoneNumber__CountryCodeField-IconFlag">
-                <img src={countryFlagHelper(targetCountryHelper('code', countryCode))} alt="img" />
+                <img src={countryFlagHelper(targetCountryHelper('code', (user.countryCode || app.defaultCountryCode)))} alt="img" />
               </div>
               <select
                 name="CountryCode"
@@ -109,12 +111,12 @@ const PhoneNumber = () => {
               <input
                 type="tel"
                 id="phoneNumber"
-                minLength={targetCountryHelper('nationalNumberLength', countryCode)}
-                maxLength={targetCountryHelper('nationalNumberLength', countryCode)}
-                size={targetCountryHelper('nationalNumberLength', countryCode)}
-                placeholder={targetCountryHelper('dummyNumber', countryCode)}
+                minLength={targetCountryHelper('nationalNumberLength', (user.countryCode || app.defaultCountryCode))}
+                maxLength={targetCountryHelper('nationalNumberLength', (user.countryCode || app.defaultCountryCode))}
+                size={targetCountryHelper('nationalNumberLength', (user.countryCode || app.defaultCountryCode))}
+                placeholder={targetCountryHelper('dummyNumber', (user.countryCode || app.defaultCountryCode))}
                 className="PhoneNumber__NumberField-Input"
-                value={phoneNumber}
+                value={user.phone}
                 onChange={phonenumberChecker}
                 autoComplete="off"
               />

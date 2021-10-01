@@ -1,17 +1,16 @@
-import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import { Button } from 'reactstrap';
-import { StateContext } from '../../Contexts/AppStoreContexts';
-import Header from '../../Components/Header/Header';
-import WebView from '../../Layouts/WebView/WebView';
-import { OnborardingScreen, Main } from './Style';
+import { useHistory } from 'react-router-dom';
+import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
+import { OnborardingScreen, Main } from './Style';
+import WebView from '../../Layouts/WebView/WebView';
+import Header from '../../Components/Header/Header';
 
 const Onboarding = () => {
+  const { app } = storeGetter();
   const history = useHistory();
-  const state = useContext(StateContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const { appString } = useLocale(language.language);
+  const { appString } = useLocale(app.language);
 
   return (
     <WebView>
@@ -21,7 +20,7 @@ const Onboarding = () => {
           backButton={0}
           screenLabel={0}
           languageButton={1}
-          language={language.language}
+          language={app.language}
         />
         <Main>
           <div className="HeadingText">

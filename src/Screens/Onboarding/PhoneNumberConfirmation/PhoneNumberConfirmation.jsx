@@ -1,18 +1,16 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import { StateContext } from '../../../Contexts/AppStoreContexts';
+import { useLocale } from '../../../Hooks/useLocale';
+import { storeGetter } from '../../../Hooks/useStore';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
 import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
-import { useLocale } from '../../../Hooks/useLocale';
 
 const PhoneNumberConfirmation = () => {
   const history = useHistory();
-  const state = useContext(StateContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const userData = (state.filter((data) => data.id === 3))[0];
-  const { appString } = useLocale(language.language);
+  const { app, user } = storeGetter();
+  const { appString } = useLocale(app.language);
   const [isInValidPin, setIsInValidPin] = useState(true);
   const [modal, setModal] = useState(false);
   const [confirmationPin, setConfirmationPin] = useState({
@@ -57,8 +55,8 @@ const PhoneNumberConfirmation = () => {
 
   const actionButtonHandler = () => {
     const thePin = (`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
-    setModal(thePin !== '1010');
-    if (thePin === '1010') {
+    setModal(thePin !== user.OTP);
+    if (thePin === user.OTP) {
       history.push('/registration/validation/scan/front');
     }
   };
@@ -75,7 +73,7 @@ const PhoneNumberConfirmation = () => {
           backButton={1}
           screenLabel={1}
           languageButton={1}
-          language={language.language}
+          language={app.language}
         />
         <Modal status={modal}>
           <div className="Modal__Pane">
@@ -94,8 +92,8 @@ const PhoneNumberConfirmation = () => {
             <h1>{appString.translations.onboarding.pleaseConfirm}</h1>
             <h2>
               {appString.translations.onboarding.verificationSentTo}
-              <span>{userData.callingCode}</span>
-              {userData.userPhoneNumber}
+              <span>{(user.phoneCallingCode || app.defaultCountryCallingCode)}</span>
+              {user.phone}
             </h2>
           </div>
 

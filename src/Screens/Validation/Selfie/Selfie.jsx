@@ -1,26 +1,25 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StateContext, DispatchContext } from '../../../Contexts/AppStoreContexts';
+import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import CaptureImage from '../../../Components/CaptureImage/CaptureImage';
 import ConfirmPhoto from '../../../Components/ConfirmPhoto/ConfirmPhoto';
 
 const Selfie = () => {
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const { appString } = useLocale(language.language);
   const router = useHistory();
+  const dispatch = storeSetter();
+  const { app, user } = storeGetter();
+  const { appString } = useLocale(app.language);
   // eslint-disable-next-line max-len
-  const [photo, setPhoto] = useState(state.find((storeProperty) => (storeProperty.id === 6 && storeProperty.selfie)));
+  const [photo, setPhoto] = useState(user.id === 2 && user.selfie);
   const selfie = { id: 6, storePropertyName: 'selfie' };
   const overlayMode = 1;
 
   const takeAnotherPhoto = () => {
     dispatch({
-      type: 'UPDATE_STATE',
+      type: 'SET_USER',
       payload: {
-        id: 6,
+        id: 2,
         [selfie.storePropertyName]: null,
       },
     });
