@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Button } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 import { StateContext } from '../../../Contexts/AppStoreContexts';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
@@ -7,11 +8,12 @@ import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
 import { useLocale } from '../../../Hooks/useLocale';
 
 const PhoneNumberConfirmation = () => {
+  const history = useHistory();
   const state = useContext(StateContext);
   const language = (state.filter((data) => data.id === 1))[0];
   const userData = (state.filter((data) => data.id === 3))[0];
   const { appString } = useLocale(language.language);
-  const [isValidPin, setIsValidPin] = useState(false);
+  const [isInValidPin, setIsInValidPin] = useState(true);
   const [modal, setModal] = useState(false);
   const [confirmationPin, setConfirmationPin] = useState({
     one: '',
@@ -21,7 +23,7 @@ const PhoneNumberConfirmation = () => {
   });
 
   useEffect(() => {
-    setIsValidPin(!(Object.values(confirmationPin).indexOf('') <= -1));
+    setIsInValidPin(!(Object.values(confirmationPin).indexOf('') <= -1));
   }, [confirmationPin]);
 
   const handle = (e) => {
@@ -56,6 +58,9 @@ const PhoneNumberConfirmation = () => {
   const actionButtonHandler = () => {
     const thePin = (`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
     setModal(thePin !== '1010');
+    if (thePin === '1010') {
+      history.push('/registration/validation/scan/front');
+    }
   };
 
   const closeModal = () => {
@@ -143,13 +148,13 @@ const PhoneNumberConfirmation = () => {
 
           <div className="ActionButton">
             <div className="ActionButton-ResendPin">
-              {(isValidPin) ? null : appString.translations.onboarding.resendCode }
+              {(isInValidPin) ? null : appString.translations.onboarding.resendCode }
             </div>
             <Button
               type="button"
               onClick={actionButtonHandler}
               className="ActionButton-ContinueRegistration"
-              disabled={(isValidPin)}
+              disabled={(isInValidPin)}
             >
               {appString.translations.onboarding.continue}
             </Button>

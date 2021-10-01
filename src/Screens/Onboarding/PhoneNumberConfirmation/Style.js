@@ -16,10 +16,10 @@ export const PhoneNumberConfirmationScreen = styled.div`
 `;
 export const Modal = styled.div`
   z-index: 100;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.3);
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: ${(props) => (props.status ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
