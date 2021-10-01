@@ -12,9 +12,12 @@ export const themeProvider = {
     disableColor: '#CCCCCC',
     shadowColor: '#9E9E9E',
     pinBorderColor: '#999999',
-    modalColor: '#ADADAD',
     modalShadow: '#919191',
     modalH2Color: '#656565',
+    modalRed: '#FA4C51',
+    modalWhite: '#FFFFFF',
+    modalGrey: '#999999',
+    modalColor: 'rgba(0, 0, 0, 0.3)',
   },
   night: {},
 };

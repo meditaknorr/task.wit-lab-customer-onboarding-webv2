@@ -17,6 +17,18 @@ const ProgressBar = () => {
       case '/registration/onboarding/phonenumber/confirmation':
         setProgressLevel(2);
         break;
+      case '/registration/validation/scan/front':
+        setProgressLevel(3);
+        break;
+      case '/registration/validation/scan/back':
+        setProgressLevel(5);
+        break;
+      case '/registration/validation/selfie':
+        setProgressLevel(6);
+        break;
+      case '/registration/details':
+        setProgressLevel(7);
+        break;
       default:
         setProgressLevel(0);
         break;
