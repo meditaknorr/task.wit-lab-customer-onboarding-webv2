@@ -15,7 +15,7 @@ const Selfie = () => {
     const [photo, setPhoto] = useState(state.find(storeProperty => (storeProperty.id === 6 && storeProperty.selfie)));
     const selfie = { id: 6, storePropertyName: 'selfie' };
     const overlayMode = 1;
-  
+
     const takeAnotherPhoto = () => {
         dispatch({
             type: 'UPDATE_STATE',
@@ -45,7 +45,7 @@ const Selfie = () => {
                     description={appString.translations.selfie.selfie}
                     photo={photo}
                     takeAnotherPhoto={takeAnotherPhoto}
-                    usePhoto={() => { console.log('TODO -> redirect to review details') }}
+                    usePhoto={() => { router.push('/registration/validation/submit-and-validate') }}
                     storeProperty={selfie}
                     screenLabel={appString.translations.selfie.selfie}
                     progressBar={4}

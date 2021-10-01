@@ -59,7 +59,7 @@ const reducer = (state, action) => {
         ...state, action.payload,
       ];
     case 'REMOVE_STATE':
-      return [state.filter((dataserver) => dataserver.id !== action.payload.id)];
+      return state.filter((dataserver) => dataserver.id !== action.payload.id);
     case 'CHANGE_APP_LANGUAGE':
       return [
         stateFilter(state, action.payload.id),
