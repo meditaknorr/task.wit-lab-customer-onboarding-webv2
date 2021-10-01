@@ -1,13 +1,13 @@
 import React from 'react';
-import Store from './Store/Store';
+import StoreProvider from './Store/StoreProvider';
 import './Styles/global.scss';
 import AppRouter from './Routes/AppRouter';
 
 function App() {
   return (
-    <Store>
+    <StoreProvider>
       <AppRouter />
-    </Store>
+    </StoreProvider>
   );
 }
 

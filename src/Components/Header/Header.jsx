@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { AppHeader } from './Style';
+import { storeSetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
+import countryFlagHelper from '../../Helpers/countryFlagHelper';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Logo from '../Logo/Logo';
-import countryFlagHelper from '../../Helpers/countryFlagHelper';
-import { DispatchContext } from '../../Contexts/AppStoreContexts';
+import { AppHeader } from './Style';
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
@@ -28,17 +28,15 @@ const Header = ({
   languageButton,
   language,
 }) => {
+  const dispatch = storeSetter();
   const [trigger, setTrigger] = useState(false);
   const { appLanguages, appString } = useLocale(language);
-
-  const dispatch = useContext(DispatchContext);
   const languageSetter = (selectedLanguage) => {
     dispatch(
       {
-        type: 'CHANGE_APP_LANGUAGE',
+        type: 'SET_APP',
         payload: {
           language: selectedLanguage,
-          id: 1,
         },
       },
     );
