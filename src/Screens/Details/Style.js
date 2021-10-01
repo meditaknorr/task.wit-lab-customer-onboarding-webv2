@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
-import Success from '../../Assets/Images/icons/ic_check_green.svg';
-import Error from '../../Assets/Images/icons/ic_alert_red.svg';
 
 export const PhoneNumberScreen = styled.div`
   width: 100%;
@@ -18,6 +16,8 @@ export const PhoneNumberScreen = styled.div`
 export const Main = styled.main`
   grid-area: main;
   width: 100%;
+  height: 100vh;
+  overflow-y: auto;
   padding: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(27)};
   display: flex;
   align-items: center;
@@ -47,141 +47,110 @@ export const Main = styled.main`
     }
   }
 
-  div.PhoneNumber {
+  div.PhoneDetails {
+    overflow: hidden;
     width: ${ConvertorPixel2Rem(312)};
-    margin: ${ConvertorPixel2Rem(59)} 0 ${ConvertorPixel2Rem(70)} 0;
+    height: ${ConvertorPixel2Rem(74)};
+    margin: ${ConvertorPixel2Rem(31)} 0 ${ConvertorPixel2Rem(22)} 0;
+    padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)};
+    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 1px ${themeProvider.day.lineColor};
+    border-radius: ${ConvertorPixel2Rem(6)};
+    text-align: left;
+    h3.PhoneDetails__Label {
+      opacity: 0.6;
+      font-size: ${ConvertorPixel2Rem(12)};
+      height: ${ConvertorPixel2Rem(12)};
+      font-weight: bolder;
+      width: 100%;
+    }
+    h2.PhoneDetails__UserPhone {
+      font-size: ${ConvertorPixel2Rem(16)};
+      height: ${ConvertorPixel2Rem(16)};
+      font-weight: bolder;
+      width: 100%;
+    }
+  }
 
-    div.PhoneNumber__CountryCodeField{
-      position: relative;
-      display: inline-block;
-      width: ${ConvertorPixel2Rem(96)};
-      height: ${ConvertorPixel2Rem(49)};
-      margin: 0 ${ConvertorPixel2Rem(13)} 0 0;
+  div.PersonalInformation {
+    width: ${ConvertorPixel2Rem(312)};
+    min-height: ${ConvertorPixel2Rem(212)};
+    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 1px ${themeProvider.day.lineColor};
+    padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)};
+    border-radius: ${ConvertorPixel2Rem(6)};
 
-      select.PhoneNumber__CountryCodeField-SelectBox {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        text-indent: 1px;
-        text-overflow: '';
-        width: 100%;
-        height: 100%;
-        text-align: right;
-        background-color: ${themeProvider.day.backgroundColor};
-        padding: 0 ${ConvertorPixel2Rem(15)};
-        border-radius: ${ConvertorPixel2Rem(6)};
-        border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
-        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
-        overflow: hidden;
-        option {
-          width: 100px;
-          text-align: right;
-        }
-        &:focus {
-          border: 1px solid ${themeProvider.day.highlightColor};
-          font-size: ${ConvertorPixel2Rem(16)};
+    h3.PersonalInformation__Label {
+      opacity: 0.8;
+      margin: 0 0 ${ConvertorPixel2Rem(16)} 0;
+      font-size: ${ConvertorPixel2Rem(12)};
+      height: ${ConvertorPixel2Rem(12)};
+      font-weight: bolder;
+      width: 100%;
+    }
 
-          & + label {
-            display: inline-block;
-            color: ${themeProvider.day.highlightColor};
-          }
-        }
-      }
-      label.PhoneNumber__CountryCodeField-Label {
-        padding: ${ConvertorPixel2Rem(3)};
-        background-color: ${themeProvider.day.backgroundColor};
-        font-size: ${ConvertorPixel2Rem(12)};
-        position: absolute;
-        color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor}!important;
-        left: ${ConvertorPixel2Rem(10)};
-        top: ${ConvertorPixel2Rem(-15)};
-      }
-      div.PhoneNumber__CountryCodeField-IconFlag {
-        width: ${ConvertorPixel2Rem(22)};
-        height: ${ConvertorPixel2Rem(22)};
-        border-radius: ${ConvertorPixel2Rem(11.66)};
-        background-size: cover;
-        position: absolute;
-        left: ${ConvertorPixel2Rem(15)};
-        top: ${ConvertorPixel2Rem(11)};
-        margin: 0;
-        overflow: hidden;
-        img {
+    div.PersonalInformation__UserDetails {
+      margin: ${ConvertorPixel2Rem(40)} 0 0 0;
+
+      div.PersonalInformation__UserDetails-Field {
+        position: relative;
+        display: inline-block;
+        width: ${ConvertorPixel2Rem(277)};
+        height: ${ConvertorPixel2Rem(49)};
+        margin: 0 ${ConvertorPixel2Rem(2)} ${ConvertorPixel2Rem(24)} ${ConvertorPixel2Rem(2)};
+        form {
           width: 100%;
-          height: 100%;
-        }
-      }
-    }
+          div.Field {
+            position: relative;
+            width: 100%;
+            height: ${ConvertorPixel2Rem(49)};
+            margin: 0 0 ${ConvertorPixel2Rem(24)} 0;
 
-    div.PhoneNumber__NumberField {
-      position: relative;
-      display: inline-block;
-      width: ${ConvertorPixel2Rem(202)};
-      height: ${ConvertorPixel2Rem(49)};
+            input {
+              width: 100%;
+              height: 100%;
+              padding: 0 ${ConvertorPixel2Rem(15)};
+              border-radius: ${ConvertorPixel2Rem(6)};
+              border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
 
-      input.PhoneNumber__NumberField-Input {
-        width: 100%;
-        height: 100%;
-        padding: 0 ${ConvertorPixel2Rem(15)};
-        border-radius: ${ConvertorPixel2Rem(6)};
-        border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
-        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
+              &:focus {
+                border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor};
+                font-size: ${ConvertorPixel2Rem(16)};
 
-        &:focus {
-          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor};
-          font-size: ${ConvertorPixel2Rem(16)};
+                & + label {
+                  display: inline-block;
+                  color: ${themeProvider.day.highlightColor};
+                }
+              }
 
-          & + label {
-            display: inline-block;
-            color: ${themeProvider.day.highlightColor};
+              &::-webkit-input-placeholder {
+                color: ${themeProvider.day.disableColor};
+              }
+
+              &:-ms-input-placeholder {
+                color: ${themeProvider.day.disableColor};
+              }
+
+              &::placeholder {
+                color: ${themeProvider.day.disableColor};
+              }
+            }
+
+            label {
+              padding: ${ConvertorPixel2Rem(3)};
+              background-color: ${themeProvider.day.backgroundColor};
+              font-size: ${ConvertorPixel2Rem(12)};
+              position: absolute;
+              left: ${ConvertorPixel2Rem(10)};
+              top: ${ConvertorPixel2Rem(-15)};
+            }
           }
         }
-
-        &::-webkit-input-placeholder {
-          color: ${themeProvider.day.disableColor};
-        }
-
-        &:-ms-input-placeholder {
-          color: ${themeProvider.day.disableColor};
-        }
-
-        &::placeholder {
-          color: ${themeProvider.day.disableColor};
-        }
       }
-
-      label.PhoneNumber__NumberField-Label {
-        padding: ${ConvertorPixel2Rem(3)};
-        color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor}!important;
-        background-color: ${themeProvider.day.backgroundColor};
-        font-size: ${ConvertorPixel2Rem(12)};
-        position: absolute;
-        left: ${ConvertorPixel2Rem(10)};
-        top: ${ConvertorPixel2Rem(-15)};
-      }
-
-      div.PhoneNumber__NumberField-Status {
-        display: ${(props) => (props.phoneLength >= props.nnumberLenght ? 'inline-block' : 'none')};
-        width: ${ConvertorPixel2Rem(20)};
-        height: ${ConvertorPixel2Rem(20)};
-        background: url(${(props) => (props.checkSignal ? Success : Error)}) no-repeat;
-        background-size: cover;
-        position: absolute;
-        right: ${ConvertorPixel2Rem(15)};
-        top: ${ConvertorPixel2Rem(14)};
-      }
-    }
-
-    div.PhoneNumber__ErrorText {
-      display: block;
-      width: ${ConvertorPixel2Rem(312)};
-      height: ${ConvertorPixel2Rem(30)};
-      font-size: ${ConvertorPixel2Rem(14)};
-      padding: ${ConvertorPixel2Rem(5)} 0;
-      color: ${themeProvider.day.errorColor};
     }
   }
 
   div.ActionButton {
+    display: none;
+    position: relative;
     width: ${ConvertorPixel2Rem(312)};
     margin: 0 auto;
     button {
