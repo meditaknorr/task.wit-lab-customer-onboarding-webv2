@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'reactstrap';
 import { Formik, Form, Field } from 'formik';
+import { useHistory } from 'react-router-dom';
 import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import Header from '../../Components/Header/Header';
@@ -17,25 +18,30 @@ function validateInput(value) {
   return error;
 }
 
-const capturedMediaHandler = (e) => {
-  switch (e.target.id) {
-    case 'Delete_Front':
-      console.log('front');
-      break;
-    case 'Delete_Back':
-      console.log('back');
-      break;
-    case 'Delete_Selfie':
-      console.log('selfie');
-      break;
-    default:
-      console.log('inconditional');
-  }
-};
-
 const Details = () => {
   const { app } = storeGetter();
   const { appString } = useLocale(app.language);
+  const history = useHistory();
+
+  const actionButtonHandler = () => {
+    history.push('/registration/details/aditionalinformation');
+  };
+
+  const capturedMediaHandler = (e) => {
+    switch (e.target.id) {
+      case 'Delete_Front':
+        console.log('front');
+        break;
+      case 'Delete_Back':
+        console.log('back');
+        break;
+      case 'Delete_Selfie':
+        console.log('selfie');
+        break;
+      default:
+        console.log('inconditional');
+    }
+  };
 
   return (
     <WebView>
@@ -153,6 +159,8 @@ const Details = () => {
           <div className="ActionButton">
             <Button
               type="button"
+              onClick={actionButtonHandler}
+              disabled={false}
             >
               {appString.translations.onboarding.continue}
             </Button>
