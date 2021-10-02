@@ -130,7 +130,7 @@ export const translations = [
     translations:
     {
       header: {
-        regStatus: 'Status',
+        regStatus: 'Estado',
         regConfirmation: 'Confirmação',
         regAdditionalInformation: 'Informações Adicionais',
         regGeneralInformation: 'Informações Gerais',
@@ -177,7 +177,7 @@ export const translations = [
         errorHeader: 'Ocorreu algo de errado',
         errorText: 'Ocorreu um problema ao submeter os seus dados. Por favor, tente novamente.',
         successHeader: 'O seu registro foi submetido com sucesso',
-        successText: 'Estamos atualmente validando os dados por si submetido. Em 48h você receberá um SMS para confirmar a criação da sua conta ',
+        successText: 'Estamos atualmente validando os dados por si submetidos. Em 48h você receberá um SMS para confirmar a criação da sua conta ',
         tryAgain: 'Tente novamente',
         seeStatus: 'Visualizar o estado',
       },
