@@ -7,7 +7,8 @@ import ScanVoterCardFront from '../Screens/Validation/ScanVoterCard/ScanVoterCar
 import ScanVoterCardBack from '../Screens/Validation/ScanVoterCard/ScanVoterCardBack';
 import Selfie from '../Screens/Validation/Selfie/Selfie';
 import Details from '../Screens/Details/Details';
-import AditionalInformation from '../Screens/Details/AditionalInformation/AditionalInformation';
+import AditionalInformation from '../Screens/Details/AdditionalInformation/AdditionalInformation';
+import Confirmation from '../Screens/Details/Confirmation/Confirmation';
 
 const AppRouter = () => (
   <Router>
@@ -19,7 +20,9 @@ const AppRouter = () => (
       <Route exact path="/registration/validation/scan/back" component={ScanVoterCardBack} />
       <Route exact path="/registration/validation/selfie" component={Selfie} />
       <Route exact path="/registration/details" component={Details} />
-      <Route exact path="/registration/details/aditionalinformation" component={AditionalInformation} />
+      <Route exact path="/registration/details/additionalinformation" component={AditionalInformation} />
+      <Route exact path="/registration/details/confirmation" component={Confirmation} />
+
     </Switch>
   </Router>
 );
