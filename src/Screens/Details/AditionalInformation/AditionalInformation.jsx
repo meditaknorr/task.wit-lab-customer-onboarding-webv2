@@ -63,47 +63,35 @@ const Details = () => {
               }}
             >
               {() => (
-                <Form className="PersonalInformation__UserDetails-Field">
+                <Form className="AddressInformation__UserDetails-Field">
                   <div className="Field">
-                    <Field id="address" type="text" name="address" placeholder="Address *" validate={validateInput} />
+                    <Field id="address" type="text" name="address" placeholder="Address *" pattern="[a-zA-Z0-9]{20}" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="firstName">First name</label>
+                    <label htmlFor="address">Address *</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="number" type="text" name="lastName" placeholder="Address *"  validate={validateInput} />
+                    <Field id="number" type="text" name="number" placeholder="Number" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="lastName">Last name</label>
+                    <label htmlFor="number">Number</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="Post Code" type="date" name="birthDate" validate={validateInput} />
+                    <Field id="postCode" name="postCode" placeholder="Post code" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="birthDate">Date of birth</label>
+                    <label htmlFor="postCode">Post code</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="Town" type="text" name="town" validate={validateInput} />
+                    <Field id="town" type="text" name="town" placeholder="Town *" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="birthPlace">Place of birth</label>
+                    <label htmlFor="town">Town *</label>
                   </div>
 
                   <div className="Field">
-                    <Field d="gender" name="gender" validate={validateInput} />
+                    <Field id="district" name="district" placeholder="District *" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="gender">Gender</label>
-                  </div>
-
-                  <div className="Field">
-                    <Field id="nationality" name="nationality" validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="nationality">Citizen / Nationality</label>
-                  </div>
-
-                  <div className="Field">
-                    <Field id="voternumber" name="voternumber" validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="voternumber">Voter number</label>
+                    <label htmlFor="gender">District *</label>
                   </div>
                 </Form>
               )}

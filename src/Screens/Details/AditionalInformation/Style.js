@@ -157,7 +157,7 @@ export const Main = styled.main`
       font-weight: bolder;
       width: 100%;
     }
-    form.PersonalInformation__UserDetails-Field {
+    form.AddressInformation__UserDetails-Field {
       position: relative;
       display: inline-block;
       width: ${ConvertorPixel2Rem(277)};
@@ -178,9 +178,13 @@ export const Main = styled.main`
             &:focus {
               border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor};
               font-size: ${ConvertorPixel2Rem(16)};
-
               & + label {
-                display: inline-block;
+                color: ${themeProvider.day.highlightColor};
+              }
+            }
+            &:placeholder-shown {
+              & + label {
+                display: none;
                 color: ${themeProvider.day.highlightColor};
               }
             }
@@ -196,6 +200,7 @@ export const Main = styled.main`
           }
 
           label {
+            display: inline-block;
             padding: ${ConvertorPixel2Rem(3)};
             background-color: ${themeProvider.day.backgroundColor};
             font-size: ${ConvertorPixel2Rem(12)};
