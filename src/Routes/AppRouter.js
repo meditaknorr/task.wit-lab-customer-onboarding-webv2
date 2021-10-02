@@ -4,9 +4,10 @@ import Onboarding from '../Screens/Onboarding/Onboarding';
 import PhoneNumber from '../Screens/Onboarding/PhoneNumber/PhoneNumber';
 import PhoneNumberConfirmation from '../Screens/Onboarding/PhoneNumberConfirmation/PhoneNumberConfirmation';
 import ScanVoterCardFront from '../Screens/Validation/ScanVoterCard/ScanVoterCardFront';
+import ScanVoterCardBack from '../Screens/Validation/ScanVoterCard/ScanVoterCardBack';
 import Selfie from '../Screens/Validation/Selfie/Selfie';
 import Details from '../Screens/Details/Details';
-import ScanVoterCardBack from '../Screens/Validation/ScanVoterCard/ScanVoterCardBack';
+import AditionalInformation from '../Screens/Details/AditionalInformation/AditionalInformation';
 
 const AppRouter = () => (
   <Router>
@@ -18,6 +19,7 @@ const AppRouter = () => (
       <Route exact path="/registration/validation/scan/back" component={ScanVoterCardBack} />
       <Route exact path="/registration/validation/selfie" component={Selfie} />
       <Route exact path="/registration/details" component={Details} />
+      <Route exact path="/registration/details/aditionalinformation" component={AditionalInformation} />
     </Switch>
   </Router>
 );
