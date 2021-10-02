@@ -6,7 +6,7 @@ const ProgressBar = () => {
   const location = useLocation();
   const [progressLevel, setProgressLevel] = useState(0);
 
-  function progressLevelHandler(pathname) {
+  const progressLevelHandler = (pathname) => {
     switch (pathname) {
       case '/registration/onboarding/':
         setProgressLevel(0);
@@ -39,7 +39,7 @@ const ProgressBar = () => {
         setProgressLevel(0);
         break;
     }
-  }
+  };
 
   useEffect(() => {
     if (location.pathname) {
