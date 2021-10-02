@@ -36,11 +36,10 @@ export const AppHeader = styled.header`
   }
 
   div.App-ScreenLabel {
-    display: ${(props) => (props.screenlabel ? 'flex' : 'none')};
+    display: flex;
     width: ${ConvertorPixel2Rem(200)};
     height: ${ConvertorPixel2Rem(42)};
     font-size: ${ConvertorPixel2Rem(16)};
-    text-transform: capitalize;
     font-weight: 400;
     align-items: center;
     justify-content: center;

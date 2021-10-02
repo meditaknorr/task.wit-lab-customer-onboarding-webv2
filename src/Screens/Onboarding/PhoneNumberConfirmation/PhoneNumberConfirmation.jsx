@@ -71,7 +71,7 @@ const PhoneNumberConfirmation = () => {
         <Header
           logo={0}
           backButton={1}
-          screenLabel={1}
+          screenLabel={appString.translations.header.regPhoneNumber}
           languageButton={1}
           language={app.language}
         />
