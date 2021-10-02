@@ -92,43 +92,43 @@ const Details = () => {
               {() => (
                 <Form className="PersonalInformation__UserDetails-Field">
                   <div className="Field">
-                    <Field id="firstName" type="text" name="firstName" validate={validateInput} />
+                    <Field id="firstName" type="text" name="firstName" placeholder="First name" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="firstName">First name</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="lastName" type="text" name="lastName" validate={validateInput} />
+                    <Field id="lastName" type="text" name="lastName" placeholder="Last name" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="lastName">Last name</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="birthDate" type="date" name="birthDate" validate={validateInput} />
+                    <Field id="birthDate" name="birthDate" placeholder="DD/MM/AAAA" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="birthDate">Date of birth</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="birthDate" type="text" name="birthPlace" validate={validateInput} />
+                    <Field id="birthDate" type="text" name="birthPlace" placeholder="Place of birth" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="birthPlace">Place of birth</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="gender" name="gender" validate={validateInput} />
+                    <Field id="gender" name="gender" placeholder="Gender" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="gender">Gender</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="nationality" name="nationality" validate={validateInput} />
+                    <Field id="nationality" name="nationality" placeholder="Citizen / Nationality" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="nationality">Citizen / Nationality</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="voternumber" name="voternumber" validate={validateInput} />
+                    <Field id="voternumber" name="voternumber" placeholder="Voter card number" validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="voternumber">Voter number</label>
                   </div>
