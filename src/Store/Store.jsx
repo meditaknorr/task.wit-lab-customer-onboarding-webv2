@@ -39,16 +39,19 @@ const initialState = [
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_STATE':
-      return [
-        ...state, action.payload,
-      ];
+      let alreadyExists = state.find(item => item.id === action.payload.id)
+      if (alreadyExists)
+        alreadyExists = action.payload
+      else
+        state.push(action.payload)
+      return state;
     case 'UPDATE_STATE':
       return [
         stateFilter(state, action.payload.id),
         action.payload,
       ];
     case 'REMOVE_STATE':
-      return [state.filter((dataserver) => dataserver.id !== action.payload.id)];
+      return state.filter((dataserver) => dataserver.id !== action.payload.id);
     case 'CHANGE_APP_LANGUAGE':
       return [
         stateFilter(state, action.payload.id),

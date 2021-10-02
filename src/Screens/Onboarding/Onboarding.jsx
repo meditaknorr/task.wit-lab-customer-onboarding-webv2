@@ -19,7 +19,7 @@ const Onboarding = () => {
         <Header
           logo={1}
           backButton={0}
-          screenLabel={0}
+          screenLabel={''}
           languageButton={1}
           language={language.language}
         />

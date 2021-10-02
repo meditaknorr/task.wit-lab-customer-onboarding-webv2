@@ -5,6 +5,7 @@ export const themeProvider = {
     fontFamily: '\'Inter\', sans-serif',
     fontSize: 16,
     fontColor: '#454545',
+    secondaryTextColor: '#333',
     lineColor: '#EDEDED',
     headerColor: '#F6F6F6',
     errorColor: '#E60000',

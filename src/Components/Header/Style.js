@@ -15,6 +15,7 @@ export const AppHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: ${themeProvider.day.headerColor};
 
   /* image size scalled to try fit well on screen*/
   div.App-logo {
