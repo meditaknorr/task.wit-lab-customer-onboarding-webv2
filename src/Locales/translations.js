@@ -23,7 +23,13 @@ export const translations = [
     translations:
     {
       header: {
-        phoneNumber: 'phone number',
+        regStatus: 'Status',
+        regConfirmation: 'Confirmation',
+        additionalInformation: 'Additional Information',
+        regGeneralInformation: 'General Information',
+        regVoterCard: 'Voter Card',
+        regSelfie: 'Selfie',
+        regPhoneNumber: 'Phone Number',
       },
       onboarding: {
         createYour: 'Create your',
@@ -91,7 +97,13 @@ export const translations = [
     translations:
     {
       header: {
-        phoneNumber: 'número de Telefone',
+        regStatus: 'Status',
+        regConfirmation: 'Confirmação',
+        regAdditionalInformation: 'Informações Adicionais',
+        regGeneralInformation: 'Informações Gerais',
+        regVoterCard: 'Cartão de Eleitor',
+        regSelfie: 'Selfie',
+        regPhoneNumber: 'Número de Telefone',
       },
       onboarding: {
         createYour: 'Crie a sua',
@@ -160,7 +172,13 @@ export const translations = [
     translations:
     {
       header: {
-        phoneNumber: 'numero di telefono',
+        regStatus: 'Stato',
+        regConfirmation: 'Conferma',
+        regAdditionalInformation: 'Informazioni Aggiuntive',
+        regGeneralInformation: 'Informazioni Generali',
+        regVoterCard: 'Carta del Voto',
+        regSelfie: 'Selfie',
+        regPhoneNumber: 'Numero di Telefono',
       },
       onboarding: {
         createYour: 'Crea il tuo',
