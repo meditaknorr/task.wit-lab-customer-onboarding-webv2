@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 
 export const WebActivity = styled.div`
@@ -8,4 +9,5 @@ export const WebActivity = styled.div`
   background: ${themeProvider.day.backgroundColor};
   font-family: ${themeProvider.day.fontFamily}!important;
   color: ${themeProvider.day.fontColor};
+  margin: ${ConvertorPixel2Rem(56)} 0 0 0;
 `;

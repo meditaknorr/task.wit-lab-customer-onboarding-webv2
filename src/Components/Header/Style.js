@@ -11,7 +11,9 @@ export const AppHeader = styled.header`
   height: ${ConvertorPixel2Rem(56)};
   background-color: ${(props) => (props.screenlabel ? themeProvider.day.headerColor : themeProvider.day.backgroundColor)};
   padding: 0 ${ConvertorPixel2Rem(24)};
-  position: relative;
+  position: fixed;
+  top: 0;
+  z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
