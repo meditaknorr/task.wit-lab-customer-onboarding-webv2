@@ -29,6 +29,12 @@ const ProgressBar = () => {
       case '/registration/details':
         setProgressLevel(7);
         break;
+      case '/registration/details/additionalinformation':
+        setProgressLevel(8);
+        break;
+      case '/registration/details/confirmation':
+        setProgressLevel(10);
+        break;
       default:
         setProgressLevel(0);
         break;
