@@ -22,6 +22,11 @@ export const translations = [
     ],
     translations:
     {
+      validation: {
+        validationHeader: 'Document Scan and Selfie',
+        validationText: 'On the next screens, you are required to scan your ID card (front side and back) as also, you will have to take a selfie.',
+        continue: 'Continue',
+      },
       modal: {
         cancel: 'Cancel',
         delete: 'Delete',
@@ -39,6 +44,7 @@ export const translations = [
         regVoterCard: 'Voter Card',
         regSelfie: 'Selfie',
         regPhoneNumber: 'Phone Number',
+        regScanSelfie: 'Scan and Selfie',
       },
       onboarding: {
         createYour: 'Create your',
@@ -148,6 +154,11 @@ export const translations = [
     ],
     translations:
     {
+      validation: {
+        validationHeader: 'Digitalização do documento e selfie',
+        validationText: 'Nos próximos passos, digitalize o seu cartão de identificação (frente e verso) e uma foto selfie.',
+        continue: 'Prosseguir',
+      },
       modal: {
         cancel: 'Cancelar',
         delete: 'Apagar',
@@ -165,6 +176,7 @@ export const translations = [
         regVoterCard: 'Cartão de Eleitor',
         regSelfie: 'Selfie',
         regPhoneNumber: 'Número de Telefone',
+        regScanSelfie: 'Digitalização e Selfie',
       },
       onboarding: {
         createYour: 'Crie a sua',
@@ -195,7 +207,7 @@ export const translations = [
         centerPhoto: 'Mova e centralize o cartão dentro da moldura',
       },
       confirmPhoto: {
-        voterCard: 'Cartão de eleitor',
+        voterCard: 'Cartão de Eleitor',
         frontSidePhoto: 'Foto frontal do seu cartão de eleitor',
         backSidePhoto: 'Foto do verso do seu cartão de eleitor',
         usePhoto: 'Usar esta foto',
@@ -275,6 +287,11 @@ export const translations = [
     ],
     translations:
     {
+      validation: {
+        validationHeader: 'Scansione documento di identità e selfie',
+        validationText: "Nelle schermate successive, ti verrà richiesto di scansionare la tua carta d'identità (fronte e retro) e dovrai anche farti un selfie.",
+        continue: 'Proseguir',
+      },
       modal: {
         cancel: 'Annulla',
         delete: 'Elimina',
@@ -292,6 +309,7 @@ export const translations = [
         regVoterCard: 'Carta del Voto',
         regSelfie: 'Selfie',
         regPhoneNumber: 'Numero di Telefono',
+        regScanSelfie: 'Scansione e selfie',
       },
       onboarding: {
         createYour: 'Crea il tuo',

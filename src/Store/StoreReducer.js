@@ -27,17 +27,14 @@ export const initialState = {
     countryCode: null,
     phoneNumber: null,
     countryName: null,
-    storePropertyName: null,
-    voterCardFront: null,
-    voterCardBack: null,
     selfie: null,
     OTP: '1010',
     personalDetails: [],
   },
+  media: [],
 };
 
 export const reducer = (state, action) => {
-  console.log(action);
   switch (action.type) {
     case 'SET_USER':
       return {
@@ -54,6 +51,40 @@ export const reducer = (state, action) => {
           ...state.app,
           ...action.payload,
         },
+      };
+    case 'ADD_MEDIA':
+      // eslint-disable-next-line no-case-declarations
+      const alreadyExists = state.media.find((block) => block.id === action.payload.id);
+      if (alreadyExists) {
+        return {
+          ...state,
+          media: [
+            ...state.media.filter((block) => block.id !== action.payload.id),
+            action.payload,
+          ],
+        };
+      }
+      return {
+        ...state,
+        media: [
+          ...state.media,
+          action.payload,
+        ],
+      };
+    case 'UPDATE_MEDIA':
+      return {
+        ...state,
+        media: [
+          ...state.media.filter((block) => block.id !== action.payload.id),
+          action.payload,
+        ],
+      };
+    case 'REMOVE_MEDIA':
+      return {
+        ...state,
+        media: [
+          ...state.media.filter((block) => block.id !== action.payload.id),
+        ],
       };
     default:
       return state;
