@@ -25,9 +25,9 @@ const RegistrationSuccessful = () => {
             <div className="RegistrationStatus__Pane-Icon" />
             <div className="RegistrationStatus__Pane-HeadingText">
               {/* eslint-disable-next-line max-len */}
-              <h1>{appString.translations.confirmation.successHeader}</h1>
+              <h1>{appString.translations.status.successStatusHeading}</h1>
               {/* eslint-disable-next-line max-len */}
-              <h2>{appString.translations.confirmation.successText}</h2>
+              <h2>{appString.translations.status.successStatusText}</h2>
             </div>
           </div>
           <div className="ActionButton">
@@ -35,7 +35,7 @@ const RegistrationSuccessful = () => {
               type="button"
             >
               {/* eslint-disable-next-line max-len */}
-              {appString.translations.confirmation.seeStatus}
+              {appString.translations.status.ok}
             </Button>
           </div>
         </Main>

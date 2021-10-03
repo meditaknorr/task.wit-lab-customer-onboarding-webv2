@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'reactstrap';
-import { storeGetter } from '../../../Hooks/useStore';
-import { useLocale } from '../../../Hooks/useLocale';
-import Header from '../../../Components/Header/Header';
-import WebView from '../../../Layouts/WebView/WebView';
+import { storeGetter } from '../../Hooks/useStore';
+import { useLocale } from '../../Hooks/useLocale';
+import Header from '../../Components/Header/Header';
+import WebView from '../../Layouts/WebView/WebView';
 import { Main, RegistrationStatusScreen } from './Style';
 
-const RegistrationUnsuccessful = () => {
+const Status = () => {
   const { app } = storeGetter();
   const { appString } = useLocale(app.language);
+
+  useEffect(() => {
+    const pageJump = setTimeout(() => {
+      alert(1010);
+    }, 5000);
+
+    return () => {
+      clearTimeout(pageJump);
+    };
+  }, []);
 
   return (
     <WebView>
@@ -25,9 +35,9 @@ const RegistrationUnsuccessful = () => {
             <div className="RegistrationStatus__Pane-Icon" />
             <div className="RegistrationStatus__Pane-HeadingText">
               {/* eslint-disable-next-line max-len */}
-              <h1>{appString.translations.status.errorStatusHeading}</h1>
+              <h1>{appString.translations.status.loadingStatusHeading}</h1>
               {/* eslint-disable-next-line max-len */}
-              <h2>{appString.translations.status.errorStatusText}</h2>
+              <h2>{appString.translations.status.loadingStatusText}</h2>
             </div>
           </div>
           <div className="ActionButton">
@@ -35,7 +45,7 @@ const RegistrationUnsuccessful = () => {
               type="button"
             >
               {/* eslint-disable-next-line max-len */}
-              {appString.translations.status.tryAgain}
+              {appString.translations.status.ok}
             </Button>
           </div>
         </Main>
@@ -44,4 +54,4 @@ const RegistrationUnsuccessful = () => {
   );
 };
 
-export default RegistrationUnsuccessful;
+export default Status;
