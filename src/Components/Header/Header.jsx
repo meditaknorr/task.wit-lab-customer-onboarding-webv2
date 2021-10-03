@@ -45,6 +45,10 @@ const Header = ({
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
     ? languageSetter(`${e.target.id}`) : languageSetter(`${e.target.parentNode.id}`));
 
+  const backButtonHandler = () => {
+    window.history.back();
+  };
+
   return (
     <>
       <AppHeader
@@ -57,7 +61,7 @@ const Header = ({
         <div className="App-logo">
           {screenLabel !== 'Estado' && screenLabel !== 'Status' && screenLabel !== 'Stato' && <Logo />}
         </div>
-        <div className="App-BackButton" onClick={() => window.history.back()} onKeyPress={() => window.history.back()} role="button" tabIndex="0"> </div>
+        <div className="App-BackButton" onClick={backButtonHandler} onKeyPress={backButtonHandler} role="button" tabIndex="0"> </div>
         <div className="App-ScreenLabel">{screenLabel }</div>
         <div className="App-LanguageSwitcher" onClick={languageSwitcher} onKeyPress={languageSwitcher} role="button" tabIndex="0">
           <span className="App-Language__Current">{language}</span>

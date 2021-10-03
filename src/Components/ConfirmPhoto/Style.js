@@ -8,6 +8,7 @@ export const ConfirmPhotoScreen = styled.div`
     justify-content: center;
     grid-template-columns: 100%;
     align-content: space-between;
+    margin: ${ConvertorPixel2Rem(56)} 0 0 0;
     grid-gap: ${ConvertorPixel2Rem(10)};
     overflow-x: hidden;
     text-align: center;
@@ -38,6 +39,14 @@ export const ConfirmPhotoScreen = styled.div`
     }
 
     .footer {
-      padding: 0 ${ConvertorPixel2Rem(24)};
+      width: ${ConvertorPixel2Rem(312)};
+      margin: 0 auto;
+      bottom: 0;
+      button {
+        width: 100%;
+        font-size: ${ConvertorPixel2Rem(16)};
+        height: ${ConvertorPixel2Rem(44)};
+        border-radius: ${ConvertorPixel2Rem(6)};
+        border: 0;
     }
 `;

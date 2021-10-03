@@ -8,18 +8,18 @@ import ConfirmPhoto from '../../../Components/ConfirmPhoto/ConfirmPhoto';
 const Selfie = () => {
   const router = useHistory();
   const dispatch = storeSetter();
-  const { app, user } = storeGetter();
+  const { app, media } = storeGetter();
   const { appString } = useLocale(app.language);
   // eslint-disable-next-line max-len
-  const [photo, setPhoto] = useState(user.id === 2 && user.selfie);
+  const [photo, setPhoto] = useState(media.find((storeProperty) => (storeProperty.id === 6 && storeProperty.selfie)));
   const selfie = { id: 6, storePropertyName: 'selfie' };
   const overlayMode = 1;
 
   const takeAnotherPhoto = () => {
     dispatch({
-      type: 'SET_USER',
+      type: 'UPDATE_MEDIA',
       payload: {
-        id: 2,
+        id: 6,
         [selfie.storePropertyName]: null,
       },
     });
@@ -36,7 +36,7 @@ const Selfie = () => {
             footer=""
             overlayMode={overlayMode}
             setPhoto={setPhoto}
-            closeCamera={() => { router.push('/registration/validation/scan-voter-card-back'); }}
+            closeCamera={() => { router.push('/registration/validation/scan/front'); }}
             storeProperty={selfie}
           />
         )
@@ -45,7 +45,7 @@ const Selfie = () => {
             description={appString.translations.selfie.selfie}
             photo={photo}
             takeAnotherPhoto={takeAnotherPhoto}
-            usePhoto={() => { console.log('TODO -> redirect to review details'); }}
+            usePhoto={() => { router.push('/registration/details'); }}
             storeProperty={selfie}
             screenLabel={appString.translations.selfie.selfie}
             progressBar={4}

@@ -39,7 +39,7 @@ const ConfirmPhoto = ({
 
   const useThisPhoto = () => {
     dispatch({
-      type: 'SET_USER',
+      type: 'ADD_MEDIA',
       payload: {
         id: storeProperty.id,
         [storeProperty.storePropertyName]: photo[storeProperty.storePropertyName],
@@ -58,6 +58,7 @@ const ConfirmPhoto = ({
         language={app.language}
         progressBarPercent={progressBar}
       />
+
       <ConfirmPhotoScreen overlayMode={overlayMode}>
         <div className="confirm-photo">
           <div className="confirm-photo__description">

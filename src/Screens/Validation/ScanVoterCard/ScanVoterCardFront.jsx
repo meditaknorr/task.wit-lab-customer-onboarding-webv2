@@ -7,18 +7,19 @@ import ConfirmPhoto from '../../../Components/ConfirmPhoto/ConfirmPhoto';
 
 const ScanVoterCardFront = () => {
   const dispatch = storeSetter();
-  const { app, user } = storeGetter();
+  const { app, media } = storeGetter();
   // eslint-disable-next-line max-len
-  const [photo, setPhoto] = useState(user.id === 2 && user.voterCardFront);
+  const [photo, setPhoto] = useState(media.find((storeProperty) => (storeProperty.id === 4 && storeProperty.voterCardFront)));
   const { appString } = useLocale(app.language);
   const router = useHistory();
   const overlayMode = 0;
-  const voterCardFront = { id: 2, storePropertyName: 'voterCardFront' };
+  const voterCardFront = { id: 4, storePropertyName: 'voterCardFront' };
 
   const takeAnotherPhoto = () => {
     dispatch({
-      type: 'SET_USER',
+      type: 'UPDATE_MEDIA',
       payload: {
+        id: 4,
         [voterCardFront.storePropertyName]: null,
       },
     });
@@ -36,7 +37,7 @@ const ScanVoterCardFront = () => {
             overlayMode={overlayMode}
             setPhoto={setPhoto}
             closeCamera={() => {
-              router.push('/registration/onboarding/phonenumber/confirmation');
+              router.push('/registration/validation');
             }}
             storeProperty={voterCardFront}
           />
@@ -47,7 +48,7 @@ const ScanVoterCardFront = () => {
             photo={photo}
             takeAnotherPhoto={takeAnotherPhoto}
             usePhoto={() => {
-              router.push('/registration/validation/scan/front');
+              router.push('/registration/validation/scan/back');
             }}
             storeProperty={voterCardFront}
             screenLabel={appString.translations.confirmPhoto.voterCard}
