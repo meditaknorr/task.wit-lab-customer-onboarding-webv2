@@ -18,10 +18,8 @@ const Details = () => {
       case '/registration/details/confirmation/successful/':
         setIsSubmitted(true);
         break;
-      case '/registration/details/confirmation/unsuccessful/':
-        setIsSubmitted(false);
-        break;
       default:
+      case '/registration/details/confirmation/unsuccessful/':
         setIsSubmitted(false);
         break;
     }
@@ -35,7 +33,7 @@ const Details = () => {
 
   return (
     <WebView>
-      <ConfirmationScreen submissionStatus={isSubmitted}>
+      <ConfirmationScreen>
         <Header
           logo={0}
           backButton={1}
@@ -43,20 +41,22 @@ const Details = () => {
           languageButton={1}
           language={app.language}
         />
-        <Main>
+        <Main submissionStatus={isSubmitted}>
           <div className="Confirmation__Pane">
             <div className="Confirmation__Pane-Icon" />
             <div className="Confirmation__Pane-HeadingText">
-              <h1>Your registration is submitted</h1>
               {/* eslint-disable-next-line max-len */}
-              <h2>We are validating your identity. In 48h you will receive an SMS to confirm your account creation.</h2>
+              <h1>{isSubmitted ? appString.translations.confirmation.successHeader : appString.translations.confirmation.errorHeader}</h1>
+              {/* eslint-disable-next-line max-len */}
+              <h2>{isSubmitted ? appString.translations.confirmation.successText : appString.translations.confirmation.errorText}</h2>
             </div>
           </div>
           <div className="ActionButton">
             <Button
               type="button"
             >
-              {appString.translations.onboarding.continue}
+              {/* eslint-disable-next-line max-len */}
+              {isSubmitted ? appString.translations.confirmation.seeStatus : appString.translations.confirmation.tryAgain}
             </Button>
           </div>
         </Main>
