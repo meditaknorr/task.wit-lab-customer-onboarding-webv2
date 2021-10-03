@@ -14,7 +14,7 @@ import { AppHeader } from './Style';
  * >> Display selectable only languages that are not equal to the device's browser.
  * @param logo {0/1}
  * @param backButton {0/1}
- * @param screenLabel {0/1}
+ * @param screenLabel {0/1/string}
  * @param languageButton {0/1}
  * @param language {string}
  * @param languageSetter {setter}
@@ -54,7 +54,9 @@ const Header = ({
         trigger={trigger}
         languagebutton={languageButton}
       >
-        <div className="App-logo"><Logo /></div>
+        <div className="App-logo">
+          {screenLabel !== 'Estado' && screenLabel !== 'Status' && screenLabel !== 'Stato' && <Logo />}
+        </div>
         <div className="App-BackButton" onClick={() => window.history.back()} onKeyPress={() => window.history.back()} role="button" tabIndex="0"> </div>
         <div className="App-ScreenLabel">{screenLabel }</div>
         <div className="App-LanguageSwitcher" onClick={languageSwitcher} onKeyPress={languageSwitcher} role="button" tabIndex="0">
@@ -87,7 +89,7 @@ const Header = ({
           </div>
         </div>
         <div className="App-ProgressBar">
-          <ProgressBar />
+          {screenLabel !== 'Estado' && screenLabel !== 'Status' && screenLabel !== 'Stato' && <ProgressBar />}
         </div>
       </AppHeader>
     </>
@@ -97,7 +99,7 @@ const Header = ({
 Header.propTypes = {
   logo: PropTypes.number.isRequired,
   backButton: PropTypes.number.isRequired,
-  screenLabel: PropTypes.number.isRequired,
+  screenLabel: PropTypes.string.isRequired,
   languageButton: PropTypes.number.isRequired,
   language: PropTypes.string.isRequired,
 };

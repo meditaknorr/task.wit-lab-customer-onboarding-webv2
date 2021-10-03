@@ -9,7 +9,7 @@ export const AppHeader = styled.header`
   grid-area: header;
   width: 100%;
   height: ${ConvertorPixel2Rem(56)};
-  background-color: ${(props) => (props.screenlabel ? themeProvider.day.headerColor : themeProvider.day.backgroundColor)};
+  background-color: ${(props) => (props.screenlabel && props.screenlabel !== 'Estado' && props.screenlabel !== 'Status' && props.screenlabel !== 'Stato' ? themeProvider.day.headerColor : themeProvider.day.backgroundColor)};
   padding: 0 ${ConvertorPixel2Rem(24)};
   position: fixed;
   top: 0;
