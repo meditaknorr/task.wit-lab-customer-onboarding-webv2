@@ -18,6 +18,8 @@ export const OnborardingScreen = styled.div`
 
 export const Main = styled.main`
   grid-area: main;
+  position: relative;
+  overflow-y: auto;
   padding: ${ConvertorPixel2Rem(27)};
   display: flex;
   align-items: center;
@@ -103,10 +105,11 @@ export const Main = styled.main`
 
   div.ActionButton {
     width: ${ConvertorPixel2Rem(312)};
+    margin: ${ConvertorPixel2Rem(50)} 0 0 0;
 
     button.ActionButton-StartRegistration {
       width: 100%;
-      height: ${ConvertorPixel2Rem(44)}
+      height: ${ConvertorPixel2Rem(44)};
       margin: 0 0 ${ConvertorPixel2Rem(15)} 0;
       background-color: ${themeProvider.day.highlightColor};
     }
@@ -114,7 +117,7 @@ export const Main = styled.main`
       width: 100%;
       font-size: ${ConvertorPixel2Rem(16)};
       height: ${ConvertorPixel2Rem(44)};
-      margin: ${ConvertorPixel2Rem(14)} 0 0 0;
+      margin: ${ConvertorPixel2Rem(0)} 0 0 0;
       display: flex;
       align-items: center;
       justify-content: center;
