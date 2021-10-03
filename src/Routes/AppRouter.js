@@ -16,7 +16,7 @@ import RegistrationUnsuccessful from '../Screens/Status/Unsuccessful/Registratio
 const AppRouter = () => (
   <Router>
     <Switch>
-      <Route path="/registration/onboarding/" component={Onboarding} />
+      <Route exact path="/registration/onboarding/" component={Onboarding} />
       <Route exact path="/registration/onboarding/phonenumber" component={PhoneNumber} />
       <Route exact path="/registration/onboarding/phonenumber/confirmation" component={PhoneNumberConfirmation} />
 

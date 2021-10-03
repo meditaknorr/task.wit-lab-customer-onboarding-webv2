@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button } from 'reactstrap';
 import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
@@ -9,16 +9,6 @@ import { Main, RegistrationStatusScreen } from './Style';
 const Status = () => {
   const { app } = storeGetter();
   const { appString } = useLocale(app.language);
-
-  useEffect(() => {
-    const pageJump = setTimeout(() => {
-      alert(1010);
-    }, 5000);
-
-    return () => {
-      clearTimeout(pageJump);
-    };
-  }, []);
 
   return (
     <WebView>

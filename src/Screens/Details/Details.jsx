@@ -19,7 +19,7 @@ function validateInput(value) {
 }
 
 const Details = () => {
-  const { app } = storeGetter();
+  const { app, user } = storeGetter();
   const { appString } = useLocale(app.language);
   const history = useHistory();
 
@@ -56,29 +56,33 @@ const Details = () => {
         <Modal>
           <div className="Modal__Pane">
             <div className="Modal__Pane-Information">
-              <h1>Delete ID card photo</h1>
+              <h1>{appString.translations.modal.deleteCardPhoto}</h1>
               {/* eslint-disable-next-line max-len */}
-              <h2>Are you sure you want to delete the photo of the back of your national ID card?</h2>
+              <h2>{appString.translations.modal.deleteFrontPhotoConfirmation}</h2>
             </div>
             <div className="Modal__Pane-ActionButton">
-              <button type="button" className="Modal__Pane-ActionButton-Cancel">Cancel</button>
-              <button type="button" className="Modal__Pane-ActionButton-Delete">Delete</button>
+              <button type="button" className="Modal__Pane-ActionButton-Cancel">{appString.translations.modal.cancel}</button>
+              <button type="button" className="Modal__Pane-ActionButton-Delete">{appString.translations.modal.delete}</button>
             </div>
           </div>
         </Modal>
         <Main>
           <div className="HeadingText">
-            <h1>Review your details</h1>
-            <h2>Review and confirm the information. If needed, you can edit it.</h2>
+            <h1>{appString.translations.generalInformation.reviewDetails}</h1>
+            <h2>{appString.translations.generalInformation.reviewConfirmInformation}</h2>
           </div>
 
           <div className="PhoneDetails">
-            <h3 className="PhoneDetails__Label">Phone number</h3>
-            <h2 className="PhoneDetails__UserPhone">+258 847841000</h2>
+            <h3 className="PhoneDetails__Label">{appString.translations.generalInformation.phoneNumber}</h3>
+            <h2 className="PhoneDetails__UserPhone">
+              {(user.phoneCallingCode || app.defaultCountryCallingCode)}
+              {' '}
+              {user.phone}
+            </h2>
           </div>
 
           <div className="PersonalInformation">
-            <h3 className="PersonalInformation__Label">Personal Information</h3>
+            <h3 className="PersonalInformation__Label">{appString.translations.generalInformation.personalInformation}</h3>
             <Formik
               initialValues={{
                 firstName: '',
@@ -92,45 +96,45 @@ const Details = () => {
               {() => (
                 <Form className="PersonalInformation__UserDetails-Field">
                   <div className="Field">
-                    <Field id="firstName" type="text" name="firstName" placeholder="First name" validate={validateInput} />
+                    <Field id="firstName" type="text" name="firstName" placeholder={appString.translations.generalInformation.firstName} validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="firstName">First name</label>
+                    <label htmlFor="firstName">{appString.translations.generalInformation.firstName}</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="lastName" type="text" name="lastName" placeholder="Last name" validate={validateInput} />
+                    <Field id="lastName" type="text" name="lastName" placeholder={appString.translations.generalInformation.lastName} validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="lastName">Last name</label>
+                    <label htmlFor="lastName">{appString.translations.generalInformation.lastName}</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="birthDate" name="birthDate" placeholder="DD/MM/AAAA" validate={validateInput} />
+                    <Field id="birthDate" name="birthDate" placeholder={appString.translations.generalInformation.dateOfBirth} validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="birthDate">Date of birth</label>
+                    <label htmlFor="birthDate">{appString.translations.generalInformation.dateOfBirth}</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="birthDate" type="text" name="birthPlace" placeholder="Place of birth" validate={validateInput} />
+                    <Field id="birthDate" type="text" name="birthPlace" placeholder={appString.translations.generalInformation.placeOfBirth} validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="birthPlace">Place of birth</label>
+                    <label htmlFor="birthPlace">{appString.translations.generalInformation.placeOfBirth}</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="gender" name="gender" placeholder="Gender" validate={validateInput} />
+                    <Field id="gender" name="gender" placeholder={appString.translations.generalInformation.gender} validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="gender">Gender</label>
+                    <label htmlFor="gender">{appString.translations.generalInformation.gender}</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="nationality" name="nationality" placeholder="Citizen / Nationality" validate={validateInput} />
+                    <Field id="nationality" name="nationality" placeholder={appString.translations.generalInformation.citizenNationality} validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="nationality">Citizen / Nationality</label>
+                    <label htmlFor="nationality">{appString.translations.generalInformation.citizenNationality}</label>
                   </div>
 
                   <div className="Field">
-                    <Field id="voternumber" name="voternumber" placeholder="Voter card number" validate={validateInput} />
+                    <Field id="voternumber" name="voternumber" placeholder={appString.translations.generalInformation.voterNumber} validate={validateInput} />
                     {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="voternumber">Voter number</label>
+                    <label htmlFor="voternumber">{appString.translations.generalInformation.voterNumber}</label>
                   </div>
                 </Form>
               )}
@@ -138,7 +142,7 @@ const Details = () => {
           </div>
 
           <div className="AttachedPhotos">
-            <h3 className="AttachedPhotos__Label">Attached photos</h3>
+            <h3 className="AttachedPhotos__Label">{appString.translations.generalInformation.attachedPhotos}</h3>
             <div className="AttachedPhotos__Document-Front">
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}

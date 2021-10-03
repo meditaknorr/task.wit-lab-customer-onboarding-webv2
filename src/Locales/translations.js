@@ -22,6 +22,15 @@ export const translations = [
     ],
     translations:
     {
+      modal: {
+        cancel: 'Cancel',
+        delete: 'Delete',
+        deleteCardPhoto: 'Delete ID card photo',
+        deleteFrontPhotoConfirmation: 'Are you sure you want to delete the photo of the front of your national ID card?',
+        deleteBackPhotoConfirmation: 'Are you sure you want to delete the photo of the back of your national ID card?',
+        deleteSelfiePhoto: 'Delete Selfie photo',
+        deleteSelfiePhotoConfirmation: 'Are you sure you want to delete this photo, your selfie photo?',
+      },
       header: {
         regStatus: 'Status',
         regConfirmation: 'Confirmation',
@@ -139,6 +148,15 @@ export const translations = [
     ],
     translations:
     {
+      modal: {
+        cancel: 'Cancelar',
+        delete: 'Apagar',
+        deleteCardPhoto: 'Apagar foto do cartão de identificação',
+        deleteFrontPhotoConfirmation: 'Tem certeza de que deseja apagar a foto frontal do seu cartão de identificação?',
+        deleteBackPhotoConfirmation: 'Tem certeza de que deseja apagar a foto do verso do seu cartão de identificação??',
+        deleteSelfiePhoto: 'Excluir foto de selfie',
+        deleteSelfiePhotoConfirmation: 'Tem certeza que deseja excluir esta foto, sua foto de selfie?',
+      },
       header: {
         regStatus: 'Estado',
         regConfirmation: 'Confirmação',
@@ -257,6 +275,15 @@ export const translations = [
     ],
     translations:
     {
+      modal: {
+        cancel: 'Annulla',
+        delete: 'Elimina',
+        deleteCardPhoto: "Elimina foto carta d'identità",
+        deleteFrontPhotoConfirmation: "Sei sicuro di voler eliminare la foto del fronte della tua carta d'identità nazionale?",
+        deleteBackPhotoConfirmation: "Sei sicuro di voler eliminare la foto del retro della tua carta d'identità nazionale?",
+        deleteSelfiePhoto: 'Elimina foto selfie',
+        deleteSelfiePhotoConfirmation: 'Sei sicuro di voler eliminare questa foto, la tua foto selfie?',
+      },
       header: {
         regStatus: 'Stato',
         regConfirmation: 'Conferma',
