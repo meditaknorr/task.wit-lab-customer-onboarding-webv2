@@ -46,7 +46,9 @@ const Onboarding = () => {
             <Button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/registration/onboarding/phonenumber')}>
               {appString.translations.onboarding.buttonStart}
             </Button>
-            <div className="ActionButton-CheckStatus">
+            {/* eslint-disable-next-line max-len */}
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
+            <div className="ActionButton-CheckStatus" role="button" onClick={() => history.push('/registration/status/successful')}>
               <span>{appString.translations.onboarding.alreadyRegstered}</span>
               <span>{appString.translations.onboarding.seeStatus}</span>
             </div>

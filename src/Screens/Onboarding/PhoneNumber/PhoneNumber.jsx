@@ -116,7 +116,7 @@ const PhoneNumber = () => {
                 size={targetCountryHelper('nationalNumberLength', (user.countryCode || app.defaultCountryCode))}
                 placeholder={targetCountryHelper('dummyNumber', (user.countryCode || app.defaultCountryCode))}
                 className="PhoneNumber__NumberField-Input"
-                value={user.phone}
+                value={phoneNumber}
                 onChange={phonenumberChecker}
                 autoComplete="off"
               />

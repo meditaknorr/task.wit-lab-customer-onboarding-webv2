@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { storeGetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import Header from '../../../Components/Header/Header';
@@ -8,6 +8,7 @@ import WebView from '../../../Layouts/WebView/WebView';
 import { Main, ConfirmationScreen } from './Style';
 
 const Details = () => {
+  const history = useHistory();
   const { app } = storeGetter();
   const { appString } = useLocale(app.language);
   const location = useLocation();
@@ -54,6 +55,7 @@ const Details = () => {
           <div className="ActionButton">
             <Button
               type="button"
+              onClick={() => history.push('/registration/status')}
             >
               {/* eslint-disable-next-line max-len */}
               {isSubmitted ? appString.translations.confirmation.seeStatus : appString.translations.confirmation.tryAgain}

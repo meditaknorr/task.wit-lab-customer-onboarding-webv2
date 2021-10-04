@@ -14,79 +14,6 @@ export const DetailsScreen = styled.div`
   row-gap: 0;
 `;
 
-export const Modal = styled.div`
-  z-index: 100;
-  position: fixed;
-  background-color: ${themeProvider.day.modalColor};
-  width: 100%;
-  height: 100%;
-  display: ${(props) => (props.status ? 'flex' : 'none')};
-  align-items: center;
-  justify-content: center;
-
-  div.Modal__Pane {
-    position: relative;
-    padding: ${ConvertorPixel2Rem(24)};
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-    background-color: ${themeProvider.day.backgroundColor};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 3px ${themeProvider.day.modalShadow};
-    border-radius: ${ConvertorPixel2Rem(6)};
-    width: ${ConvertorPixel2Rem(296)};
-    height: ${ConvertorPixel2Rem(210)};
-
-    div.Modal__Pane-Information {
-      display: block;
-      width: 100%;
-      text-align: left;
-
-      h1 {
-        width: ${ConvertorPixel2Rem(230)};
-        height: ${ConvertorPixel2Rem(24)};
-        font-size: ${ConvertorPixel2Rem(18)};
-        margin: 0 0 ${ConvertorPixel2Rem(13)} 0;
-      }
-
-      h2 {
-        width: ${ConvertorPixel2Rem(250)};
-        height: ${ConvertorPixel2Rem(40)};
-        font-size: ${ConvertorPixel2Rem(14)};
-        color: ${themeProvider.day.modalH2Color};
-        opacity: 0.8;
-      }
-    }
-    div.Modal__Pane-ActionButton {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 24px 0 0 0;
-      width: 100%;
-
-      button {
-        width: ${ConvertorPixel2Rem(118)};
-        height: ${ConvertorPixel2Rem(44)};
-        border-radius: ${ConvertorPixel2Rem(6)};
-        background: ${themeProvider.day.modalWhite};
-        &:hover {
-          cursor: pointer;
-        }
-
-        &.Modal__Pane-ActionButton-Delete {
-          background: ${themeProvider.day.modalRed};
-          color: ${themeProvider.day.modalWhite};
-        }
-        &.Modal__Pane-ActionButton-Cancel {
-          background: ${themeProvider.day.modalWhite};
-          color: ${themeProvider.day.modalGrey};
-          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.modalGrey};
-        }
-      }
-    }
-  }
-`;
-
 export const Main = styled.main`
   grid-area: main;
   position: relative;
@@ -164,17 +91,31 @@ export const Main = styled.main`
       height: ${ConvertorPixel2Rem(49)};
       margin: ${ConvertorPixel2Rem(40)} ${ConvertorPixel2Rem(2)} ${ConvertorPixel2Rem(24)} ${ConvertorPixel2Rem(2)};
       div.Field {
+        width: auto;
+        display: inline-block;
           position: relative;
-          width: 100%;
           height: ${ConvertorPixel2Rem(49)};
-          margin: 0 0 ${ConvertorPixel2Rem(24)} 0;
+          margin: 0 auto ${ConvertorPixel2Rem(24)} auto;
 
           input {
-            width: 100%;
+            width: ${ConvertorPixel2Rem(277)};
             height: 100%;
+            display: flex;
             padding: 0 ${ConvertorPixel2Rem(15)};
             border-radius: ${ConvertorPixel2Rem(6)};
             border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
+            &#number, &#postCode {
+              display: inline-block;
+              width: ${ConvertorPixel2Rem(130)}!important;
+            }
+            &#postCode {
+              position: absolute;
+
+            }
+            &#number {
+              float: left;
+              margin: 0 16px 0 0;
+            }
             &:focus {
               border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor};
               font-size: ${ConvertorPixel2Rem(16)};
@@ -199,14 +140,26 @@ export const Main = styled.main`
             }
           }
 
-          label {
+        div.error {
+          position: absolute;
+          bottom: ${ConvertorPixel2Rem(10)};
+          right: ${ConvertorPixel2Rem(20)};
+          font-size: ${ConvertorPixel2Rem(10)};
+          color: ${themeProvider.day.errorColor};
+        }
+
+        label {
             display: inline-block;
+            overflow: visible;
             padding: ${ConvertorPixel2Rem(3)};
             background-color: ${themeProvider.day.backgroundColor};
             font-size: ${ConvertorPixel2Rem(12)};
             position: absolute;
             left: ${ConvertorPixel2Rem(10)};
             top: ${ConvertorPixel2Rem(-15)};
+          &.postCodeLabel {
+            width: 90px;
+          }
           }
         }
     }
