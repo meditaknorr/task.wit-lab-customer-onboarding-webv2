@@ -68,7 +68,7 @@ export const Main = styled.main`
         padding: 0 ${ConvertorPixel2Rem(15)};
         border-radius: ${ConvertorPixel2Rem(6)};
         border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
-        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
+        border-color: ${(props) => props.phoneLength >= props.nationalNumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
         overflow: hidden;
         option {
           width: 100px;
