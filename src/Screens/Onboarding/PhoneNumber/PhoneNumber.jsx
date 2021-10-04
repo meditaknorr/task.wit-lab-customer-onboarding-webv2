@@ -55,7 +55,7 @@ const PhoneNumber = () => {
           languageButton={1}
           language={language.language}
         />
-        <Main checkSignal={validPhone} phoneLength={(phoneNumber.length)} nationalNumberLenght={targetCountryHelper('nationalNumberLength', countryCode)}>
+        <Main checkSignal={validPhone} phoneLength={(phoneNumber.length)} nationalNumberLength={targetCountryHelper('nationalNumberLength', countryCode)}>
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.enterPhone}</h1>
             <h2>{appString.translations.onboarding.forAccountSettup}</h2>
