@@ -57,6 +57,12 @@ const PhoneNumberConfirmation = () => {
     const thePin = (`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
     setModal(thePin !== user.OTP);
     if (thePin === user.OTP) {
+      setConfirmationPin({
+        one: '',
+        two: '',
+        three: '',
+        four: '',
+      });
       history.push('/registration/validation/');
     }
   };

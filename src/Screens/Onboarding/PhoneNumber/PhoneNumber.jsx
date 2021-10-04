@@ -65,6 +65,7 @@ const PhoneNumber = () => {
         },
       },
     );
+    setPhoneNumber('');
     history.push('/registration/onboarding/phonenumber/confirmation');
   };
 
