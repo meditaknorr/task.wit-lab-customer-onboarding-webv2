@@ -172,7 +172,6 @@ export const Main = styled.main`
           input {
             width: 100%;
             height: 100%;
-            background-color: ${themeProvider.day.backgroundColor}!important;
             padding: 0 ${ConvertorPixel2Rem(15)};
             border-radius: ${ConvertorPixel2Rem(6)};
             border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
@@ -194,14 +193,6 @@ export const Main = styled.main`
             &::placeholder {
               color: ${themeProvider.day.disableColor};
             }
-          }
-
-          div.error {
-            position: absolute;
-            bottom: ${ConvertorPixel2Rem(10)};
-            right: ${ConvertorPixel2Rem(10)};
-            font-size: ${ConvertorPixel2Rem(10)};
-            color: ${themeProvider.day.errorColor};
           }
 
           label {

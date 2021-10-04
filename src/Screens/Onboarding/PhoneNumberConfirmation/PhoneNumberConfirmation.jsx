@@ -57,6 +57,7 @@ const PhoneNumberConfirmation = () => {
     const thePin = (`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
     setModal(thePin !== user.OTP);
     if (thePin === user.OTP) {
+<<<<<<< HEAD
       setConfirmationPin({
         one: '',
         two: '',
@@ -64,17 +65,14 @@ const PhoneNumberConfirmation = () => {
         four: '',
       });
       history.push('/registration/validation/');
+=======
+      history.push('/registration/validation/scan/front');
+>>>>>>> parent of 82d9b25 (refactor: Buttons and routes)
     }
   };
 
   const closeModal = () => {
     setModal(false);
-    setConfirmationPin({
-      one: '',
-      two: '',
-      three: '',
-      four: '',
-    });
   };
 
   return (
@@ -119,7 +117,7 @@ const PhoneNumberConfirmation = () => {
               value={confirmationPin.one}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
-              autoComplete="new-password"
+              autoComplete="off"
             />
             <input
               id="two"
@@ -130,7 +128,7 @@ const PhoneNumberConfirmation = () => {
               value={confirmationPin.two}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
-              autoComplete="new-password"
+              autoComplete="off"
             />
             <input
               id="three"
@@ -141,7 +139,7 @@ const PhoneNumberConfirmation = () => {
               value={confirmationPin.three}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
-              autoComplete="new-password"
+              autoComplete="off"
             />
             <input
               id="four"
@@ -152,7 +150,7 @@ const PhoneNumberConfirmation = () => {
               value={confirmationPin.four}
               onChange={confirmationPinChecker}
               className="OneTimePin__SquarePin"
-              autoComplete="new-password"
+              autoComplete="off"
             />
           </div>
 

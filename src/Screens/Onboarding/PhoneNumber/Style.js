@@ -18,8 +18,6 @@ export const PhoneNumberScreen = styled.div`
 export const Main = styled.main`
   grid-area: main;
   width: 100%;
-  position: relative;
-  overflow-y: auto;
   padding: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(27)};
   display: flex;
   align-items: center;
@@ -185,7 +183,7 @@ export const Main = styled.main`
 
   div.ActionButton {
     width: ${ConvertorPixel2Rem(312)};
-    bottom: 0;
+    margin: 0 auto;
     button {
       width: 100%;
       background-color: ${themeProvider.day.highlightColor};
