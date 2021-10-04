@@ -57,17 +57,13 @@ const PhoneNumberConfirmation = () => {
     const thePin = (`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
     setModal(thePin !== user.OTP);
     if (thePin === user.OTP) {
-<<<<<<< HEAD
       setConfirmationPin({
         one: '',
         two: '',
         three: '',
         four: '',
       });
-      history.push('/registration/validation/');
-=======
       history.push('/registration/validation/scan/front');
->>>>>>> parent of 82d9b25 (refactor: Buttons and routes)
     }
   };
 

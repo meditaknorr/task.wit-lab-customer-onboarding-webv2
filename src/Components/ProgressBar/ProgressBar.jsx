@@ -18,9 +18,6 @@ const ProgressBar = () => {
         case '/registration/onboarding/phonenumber/confirmation':
           setProgressLevel(2);
           break;
-        case '/registration/validation':
-          setProgressLevel(3);
-          break;
         case '/registration/validation/scan/front':
           setProgressLevel(4);
           break;
@@ -32,14 +29,6 @@ const ProgressBar = () => {
           break;
         case '/registration/details':
           setProgressLevel(7);
-          break;
-        case '/registration/details/additionalinformation':
-          setProgressLevel(8);
-          break;
-        case ('/registration/details/confirmation'):
-        case ('/registration/details/confirmation/successful/'):
-        case '/registration/details/confirmation/unsuccessful/':
-          setProgressLevel(10);
           break;
         default:
           setProgressLevel(0);
