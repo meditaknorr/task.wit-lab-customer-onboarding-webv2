@@ -1,69 +1,30 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Button } from 'reactstrap';
 import { Formik, Form, Field } from 'formik';
 import { useHistory } from 'react-router-dom';
-import { storeGetter, storeSetter } from '../../Hooks/useStore';
+import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import Header from '../../Components/Header/Header';
 import WebView from '../../Layouts/WebView/WebView';
 import { Main, Modal, DetailsScreen } from './Style';
 
-const validateInput = (value) => {
+function validateInput(value) {
   let error;
   if (!value) {
     error = 'Required';
-  } else if (!/[0-9!@#$%^&*(),.?":{}|<>]/g.test(value)) {
-    error = 'Invalid.';
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+    error = 'Invalid email address';
   }
   return error;
-};
-
-const validateDate = (value) => {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^(0[1-9]|[12][0-9]|3[01])[-/.](0[1-9]|1[012])[-/.](19|20)\d\d$/g.test(value)) {
-    error = 'Invalid.';
-  }
-  return error;
-};
-
-const validateVotersCard = (value) => {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (/[0-9\\/.-]/g.test(value)) {
-    error = 'Invalid.';
-  }
-  return error;
-};
+}
 
 const Details = () => {
-  const history = useHistory();
-  const dispatch = storeSetter();
   const { app, user } = storeGetter();
   const { appString } = useLocale(app.language);
-  const [isComplete, setIsComplete] = useState(false);
-  const formRef = useRef();
+  const history = useHistory();
 
-  const handleSubmit = () => {
-    dispatch(
-      {
-        type: 'SET_USER_PERSONALDETAILS',
-        payload: {
-          id: 10,
-          ...formRef.current.values,
-        },
-      },
-    );
-    history.push('/registration/details/additionalinformation');
-  };
-
-  const handleInputsChange = () => {
-    if (formRef.current) {
-      const formStatus = [formRef.current.values].find((data) => data !== '');
-      setIsComplete(formStatus && true);
-    }
+  const actionButtonHandler = () => {
+    history.push('/registration/details/aditionalinformation');
   };
 
   const capturedMediaHandler = (e) => {
@@ -123,127 +84,57 @@ const Details = () => {
           <div className="PersonalInformation">
             <h3 className="PersonalInformation__Label">{appString.translations.generalInformation.personalInformation}</h3>
             <Formik
-              innerRef={formRef}
-              handleChange={handleInputsChange}
               initialValues={{
-                firstName: 'Tanazura',
-                lastName: 'Vicentete',
-                birthDate: '10/04/2000',
-                birthPlace: 'Beira',
-                gender: 'Feminino',
-                nationality: 'Moçambicana',
-                voterNumber: '01010100',
+                firstName: '',
+                lastName: '',
+                email: '',
+              }}
+              onSubmit={(values) => {
+                console.log(values);
               }}
             >
-              {({ errors }) => (
-                <Form className="PersonalInformation__UserDetails-Field" autoComplete="off">
+              {() => (
+                <Form className="PersonalInformation__UserDetails-Field">
                   <div className="Field">
-                    <Field
-                      id="firstName"
-                      type="text"
-                      name="firstName"
-                      placeholder={appString.translations.generalInformation.firstName}
-                      minLength="3"
-                      maxLength="18"
-                      onBlur={handleInputsChange}
-                      validate={validateInput}
-                      required
-                    />
-                    {errors.firstName && <div className="error">{errors.firstName}</div>}
+                    <Field id="firstName" type="text" name="firstName" placeholder={appString.translations.generalInformation.firstName} validate={validateInput} />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="firstName">{appString.translations.generalInformation.firstName}</label>
                   </div>
 
                   <div className="Field">
-                    <Field
-                      id="lastName"
-                      type="text"
-                      name="lastName"
-                      placeholder={appString.translations.generalInformation.lastName}
-                      minLength="3"
-                      maxLength="18"
-                      onBlur={handleInputsChange}
-                      validate={validateInput}
-                      required
-                    />
-                    {errors.lastName && <div className="error">{errors.lastName}</div>}
+                    <Field id="lastName" type="text" name="lastName" placeholder={appString.translations.generalInformation.lastName} validate={validateInput} />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="lastName">{appString.translations.generalInformation.lastName}</label>
                   </div>
 
                   <div className="Field">
-                    <Field
-                      id="birthDate"
-                      type="text"
-                      name="birthDate"
-                      placeholder={appString.translations.generalInformation.dateOfBirth}
-                      minLength="10"
-                      maxLength="10"
-                      onBlur={handleInputsChange}
-                      validate={validateDate}
-                      required
-                    />
-                    {errors.birthDate && <div className="error">{errors.birthDate}</div>}
+                    <Field id="birthDate" name="birthDate" placeholder={appString.translations.generalInformation.dateOfBirth} validate={validateInput} />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="birthDate">{appString.translations.generalInformation.dateOfBirth}</label>
                   </div>
 
                   <div className="Field">
-                    <Field
-                      id="birthPlace"
-                      type="text"
-                      name="birthPlace"
-                      placeholder={appString.translations.generalInformation.placeOfBirth}
-                      minLength="3"
-                      maxLength="18"
-                      onBlur={handleInputsChange}
-                      validate={validateInput}
-                      required
-                    />
-                    {errors.birthPlace && <div className="error">{errors.birthPlace}</div>}
+                    <Field id="birthDate" type="text" name="birthPlace" placeholder={appString.translations.generalInformation.placeOfBirth} validate={validateInput} />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="birthPlace">{appString.translations.generalInformation.placeOfBirth}</label>
                   </div>
 
                   <div className="Field">
-                    <Field
-                      id="gender"
-                      name="gender"
-                      placeholder={appString.translations.generalInformation.gender}
-                      minLength="3"
-                      maxLength="18"
-                      onBlur={handleInputsChange}
-                      validate={validateInput}
-                      required
-                    />
-                    {errors.gender && <div className="error">{errors.gender}</div>}
+                    <Field id="gender" name="gender" placeholder={appString.translations.generalInformation.gender} validate={validateInput} />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="gender">{appString.translations.generalInformation.gender}</label>
                   </div>
 
                   <div className="Field">
-                    <Field
-                      id="nationality"
-                      name="nationality"
-                      placeholder={appString.translations.generalInformation.citizenNationality}
-                      minLength="3"
-                      maxLength="18"
-                      onBlur={handleInputsChange}
-                      validate={validateInput}
-                      required
-                    />
-                    {errors.nationality && <div className="error">{errors.nationality}</div>}
+                    <Field id="nationality" name="nationality" placeholder={appString.translations.generalInformation.citizenNationality} validate={validateInput} />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                     <label htmlFor="nationality">{appString.translations.generalInformation.citizenNationality}</label>
                   </div>
 
                   <div className="Field">
-                    <Field
-                      id="voterNumber"
-                      name="voterNumber"
-                      placeholder={appString.translations.generalInformation.voterNumber}
-                      minLength="3"
-                      maxLength="18"
-                      onBlur={handleInputsChange}
-                      validate={validateVotersCard()}
-                      required
-                    />
-                    {errors.voterNumber && <div className="error">{errors.voterNumber}</div>}
-                    <label htmlFor="voterNumber">{appString.translations.generalInformation.voterNumber}</label>
+                    <Field id="voternumber" name="voternumber" placeholder={appString.translations.generalInformation.voterNumber} validate={validateInput} />
+                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                    <label htmlFor="voternumber">{appString.translations.generalInformation.voterNumber}</label>
                   </div>
                 </Form>
               )}
@@ -255,43 +146,25 @@ const Details = () => {
             <div className="AttachedPhotos__Document-Front">
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div
-                onClick={capturedMediaHandler}
-                tabIndex={0}
-                id="Delete_Front"
-                className="DocumentFront-Remover"
-                role="button"
-              />
+              <div onClick={capturedMediaHandler} tabIndex={0} id="Delete_Front" className="DocumentFront-Remover" role="button" />
             </div>
             <div className="AttachedPhotos__Document-Back">
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div
-                onClick={capturedMediaHandler}
-                tabIndex={0}
-                id="Delete_Back"
-                className="DocumentBack-Remover"
-                role="button"
-              />
+              <div onClick={capturedMediaHandler} tabIndex={0} id="Delete_Back" className="DocumentBack-Remover" role="button" />
             </div>
             <div className="AttachedPhotos__Selfie">
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div
-                onClick={capturedMediaHandler}
-                tabIndex={0}
-                id="Delete_Selfie"
-                className="Selfie-Remover"
-                role="button"
-              />
+              <div onClick={capturedMediaHandler} tabIndex={0} id="Delete_Selfie" className="Selfie-Remover" role="button" />
             </div>
           </div>
 
           <div className="ActionButton">
             <Button
-              name="submit"
-              onClick={handleSubmit}
-              disabled={!isComplete}
+              type="button"
+              onClick={actionButtonHandler}
+              disabled={false}
             >
               {appString.translations.onboarding.continue}
             </Button>

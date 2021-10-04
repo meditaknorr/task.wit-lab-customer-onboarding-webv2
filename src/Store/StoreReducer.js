@@ -36,7 +36,6 @@ export const initialState = {
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    // USER ACTIONS
     case 'SET_USER':
       return {
         ...state,
@@ -45,39 +44,6 @@ export const reducer = (state, action) => {
           ...action.payload,
         },
       };
-    case 'SET_USER_PERSONALDETAILS':
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          personalDetails: [
-            ...state.user.personalDetails,
-            action.payload,
-          ],
-        },
-      };
-    case 'UPDATE__USER_PERSONALDETAILS':
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          personalDetails: [
-            ...state.user.personalDetails,
-            action.payload,
-          ],
-        },
-      };
-    case 'REMOVE__USER_PERSONALDETAILS':
-      return {
-        ...state,
-        user: {
-          ...state.user,
-          personalDetails: [
-            ...state.user.personalDetails.filter((block) => block.id !== action.payload.id),
-          ],
-        },
-      };
-    // APP CONFIG ACTIONS
     case 'SET_APP':
       return {
         ...state,
@@ -86,7 +52,6 @@ export const reducer = (state, action) => {
           ...action.payload,
         },
       };
-      // MEDIA ACTIONS
     case 'ADD_MEDIA':
       // eslint-disable-next-line no-case-declarations
       const alreadyExists = state.media.find((block) => block.id === action.payload.id);

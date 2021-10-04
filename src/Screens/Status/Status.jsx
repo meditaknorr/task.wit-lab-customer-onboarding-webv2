@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import { useHistory } from 'react-router-dom';
 import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import Header from '../../Components/Header/Header';
@@ -8,7 +7,6 @@ import WebView from '../../Layouts/WebView/WebView';
 import { Main, RegistrationStatusScreen } from './Style';
 
 const Status = () => {
-  const history = useHistory();
   const { app } = storeGetter();
   const { appString } = useLocale(app.language);
 
@@ -35,7 +33,6 @@ const Status = () => {
           <div className="ActionButton">
             <Button
               type="button"
-              onClick={() => history.push('/registration/onboarding')}
             >
               {/* eslint-disable-next-line max-len */}
               {appString.translations.status.ok}

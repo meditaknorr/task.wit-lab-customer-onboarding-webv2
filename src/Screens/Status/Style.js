@@ -37,6 +37,14 @@ export const Main = styled.main`
       background: url(${Loading}) no-repeat;
       background-size: contain;
       margin: 0 auto;
+      animation: circle 0.7s linear infinite;
+      animation-fill-mode: forwards;
+
+      @keyframes circle {
+        100%{
+          transform: rotate(360deg);
+        }
+      }
     }
     div.RegistrationStatus__Pane-HeadingText {
       color: ${themeProvider.day.fontColor};
