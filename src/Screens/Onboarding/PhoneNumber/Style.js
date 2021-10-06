@@ -191,7 +191,7 @@ export const Main = styled.main`
     div.PhoneNumber__ErrorText {
       position: absolute;
       left: 0;
-      bottom: -3px;
+      bottom: ${ConvertorPixel2Rem(-3)};
       display: block;
       width: 100%;
       height: ${ConvertorPixel2Rem(30)};
