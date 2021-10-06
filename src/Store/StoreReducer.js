@@ -27,7 +27,6 @@ export const initialState = {
     countryCode: null,
     phoneNumber: null,
     countryName: null,
-    selfie: null,
     OTP: '1010',
     personalDetails: [],
   },
