@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from 'reactstrap';
+import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useLocale } from '../../../Hooks/useLocale';
 import { storeGetter } from '../../../Hooks/useStore';
@@ -8,6 +7,7 @@ import WebView from '../../../Layouts/WebView/WebView';
 import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
 
 const PhoneNumberConfirmation = () => {
+  const buttonRef = useRef();
   const history = useHistory();
   const { app, user } = storeGetter();
   const { appString } = useLocale(app.language);
@@ -20,26 +20,24 @@ const PhoneNumberConfirmation = () => {
     four: '',
   });
 
-  useEffect(() => {
-    setIsInValidPin(!(Object.values(confirmationPin).indexOf('') <= -1));
-  }, [confirmationPin]);
-
-  const handle = (e) => {
+  const handleInput = (e) => {
     setConfirmationPin((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
   };
 
-  const confirmationPinChecker = (e) => {
+  const pinChecker = (e) => {
     if ((e.target.value).length > 0) {
       if (e.target.nextSibling) {
         e.target.nextSibling.focus();
+        e.target.nextSibling.select();
       }
-      handle(e);
+      handleInput(e);
     } else if ((e.target.value) === '') {
       if (e.target.previousSibling) {
         e.target.previousSibling.focus();
+        e.target.previousSibling.select();
         setConfirmationPin((prevState) => ({
           ...prevState,
           [e.target.id]: '',
@@ -53,7 +51,7 @@ const PhoneNumberConfirmation = () => {
     }
   };
 
-  const actionButtonHandler = () => {
+  const continueButton = () => {
     const thePin = (`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
     setModal(thePin !== user.OTP);
     if (thePin === user.OTP) {
@@ -67,25 +65,53 @@ const PhoneNumberConfirmation = () => {
     }
   };
 
-  const closeModal = () => {
+  const handleModal = () => {
     setModal(false);
   };
+
+  /**
+   * Enter Key Listener
+   * If input is valid and user presses ENTER,
+   * It calls the same function created for our screen action button
+   * @param e
+   */
+  const keyListener = (e) => {
+    if (!isInValidPin) {
+      if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+        e.preventDefault();
+        continueButton();
+      }
+    }
+  };
+
+  useEffect(() => {
+    setIsInValidPin(!(Object.values(confirmationPin).indexOf('') <= -1));
+  }, [confirmationPin]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', keyListener);
+    return () => {
+      document.removeEventListener('keydown', keyListener);
+    };
+  }, [isInValidPin]);
 
   return (
     <WebView>
       <PhoneNumberConfirmationScreen>
         <Header
-          logo={0}
+          greyBack={1}
           backButton={1}
           screenLabel={appString.translations.header.regPhoneNumber}
           languageButton={1}
+          progressBar={1}
           language={app.language}
         />
         <Modal status={modal}>
           <div className="Modal__Pane">
+            <div className="Modal__Pane-Card" />
             {/* eslint-disable-next-line max-len */}
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label,jsx-a11y/interactive-supports-focus */}
-            <div className="Modal__Pane-CloseButton" role="button" onClick={closeModal} />
+            <div className="Modal__Pane-CloseButton" role="button" onClick={handleModal} />
             <div className="Modal__Pane-Icon" />
             <div className="Modal__Pane-Information">
               <h1>{appString.translations.onboarding.codeIncorrect}</h1>
@@ -98,7 +124,9 @@ const PhoneNumberConfirmation = () => {
             <h1>{appString.translations.onboarding.pleaseConfirm}</h1>
             <h2>
               {appString.translations.onboarding.verificationSentTo}
-              <span>{(user.phoneCallingCode || app.defaultCountryCallingCode)}</span>
+              {' '}
+              {(user.phoneCallingCode || app.defaultCountryCallingCode)}
+              {' '}
               {user.phone}
             </h2>
           </div>
@@ -109,9 +137,10 @@ const PhoneNumberConfirmation = () => {
               type="tel"
               minLength={1}
               maxLength={1}
-              size={3}
+              size={1}
               value={confirmationPin.one}
-              onChange={confirmationPinChecker}
+              onChange={pinChecker}
+              onFocus={(e) => e.target.select()}
               className="OneTimePin__SquarePin"
               autoComplete="off"
             />
@@ -122,7 +151,8 @@ const PhoneNumberConfirmation = () => {
               maxLength={1}
               size={1}
               value={confirmationPin.two}
-              onChange={confirmationPinChecker}
+              onChange={pinChecker}
+              onFocus={(e) => e.target.select()}
               className="OneTimePin__SquarePin"
               autoComplete="off"
             />
@@ -133,7 +163,8 @@ const PhoneNumberConfirmation = () => {
               maxLength={1}
               size={1}
               value={confirmationPin.three}
-              onChange={confirmationPinChecker}
+              onChange={pinChecker}
+              onFocus={(e) => e.target.select()}
               className="OneTimePin__SquarePin"
               autoComplete="off"
             />
@@ -144,7 +175,8 @@ const PhoneNumberConfirmation = () => {
               maxLength={1}
               size={1}
               value={confirmationPin.four}
-              onChange={confirmationPinChecker}
+              onChange={pinChecker}
+              onFocus={(e) => e.target.select()}
               className="OneTimePin__SquarePin"
               autoComplete="off"
             />
@@ -154,14 +186,15 @@ const PhoneNumberConfirmation = () => {
             <div className="ActionButton-ResendPin">
               {(isInValidPin) ? null : appString.translations.onboarding.resendCode }
             </div>
-            <Button
+            <button
               type="button"
-              onClick={actionButtonHandler}
+              onClick={continueButton}
               className="ActionButton-ContinueRegistration"
+              ref={buttonRef}
               disabled={(isInValidPin)}
             >
               {appString.translations.onboarding.continue}
-            </Button>
+            </button>
           </div>
         </Main>
       </PhoneNumberConfirmationScreen>

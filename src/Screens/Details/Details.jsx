@@ -1,6 +1,4 @@
-import React from 'react';
-import { Button } from 'reactstrap';
-import { Formik, Form, Field } from 'formik';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
@@ -22,12 +20,21 @@ const Details = () => {
   const { app, user } = storeGetter();
   const { appString } = useLocale(app.language);
   const history = useHistory();
+  const [inputError, setInputErrors] = useState({
+    firstName: '',
+    lastName: '',
+    birthDate: '',
+    birthPlace: '',
+    humanGender: '',
+    CitizenNationality: '',
+    voterNumber: '',
+  });
 
   const actionButtonHandler = () => {
     history.push('/registration/details/aditionalinformation');
   };
 
-  const capturedMediaHandler = (e) => {
+  const mediaHandler = (e) => {
     switch (e.target.id) {
       case 'Delete_Front':
         console.log('front');
@@ -47,10 +54,11 @@ const Details = () => {
     <WebView>
       <DetailsScreen>
         <Header
-          logo={0}
+          greyBack={1}
           backButton={1}
           screenLabel={appString.translations.header.regGeneralInformation}
           languageButton={1}
+          progressBar={1}
           language={app.language}
         />
         <Modal>
@@ -75,100 +83,166 @@ const Details = () => {
           <div className="PhoneDetails">
             <h3 className="PhoneDetails__Label">{appString.translations.generalInformation.phoneNumber}</h3>
             <h2 className="PhoneDetails__UserPhone">
-              {(user.phoneCallingCode || app.defaultCountryCallingCode)}
+              {'+ '}
+              {(user.phoneCallingCode || app.defaultCountryCallingCode).slice(1)}
               {' '}
               {user.phone}
             </h2>
           </div>
 
           <div className="PersonalInformation">
-            <h3 className="PersonalInformation__Label">{appString.translations.generalInformation.personalInformation}</h3>
-            <Formik
-              initialValues={{
-                firstName: '',
-                lastName: '',
-                email: '',
-              }}
-              onSubmit={(values) => {
-                console.log(values);
-              }}
-            >
-              {() => (
-                <Form className="PersonalInformation__UserDetails-Field">
-                  <div className="Field">
-                    <Field id="firstName" type="text" name="firstName" placeholder={appString.translations.generalInformation.firstName} validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="firstName">{appString.translations.generalInformation.firstName}</label>
-                  </div>
+            <h3 className="PersonalInformation__Label">
+              {appString.translations.generalInformation.personalInformation}
+            </h3>
+            <div className="PersonalInformation__UserDetails-Field">
 
-                  <div className="Field">
-                    <Field id="lastName" type="text" name="lastName" placeholder={appString.translations.generalInformation.lastName} validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="lastName">{appString.translations.generalInformation.lastName}</label>
-                  </div>
+              <div className="InputBox">
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder={appString.translations.generalInformation.firstName}
+                  validate={validateInput}
+                />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="firstName">{appString.translations.generalInformation.firstName}</label>
+                <div className="InputBox__Error">{inputError.firstName}</div>
+              </div>
 
-                  <div className="Field">
-                    <Field id="birthDate" name="birthDate" placeholder={appString.translations.generalInformation.dateOfBirth} validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="birthDate">{appString.translations.generalInformation.dateOfBirth}</label>
-                  </div>
+              <div className="InputBox">
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder={appString.translations.generalInformation.lastName}
+                  validate={validateInput}
+                />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="lastName">{appString.translations.generalInformation.lastName}</label>
+                <div className="InputBox__Error">{inputError.lastName}</div>
+              </div>
 
-                  <div className="Field">
-                    <Field id="birthDate" type="text" name="birthPlace" placeholder={appString.translations.generalInformation.placeOfBirth} validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="birthPlace">{appString.translations.generalInformation.placeOfBirth}</label>
-                  </div>
+              <div className="InputBox">
+                <input
+                  type="text"
+                  id="birthDate"
+                  name="birthDate"
+                  placeholder={appString.translations.generalInformation.dateOfBirth}
+                  validate={validateInput}
+                />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="birthDate">{appString.translations.generalInformation.dateOfBirth}</label>
+                <div className="InputBox__Error">{inputError.birthDate}</div>
+              </div>
 
-                  <div className="Field">
-                    <Field id="gender" name="gender" placeholder={appString.translations.generalInformation.gender} validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="gender">{appString.translations.generalInformation.gender}</label>
-                  </div>
+              <div className="InputBox">
+                <input
+                  type="text"
+                  id="birthPlace"
+                  name="birthPlace"
+                  placeholder={appString.translations.generalInformation.placeOfBirth}
+                  validate={validateInput}
+                />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="birthPlace">{appString.translations.generalInformation.placeOfBirth}</label>
+                <div className="InputBox__Error">{inputError.birthPlace}</div>
+              </div>
 
-                  <div className="Field">
-                    <Field id="nationality" name="nationality" placeholder={appString.translations.generalInformation.citizenNationality} validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="nationality">{appString.translations.generalInformation.citizenNationality}</label>
-                  </div>
+              <div className="InputBox">
+                <input
+                  type="text"
+                  id="humanGender"
+                  name="humanGender"
+                  placeholder={appString.translations.generalInformation.gender}
+                  validate={validateInput}
+                />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="humanGender">{appString.translations.generalInformation.gender}</label>
+                <div className="InputBox__Error">{inputError.humanGender}</div>
+              </div>
 
-                  <div className="Field">
-                    <Field id="voternumber" name="voternumber" placeholder={appString.translations.generalInformation.voterNumber} validate={validateInput} />
-                    {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                    <label htmlFor="voternumber">{appString.translations.generalInformation.voterNumber}</label>
-                  </div>
-                </Form>
-              )}
-            </Formik>
+              <div className="InputBox">
+                <input
+                  type="text"
+                  id="CitizenNationality"
+                  name="CitizenNationality"
+                  placeholder={appString.translations.generalInformation.citizenNationality}
+                  validate={validateInput}
+                />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="CitizenNationality">{appString.translations.generalInformation.citizenNationality}</label>
+                <div className="InputBox__Error">{inputError.CitizenNationality}</div>
+              </div>
+
+              <div className="InputBox">
+                <input
+                  type="text"
+                  id="voterNumber"
+                  name="voterNumber"
+                  placeholder={appString.translations.generalInformation.voterNumber}
+                  validate={validateInput}
+                />
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+                <label htmlFor="voterNumber">{appString.translations.generalInformation.voterNumber}</label>
+                <div className="InputBox__Error">{inputError.voterNumber}</div>
+              </div>
+            </div>
           </div>
 
           <div className="AttachedPhotos">
-            <h3 className="AttachedPhotos__Label">{appString.translations.generalInformation.attachedPhotos}</h3>
+
+            <h3 className="AttachedPhotos__Label">
+              {appString.translations.generalInformation.attachedPhotos}
+            </h3>
+
             <div className="AttachedPhotos__Document-Front">
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div onClick={capturedMediaHandler} tabIndex={0} id="Delete_Front" className="DocumentFront-Remover" role="button" />
+              <div
+                onClick={mediaHandler}
+                tabIndex={0}
+                id="Delete_Front"
+                className="DocumentFront-Remover"
+                role="button"
+              />
             </div>
+
             <div className="AttachedPhotos__Document-Back">
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div onClick={capturedMediaHandler} tabIndex={0} id="Delete_Back" className="DocumentBack-Remover" role="button" />
+              <div
+                onClick={mediaHandler}
+                tabIndex={0}
+                id="Delete_Back"
+                className="DocumentBack-Remover"
+                role="button"
+              />
             </div>
+
             <div className="AttachedPhotos__Selfie">
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div onClick={capturedMediaHandler} tabIndex={0} id="Delete_Selfie" className="Selfie-Remover" role="button" />
+              <div
+                onClick={mediaHandler}
+                tabIndex={0}
+                id="Delete_Selfie"
+                className="Selfie-Remover"
+                role="button"
+              />
             </div>
+
           </div>
 
           <div className="ActionButton">
-            <Button
+            <button
               type="button"
               onClick={actionButtonHandler}
               disabled={false}
             >
               {appString.translations.onboarding.continue}
-            </Button>
+            </button>
           </div>
+
         </Main>
       </DetailsScreen>
     </WebView>

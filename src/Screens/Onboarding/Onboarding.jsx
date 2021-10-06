@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
@@ -17,8 +16,6 @@ const Onboarding = () => {
       <OnborardingScreen>
         <Header
           logo={1}
-          backButton={0}
-          screenLabel=""
           languageButton={1}
           language={app.language}
         />
@@ -43,9 +40,9 @@ const Onboarding = () => {
             </div>
           </div>
           <div className="ActionButton">
-            <Button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/registration/onboarding/phonenumber')}>
+            <button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/registration/onboarding/phonenumber')}>
               {appString.translations.onboarding.buttonStart}
-            </Button>
+            </button>
             <div className="ActionButton-CheckStatus">
               <span>{appString.translations.onboarding.alreadyRegstered}</span>
               <span>{appString.translations.onboarding.seeStatus}</span>
