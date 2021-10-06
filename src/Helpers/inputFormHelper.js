@@ -8,33 +8,45 @@ const regEX = {
 };
 
 export const dateValidator = (strings) => {
+  if (strings.length <= 0) {
+    return false;
+  }
   const current = new Date();
   const currentYear = current.getFullYear();
   const validator = regEX.date;
   const stringYear = strings.slice(6);
-  const isAboveSixteen = currentYear - stringYear;
+  const isAboveSixteen = currentYear - 16;
 
   validator.lastIndex = 0;
 
-  if (stringYear >= 1950 && isAboveSixteen) {
+  if (stringYear >= 1950 && stringYear <= isAboveSixteen) {
     return validator.test(strings);
   }
   return false;
 };
 
 export const numberValidator = (strings) => {
+  if (strings.length <= 0) {
+    return false;
+  }
   const validator = regEX.date;
   validator.lastIndex = 0;
   return validator.test(strings);
 };
 
 export const voterValidator = (strings) => {
+  if (strings.length <= 0) {
+    return false;
+  }
   const validator = regEX.voters;
   validator.lastIndex = 0;
   return validator.test(strings);
 };
 
 export const addressValidator = (strings) => {
+  if (strings.length <= 0) {
+    return false;
+  }
   const validator = regEX.date;
   const result = validator.test(strings);
   validator.lastIndex = 0;
@@ -42,6 +54,9 @@ export const addressValidator = (strings) => {
 };
 
 export const textValidator = (strings) => {
+  if (strings.length <= 0) {
+    return false;
+  }
   const validator = regEX.text;
   validator.lastIndex = 0;
   return validator.test(strings);
