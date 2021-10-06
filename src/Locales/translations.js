@@ -243,7 +243,7 @@ export const translations = [
         placeOfBirth: 'Local de nascimento',
         gender: 'Gênero',
         citizenNationality: 'Nacionalidade',
-        voterNumber: 'Número de cartão de eleitor',
+        voterNumber: 'Número de eleitor',
         attachedPhotos: 'Fotos anexadas',
         continue: 'Continuar',
       },
