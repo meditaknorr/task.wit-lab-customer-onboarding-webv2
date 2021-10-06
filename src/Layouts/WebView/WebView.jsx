@@ -1,16 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDimension } from '../../Hooks/useDimension';
 import { WebActivity } from './Style';
 
-const WebView = ({ children }) => {
-  const { width, height } = useDimension();
-  return (
-    <WebActivity width={width} height={height}>
-      {children}
-    </WebActivity>
-  );
-};
+/**
+ * A react web view container.
+ * Children = other views that will inherit this width and height
+ * @param children
+ * @returns {JSX.Element}
+ * @constructor
+ */
+const WebView = ({ children }) => (
+  <WebActivity>
+    {children}
+  </WebActivity>
+);
 
 WebView.propTypes = {
   children: PropTypes.element.isRequired,
