@@ -184,7 +184,7 @@ export const Main = styled.main`
             border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
 
             &:focus {
-              border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor};
+              border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor}!important;
               font-size: ${ConvertorPixel2Rem(16)};
 
               & + label {
@@ -192,14 +192,45 @@ export const Main = styled.main`
                 color: ${themeProvider.day.highlightColor};
               }
             }
+
             &::-webkit-input-placeholder {
               color: ${themeProvider.day.disableColor};
             }
+
             &:-ms-input-placeholder {
               color: ${themeProvider.day.disableColor};
             }
+
             &::placeholder {
               color: ${themeProvider.day.disableColor};
+            }
+
+            &#firstName {
+              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)};
+            }
+
+            &#lastName {
+              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)};
+            }
+
+            &#birthDate {
+              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)};
+            }
+
+            &#birthPlace {
+              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)};
+            }
+
+            &#humanGender {
+              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)};
+            }
+
+            &#citizenNationality {
+              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)};
+            }
+
+            &#voterNumber {
+              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)};
             }
           }
 
@@ -210,6 +241,45 @@ export const Main = styled.main`
             position: absolute;
             left: ${ConvertorPixel2Rem(10)};
             top: ${ConvertorPixel2Rem(-15)};
+
+            &.firstName {
+              color: ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)}!important;
+            }
+
+            &.lastName {
+              color: ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)}!important;
+            }
+
+            &.birthDate {
+              color: ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)}!important;
+            }
+
+            &.birthPlace {
+              color: ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)}!important;
+            }
+
+            &.humanGender {
+              color: ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)}!important;
+            }
+
+            &.citizenNationality {
+              color: ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)}!important;
+            }
+
+            &.voterNumber {
+              color: ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)}!important;
+            }
+          }
+
+          div.InputBox__Error {
+            width: 100%;
+            position: absolute;
+            bottom: 8px;
+            right: 15px;
+            text-align: right;
+            font-style: italic;
+            font-size: ${ConvertorPixel2Rem(10)};
+            color: ${themeProvider.day.errorColor};
           }
         }
     }
@@ -302,7 +372,6 @@ export const Main = styled.main`
       height: ${ConvertorPixel2Rem(44)};
       border-radius: ${ConvertorPixel2Rem(6)};
       border: 0;
-
       &[disabled] {
         background-color: ${themeProvider.day.disableColor};
       }

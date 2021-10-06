@@ -1,37 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { storeGetter } from '../../Hooks/useStore';
+import { storeGetter, storeSetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import Header from '../../Components/Header/Header';
 import WebView from '../../Layouts/WebView/WebView';
-import { Main, Modal, DetailsScreen } from './Style';
-
-function validateInput(value) {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-    error = 'Invalid email address';
-  }
-  return error;
-}
+import { dateValidator, textValidator, voterValidator } from '../../Helpers/inputFormHelper';
+import { DetailsScreen, Main, Modal } from './Style';
 
 const Details = () => {
   const { app, user } = storeGetter();
+  const dispatch = storeSetter();
   const { appString } = useLocale(app.language);
   const history = useHistory();
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [inputData, setInputData] = useState({
+    firstName: '',
+    lastName: '',
+    birthDate: '',
+    birthPlace: '',
+    humanGender: '',
+    citizenNationality: '',
+    voterNumber: '',
+  });
   const [inputError, setInputErrors] = useState({
     firstName: '',
     lastName: '',
     birthDate: '',
     birthPlace: '',
     humanGender: '',
-    CitizenNationality: '',
+    citizenNationality: '',
     voterNumber: '',
   });
 
-  const actionButtonHandler = () => {
-    history.push('/registration/details/aditionalinformation');
+  const continueButton = () => {
+    dispatch(
+      {
+        type: 'SET_USER_PERSONALDETAILS',
+        payload: {
+          id: 10,
+          ...inputData,
+        },
+      },
+    );
+    history.push('/registration/details/additionalinformation');
   };
 
   const mediaHandler = (e) => {
@@ -49,6 +60,91 @@ const Details = () => {
         console.log('inconditional');
     }
   };
+
+  const handleInputBlur = (e) => {
+    if (!e.target.value) {
+      setInputErrors((prevState) => ({
+        ...prevState,
+        [e.target.id]: '* is Required',
+      }));
+    }
+  };
+
+  const handleInput = (e) => {
+    if (e.target.value) {
+      setInputErrors((prevState) => ({
+        ...prevState,
+        [e.target.id]: '',
+      }));
+
+      switch (e.target.id) {
+        case 'birthDate':
+          if ((e.target.value).length >= 10) {
+            if (!dateValidator(e.target.value)) {
+              setInputErrors((prevState) => ({
+                ...prevState,
+                birthDate: '* is invalid',
+              }));
+            } else {
+              setInputData((prevState) => ({
+                ...prevState,
+                [e.target.id]: e.target.value,
+              }));
+            }
+          }
+          break;
+
+        case 'voterNumber':
+          if (!voterValidator(e.target.value)) {
+            setInputErrors((prevState) => ({
+              ...prevState,
+              voterNumber: '* is invalid',
+            }));
+          } else {
+            setInputData((prevState) => ({
+              ...prevState,
+              [e.target.id]: e.target.value,
+            }));
+          }
+          break;
+
+        default:
+          if (!textValidator(e.target.value)) {
+            setInputErrors((prevState) => ({
+              ...prevState,
+              [e.target.id]: '* is invalid',
+            }));
+          } else {
+            setInputData((prevState) => ({
+              ...prevState,
+              [e.target.id]: e.target.value,
+            }));
+          }
+          break;
+      }
+    }
+  };
+
+  const isChecked = () => {
+    if (textValidator(inputData.firstName)
+    && textValidator(inputData.lastName)
+    && dateValidator(inputData.birthDate)
+    && textValidator(inputData.birthPlace)
+    && textValidator(inputData.humanGender)
+    && textValidator(inputData.citizenNationality)
+    && voterValidator(inputData.voterNumber)) {
+      return true;
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    if (isChecked() && Object.values(inputData).indexOf('') <= -1) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [inputData]);
 
   return (
     <WebView>
@@ -74,7 +170,15 @@ const Details = () => {
             </div>
           </div>
         </Modal>
-        <Main>
+        <Main
+          errorOnFirstName={inputError.firstName}
+          errorOnLastName={inputError.lastName}
+          errorOnBirthDate={inputError.birthDate}
+          errorOnBirthPlace={inputError.birthPlace}
+          errorOnHumanGender={inputError.humanGender}
+          errorOnCitizenNationality={inputError.citizenNationality}
+          errorOnVoterNumber={inputError.voterNumber}
+        >
           <div className="HeadingText">
             <h1>{appString.translations.generalInformation.reviewDetails}</h1>
             <h2>{appString.translations.generalInformation.reviewConfirmInformation}</h2>
@@ -101,11 +205,20 @@ const Details = () => {
                   type="text"
                   id="firstName"
                   name="firstName"
+                  minLength={3}
+                  maxLength={20}
+                  size={20}
+                  onChange={handleInput}
+                  onBlur={handleInputBlur}
                   placeholder={appString.translations.generalInformation.firstName}
-                  validate={validateInput}
                 />
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="firstName">{appString.translations.generalInformation.firstName}</label>
+                <label
+                  className="firstName"
+                  htmlFor="firstName"
+                >
+                  {appString.translations.generalInformation.firstName}
+                </label>
                 <div className="InputBox__Error">{inputError.firstName}</div>
               </div>
 
@@ -114,11 +227,20 @@ const Details = () => {
                   type="text"
                   id="lastName"
                   name="lastName"
+                  minLength={3}
+                  maxLength={20}
+                  size={20}
+                  onChange={handleInput}
+                  onBlur={handleInputBlur}
                   placeholder={appString.translations.generalInformation.lastName}
-                  validate={validateInput}
                 />
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="lastName">{appString.translations.generalInformation.lastName}</label>
+                <label
+                  className="lastName"
+                  htmlFor="lastName"
+                >
+                  {appString.translations.generalInformation.lastName}
+                </label>
                 <div className="InputBox__Error">{inputError.lastName}</div>
               </div>
 
@@ -127,11 +249,20 @@ const Details = () => {
                   type="text"
                   id="birthDate"
                   name="birthDate"
+                  minLength={10}
+                  maxLength={10}
+                  size={10}
+                  onChange={handleInput}
+                  onBlur={handleInputBlur}
                   placeholder={appString.translations.generalInformation.dateOfBirth}
-                  validate={validateInput}
                 />
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="birthDate">{appString.translations.generalInformation.dateOfBirth}</label>
+                <label
+                  className="birthDate"
+                  htmlFor="birthDate"
+                >
+                  {appString.translations.generalInformation.dateOfBirth}
+                </label>
                 <div className="InputBox__Error">{inputError.birthDate}</div>
               </div>
 
@@ -140,11 +271,20 @@ const Details = () => {
                   type="text"
                   id="birthPlace"
                   name="birthPlace"
+                  minLength={3}
+                  maxLength={15}
+                  size={15}
+                  onChange={handleInput}
+                  onBlur={handleInputBlur}
                   placeholder={appString.translations.generalInformation.placeOfBirth}
-                  validate={validateInput}
                 />
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="birthPlace">{appString.translations.generalInformation.placeOfBirth}</label>
+                <label
+                  className="birthPlace"
+                  htmlFor="birthPlace"
+                >
+                  {appString.translations.generalInformation.placeOfBirth}
+                </label>
                 <div className="InputBox__Error">{inputError.birthPlace}</div>
               </div>
 
@@ -153,25 +293,43 @@ const Details = () => {
                   type="text"
                   id="humanGender"
                   name="humanGender"
+                  minLength={4}
+                  maxLength={10}
+                  size={10}
+                  onChange={handleInput}
+                  onBlur={handleInputBlur}
                   placeholder={appString.translations.generalInformation.gender}
-                  validate={validateInput}
                 />
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="humanGender">{appString.translations.generalInformation.gender}</label>
+                <label
+                  className="humanGender"
+                  htmlFor="humanGender"
+                >
+                  {appString.translations.generalInformation.gender}
+                </label>
                 <div className="InputBox__Error">{inputError.humanGender}</div>
               </div>
 
               <div className="InputBox">
                 <input
                   type="text"
-                  id="CitizenNationality"
-                  name="CitizenNationality"
+                  id="citizenNationality"
+                  name="citizenNationality"
+                  minLength={3}
+                  maxLength={15}
+                  size={15}
+                  onChange={handleInput}
+                  onBlur={handleInputBlur}
                   placeholder={appString.translations.generalInformation.citizenNationality}
-                  validate={validateInput}
                 />
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="CitizenNationality">{appString.translations.generalInformation.citizenNationality}</label>
-                <div className="InputBox__Error">{inputError.CitizenNationality}</div>
+                <label
+                  className="citizenNationality"
+                  htmlFor="citizenNationality"
+                >
+                  {appString.translations.generalInformation.citizenNationality}
+                </label>
+                <div className="InputBox__Error">{inputError.citizenNationality}</div>
               </div>
 
               <div className="InputBox">
@@ -179,11 +337,20 @@ const Details = () => {
                   type="text"
                   id="voterNumber"
                   name="voterNumber"
+                  minLength={3}
+                  maxLength={32}
+                  size={32}
+                  onChange={handleInput}
+                  onBlur={handleInputBlur}
                   placeholder={appString.translations.generalInformation.voterNumber}
-                  validate={validateInput}
                 />
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor="voterNumber">{appString.translations.generalInformation.voterNumber}</label>
+                <label
+                  className="voterNumber"
+                  htmlFor="voterNumber"
+                >
+                  {appString.translations.generalInformation.voterNumber}
+                </label>
                 <div className="InputBox__Error">{inputError.voterNumber}</div>
               </div>
             </div>
@@ -236,8 +403,8 @@ const Details = () => {
           <div className="ActionButton">
             <button
               type="button"
-              onClick={actionButtonHandler}
-              disabled={false}
+              onClick={continueButton}
+              disabled={(isDisabled)}
             >
               {appString.translations.onboarding.continue}
             </button>
