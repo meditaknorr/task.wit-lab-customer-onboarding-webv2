@@ -67,6 +67,12 @@ const PhoneNumberConfirmation = () => {
 
   const handleModal = () => {
     setModal(false);
+    setConfirmationPin({
+      one: '',
+      two: '',
+      three: '',
+      four: '',
+    });
   };
 
   /**
