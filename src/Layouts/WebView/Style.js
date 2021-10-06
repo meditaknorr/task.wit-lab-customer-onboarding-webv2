@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 
 export const WebActivity = styled.div`
-  display: flex;
-  width:  ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: 100vw;
+  height: 100vh;
   background: ${themeProvider.day.backgroundColor};
   font-family: ${themeProvider.day.fontFamily}!important;
   color: ${themeProvider.day.fontColor};
-  margin: ${ConvertorPixel2Rem(56)} 0 0 0;
 `;
