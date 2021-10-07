@@ -15,8 +15,10 @@ export const ConfirmPhotoScreen = styled.div`
     font-family: 'Inter', sans-serif;
 
     .confirm-photo__description {
+      width: 312px;
+      text-align: center;
       padding: 0 ${ConvertorPixel2Rem(24)};
-      margin-top: ${ConvertorPixel2Rem(58)};
+      margin: ${ConvertorPixel2Rem(58)} auto 0 auto;
       font-weight: bold;
       font-size: ${ConvertorPixel2Rem(18)};
       line-height: 1.3;

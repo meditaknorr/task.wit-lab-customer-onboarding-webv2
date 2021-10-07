@@ -15,6 +15,8 @@ import { AppHeader } from './Style';
  * >> Display selectable only languages that are not equal to the device's browser.
  * @param logo {0/1}
  * @param backButton {0/1}
+ * @param backButtonFunctions {any}
+ * @param backButtonURL {string}
  * @param screenLabel {string}
  * @param languageButton {0/1}
  * @param language {string}
@@ -28,6 +30,8 @@ import { AppHeader } from './Style';
 const Header = ({
   logo = 0,
   backButton = 0,
+  backButtonFunctions,
+  backButtonURL,
   screenLabel = '',
   languageButton = 0,
   greyBack = 0,
@@ -55,7 +59,12 @@ const Header = ({
     : languageSetter(`${e.target.parentNode.id}`));
 
   const backButtonHandler = () => {
-    history.goBack();
+    if (backButtonURL !== '') {
+      backButtonFunctions();
+      history.push(backButtonURL);
+    } else {
+      history.goBack();
+    }
   };
 
   return (
@@ -140,6 +149,8 @@ const Header = ({
 Header.defaultProps = {
   logo: 0,
   backButton: 0,
+  backButtonFunctions: () => null,
+  backButtonURL: '',
   screenLabel: '',
   languageButton: 0,
   greyBack: 0,
@@ -151,6 +162,8 @@ Header.defaultProps = {
 Header.propTypes = {
   logo: PropTypes.number,
   backButton: PropTypes.number,
+  backButtonFunctions: PropTypes.func,
+  backButtonURL: PropTypes.string,
   screenLabel: PropTypes.string,
   languageButton: PropTypes.number,
   greyBack: PropTypes.number,

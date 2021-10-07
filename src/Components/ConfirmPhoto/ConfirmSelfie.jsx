@@ -23,10 +23,11 @@ import Button from '../Button/Button';
  * @returns {JSX.Element}
  * @constructor
  */
-const ConfirmPhoto = ({
+const ConfirmSelfie = ({
   description,
   photo,
   usePhoto,
+  backButtonURL,
   takeAnotherPhoto,
   storeProperty,
   screenLabel,
@@ -48,15 +49,42 @@ const ConfirmPhoto = ({
     usePhoto();
   };
 
+  const removeBackPhoto = () => {
+    dispatch({
+      type: 'UPDATE_MEDIA',
+      payload: {
+        id: 5,
+        voterCardBack: null,
+      },
+    });
+  };
+
+  const removeFrontPhoto = () => {
+    dispatch({
+      type: 'UPDATE_MEDIA',
+      payload: {
+        id: 4,
+        voterCardFront: null,
+      },
+    });
+  };
+
+  const backButtonFunc = () => {
+    removeBackPhoto();
+    removeFrontPhoto();
+  };
+
   return (
     <>
       <Header
-        greyBack={1}
+        backButton={1}
+        backButtonFunctions={backButtonFunc}
+        backButtonURL={backButtonURL}
         screenLabel={screenLabel}
         languageButton={1}
+        greyBack={1}
         language={app.language}
         progressBar={progressBar}
-        ghostBlock={1}
       />
 
       <ConfirmPhotoScreen overlayMode={overlayMode}>
@@ -92,7 +120,7 @@ const ConfirmPhoto = ({
   );
 };
 
-ConfirmPhoto.propTypes = {
+ConfirmSelfie.propTypes = {
   description: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   photo: PropTypes.object.isRequired,
@@ -101,8 +129,9 @@ ConfirmPhoto.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   storeProperty: PropTypes.object.isRequired,
   screenLabel: PropTypes.string.isRequired,
+  backButtonURL: PropTypes.string.isRequired,
   progressBar: PropTypes.number.isRequired,
   overlayMode: PropTypes.number.isRequired,
 };
 
-export default ConfirmPhoto;
+export default ConfirmSelfie;

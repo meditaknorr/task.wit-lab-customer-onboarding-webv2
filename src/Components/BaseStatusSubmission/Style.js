@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 
-
 export const BaseStatusScreen = styled.div`
     display: grid;
-    height: auto;
+    height: 100%;
     justify-content: center;
     grid-template-columns: 100%;
     align-content: space-between;
@@ -17,13 +16,13 @@ export const BaseStatusScreen = styled.div`
     .submission-status-validating{
         margin-top: ${ConvertorPixel2Rem(147)};
     }
-    
+
     .submission-status__title{
         margin-top: ${ConvertorPixel2Rem(32)};
         color: ${themeProvider.day.fontColor};
         font-size: ${ConvertorPixel2Rem(20)};
         font-weight: bold;
-        font-family: Inter;
+        font-family: Inter, sans-serif;
         font-stretch: normal;
         font-style: normal;
         line-height: normal;
@@ -36,8 +35,8 @@ export const BaseStatusScreen = styled.div`
         margin: ${ConvertorPixel2Rem(18)} auto;
         color: ${themeProvider.day.secondaryTextColor};
         text-align: center;
-        font-family: Inter;
-        font-size: 16px;
+        font-family: Inter, sans-serif;
+        font-size: ${ConvertorPixel2Rem(16)};
         font-weight: normal;
         font-stretch: normal;
         font-style: normal;
@@ -56,7 +55,7 @@ export const BaseStatusScreen = styled.div`
         margin: ${ConvertorPixel2Rem(165)} auto auto auto;
         justify-content:center;
         text-align:center;
-        font-family: Inter;
+        font-family: Inter, sans-serif;
         font-size: ${ConvertorPixel2Rem(16)};
         font-weight: 500;
         font-stretch: normal;
@@ -65,4 +64,3 @@ export const BaseStatusScreen = styled.div`
         letter-spacing: ${ConvertorPixel2Rem(0.5)};
     }
 `;
-
