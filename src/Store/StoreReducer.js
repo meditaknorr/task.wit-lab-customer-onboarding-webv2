@@ -31,6 +31,9 @@ export const initialState = {
     personalDetails: [],
   },
   media: [],
+  demo: {
+    errorOnSubmitAndValidation: '840005720',
+  },
 };
 
 export const reducer = (state, action) => {
