@@ -21,6 +21,7 @@ const ScanVoterCardBack = () => {
       payload: {
         id: 5,
         [voterCardBack.storePropertyName]: null,
+        side: null,
       },
     });
     setPhoto(null);
@@ -46,6 +47,7 @@ const ScanVoterCardBack = () => {
           <ConfirmPhoto
             description={appString.translations.confirmPhoto.backSidePhoto}
             photo={photo}
+            side="Back"
             takeAnotherPhoto={takeAnotherPhoto}
             usePhoto={() => {
               router.push('/registration/validation/selfie');

@@ -42,6 +42,7 @@ const Selfie = () => {
       payload: {
         id: 4,
         voterCardFront: null,
+        side: null,
       },
     });
   };
@@ -68,6 +69,7 @@ const Selfie = () => {
           <ConfirmSelfie
             description={appString.translations.selfie.selfie}
             photo={photo}
+            side="Selfie"
             takeAnotherPhoto={takeAnotherPhoto}
             backButtonURL="/registration/onboarding/phonenumber"
             usePhoto={() => { router.push('/registration/validation/submit'); }}
