@@ -39,11 +39,13 @@ const initialState = [
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_STATE':
-      let alreadyExists = state.find(item => item.id === action.payload.id)
-      if (alreadyExists)
-        alreadyExists = action.payload
-      else
-        state.push(action.payload)
+      // eslint-disable-next-line no-case-declarations
+      let alreadyExists = state.find((item) => item.id === action.payload.id);
+      if (alreadyExists) {
+        alreadyExists = action.payload;
+      } else {
+        state.push(action.payload);
+      }
       return state;
     case 'UPDATE_STATE':
       return [

@@ -51,7 +51,7 @@ export const translations = [
         scanCard: 'Scan voter ID card',
         takePhotoFront: 'Take a photo of the front side o your voter card',
         takePhotoBack: 'Take a photo of the back side o your voter card',
-        centerPhoto: 'Move and center the card inside the frame'
+        centerPhoto: 'Move and center the card inside the frame',
       },
       confirmPhoto:
       {
@@ -61,17 +61,17 @@ export const translations = [
         usePhoto: 'Use this photo',
         takeAnotherPhoto: 'Take another photo',
       },
-      selfie:{
+      selfie: {
         selfie: 'Selfie',
-        takeSelfie: 'Take a selfie'
+        takeSelfie: 'Take a selfie',
       },
-      submitAndValidate:{
+      submitAndValidate: {
         scanVoterID: 'Scan ID card',
         validating: 'Just a momment we are validating your identity.',
         photoUnclear: 'The photo is not clear',
-        photoUnclearDescription1:'There was a problem submiting data.',
-        photoUnclearDescription2: 'Please try again.'
-      }
+        photoUnclearDescription1: 'There was a problem submiting data.',
+        photoUnclearDescription2: 'Please try again.',
+      },
     },
   },
   {
@@ -126,7 +126,7 @@ export const translations = [
         scanCard: 'Digitalize o cartão de eleitor',
         takePhotoFront: 'Tire uma foto da frente do seu cartão de eleitor',
         takePhotoBack: 'Tire uma foto do verso do seu cartão de eleitor',
-        centerPhoto: 'Mova e centralize o cartão dentro da moldura'
+        centerPhoto: 'Mova e centralize o cartão dentro da moldura',
       },
       confirmPhoto:
       {
@@ -138,15 +138,15 @@ export const translations = [
       },
       selfie: {
         selfie: 'Selfie',
-        takeSelfie: 'Tirar uma selfie'
+        takeSelfie: 'Tirar uma selfie',
       },
       submitAndValidate: {
         scanVoterID: 'Digitalizar cartão de eleitor',
         validating: 'Aguarde um momento, estamos validando a sua identidade.',
         photoUnclear: 'A foto não é nítida',
         photoUnclearDescription1: 'Ocorreu um problema ao enviar dados.',
-        photoUnclearDescription2: 'Por favor tente novamente.'
-      }
+        photoUnclearDescription2: 'Por favor tente novamente.',
+      },
     },
   },
   {
@@ -202,7 +202,7 @@ export const translations = [
         scanCard: 'Scansiona la tessera elettorale',
         takePhotoFront: 'Scatta una foto della parte anteriore della tua tessera elettorale',
         takePhotoBack: 'Scatta una foto del retro della tua tessera elettorale',
-        centerPhoto: 'Sposta e centra la carta all\'interno della cornice'
+        centerPhoto: 'Sposta e centra la carta all\'interno della cornice',
       },
       confirmPhoto:
       {
@@ -214,15 +214,15 @@ export const translations = [
       },
       selfie: {
         selfie: 'Selfie',
-        takeSelfie: 'Fatti un selfie'
+        takeSelfie: 'Fatti un selfie',
       },
       submitAndValidate: {
         scanVoterID: 'Scansione carta d\'identità',
         validating: 'Solo un momento stiamo convalidando la tua identità',
         photoUnclear: 'La foto non è chiara.',
         photoUnclearDescription1: 'Si è verificato un problema durante l\'invio dei dati.',
-        photoUnclearDescription2: 'Per favore riprova.'
-      }
+        photoUnclearDescription2: 'Per favore riprova.',
+      },
     },
   },
 ];

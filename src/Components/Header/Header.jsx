@@ -18,7 +18,8 @@ import { DispatchContext } from '../../Contexts/AppStoreContexts';
  * @param languageButton {0/1}
  * @param language {string}
  * @param languageSetter {setter}
- * @param progressBarPercent {a Number with the percent of the progress bar divided by 10 (must be from 0 - 10)}
+ * @param progressBarPercent {a Number with the percent of the
+ * progress bar divided by 10 (must be from 0 - 10)}
  * @returns {JSX.Element}
  * @constructor
  */
