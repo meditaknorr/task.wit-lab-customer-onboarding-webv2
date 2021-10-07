@@ -8,7 +8,7 @@ import { dateValidator, textValidator, voterValidator } from '../../Helpers/inpu
 import { DetailsScreen, Main, Modal } from './Style';
 
 const Details = () => {
-  const { app, user } = storeGetter();
+  const { app, user, media } = storeGetter();
   const dispatch = storeSetter();
   const { appString } = useLocale(app.language);
   const history = useHistory();
@@ -363,41 +363,25 @@ const Details = () => {
               {appString.translations.generalInformation.attachedPhotos}
             </h3>
 
-            <div className="AttachedPhotos__Document-Front">
-              {/* eslint-disable-next-line max-len */}
-              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div
-                onClick={mediaHandler}
-                tabIndex={0}
-                id="Delete_Front"
-                className="DocumentFront-Remover"
-                role="button"
-              />
-            </div>
-
-            <div className="AttachedPhotos__Document-Back">
-              {/* eslint-disable-next-line max-len */}
-              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div
-                onClick={mediaHandler}
-                tabIndex={0}
-                id="Delete_Back"
-                className="DocumentBack-Remover"
-                role="button"
-              />
-            </div>
-
-            <div className="AttachedPhotos__Selfie">
-              {/* eslint-disable-next-line max-len */}
-              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-              <div
-                onClick={mediaHandler}
-                tabIndex={0}
-                id="Delete_Selfie"
-                className="Selfie-Remover"
-                role="button"
-              />
-            </div>
+            {
+              (media.map((image) => (
+                <div
+                  key={image.id}
+                  className={`AttachedPhotos__Document-${image.side}`}
+                >
+                  {/* eslint-disable-next-line max-len */}
+                  {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
+                  <div
+                    onClick={mediaHandler}
+                    tabIndex={0}
+                    id={`Delete-${image.side}`}
+                    className={`Document${image.side}-Remover`}
+                    role="button"
+                  />
+                </div>
+              ))
+              )
+            }
 
           </div>
 
