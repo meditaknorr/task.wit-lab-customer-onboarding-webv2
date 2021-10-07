@@ -22,6 +22,13 @@ export const translations = [
     ],
     translations:
     {
+      submitAndValidate: {
+        scanVoterID: 'Scan ID card',
+        validating: 'Just a moment we are validating your identity.',
+        photoUnclear: 'The photo is not clear',
+        photoUnclearDescription1: 'There was a problem submitting data.',
+        photoUnclearDescription2: 'Please try again.',
+      },
       validation: {
         validationHeader: 'Document Scan and Selfie',
         validationText: 'On the next screens, you are required to scan your ID card (front side and back) as also, you will have to take a selfie.',
@@ -154,6 +161,13 @@ export const translations = [
     ],
     translations:
     {
+      submitAndValidate: {
+        scanVoterID: 'Digitalizar cartão de eleitor',
+        validating: 'Aguarde um momento, estamos validando a sua identidade.',
+        photoUnclear: 'A foto não é nítida',
+        photoUnclearDescription1: 'Ocorreu um problema ao enviar dados.',
+        photoUnclearDescription2: 'Por favor tente novamente.',
+      },
       validation: {
         validationHeader: 'Digitalização do documento e selfie',
         validationText: 'Nos próximos passos, digitalize o seu cartão de identificação (frente e verso) e uma foto selfie.',
@@ -287,6 +301,13 @@ export const translations = [
     ],
     translations:
     {
+      submitAndValidate: {
+        scanVoterID: 'Scansione carta d\'identità',
+        validating: 'Solo un momento stiamo convalidando la tua identità',
+        photoUnclear: 'La foto non è chiara.',
+        photoUnclearDescription1: 'Si è verificato un problema durante l\'invio dei dati.',
+        photoUnclearDescription2: 'Per favore riprova.',
+      },
       validation: {
         validationHeader: 'Scansione documento di identità e selfie',
         validationText: "Nelle schermate successive, ti verrà richiesto di scansionare la tua carta d'identità (fronte e retro) e dovrai anche farti un selfie.",
