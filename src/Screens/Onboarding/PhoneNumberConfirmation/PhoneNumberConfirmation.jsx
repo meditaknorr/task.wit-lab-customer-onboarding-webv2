@@ -29,11 +29,12 @@ const PhoneNumberConfirmation = () => {
 
   const pinChecker = (e) => {
     if ((e.target.value).length > 0) {
+      handleInput(e);
+      e.target.focus();
       if (e.target.nextSibling) {
         e.target.nextSibling.focus();
         e.target.nextSibling.select();
       }
-      handleInput(e);
     } else if ((e.target.value) === '') {
       if (e.target.previousSibling) {
         e.target.previousSibling.focus();
@@ -86,6 +87,16 @@ const PhoneNumberConfirmation = () => {
       if (e.code === 'Enter' || e.code === 'NumpadEnter') {
         e.preventDefault();
         continueButton();
+      }
+    } else if (e.code === 'Delete' || e.code === 'Backspace') {
+      e.preventDefault();
+      setConfirmationPin((prevState) => ({
+        ...prevState,
+        [e.target.id]: '',
+      }));
+      if (e.target.previousSibling) {
+        e.target.previousSibling.focus();
+        e.target.previousSibling.select();
       }
     }
   };

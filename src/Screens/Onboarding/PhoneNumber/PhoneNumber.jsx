@@ -10,7 +10,7 @@ import { PhoneNumberScreen, Main } from './Style';
 
 const PhoneNumber = () => {
   const dispatch = storeSetter();
-  const { app, user } = storeGetter();
+  const { app } = storeGetter();
   const history = useHistory();
   const { appString } = useLocale(app.language);
   const [validPhone, setValidPhone] = useState(false);
@@ -34,7 +34,9 @@ const PhoneNumber = () => {
       {
         type: 'SET_USER',
         payload: {
-          countryName: targetCountryHelper('CountryName', (user.countryCode || app.defaultCountryCode)),
+          countryCode: parseInt((countryCode.slice(1)), 10),
+          phoneCallingCode: countryCode,
+          countryName: targetCountryHelper('CountryName', parseInt((countryCode.slice(1)), 10)),
           phone: phoneNumber,
         },
       },

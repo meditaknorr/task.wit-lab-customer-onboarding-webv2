@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import CaptureImage from '../../../Components/CaptureImage/CaptureImage';
-import ConfirmPhoto from '../../../Components/ConfirmPhoto/ConfirmPhoto';
+import ConfirmSelfie from '../../../Components/ConfirmPhoto/ConfirmSelfie';
 
 const Selfie = () => {
   const router = useHistory();
@@ -26,6 +26,26 @@ const Selfie = () => {
     setPhoto(null);
   };
 
+  const removeBackPhoto = () => {
+    dispatch({
+      type: 'UPDATE_MEDIA',
+      payload: {
+        id: 5,
+        voterCardBack: null,
+      },
+    });
+  };
+
+  const removeFrontPhoto = () => {
+    dispatch({
+      type: 'UPDATE_MEDIA',
+      payload: {
+        id: 4,
+        voterCardFront: null,
+      },
+    });
+  };
+
   return (
     <>
       {!photo
@@ -36,19 +56,24 @@ const Selfie = () => {
             footer=""
             overlayMode={overlayMode}
             setPhoto={setPhoto}
-            closeCamera={() => { router.push('/registration/validation/scan/front'); }}
+            closeCamera={() => {
+              removeFrontPhoto(); // remove photo taken from front side of the card on close selfie
+              removeBackPhoto(); // remove back side photo taken on close selfie
+              router.push('/registration/validation/scan/front');
+            }}
             storeProperty={selfie}
           />
         )
         : (
-          <ConfirmPhoto
+          <ConfirmSelfie
             description={appString.translations.selfie.selfie}
             photo={photo}
             takeAnotherPhoto={takeAnotherPhoto}
-            usePhoto={() => { router.push('/registration/details'); }}
+            backButtonURL="/registration/onboarding/phonenumber"
+            usePhoto={() => { router.push('/registration/validation/submit'); }}
             storeProperty={selfie}
             screenLabel={appString.translations.selfie.selfie}
-            progressBar={4}
+            progressBar={1}
             overlayMode={overlayMode}
           />
         )}

@@ -37,7 +37,8 @@ const ScanVoterCardFront = () => {
             overlayMode={overlayMode}
             setPhoto={setPhoto}
             closeCamera={() => {
-              router.push('/registration/validation');
+              takeAnotherPhoto(); // clear any data stored on store, force to null on click close
+              router.push('/registration/onboarding/phonenumber');
             }}
             storeProperty={voterCardFront}
           />
@@ -52,7 +53,7 @@ const ScanVoterCardFront = () => {
             }}
             storeProperty={voterCardFront}
             screenLabel={appString.translations.confirmPhoto.voterCard}
-            progressBar={2}
+            progressBar={1}
             overlayMode={overlayMode}
           />
         )}

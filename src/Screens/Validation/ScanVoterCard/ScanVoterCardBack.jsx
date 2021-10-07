@@ -52,7 +52,7 @@ const ScanVoterCardBack = () => {
             }}
             storeProperty={voterCardBack}
             screenLabel={appString.translations.confirmPhoto.voterCard}
-            progressBar={2}
+            progressBar={1}
             overlayMode={overlayMode}
           />
         )}
