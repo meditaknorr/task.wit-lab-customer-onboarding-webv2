@@ -22,7 +22,6 @@ const Onboarding = () => {
           screenLabel={''}
           languageButton={1}
           language={language.language}
-          progressBarPercent={0}
         />
         <Main>
           <div className="HeadingText">
@@ -45,7 +44,7 @@ const Onboarding = () => {
             </div>
           </div>
           <div className="ActionButton">
-            <Button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/registration/validation/scan-voter-card-front')}>
+            <Button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/registration/onboarding/phonenumber')}>
               {appString.translations.onboarding.buttonStart}
             </Button>
             <div className="ActionButton-CheckStatus">

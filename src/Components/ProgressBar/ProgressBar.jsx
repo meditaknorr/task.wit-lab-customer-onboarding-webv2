@@ -1,22 +1,37 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { LoadingBar } from './Style';
 
-/**
- * Returns a React Progress Component
- * percent parameter accepts [zero] to [ten].
- * @param percent {0/10}
- * @returns {JSX.Element}
- * @constructor
- */
-const ProgressBar = ({ percent }) => (
-  <LoadingBar percent={percent}>
-    <div className="Loading-Signal" />
-  </LoadingBar>
-);
+const ProgressBar = () => {
+  const location = useLocation();
+  const [progressLevel, setProgressLevel] = useState(0);
 
-ProgressBar.propTypes = {
-  percent: PropTypes.number.isRequired,
+  function progressLevelHandler(pathname) {
+    switch (pathname) {
+      case '/registration/onboarding/':
+        setProgressLevel(0);
+        break;
+      case '/registration/onboarding/phonenumber':
+        setProgressLevel(1);
+        break;
+      default:
+        setProgressLevel(0);
+        break;
+    }
+  }
+
+  useEffect(() => {
+    if (location.pathname) {
+      progressLevelHandler(location.pathname);
+    }
+  }, []);
+
+  return (
+    <LoadingBar percent={progressLevel}>
+      <div className="Loading-Signal" />
+    </LoadingBar>
+  );
 };
 
 export default ProgressBar;
