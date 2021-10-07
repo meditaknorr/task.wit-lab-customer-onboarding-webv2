@@ -152,6 +152,7 @@ const Details = () => {
         <Header
           greyBack={1}
           backButton={1}
+          backButtonURL="/registration/onboarding/phonenumber"
           screenLabel={appString.translations.header.regGeneralInformation}
           languageButton={1}
           progressBar={1}
