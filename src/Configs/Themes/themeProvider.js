@@ -23,7 +23,7 @@ export const themeProvider = {
   },
   night: {},
   dimensions: {
-    ChildrenWidth: '312',
+    ChildrenWidth: '330',
     screenWidth: '100vw',
     screenHeight: '100vh',
   },

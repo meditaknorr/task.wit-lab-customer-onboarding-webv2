@@ -26,27 +26,18 @@ export const dateValidator = (strings) => {
 };
 
 export const numberValidator = (strings) => {
-  if (strings.length <= 0) {
-    return false;
-  }
   const validator = regEX.date;
   validator.lastIndex = 0;
   return validator.test(strings);
 };
 
 export const voterValidator = (strings) => {
-  if (strings.length <= 0) {
-    return false;
-  }
   const validator = regEX.voters;
   validator.lastIndex = 0;
   return validator.test(strings);
 };
 
 export const addressValidator = (strings) => {
-  if (strings.length <= 0) {
-    return false;
-  }
   const validator = regEX.date;
   const result = validator.test(strings);
   validator.lastIndex = 0;
@@ -54,9 +45,6 @@ export const addressValidator = (strings) => {
 };
 
 export const textValidator = (strings) => {
-  if (strings.length <= 0) {
-    return false;
-  }
   const validator = regEX.text;
   validator.lastIndex = 0;
   return validator.test(strings);
