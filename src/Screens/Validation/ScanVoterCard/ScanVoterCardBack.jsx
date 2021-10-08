@@ -47,7 +47,7 @@ const ScanVoterCardBack = () => {
           <ConfirmPhoto
             description={appString.translations.confirmPhoto.backSidePhoto}
             photo={photo}
-            side="Back"
+            sidePhoto="Back"
             takeAnotherPhoto={takeAnotherPhoto}
             usePhoto={() => {
               router.push('/registration/validation/selfie');
