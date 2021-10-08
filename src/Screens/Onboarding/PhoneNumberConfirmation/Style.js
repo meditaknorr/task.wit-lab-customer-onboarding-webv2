@@ -36,7 +36,7 @@ export const Modal = styled.div`
     width: ${ConvertorPixel2Rem(296)};
     height: ${ConvertorPixel2Rem(189)};
 
-    div.Modal__Pane-CloseButton {
+    div.Modal__Pane--CloseButton {
       width: ${ConvertorPixel2Rem(18)};
       height: ${ConvertorPixel2Rem(18)};
       background: url(${Close}) no-repeat;
@@ -46,7 +46,7 @@ export const Modal = styled.div`
       right: ${ConvertorPixel2Rem(14)};
     }
 
-    div.Modal__Pane-Icon {
+    div.Modal__Pane--Icon {
       width: ${ConvertorPixel2Rem(42)};
       height: ${ConvertorPixel2Rem(42)};
       background: url(${RedClose}) no-repeat;
@@ -54,7 +54,7 @@ export const Modal = styled.div`
       background-size: cover;
     }
 
-    div.Modal__Pane-Information {
+    div.Modal__Pane--Information {
       display: block;
       text-align: center;
       width: ${ConvertorPixel2Rem(240)};
@@ -139,7 +139,7 @@ export const Main = styled.main`
   div.ActionButton {
     width: ${ConvertorPixel2Rem(312)};
 
-    div.ActionButton-ResendPin {
+    div.ActionButton__ResendPin {
       width: 80%;
       text-align: center;
       height: ${ConvertorPixel2Rem(17)};
