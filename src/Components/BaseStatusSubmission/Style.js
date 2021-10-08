@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 
-
 export const BaseStatusScreen = styled.div`
     display: grid;
     height: auto;
@@ -17,7 +16,7 @@ export const BaseStatusScreen = styled.div`
     .submission-status-validating{
         margin-top: ${ConvertorPixel2Rem(147)};
     }
-    
+
     .submission-status__title{
         margin-top: ${ConvertorPixel2Rem(32)};
         color: ${themeProvider.day.fontColor};
@@ -65,4 +64,3 @@ export const BaseStatusScreen = styled.div`
         letter-spacing: ${ConvertorPixel2Rem(0.5)};
     }
 `;
-

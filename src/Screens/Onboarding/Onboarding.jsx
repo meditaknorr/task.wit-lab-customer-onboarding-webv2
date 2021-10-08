@@ -19,7 +19,7 @@ const Onboarding = () => {
         <Header
           logo={1}
           backButton={0}
-          screenLabel={''}
+          screenLabel=""
           languageButton={1}
           language={language.language}
         />
@@ -48,8 +48,8 @@ const Onboarding = () => {
               {appString.translations.onboarding.buttonStart}
             </Button>
             <div className="ActionButton-CheckStatus">
-              <p>{appString.translations.onboarding.alreadyRegstered}</p>
-              <p>{appString.translations.onboarding.seeStatus}</p>
+              <span>{appString.translations.onboarding.alreadyRegstered}</span>
+              <span>{appString.translations.onboarding.seeStatus}</span>
             </div>
           </div>
         </Main>

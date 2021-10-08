@@ -9,7 +9,7 @@ import { DispatchContext } from '../../Contexts/AppStoreContexts';
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
- * >> [0] means is not visible, closed.
+ * >> [0] means is not visible, closed.s
  * >> [1] means is visible, open.
  * >> Display selectable only languages that are not equal to the device's browser.
  * @param logo {0/1}
@@ -18,7 +18,8 @@ import { DispatchContext } from '../../Contexts/AppStoreContexts';
  * @param languageButton {0/1}
  * @param language {string}
  * @param languageSetter {setter}
- * @param progressBarPercent {a Number with the percent of the progress bar divided by 10 (must be from 0 - 10)}
+ * @param progressBarPercent {a Number with the percent of the
+ * progress bar divided by 10 (must be from 0 - 10)}
  * @returns {JSX.Element}
  * @constructor
  */
@@ -59,7 +60,7 @@ const Header = ({
       >
         <div className="App-logo"><Logo /></div>
         <div className="App-BackButton" onClick={() => window.history.back()} onKeyPress={() => window.history.back()} role="button" tabIndex="0"> </div>
-        <div className="App-ScreenLabel">{appString.translations.header.phoneNumber}</div>
+        <div className="App-ScreenLabel">{screenLabel}</div>
         <div className="App-LanguageSwitcher" onClick={languageSwitcher} onKeyPress={languageSwitcher} role="button" tabIndex="0">
           <span className="App-Language__Current">{language}</span>
           <div className="App-Language__ArrowDown" />

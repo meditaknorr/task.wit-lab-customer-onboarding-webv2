@@ -21,7 +21,7 @@ export const CaptureImageScreen = styled.div`
         overflow: hidden;
     }
     .video-background-wrapper{
-        position: relative; 
+        position: relative;
         height: ${({ backgroundHeight }) => backgroundHeight};
     }
 
@@ -35,10 +35,10 @@ export const CaptureImageScreen = styled.div`
     }
 
     .camera{
-        width: ${({ overlayMode }) => overlayMode === 0 ? ConvertorPixel2Rem(276) : ConvertorPixel2Rem(210)};
-        height: ${({ overlayMode }) => overlayMode === 0 ? ConvertorPixel2Rem(190) : ConvertorPixel2Rem(210)};
+        width: ${({ overlayMode }) => (overlayMode === 0 ? ConvertorPixel2Rem(276) : ConvertorPixel2Rem(210))};
+        height: ${({ overlayMode }) => (overlayMode === 0 ? ConvertorPixel2Rem(190) : ConvertorPixel2Rem(210))};
         border: 1px solid white;
-        border-radius: ${({ overlayMode }) => overlayMode === 0 ? ConvertorPixel2Rem(6) : '50%'};
+        border-radius: ${({ overlayMode }) => (overlayMode === 0 ? ConvertorPixel2Rem(6) : '50%')};
         margin: auto;
         position: relative;
         box-shadow: 0 0 ${ConvertorPixel2Rem(8)} ${ConvertorPixel2Rem(500)} rgba(0, 0, 0, .8);
@@ -87,7 +87,7 @@ export const CaptureImageScreen = styled.div`
             font-size: ${ConvertorPixel2Rem(12)};
             bottom: -${ConvertorPixel2Rem(30)};
         }
- 
+
         .camera__shoot-button{
             width: ${ConvertorPixel2Rem(64)};
             background-color: transparent;
@@ -105,6 +105,4 @@ export const CaptureImageScreen = styled.div`
     .photo{
         display: none;
     }
-
-    `
-;
+    `;

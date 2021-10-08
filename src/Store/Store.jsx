@@ -1,20 +1,6 @@
 import React, { useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { StateContext, DispatchContext } from '../Contexts/AppStoreContexts';
-import { whitelist } from '../Locales/whitelist';
-
-/**
- * Language White List Checker
- * >> Determines if the detected language
- * Is available to be used on the app or not
- * Return detected browser language or the default 'eng' language
- * @param browserLanguage
- * @returns string
- */
-const whitelistChecker = (browserLanguage) => {
-  const result = whitelist.filter((data) => (data === browserLanguage));
-  return (result[0] ? browserLanguage : 'en');
-};
 
 /**
  *  State Filter
@@ -35,7 +21,7 @@ const stateFilter = (oldState, actionId) => {
  */
 const initialState = [
   {
-    language: whitelistChecker((window.navigator.language).slice(0, 2)),
+    language: 'en',
     id: 1,
   },
   {
@@ -43,20 +29,28 @@ const initialState = [
     countryCode: 258,
     id: 2,
   },
+  {
+    callingCode: '+258',
+    userPhoneNumber: '8200000001',
+    id: 3,
+  },
 ];
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_STATE':
-      let alreadyExists = state.find(item => item.id === action.payload.id)
-      if (alreadyExists)
-        alreadyExists = action.payload
-      else
-        state.push(action.payload)
+      // eslint-disable-next-line no-case-declarations
+      let alreadyExists = state.find((item) => item.id === action.payload.id);
+      if (alreadyExists) {
+        alreadyExists = action.payload;
+      } else {
+        state.push(action.payload);
+      }
       return state;
     case 'UPDATE_STATE':
       return [
-        ...state, action.payload,
+        stateFilter(state, action.payload.id),
+        action.payload,
       ];
     case 'REMOVE_STATE':
       return state.filter((dataserver) => dataserver.id !== action.payload.id);

@@ -13,6 +13,7 @@ const PhoneNumber = () => {
   const history = useHistory();
   const [validPhone, setValidPhone] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [countryCallingCode, setCountryCallingCode] = useState('');
 
   const state = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
@@ -24,6 +25,7 @@ const PhoneNumber = () => {
     setPhoneNumber('');
     setValidPhone(false);
     const CountryCodeNumber = (parseInt(((e.target.value).slice(1)), 10));
+    setCountryCallingCode(e.target.value);
     dispatch(
       {
         type: 'CHANGE_APP_COUNTRY',
@@ -43,6 +45,19 @@ const PhoneNumber = () => {
       setValidPhone(false);
     }
   };
+  const continueButton = () => {
+    dispatch(
+      {
+        type: 'UPDATE_STATE',
+        payload: {
+          callingCode: (countryCallingCode || `+${countryCode}`),
+          userPhoneNumber: phoneNumber,
+          id: 3,
+        },
+      },
+    );
+    history.push('/registration/onboarding/phonenumber/confirmation');
+  };
   const errorSignalizer = () => (phoneNumber.length >= targetCountryHelper('nationalNumberLength', countryCode) && !validPhone);
 
   return (
@@ -55,7 +70,7 @@ const PhoneNumber = () => {
           languageButton={1}
           language={language.language}
         />
-        <Main checkSignal={validPhone} phoneLength={(phoneNumber.length)} nationalNumberLength={targetCountryHelper('nationalNumberLength', countryCode)}>
+        <Main checkSignal={validPhone} phoneLength={(phoneNumber.length)} nnumberLenght={targetCountryHelper('nationalNumberLength', countryCode)}>
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.enterPhone}</h1>
             <h2>{appString.translations.onboarding.forAccountSettup}</h2>
@@ -93,6 +108,7 @@ const PhoneNumber = () => {
                 className="PhoneNumber__NumberField-Input"
                 value={phoneNumber}
                 onChange={phonenumberChecker}
+                autoComplete="off"
               />
               <label
                 htmlFor="phoneNumber"
@@ -112,8 +128,8 @@ const PhoneNumber = () => {
           <div className="ActionButton">
             <Button
               type="button"
-              onClick={() => history.push('/registration/onboarding/phonenumber/otp')}
-              className="ActionButton-StartRegistration"
+              onClick={continueButton}
+              className="ActionButton-ContinueRegistration"
               disabled={(validPhone) ? null : true}
             >
               {appString.translations.onboarding.continue}

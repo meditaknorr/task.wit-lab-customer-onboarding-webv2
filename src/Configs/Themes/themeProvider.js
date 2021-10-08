@@ -11,6 +11,11 @@ export const themeProvider = {
     errorColor: '#E60000',
     successColor: '#2A52E5',
     disableColor: '#CCCCCC',
+    shadowColor: '#9E9E9E',
+    pinBorderColor: '#999999',
+    modalColor: '#ADADAD',
+    modalShadow: '#919191',
+    modalH2Color: '#656565',
   },
   night: {},
 };
