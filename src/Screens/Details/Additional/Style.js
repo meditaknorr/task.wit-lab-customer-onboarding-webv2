@@ -52,93 +52,131 @@ export const Main = styled.main`
     }
   }
 
-  div.PhoneDetails {
-    width: ${ConvertorPixel2Rem(312)};
-    margin: ${ConvertorPixel2Rem(31)} 0 ${ConvertorPixel2Rem(22)} 0;
-    padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 1px ${themeProvider.day.lineColor};
+  div.AdditionalInformation {
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    margin: ${ConvertorPixel2Rem(31)} 0 0 0;
+    padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(16)};
+    box-shadow: 0 ${ConvertorPixel2Rem(2)} ${ConvertorPixel2Rem(8)} 0 ${themeProvider.day.detailsShadow};
     border-radius: ${ConvertorPixel2Rem(6)};
     text-align: left;
-    h3.PhoneDetails__Label {
-      opacity: 0.6;
-      font-size: ${ConvertorPixel2Rem(12)};
-      height: ${ConvertorPixel2Rem(12)};
-      font-weight: bolder;
-      width: 100%;
-    }
-    h2.PhoneDetails__UserPhone {
-      font-size: ${ConvertorPixel2Rem(16)};
-      height: ${ConvertorPixel2Rem(16)};
-      font-weight: bolder;
-      width: 100%;
-    }
-  }
-
-  div.PersonalInformation {
-    width: ${ConvertorPixel2Rem(312)};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 1px ${themeProvider.day.lineColor};
-    padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(55)} ${ConvertorPixel2Rem(16)};
-    border-radius: ${ConvertorPixel2Rem(6)};
-    h3.PersonalInformation__Label {
+    h3.AdditionalInformation__Label {
       opacity: 0.8;
-      margin: 0 0 ${ConvertorPixel2Rem(16)} 0;
+      margin: 0 0 ${ConvertorPixel2Rem(32)} 0;
       font-size: ${ConvertorPixel2Rem(12)};
       height: ${ConvertorPixel2Rem(12)};
       font-weight: bolder;
       width: 100%;
     }
-    form.AddressInformation__UserDetails-Field {
+
+    div.InputBox {
       position: relative;
-      display: inline-block;
-      width: ${ConvertorPixel2Rem(277)};
-      height: ${ConvertorPixel2Rem(49)};
-      margin: ${ConvertorPixel2Rem(40)} ${ConvertorPixel2Rem(2)} ${ConvertorPixel2Rem(24)} ${ConvertorPixel2Rem(2)};
-      div.Field {
-          position: relative;
-          width: 100%;
-          height: ${ConvertorPixel2Rem(49)};
-          margin: 0 0 ${ConvertorPixel2Rem(24)} 0;
+      width: 100%;
+      margin: 0 0 ${ConvertorPixel2Rem(29)} 0;
 
-          input {
-            width: 100%;
-            height: 100%;
-            padding: 0 ${ConvertorPixel2Rem(15)};
-            border-radius: ${ConvertorPixel2Rem(6)};
-            border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
-            &:focus {
-              border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor};
-              font-size: ${ConvertorPixel2Rem(16)};
-              & + label {
-                color: ${themeProvider.day.highlightColor};
-              }
-            }
-            &:placeholder-shown {
-              & + label {
-                display: none;
-                color: ${themeProvider.day.highlightColor};
-              }
-            }
-            &::-webkit-input-placeholder {
-              color: ${themeProvider.day.disableColor};
-            }
-            &:-ms-input-placeholder {
-              color: ${themeProvider.day.disableColor};
-            }
-            &::placeholder {
-              color: ${themeProvider.day.disableColor};
-            }
-          }
+      input {
+        width: 100%;
+        height: ${ConvertorPixel2Rem(49)};
+        padding: 0 ${ConvertorPixel2Rem(15)};
+        border-radius: ${ConvertorPixel2Rem(6)};
+        border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
 
-          label {
+        &:focus {
+          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor} !important;
+          font-size: ${ConvertorPixel2Rem(16)};
+
+          & + label {
             display: inline-block;
-            padding: ${ConvertorPixel2Rem(3)};
-            background-color: ${themeProvider.day.backgroundColor};
-            font-size: ${ConvertorPixel2Rem(12)};
-            position: absolute;
-            left: ${ConvertorPixel2Rem(10)};
-            top: ${ConvertorPixel2Rem(-15)};
+            color: ${themeProvider.day.highlightColor};
           }
         }
+
+        &::-webkit-input-placeholder {
+          color: ${themeProvider.day.disableColor};
+        }
+
+        &:-ms-input-placeholder {
+          color: ${themeProvider.day.disableColor};
+        }
+
+        &::placeholder {
+          color: ${themeProvider.day.disableColor};
+        }
+
+        &#firstName {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)};
+        }
+
+        &#lastName {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)};
+        }
+
+        &#birthDate {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)};
+        }
+
+        &#birthPlace {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)};
+        }
+
+        &#humanGender {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)};
+        }
+
+        &#citizenNationality {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)};
+        }
+
+        &#voterNumber {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)};
+        }
+      }
+
+      label {
+        padding: ${ConvertorPixel2Rem(3)};
+        background-color: ${themeProvider.day.backgroundColor};
+        font-size: ${ConvertorPixel2Rem(12)};
+        position: absolute;
+        left: ${ConvertorPixel2Rem(10)};
+        top: ${ConvertorPixel2Rem(-15)};
+
+        &.firstName {
+          color: ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)} !important;
+        }
+
+        &.lastName {
+          color: ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)} !important;
+        }
+
+        &.birthDate {
+          color: ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)} !important;
+        }
+
+        &.birthPlace {
+          color: ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)} !important;
+        }
+
+        &.humanGender {
+          color: ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)} !important;
+        }
+
+        &.citizenNationality {
+          color: ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)} !important;
+        }
+
+        &.voterNumber {
+          color: ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)} !important;
+        }
+      }
+
+      div.InputBox__Error {
+        position: absolute;
+        bottom: ${ConvertorPixel2Rem(8)};
+        right: ${ConvertorPixel2Rem(15)};
+        text-align: right;
+        font-style: italic;
+        font-size: ${ConvertorPixel2Rem(10)};
+        color: ${themeProvider.day.errorColor};
+      }
     }
   }
 
