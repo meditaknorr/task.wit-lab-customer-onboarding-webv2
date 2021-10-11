@@ -14,6 +14,6 @@ export const LoadingBar = styled.div`
     left: 0;
     width: ${(props) => `${props.percent * 10}%`};
     height: ${ConvertorPixel2Rem(2)};
-    background-color: ${themeProvider.day.highlightColor};
+    background-color: ${themeProvider.day.progressBar};
   }
 `;
