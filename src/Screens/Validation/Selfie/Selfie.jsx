@@ -21,6 +21,7 @@ const Selfie = () => {
       payload: {
         id: 6,
         [selfie.storePropertyName]: null,
+        side: null,
       },
     });
     setPhoto(null);
@@ -32,6 +33,7 @@ const Selfie = () => {
       payload: {
         id: 5,
         voterCardBack: null,
+        side: null,
       },
     });
   };
@@ -42,6 +44,7 @@ const Selfie = () => {
       payload: {
         id: 4,
         voterCardFront: null,
+        side: null,
       },
     });
   };
@@ -68,6 +71,7 @@ const Selfie = () => {
           <ConfirmSelfie
             description={appString.translations.selfie.selfie}
             photo={photo}
+            sidePhoto="Selfie"
             takeAnotherPhoto={takeAnotherPhoto}
             backButtonURL="/registration/onboarding/phonenumber"
             usePhoto={() => { router.push('/registration/validation/submit'); }}

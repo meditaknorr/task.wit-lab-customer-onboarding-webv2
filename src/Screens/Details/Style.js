@@ -20,7 +20,7 @@ export const Modal = styled.div`
   background-color: ${themeProvider.day.modalColor};
   width: 100%;
   height: 100%;
-  display: ${(props) => (props.status ? 'flex' : 'none')};
+  display: ${(props) => (props.modalStatus ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
 
@@ -32,7 +32,7 @@ export const Modal = styled.div`
     justify-content: space-between;
     flex-direction: column;
     background-color: ${themeProvider.day.backgroundColor};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(3)} ${themeProvider.day.modalShadow};
+    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(3)} rgba(0, 0, 0, 0.13);
     border-radius: ${ConvertorPixel2Rem(6)};
     width: ${ConvertorPixel2Rem(296)};
     height: ${ConvertorPixel2Rem(210)};
@@ -308,6 +308,11 @@ export const Main = styled.main`
       height: ${ConvertorPixel2Rem(94)};
       border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
 
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
       div.DocumentFront-Remover, div.DocumentBack-Remover {
         width: ${ConvertorPixel2Rem(24)};
         height: ${ConvertorPixel2Rem(24)};
@@ -334,6 +339,11 @@ export const Main = styled.main`
       height: ${ConvertorPixel2Rem(280)};
       border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
       margin: 0 auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
 
       div.Selfie-Remover {
         width: ${ConvertorPixel2Rem(24)};

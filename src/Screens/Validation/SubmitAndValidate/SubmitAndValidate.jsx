@@ -53,7 +53,7 @@ const SubmitAndValidate = () => {
       } else {
         setResultOnScreen();
       }
-    }, 5000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, [submissionResult, appString]);// appString
 

@@ -60,11 +60,18 @@ const Header = ({
 
   const backButtonHandler = () => {
     if (backButtonURL !== '') {
+      dispatch({
+        type: 'RESET_STATE', // Clean data stored
+      }); // back with URL clear media
       backButtonFunctions();
       history.push(backButtonURL);
     } else {
       history.goBack();
     }
+  };
+
+  const forDemo = () => {
+    history.push('/registration/onboarding');
   };
 
   return (
@@ -90,8 +97,12 @@ const Header = ({
           tabIndex="0"
         />
 
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
         <div
           className="App-ScreenLabel"
+          onClick={forDemo}
+          role="button"
+          tabIndex="0"
         >
           {screenLabel}
         </div>

@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { storeGetter } from '../../Hooks/useStore';
+import { storeGetter, storeSetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import { OnborardingScreen, Main } from './Style';
 import WebView from '../../Layouts/WebView/WebView';
 import Header from '../../Components/Header/Header';
 
 const Onboarding = () => {
+  const dispatch = storeSetter();
   const { app } = storeGetter();
   const history = useHistory();
   const { appString } = useLocale(app.language);
+
+  useEffect(() => {
+    dispatch({
+      type: 'RESET_STATE', // Clean data stored
+    });
+  }, []);
 
   return (
     <WebView>

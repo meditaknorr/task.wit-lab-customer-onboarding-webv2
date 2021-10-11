@@ -44,6 +44,7 @@ const ConfirmSelfie = ({
       payload: {
         id: storeProperty.id,
         [storeProperty.storePropertyName]: photo[storeProperty.storePropertyName],
+        side: 'Selfie',
       },
     });
     usePhoto();
@@ -55,6 +56,7 @@ const ConfirmSelfie = ({
       payload: {
         id: 5,
         voterCardBack: null,
+        side: null,
       },
     });
   };
@@ -65,6 +67,7 @@ const ConfirmSelfie = ({
       payload: {
         id: 4,
         voterCardFront: null,
+        side: null,
       },
     });
   };

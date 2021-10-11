@@ -123,6 +123,8 @@ export const reducer = (state, action) => {
           ...state.media.filter((block) => block.id !== action.payload.id),
         ],
       };
+    case 'RESET_STATE':
+      return initialState;
     default:
       return state;
   }
