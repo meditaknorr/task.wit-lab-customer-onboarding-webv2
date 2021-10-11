@@ -1,112 +1,67 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { useHistory } from 'react-router-dom';
-import { useLocale } from '../../../Hooks/useLocale';
 import { storeGetter } from '../../../Hooks/useStore';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
 import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
+import { useLocale } from '../../../Hooks/useLocale';
 
 const PhoneNumberConfirmation = () => {
-  const buttonRef = useRef();
+  const inputRef = useRef([]);
   const history = useHistory();
   const { app, user } = storeGetter();
   const { appString } = useLocale(app.language);
-  const [isInValidPin, setIsInValidPin] = useState(true);
   const [modal, setModal] = useState(false);
   const [pin, setPIN] = useState([undefined, undefined, undefined, undefined]);
   let items;
 
-  const handleInput = (e) => {
-    setConfirmationPin((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }));
+  const closeModal = () => {
+    setModal(false);
+    setPIN([undefined, undefined, undefined, undefined]);
   };
 
-  const pinChecker = (e) => {
-    if ((e.target.value).length > 0) {
-      handleInput(e);
-      e.target.focus();
-      if (e.target.nextSibling) {
-        e.target.nextSibling.focus();
-        e.target.nextSibling.select();
-      }
-    } else if ((e.target.value) === '') {
-      if (e.target.previousSibling) {
-        e.target.previousSibling.focus();
-        e.target.previousSibling.select();
-        setConfirmationPin((prevState) => ({
-          ...prevState,
-          [e.target.id]: '',
-        }));
-      } else {
-        setConfirmationPin((prevState) => ({
-          ...prevState,
-          [e.target.id]: '',
-        }));
-      }
+  const isComplete = (data) => {
+    const ObjEmpty = Object.keys(data).filter((k) => (data[k] === '' || data[k] === undefined || data[k] === null));
+    if (ObjEmpty.length === 0) {
+      return true;
+    }
+    return false;
+  };
+
+  const inputHandler = (e) => {
+    const index = (e.target.id).slice(5);
+    items = pin;
+    items[index] = e.target.value;
+    if (isComplete(items)) {
+      setPIN([...items]);
     }
   };
 
-  const continueButton = () => {
-    const thePin = (`${confirmationPin.one}${confirmationPin.two}${confirmationPin.three}${confirmationPin.four}`);
-    setModal(thePin !== user.OTP);
-    if (thePin === user.OTP) {
-      setConfirmationPin({
-        one: '',
-        two: '',
-        three: '',
-        four: '',
-      });
+  const focusHandler = (e) => {
+    const index = parseInt((e.target.id).slice(5), 10);
+    if ((e.target.value).length > 0) {
+      if (index < 3) {
+        inputHandler(e);
+        inputRef.current[index].nextSibling.focus();
+        inputRef.current[index].nextSibling.select();
+      } else if (index < 4) {
+        inputRef.current[3].blur();
+      }
+    } else if (index >= 0) {
+      items = pin;
+      items[index] = undefined;
+      setPIN([...items]);
+    }
+  };
+
+  const buttonHandler = () => {
+    const thePIN = pin.join('');
+    setModal(thePIN !== user.OTP);
+    if (thePIN === user.OTP) {
       history.push('/registration/validation/scan/front');
     }
   };
-
-  const handleModal = () => {
-    setModal(false);
-    setConfirmationPin({
-      one: '',
-      two: '',
-      three: '',
-      four: '',
-    });
-  };
-
-  /**
-   * Enter Key Listener
-   * If input is valid and user presses ENTER,
-   * It calls the same function created for our screen action button
-   * @param e
-   */
-  const keyListener = (e) => {
-    if (!isInValidPin) {
-      if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-        e.preventDefault();
-        continueButton();
-      }
-    } else if (e.code === 'Delete' || e.code === 'Backspace') {
-      e.preventDefault();
-      setConfirmationPin((prevState) => ({
-        ...prevState,
-        [e.target.id]: '',
-      }));
-      if (e.target.previousSibling) {
-        e.target.previousSibling.focus();
-        e.target.previousSibling.select();
-      }
-    }
-  };
-
-  useEffect(() => {
-    setIsInValidPin(!(Object.values(confirmationPin).indexOf('') <= -1));
-  }, [confirmationPin]);
-
-  useEffect(() => {
-    document.addEventListener('keydown', keyListener);
-    return () => {
-      document.removeEventListener('keydown', keyListener);
-    };
-  }, [isInValidPin]);
 
   return (
     <WebView>
@@ -125,15 +80,15 @@ const PhoneNumberConfirmation = () => {
             <div className="Modal__Pane-Card" />
             {/* eslint-disable-next-line max-len */}
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label,jsx-a11y/interactive-supports-focus */}
-            <div className="Modal__Pane-CloseButton" role="button" onClick={handleModal} />
+            <div className="Modal__Pane-CloseButton" role="button" onClick={closeModal} />
             <div className="Modal__Pane-Icon" />
             <div className="Modal__Pane-Information">
               <h1>{appString.translations.onboarding.codeIncorrect}</h1>
               <h2>{appString.translations.onboarding.tryAgainCode}</h2>
             </div>
           </div>
-        </Modal>
 
+        </Modal>
         <Main>
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.pleaseConfirm}</h1>
@@ -147,66 +102,37 @@ const PhoneNumberConfirmation = () => {
           </div>
 
           <div className="OneTimePin">
-            <input
-              id="one"
-              type="tel"
-              minLength={1}
-              maxLength={1}
-              size={1}
-              value={confirmationPin.one}
-              onChange={pinChecker}
-              onFocus={(e) => e.target.select()}
-              className="OneTimePin__SquarePin"
-              autoComplete="off"
-            />
-            <input
-              id="two"
-              type="tel"
-              minLength={1}
-              maxLength={1}
-              size={1}
-              value={confirmationPin.two}
-              onChange={pinChecker}
-              onFocus={(e) => e.target.select()}
-              className="OneTimePin__SquarePin"
-              autoComplete="off"
-            />
-            <input
-              id="three"
-              type="tel"
-              minLength={1}
-              maxLength={1}
-              size={1}
-              value={confirmationPin.three}
-              onChange={pinChecker}
-              onFocus={(e) => e.target.select()}
-              className="OneTimePin__SquarePin"
-              autoComplete="off"
-            />
-            <input
-              id="four"
-              type="tel"
-              minLength={1}
-              maxLength={1}
-              size={1}
-              value={confirmationPin.four}
-              onChange={pinChecker}
-              onFocus={(e) => e.target.select()}
-              className="OneTimePin__SquarePin"
-              autoComplete="off"
-            />
+            {
+              pin.map((square, index) => (
+                <input
+                  key={uuidv4()}
+                  id={`box__${index}`}
+                  type="tel"
+                  minLength={1}
+                  maxLength={1}
+                  size={1}
+                  tabIndex={0}
+                  value={pin[index]}
+                  onChange={focusHandler}
+                  onBlur={inputHandler}
+                  ref={(element) => { inputRef.current[index] = element; }}
+                  className="OneTimePin__Square"
+                  autoComplete="off"
+                />
+              ))
+            }
           </div>
 
           <div className="ActionButton">
-            <div className="ActionButton-ResendPin">
-              {(isInValidPin) ? null : appString.translations.onboarding.resendCode }
+            <div className="ActionButton__ResendPin">
+              {isComplete(pin) && appString.translations.onboarding.resendCode }
             </div>
             <button
               type="button"
-              onClick={continueButton}
-              className="ActionButton-ContinueRegistration"
-              ref={buttonRef}
-              disabled={(isInValidPin)}
+              tabIndex={0}
+              onClick={buttonHandler}
+              className="ActionButton__ContinueRegistration"
+              disabled={!isComplete(pin)}
             >
               {appString.translations.onboarding.continue}
             </button>

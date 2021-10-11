@@ -70,10 +70,6 @@ const Header = ({
     }
   };
 
-  const forDemo = () => {
-    history.push('/registration/onboarding');
-  };
-
   return (
     <>
       <AppHeader
@@ -88,19 +84,17 @@ const Header = ({
         <div className="App-GhostBlock" />
         <div className="App-Logo"><Logo /></div>
 
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <div
           className="App-BackButton"
           onClick={backButtonHandler}
           onKeyPress={backButtonHandler}
           role="button"
+          label="Back Button"
           tabIndex="0"
         />
 
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
         <div
           className="App-ScreenLabel"
-          onClick={forDemo}
           role="button"
           tabIndex="0"
         >
