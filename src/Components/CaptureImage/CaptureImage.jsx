@@ -36,7 +36,7 @@ const CaptureImage = ({
       video: {
         width: window.screen.height,
         height: window.screen.width,
-        facingMode: overlayMode === 0 ? { exact: 'environment' } : 'user',
+        facingMode: overlayMode === 0 ? 'environment' : 'user',
       },
 
     })

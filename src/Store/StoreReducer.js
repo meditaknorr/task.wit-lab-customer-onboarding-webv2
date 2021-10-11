@@ -30,7 +30,20 @@ export const initialState = {
     OTP: '1010',
     personalDetails: [],
   },
-  media: [],
+  media: [
+    {
+      id: 4,
+      voterCardFront: null,
+    },
+    {
+      id: 5,
+      voterCardBack: null,
+    },
+    {
+      id: 6,
+      selfie: null,
+    },
+  ],
   demo: {
     errorOnSubmitAndValidation: '840005720',
   },
