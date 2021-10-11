@@ -10,7 +10,7 @@ import { AppHeader } from './Style';
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
- * >> [0] means is not visible, closed.
+ * >> [0] means is not visible, closed.s
  * >> [1] means is visible, open.
  * >> Display selectable only languages that are not equal to the device's browser.
  * @param logo {0/1}

@@ -11,7 +11,8 @@ import Button from '../Button/Button';
  * @param description  { a String that defines the description of the photo
  * that is ging to be displayed }
  * @param photo {a String containing the base64 text of the image}
- * @param takeAnotherPhoto {a FUNCTION to discard the current photo and open the camera again}
+ * @param takeAnotherPhoto {a FUNCTION to discard the current photo and
+ * open the camera again}
  * @param usePhoto {a FUNCTION that uses the taken photo and sends it to te store}
  * @param storeProperty {a String containing the key value of the property that
  * needs to be sent to the store}

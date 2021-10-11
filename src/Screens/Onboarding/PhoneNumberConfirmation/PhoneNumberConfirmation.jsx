@@ -13,12 +13,8 @@ const PhoneNumberConfirmation = () => {
   const { appString } = useLocale(app.language);
   const [isInValidPin, setIsInValidPin] = useState(true);
   const [modal, setModal] = useState(false);
-  const [confirmationPin, setConfirmationPin] = useState({
-    one: '',
-    two: '',
-    three: '',
-    four: '',
-  });
+  const [pin, setPIN] = useState([undefined, undefined, undefined, undefined]);
+  let items;
 
   const handleInput = (e) => {
     setConfirmationPin((prevState) => ({
@@ -123,6 +119,7 @@ const PhoneNumberConfirmation = () => {
           progressBar={1}
           language={app.language}
         />
+
         <Modal status={modal}>
           <div className="Modal__Pane">
             <div className="Modal__Pane-Card" />
@@ -136,6 +133,7 @@ const PhoneNumberConfirmation = () => {
             </div>
           </div>
         </Modal>
+
         <Main>
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.pleaseConfirm}</h1>

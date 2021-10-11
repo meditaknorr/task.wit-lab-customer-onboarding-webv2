@@ -163,7 +163,7 @@ export const Main = styled.main`
     width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
     margin: ${ConvertorPixel2Rem(70)} auto ${ConvertorPixel2Rem(20)} auto;
 
-    div.ActionButton-ResendPin {
+    div.ActionButton__ResendPin {
       width: 80%;
       text-align: center;
       height: ${ConvertorPixel2Rem(17)};
