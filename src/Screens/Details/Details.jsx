@@ -244,73 +244,72 @@ const Details = () => {
                 ))
               }
             </div>
+          </div>
 
-            <div className="AttachedPhotos">
-              <h3 className="AttachedPhotos__Label">
-                {appString.translations.generalInformation.attachedPhotos}
-              </h3>
+          <div className="AttachedPhotos">
+            <h3 className="AttachedPhotos__Label">
+              {appString.translations.generalInformation.attachedPhotos}
+            </h3>
 
-              <div className="AttachedPhotos__Document-Front">
-                <img
-                  className="photo__image"
-                  src={front.voterCardFront}
-                  alt="front id"
-                />
-                {/* eslint-disable-next-line max-len */}
-                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-                <div
-                  onClick={mediaHandler}
-                  tabIndex={0}
-                  id="Delete_Front"
-                  className="DocumentFront-Remover"
-                  role="button"
-                />
-              </div>
-
-              <div className="AttachedPhotos__Document-Back">
-                <img
-                  className="photo__image"
-                  src={back.voterCardBack}
-                  alt="back id"
-                />
-                {/* eslint-disable-next-line max-len */}
-                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-                <div
-                  onClick={mediaHandler}
-                  tabIndex={0}
-                  id="Delete_Back"
-                  className="DocumentBack-Remover"
-                  role="button"
-                />
-              </div>
-
-              <div className="AttachedPhotos__Selfie">
-                <img
-                  className="photo__image"
-                  src={selfie.selfie}
-                  alt="selfie"
-                />
-                {/* eslint-disable-next-line max-len */}
-                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
-                <div
-                  onClick={mediaHandler}
-                  tabIndex={0}
-                  id="Delete_Selfie"
-                  className="Selfie-Remover"
-                  role="button"
-                />
-              </div>
+            <div className="AttachedPhotos__Document-Front">
+              <img
+                className="photo__image"
+                src={front.voterCardFront}
+                alt="front id"
+              />
+              {/* eslint-disable-next-line max-len */}
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
+              <div
+                onClick={mediaHandler}
+                tabIndex={0}
+                id="Delete_Front"
+                className="DocumentFront-Remover"
+                role="button"
+              />
             </div>
 
-            <div className="ActionButton">
-              <button
-                type="button"
-                disabled={isDisabled}
-              >
-                {appString.translations.onboarding.continue}
-              </button>
+            <div className="AttachedPhotos__Document-Back">
+              <img
+                className="photo__image"
+                src={back.voterCardBack}
+                alt="back id"
+              />
+              {/* eslint-disable-next-line max-len */}
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
+              <div
+                onClick={mediaHandler}
+                tabIndex={0}
+                id="Delete_Back"
+                className="DocumentBack-Remover"
+                role="button"
+              />
             </div>
 
+            <div className="AttachedPhotos__Selfie">
+              <img
+                className="photo__image"
+                src={selfie.selfie}
+                alt="selfie"
+              />
+              {/* eslint-disable-next-line max-len */}
+              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
+              <div
+                onClick={mediaHandler}
+                tabIndex={0}
+                id="Delete_Selfie"
+                className="Selfie-Remover"
+                role="button"
+              />
+            </div>
+          </div>
+
+          <div className="ActionButton">
+            <button
+              type="button"
+              disabled={isDisabled}
+            >
+              {appString.translations.onboarding.continue}
+            </button>
           </div>
         </Main>
       </DetailsScreen>

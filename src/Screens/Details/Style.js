@@ -93,7 +93,7 @@ export const Main = styled.main`
   overflow-y: auto;
   height: 100%;
   width: 100%;
-  padding: 0 ${ConvertorPixel2Rem(24)} ${ConvertorPixel2Rem(78)} ${ConvertorPixel2Rem(24)};
+  padding: 0 ${ConvertorPixel2Rem(24)} 0 ${ConvertorPixel2Rem(24)};
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -286,7 +286,7 @@ export const Main = styled.main`
 
   div.AttachedPhotos {
     width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
-    margin: ${ConvertorPixel2Rem(20)} 0 ${ConvertorPixel2Rem(150)} 0;
+    margin: ${ConvertorPixel2Rem(20)} 0 ${ConvertorPixel2Rem(120)} 0;
     padding: ${ConvertorPixel2Rem(16)};
     box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(1)} ${themeProvider.day.detailsShadow};
     border-radius: ${ConvertorPixel2Rem(6)};
@@ -304,6 +304,7 @@ export const Main = styled.main`
       margin: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(16)} 0;
       width: ${ConvertorPixel2Rem(94)};
       height: ${ConvertorPixel2Rem(94)};
+      border-radius: ${ConvertorPixel2Rem(6)};
       border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
 
       img {
@@ -336,6 +337,7 @@ export const Main = styled.main`
       position: relative;
       width: 100%;
       height: ${ConvertorPixel2Rem(280)};
+      border-radius: ${ConvertorPixel2Rem(6)};
       border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
       margin: 0 auto;
 
