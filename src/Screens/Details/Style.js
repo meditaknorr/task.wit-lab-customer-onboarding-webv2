@@ -273,8 +273,8 @@ export const Main = styled.main`
 
         div.InputBox__Error {
           position: absolute;
-          bottom: ${ConvertorPixel2Rem(8)};
-          right: ${ConvertorPixel2Rem(15)};
+          bottom: ${ConvertorPixel2Rem(5)};
+          right: ${ConvertorPixel2Rem(13)};
           text-align: right;
           font-style: italic;
           font-size: ${ConvertorPixel2Rem(10)};

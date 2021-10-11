@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { themeProvider } from '../../../Configs/Themes/themeProvider';
 import { ConvertorPixel2Rem } from '../../../Hooks/useDimension';
-import Remove from '../../../Assets/Images/icons/ic_close_square.svg';
 
 export const DetailsScreen = styled.div`
   width: 100%;
@@ -59,6 +58,10 @@ export const Main = styled.main`
     box-shadow: 0 ${ConvertorPixel2Rem(2)} ${ConvertorPixel2Rem(8)} 0 ${themeProvider.day.detailsShadow};
     border-radius: ${ConvertorPixel2Rem(6)};
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
     h3.AdditionalInformation__Label {
       opacity: 0.8;
       margin: 0 0 ${ConvertorPixel2Rem(32)} 0;
@@ -72,6 +75,10 @@ export const Main = styled.main`
       position: relative;
       width: 100%;
       margin: 0 0 ${ConvertorPixel2Rem(29)} 0;
+
+      &.number, &.postCode {
+        width: ${ConvertorPixel2Rem(140)};
+      }
 
       input {
         width: 100%;
@@ -90,44 +97,32 @@ export const Main = styled.main`
           }
         }
 
-        &::-webkit-input-placeholder {
+        &:placeholder-shown + label {
+          display: none;
+        }
+
+        &::-webkit-input-placeholder, &:-ms-input-placeholder , &::placeholder {
           color: ${themeProvider.day.disableColor};
         }
 
-        &:-ms-input-placeholder {
-          color: ${themeProvider.day.disableColor};
+        &#address {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnAddress && themeProvider.day.errorColor)};
         }
 
-        &::placeholder {
-          color: ${themeProvider.day.disableColor};
+        &#number {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnNumber && themeProvider.day.errorColor)};
         }
 
-        &#firstName {
-          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)};
+        &#postCode {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnPostCode && themeProvider.day.errorColor)};
         }
 
-        &#lastName {
-          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)};
+        &#town {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnTown && themeProvider.day.errorColor)};
         }
 
-        &#birthDate {
-          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)};
-        }
-
-        &#birthPlace {
-          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)};
-        }
-
-        &#humanGender {
-          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)};
-        }
-
-        &#citizenNationality {
-          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)};
-        }
-
-        &#voterNumber {
-          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)};
+        &#district {
+          border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnDistrict && themeProvider.day.errorColor)};
         }
       }
 
@@ -139,111 +134,35 @@ export const Main = styled.main`
         left: ${ConvertorPixel2Rem(10)};
         top: ${ConvertorPixel2Rem(-15)};
 
-        &.firstName {
-          color: ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)} !important;
+        &.address {
+          color: ${(props) => (props.errorOnAddress && themeProvider.day.errorColor)} !important;
         }
 
-        &.lastName {
-          color: ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)} !important;
+        &.number {
+          color: ${(props) => (props.errorOnNumber && themeProvider.day.errorColor)} !important;
         }
 
-        &.birthDate {
-          color: ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)} !important;
+        &.postCode {
+          color: ${(props) => (props.errorOnPostCode && themeProvider.day.errorColor)} !important;
         }
 
-        &.birthPlace {
-          color: ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)} !important;
+        &.town {
+          color: ${(props) => (props.errorOnTown && themeProvider.day.errorColor)} !important;
         }
 
-        &.humanGender {
-          color: ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)} !important;
-        }
-
-        &.citizenNationality {
-          color: ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)} !important;
-        }
-
-        &.voterNumber {
-          color: ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)} !important;
+        &.district {
+          color: ${(props) => (props.errorOnDistrict && themeProvider.day.errorColor)} !important;
         }
       }
 
       div.InputBox__Error {
         position: absolute;
-        bottom: ${ConvertorPixel2Rem(8)};
-        right: ${ConvertorPixel2Rem(15)};
+        bottom: ${ConvertorPixel2Rem(5)};
+        right: ${ConvertorPixel2Rem(13)};
         text-align: right;
         font-style: italic;
         font-size: ${ConvertorPixel2Rem(10)};
         color: ${themeProvider.day.errorColor};
-      }
-    }
-  }
-
-  div.AttachedPhotos {
-    width: ${ConvertorPixel2Rem(312)};
-    margin: ${ConvertorPixel2Rem(16)} 0 ${ConvertorPixel2Rem(100)} 0;
-    padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 1px ${themeProvider.day.lineColor};
-    border-radius: ${ConvertorPixel2Rem(6)};
-
-    h3.AttachedPhotos__Label {
-      opacity: 0.8;
-      margin: 0 0 ${ConvertorPixel2Rem(16)} 0;
-      font-size: ${ConvertorPixel2Rem(12)};
-      height: ${ConvertorPixel2Rem(12)};
-      font-weight: bolder;
-      width: 100%;
-    }
-
-    div.AttachedPhotos__Document-Front, div.AttachedPhotos__Document-Back {
-      position: relative;
-      display: inline-block;
-      border-radius: ${ConvertorPixel2Rem(6)};
-      margin: ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(16)} 0;
-      width: ${ConvertorPixel2Rem(94)};
-      height: ${ConvertorPixel2Rem(94)};
-      border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
-
-      div.DocumentFront-Remover, div.DocumentBack-Remover {
-        width: ${ConvertorPixel2Rem(24)};
-        height: ${ConvertorPixel2Rem(24)};
-        border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
-        border-radius: 50%;
-        background: url(${Remove});
-        background-size: contain;
-        position: absolute;
-        cursor: pointer;
-        right: ${ConvertorPixel2Rem(-12)};
-        top: ${ConvertorPixel2Rem(-12)};
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-
-    div.AttachedPhotos__Selfie {
-      display: block;
-      position: relative;
-      border-radius: ${ConvertorPixel2Rem(6)};
-      width: ${ConvertorPixel2Rem(280)};
-      height: ${ConvertorPixel2Rem(280)};
-      border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
-      margin: 0 auto;
-
-      div.Selfie-Remover {
-        width: ${ConvertorPixel2Rem(24)};
-        height: ${ConvertorPixel2Rem(24)};
-        border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
-        border-radius: 50%;
-        background: url(${Remove});
-        background-size: contain;
-        position: absolute;
-        right: ${ConvertorPixel2Rem(-8)};
-        top: ${ConvertorPixel2Rem(-8)};
-        &:hover {
-          cursor: pointer;
-        }
       }
     }
   }

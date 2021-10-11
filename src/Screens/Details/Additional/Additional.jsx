@@ -49,7 +49,7 @@ const Details = () => {
         },
       },
     );
-    history.push('/switcher');
+    history.push('/flow-switch');
   };
 
   // Input Handlers
@@ -73,34 +73,34 @@ const Details = () => {
       });
     };
 
-    if (!inputStatus(e.target.value)) {
-      errorSetter(e.target.id, '* is required.');
+    if (!inputStatus(e.target.value) && e.target.id !== 'number' && e.target.id !== 'postCode') {
+      errorSetter(e.target.id, '* required.');
     } else {
       switch (e.target.id) {
         case 'address':
           if (!inputAddressValidator(e.target.value)) {
-            errorSetter(e.target.id, '* is invalid.');
+            errorSetter(e.target.id, '* invalid.');
           } else {
             errorSetter(e.target.id);
           }
           break;
         case 'number':
           if (!inputNumberValidator(e.target.value)) {
-            errorSetter(e.target.id, '* is invalid.');
+            errorSetter(e.target.id, '* invalid.');
           } else {
             errorSetter(e.target.id);
           }
           break;
         case 'postCode':
           if (!inputNumberValidator(e.target.value)) {
-            errorSetter(e.target.id, '* is invalid.');
+            errorSetter(e.target.id, '* invalid.');
           } else {
             errorSetter(e.target.id);
           }
           break;
         default:
           if (!inputTextValidator(e.target.value)) {
-            errorSetter(e.target.id, '* is invalid.');
+            errorSetter(e.target.id, '* invalid.');
           } else {
             errorSetter(e.target.id);
           }
@@ -110,8 +110,8 @@ const Details = () => {
 
   const isSuccessfulValidated = () => {
     if (inputAddressValidator(inputField.address)
-      && inputNumberValidator(inputField.number)
-      && inputNumberValidator(inputField.postCode)
+      // && inputNumberValidator(inputField.number)
+      // && inputNumberValidator(inputField.postCode)
       && inputTextValidator(inputField.town)
       && inputTextValidator(inputField.district)) {
       return true;
@@ -138,17 +138,25 @@ const Details = () => {
           language={app.language}
           progressBar={1}
         />
-        <Main>
+        <Main
+          errorOnAddress={inputError.address}
+          errorOnNumber={inputError.number}
+          errorOnPostCode={inputError.postCode}
+          errorOnTown={inputError.town}
+          errorOnDistrict={inputError.district}
+        >
           <div className="HeadingText">
-            <h1>Add the last details</h1>
-            <h2>Provide some more details to complete your registration.</h2>
+            <h1>{appString.translations.additionalinformation.addLastDetails}</h1>
+            <h2>{appString.translations.additionalinformation.provideMoreDetails}</h2>
           </div>
 
           <div className="AdditionalInformation">
-            <h3 className="AdditionalInformation__Label">Address information</h3>
+            <h3 className="AdditionalInformation__Label">
+              {appString.translations.additionalinformation.addressInformation}
+            </h3>
             {
               InputBox.map((data) => (
-                <div key={data} className="InputBox">
+                <div key={data} className={`InputBox ${data}`}>
                   <input
                     id={data}
                     name={data}
