@@ -46,7 +46,7 @@ export const translations = [
       header: {
         regStatus: 'Status',
         regConfirmation: 'Confirmation',
-        additionalInformation: 'Additional Information',
+        regAdditionalInformation: 'Additional Information',
         regGeneralInformation: 'General Information',
         regVoterCard: 'Voter Card',
         regSelfie: 'Selfie',

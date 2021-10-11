@@ -8,6 +8,7 @@ import ScanVoterCardBack from '../Screens/Validation/ScanVoterCard/ScanVoterCard
 import Selfie from '../Screens/Validation/Selfie/Selfie';
 import SubmitAndValidate from '../Screens/Validation/SubmitAndValidate/SubmitAndValidate';
 import Details from '../Screens/Details/Details';
+import Additional from '../Screens/Details/Additional/Additional';
 
 const AppRouter = () => (
   <Router>
@@ -22,6 +23,7 @@ const AppRouter = () => (
       <Route exact path="/registration/validation/submit" component={SubmitAndValidate} />
 
       <Route exact path="/registration/details" component={Details} />
+      <Route exact path="/registration/details/additional" component={Additional} />
     </Switch>
   </Router>
 );

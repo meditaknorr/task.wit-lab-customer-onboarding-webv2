@@ -1,122 +1,52 @@
 import styled from 'styled-components';
-import { themeProvider } from '../../../../../unpatched - advanced/src/Configs/Themes/themeProvider';
-import { ConvertorPixel2Rem } from '../../../../../unpatched - advanced/src/Hooks/useDimension';
-import Remove from '../../../../../unpatched - advanced/src/Assets/Images/icons/ic_close_square.svg';
+import { themeProvider } from '../../../Configs/Themes/themeProvider';
+import { ConvertorPixel2Rem } from '../../../Hooks/useDimension';
+import Remove from '../../../Assets/Images/icons/ic_close_square.svg';
 
 export const DetailsScreen = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-areas: "header" "main" "footer";
-  grid-template-rows: minmax(${ConvertorPixel2Rem(56)}, ${ConvertorPixel2Rem(60)}) minmax(1fr, max-content) minmax(${ConvertorPixel2Rem(56)}, ${ConvertorPixel2Rem(60)});
+  grid-template-areas: "header" "main";
+  grid-template-rows: ${ConvertorPixel2Rem(56)} 1fr;
   grid-template-columns: 1fr;
   grid-gap: 0;
   row-gap: 0;
 `;
 
-export const Modal = styled.div`
-  z-index: 100;
-  position: fixed;
-  background-color: ${themeProvider.day.modalColor};
-  width: 100%;
-  height: 100%;
-  display: ${(props) => (props.status ? 'flex' : 'none')};
-  align-items: center;
-  justify-content: center;
-
-  div.Modal__Pane {
-    position: relative;
-    padding: ${ConvertorPixel2Rem(24)};
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-    background-color: ${themeProvider.day.backgroundColor};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 3px ${themeProvider.day.modalShadow};
-    border-radius: ${ConvertorPixel2Rem(6)};
-    width: ${ConvertorPixel2Rem(296)};
-    height: ${ConvertorPixel2Rem(210)};
-
-    div.Modal__Pane-Information {
-      display: block;
-      width: 100%;
-      text-align: left;
-
-      h1 {
-        width: ${ConvertorPixel2Rem(230)};
-        height: ${ConvertorPixel2Rem(24)};
-        font-size: ${ConvertorPixel2Rem(18)};
-        margin: 0 0 ${ConvertorPixel2Rem(13)} 0;
-      }
-
-      h2 {
-        width: ${ConvertorPixel2Rem(250)};
-        height: ${ConvertorPixel2Rem(40)};
-        font-size: ${ConvertorPixel2Rem(14)};
-        color: ${themeProvider.day.modalH2Color};
-        opacity: 0.8;
-      }
-    }
-    div.Modal__Pane-ActionButton {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 24px 0 0 0;
-      width: 100%;
-
-      button {
-        width: ${ConvertorPixel2Rem(118)};
-        height: ${ConvertorPixel2Rem(44)};
-        border-radius: ${ConvertorPixel2Rem(6)};
-        background: ${themeProvider.day.modalWhite};
-        &:hover {
-          cursor: pointer;
-        }
-
-        &.Modal__Pane-ActionButton-Delete {
-          background: ${themeProvider.day.modalRed};
-          color: ${themeProvider.day.modalWhite};
-        }
-        &.Modal__Pane-ActionButton-Cancel {
-          background: ${themeProvider.day.modalWhite};
-          color: ${themeProvider.day.modalGrey};
-          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.modalGrey};
-        }
-      }
-    }
-  }
-`;
-
 export const Main = styled.main`
   grid-area: main;
   position: relative;
-  width: 100%;
-  height: 100vh;
   overflow-y: auto;
-  padding: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(27)};
+  height: 100%;
+  width: 100%;
+  padding: 0 ${ConvertorPixel2Rem(24)} 0 ${ConvertorPixel2Rem(24)};
   display: flex;
   align-items: center;
-  flex-flow: column;
+  justify-content: flex-start;
+  flex-direction: column;
 
   div.HeadingText {
-    width: ${ConvertorPixel2Rem(312)};
-    color: ${themeProvider.day.fontColor};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    margin: ${ConvertorPixel2Rem(25)} 0 0 0;
     letter-spacing: 0;
-    margin: ${ConvertorPixel2Rem(17)} 0 0 0;
 
     h1 {
       width: 100%;
-      height: ${ConvertorPixel2Rem(60)};
+      min-height: ${ConvertorPixel2Rem(29)};
       font-size: ${ConvertorPixel2Rem(24)};
       line-height: ${ConvertorPixel2Rem(29)};
-      margin: 0 0 ${ConvertorPixel2Rem(14)} 0;
       font-weight: bold;
     }
+
     h2 {
+      margin: ${ConvertorPixel2Rem(10)} 0 0 0;
+      width: 100%;
       font-weight: normal;
       font-size: ${ConvertorPixel2Rem(14)};
-      height: ${ConvertorPixel2Rem(55)};
-      width: 100%;
+      min-height: ${ConvertorPixel2Rem(30)};
+      line-height: ${ConvertorPixel2Rem(20)};
+      text-align: justify-all;
       display: flex;
       align-items: center;
     }

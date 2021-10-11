@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import { storeGetter } from '../../../../../unpatched - advanced/src/Hooks/useStore';
-import { useLocale } from '../../../../../unpatched - advanced/src/Hooks/useLocale';
-import Header from '../../../../../unpatched - advanced/src/Components/Header/Header';
-import WebView from '../../../../../unpatched - advanced/src/Layouts/WebView/WebView';
+import { storeGetter } from '../../../Hooks/useStore';
+import { useLocale } from '../../../Hooks/useLocale';
+import Header from '../../../Components/Header/Header';
+import WebView from '../../../Layouts/WebView/WebView';
 import { Main, DetailsScreen } from './Style';
 
 const Details = () => {
@@ -14,11 +14,12 @@ const Details = () => {
     <WebView>
       <DetailsScreen>
         <Header
-          logo={0}
           backButton={1}
           screenLabel={appString.translations.header.regAdditionalInformation}
+          greyBack={1}
           languageButton={1}
           language={app.language}
+          progressBar={1}
         />
         <Main>
           <div className="HeadingText">
@@ -28,32 +29,32 @@ const Details = () => {
 
           <div className="PersonalInformation">
             <h3 className="PersonalInformation__Label">Address information</h3>
-            <div className="Field">
-              <Field id="address" type="text" name="address" placeholder="Address *" />
+            <div className="InputBox">
+              <input id="address" type="text" name="address" placeholder="Address *" />
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="address">Address *</label>
             </div>
 
-            <div className="Field">
-              <Field id="number" type="text" name="number" placeholder="Number" />
+            <div className="InputBox">
+              <input id="number" type="text" name="number" placeholder="Number" />
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="number">Number</label>
             </div>
 
-            <div className="Field">
-              <Field id="postCode" name="postCode" placeholder="Post code" />
+            <div className="InputBox">
+              <input id="postCode" name="postCode" placeholder="Post code" />
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="postCode">Post code</label>
             </div>
 
-            <div className="Field">
-              <Field id="town" type="text" name="town" placeholder="Town *" />
+            <div className="InputBox">
+              <input id="town" type="text" name="town" placeholder="Town *" />
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="town">Town *</label>
             </div>
 
-            <div className="Field">
-              <Field id="district" name="district" placeholder="District *" />
+            <div className="InputBox">
+              <input id="district" name="district" placeholder="District *" />
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="gender">District *</label>
             </div>
