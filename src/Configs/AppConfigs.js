@@ -8,6 +8,6 @@
 export const AppConfigs = {
   id: 1,
   appName: 'WIT App',
-  debuggingMode: false,
+  debuggingMode: true,
   demoMode: false,
 };
