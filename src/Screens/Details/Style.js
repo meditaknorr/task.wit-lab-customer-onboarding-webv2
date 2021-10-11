@@ -286,7 +286,7 @@ export const Main = styled.main`
   }
 
   div.AttachedPhotos {
-    width: ${ConvertorPixel2Rem(312)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
     margin: ${ConvertorPixel2Rem(20)} 0 ${ConvertorPixel2Rem(150)} 0;
     padding: ${ConvertorPixel2Rem(16)};
     box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(1)} ${themeProvider.day.detailsShadow};
