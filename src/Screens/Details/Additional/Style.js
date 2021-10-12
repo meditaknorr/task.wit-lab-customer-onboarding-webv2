@@ -170,6 +170,7 @@ export const Main = styled.main`
   div.ActionButton {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: ${ConvertorPixel2Rem(84)};
     background-color: ${themeProvider.day.backgroundColor};
@@ -178,7 +179,9 @@ export const Main = styled.main`
     justify-content: center;
 
     button {
-      width: 312px;
+      width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+      margin: 0 ${ConvertorPixel2Rem(24)};
+      color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
       font-size: ${ConvertorPixel2Rem(16)};
       height: ${ConvertorPixel2Rem(44)};

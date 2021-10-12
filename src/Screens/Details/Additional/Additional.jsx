@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
@@ -41,6 +40,7 @@ const Details = () => {
       {
         type: 'SET_USER_PERSONALDETAILS',
         payload: {
+          id: 2,
           address: inputField.address,
           number: inputField.number,
           postCode: inputField.postCode,
@@ -49,7 +49,11 @@ const Details = () => {
         },
       },
     );
-    history.push('/flow-switch');
+    if (inputField.number && inputField.postCode) {
+      history.push('/registration/details/submission/success');
+    } else {
+      history.push('/registration/details/submission/error');
+    }
   };
 
   // Input Handlers
@@ -110,8 +114,6 @@ const Details = () => {
 
   const isSuccessfulValidated = () => {
     if (inputAddressValidator(inputField.address)
-      // && inputNumberValidator(inputField.number)
-      // && inputNumberValidator(inputField.postCode)
       && inputTextValidator(inputField.town)
       && inputTextValidator(inputField.district)) {
       return true;
@@ -120,7 +122,7 @@ const Details = () => {
   };
 
   useEffect(() => {
-    if (isSuccessfulValidated() && Object.values(inputField).indexOf('') <= -1) {
+    if (isSuccessfulValidated()) {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
@@ -180,13 +182,13 @@ const Details = () => {
           </div>
 
           <div className="ActionButton">
-            <Button
+            <button
               type="button"
               onClick={buttonHandler}
               disabled={isDisabled}
             >
               {appString.translations.onboarding.continue}
-            </Button>
+            </button>
           </div>
         </Main>
       </DetailsScreen>

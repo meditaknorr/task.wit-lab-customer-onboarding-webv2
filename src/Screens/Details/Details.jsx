@@ -50,6 +50,7 @@ const Details = () => {
       {
         type: 'SET_USER_PERSONALDETAILS',
         payload: {
+          id: 1,
           firstName: inputField.firstName,
           lastName: inputField.lastName,
           birthDate: inputField.birthDate,

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { themeProvider } from '../../../../../unpatched - advanced/src/Configs/Themes/themeProvider';
-import { ConvertorPixel2Rem } from '../../../../../unpatched - advanced/src/Hooks/useDimension';
-import CardSuccess from '../../../../../unpatched - advanced/src/Assets/Images/icons/ic_illustrations_card_success.png';
-import CardError from '../../../../../unpatched - advanced/src/Assets/Images/icons/ic_illustrations_card_error.png';
+import { themeProvider } from '../../../Configs/Themes/themeProvider';
+import { ConvertorPixel2Rem } from '../../../Hooks/useDimension';
+import CardSuccess from '../../../Assets/Images/icons/ic_illustrations_card_success.png';
+import CardError from '../../../Assets/Images/icons/ic_illustrations_card_error.png';
 
 export const ConfirmationScreen = styled.div`
   width: 100%;
@@ -21,16 +21,16 @@ export const Main = styled.main`
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  padding: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(27)};
+  padding: ${ConvertorPixel2Rem(10)} 0;
   display: flex;
   align-items: center;
   justify-content: center;
 
   div.Confirmation__Pane {
-    width: ${ConvertorPixel2Rem(312)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
     height: ${ConvertorPixel2Rem(250.55)};
-    padding: ${ConvertorPixel2Rem(19.55)} 0;
-    margin: ${ConvertorPixel2Rem(150)} 0 0 0;
+    padding: 0;
+    margin: 0;
 
     div.Confirmation__Pane-Icon {
       width: ${ConvertorPixel2Rem(150)};
@@ -43,11 +43,15 @@ export const Main = styled.main`
       color: ${themeProvider.day.fontColor};
       letter-spacing: 0;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       margin: ${ConvertorPixel2Rem(35)} 0 0 0;
 
       h1 {
         display: block;
-        width: 100%;
+        width: ${ConvertorPixel2Rem(280)};
         font-size: ${ConvertorPixel2Rem(20)};
         line-height: ${ConvertorPixel2Rem(20)};
         margin: 0 0 ${ConvertorPixel2Rem(14)} 0;
@@ -59,7 +63,7 @@ export const Main = styled.main`
         opacity: 0.8;
         font-weight: normal;
         font-size: ${ConvertorPixel2Rem(14)};
-        width: 100%;
+        width: ${ConvertorPixel2Rem(280)}
       }
     }
   }
@@ -67,6 +71,7 @@ export const Main = styled.main`
   div.ActionButton {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: ${ConvertorPixel2Rem(84)};
     background-color: ${themeProvider.day.backgroundColor};
@@ -75,7 +80,9 @@ export const Main = styled.main`
     justify-content: center;
 
     button {
-      width: 312px;
+      width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+      margin: 0 ${ConvertorPixel2Rem(24)};
+      color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
       font-size: ${ConvertorPixel2Rem(16)};
       height: ${ConvertorPixel2Rem(44)};

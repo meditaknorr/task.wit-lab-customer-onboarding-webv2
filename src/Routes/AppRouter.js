@@ -9,6 +9,7 @@ import Selfie from '../Screens/Validation/Selfie/Selfie';
 import SubmitAndValidate from '../Screens/Validation/SubmitAndValidate/SubmitAndValidate';
 import Details from '../Screens/Details/Details';
 import Additional from '../Screens/Details/Additional/Additional';
+import Confirmation from '../Screens/Details/Status/Status';
 
 const AppRouter = () => (
   <Router>
@@ -24,6 +25,7 @@ const AppRouter = () => (
 
       <Route exact path="/registration/details" component={Details} />
       <Route exact path="/registration/details/additional" component={Additional} />
+      <Route exact path="/registration/details/submission/:status" component={Confirmation} />
     </Switch>
   </Router>
 );
