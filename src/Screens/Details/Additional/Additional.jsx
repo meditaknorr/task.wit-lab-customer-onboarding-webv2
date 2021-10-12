@@ -50,9 +50,9 @@ const Details = () => {
       },
     );
     if (inputField.number && inputField.postCode) {
-      history.push('/registration/details/submission/success');
+      history.push('/registration/details/confirmation/success');
     } else {
-      history.push('/registration/details/submission/error');
+      history.push('/registration/details/confirmation/error');
     }
   };
 

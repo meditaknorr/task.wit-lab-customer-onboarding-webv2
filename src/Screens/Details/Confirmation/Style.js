@@ -51,7 +51,7 @@ export const Main = styled.main`
 
       h1 {
         display: block;
-        width: ${ConvertorPixel2Rem(280)};
+        width: ${ConvertorPixel2Rem(300)};
         font-size: ${ConvertorPixel2Rem(20)};
         line-height: ${ConvertorPixel2Rem(20)};
         margin: 0 0 ${ConvertorPixel2Rem(14)} 0;
