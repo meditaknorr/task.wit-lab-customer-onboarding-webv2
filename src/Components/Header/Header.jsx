@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { storeSetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import countryFlagHelper from '../../Helpers/countryFlagHelper';
-import ProgressBar from '../ProgressBar/ProgressBar';
+import ProgressBar from '../ProgressBar/Progressbar';
 import Logo from '../Logo/Logo';
 import { AppHeader } from './Style';
 
