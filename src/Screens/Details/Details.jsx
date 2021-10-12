@@ -42,7 +42,7 @@ const Details = () => {
         },
       },
     );
-    history.push('/registration/details/additionalinformation');
+    history.push('/registration/details/additionalInformation');
   };
 
   const mediaHandler = (e) => {
