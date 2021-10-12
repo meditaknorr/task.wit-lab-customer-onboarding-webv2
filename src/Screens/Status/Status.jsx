@@ -11,19 +11,32 @@ const Status = () => {
   const { app } = storeGetter();
   const { appString } = useLocale(app.language);
 
-  const data = (urlParam) => {
-    const errorMessage = (
-      <>
-        <div className="Status__Pane-Icon Error" />
-        <div className="Status__Pane-HeadingText">
-          <h1>{appString.translations.status.errorStatusHeading}</h1>
-          <h2>{appString.translations.status.errorStatusText}</h2>
-        </div>
-      </>
-    );
-    if (urlParam === 'error') {
-      return errorMessage;
+  const statusSwitcher = (params) => {
+    switch (params) {
+      case 'error':
+        return (
+          <>
+            <div className="Status__Pane-Icon Error" />
+            <div className="Status__Pane-HeadingText">
+              <h1>{appString.translations.status.errorStatusHeading}</h1>
+              <h2>{appString.translations.status.errorStatusText}</h2>
+            </div>
+          </>
+        );
+      case 'success':
+        return (
+          <>
+            <div className="Status__Pane-Icon Success" />
+            <div className="Status__Pane-HeadingText">
+              <h1>{appString.translations.status.successStatusHeading}</h1>
+              <h2>{appString.translations.status.successStatusText}</h2>
+            </div>
+          </>
+        );
+      default:
+        break;
     }
+    return false;
   };
 
   return (
@@ -37,9 +50,7 @@ const Status = () => {
         />
         <Main>
           <div className="Status__Pane">
-            {
-
-            }
+            {statusSwitcher(status)}
           </div>
 
           <div className="ActionButton">
