@@ -6,7 +6,7 @@ import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
 import { Main, ConfirmationScreen } from './Style';
 
-const Details = () => {
+const Confirmation = () => {
   const { status } = useParams();
   const { app } = storeGetter();
   const { appString } = useLocale(app.language);
@@ -59,4 +59,4 @@ const Details = () => {
   );
 };
 
-export default Details;
+export default Confirmation;
