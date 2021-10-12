@@ -3,8 +3,8 @@ const regEX = {
   number: new RegExp('^[0-9]*$', 'gm'),
   voters: new RegExp('^[0-9-/()]+$', 'g'),
   address: new RegExp('^[A-Za-z0-9.,\\s\u0080-\uFFFF/]+$', 'g'),
-  text: new RegExp('^[A-Za-z\\s\\s\u0080-\uFFFF/]+$', 'g'),
-  email: new RegExp('^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$', 'i'),
+  text: new RegExp('^[A-Za-z\\s\u0080-\uFFFF/]+$', 'g'),
+  email: new RegExp('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$', 'i'),
 };
 
 export const dateValidator = (strings) => {
