@@ -121,7 +121,7 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
-                      <img src={countryFlagHelper(string.code)} alt="language" />
+                      <img src={countryFlagHelper(string.code)} alt="flag icon" />
                     </div>
                     <span className="Pane-Name">{string.name}</span>
                     {
