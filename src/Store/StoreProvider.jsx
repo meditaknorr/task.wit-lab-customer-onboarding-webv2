@@ -9,7 +9,6 @@ const StoreProvider = ({ children }) => {
   return (
     <StoreDispatchContext.Provider value={dispatch}>
       <StoreStateContext.Provider value={state}>
-        {console.log(state)}
         {children}
       </StoreStateContext.Provider>
     </StoreDispatchContext.Provider>
