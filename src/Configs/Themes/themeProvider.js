@@ -24,8 +24,9 @@ export const themeProvider = {
   },
   night: {},
   dimensions: {
-    ChildrenWidth: '330',
+    childrenWidth: '100%',
     screenWidth: '100vw',
     screenHeight: '100vh',
+    horizontalMargin: 24,
   },
 };
