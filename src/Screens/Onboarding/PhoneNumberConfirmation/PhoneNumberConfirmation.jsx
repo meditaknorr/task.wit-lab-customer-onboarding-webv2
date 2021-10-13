@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { storeGetter } from '../../../Hooks/useStore';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
@@ -9,8 +9,9 @@ import { useLocale } from '../../../Hooks/useLocale';
 
 const PhoneNumberConfirmation = () => {
   const inputRef = useRef([]);
+  const { demoflow } = useParams();
   const history = useHistory();
-  const { app, user } = storeGetter();
+  const { app, user, demo } = storeGetter();
   const { appString } = useLocale(app.language);
   const [modal, setModal] = useState(false);
   const [pin, setPIN] = useState([undefined, undefined, undefined, undefined]);
@@ -55,11 +56,29 @@ const PhoneNumberConfirmation = () => {
     }
   };
 
+  const demoFlow = (number) => {
+    switch (number) {
+      case demo.successSubmissionStatus:
+        history.push('/registration/status/success');
+        break;
+      case demo.errorSubmissionStatus:
+        history.push('/registration/status/error');
+        break;
+      default:
+        history.push('/registration/status/pending');
+        break;
+    }
+  };
+
   const buttonHandler = () => {
     const thePIN = pin.join('');
     setModal(thePIN !== user.OTP);
     if (thePIN === user.OTP) {
-      history.push('/registration/validation/scan/front');
+      if (demoflow === 'status') {
+        demoFlow(user.phone);
+      } else {
+        history.push('/registration/validation/scan/front');
+      }
     }
   };
 
@@ -74,13 +93,16 @@ const PhoneNumberConfirmation = () => {
           progressBar={1}
           language={app.language}
         />
-
         <Modal status={modal}>
           <div className="Modal__Pane">
-            <div className="Modal__Pane-Card" />
-            {/* eslint-disable-next-line max-len */}
-            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label,jsx-a11y/interactive-supports-focus */}
-            <div className="Modal__Pane-CloseButton" role="button" onClick={closeModal} />
+            <div
+              className="Modal__Pane-CloseButton"
+              role="button"
+              tabIndex={0}
+              onClick={closeModal}
+              onKeyUp={closeModal}
+              aria-label="close"
+            />
             <div className="Modal__Pane-Icon" />
             <div className="Modal__Pane-Information">
               <h1>{appString.translations.onboarding.codeIncorrect}</h1>
@@ -128,15 +150,17 @@ const PhoneNumberConfirmation = () => {
               {isComplete(pin) && appString.translations.onboarding.resendCode }
             </div>
             <button
-              type="button"
               tabIndex={0}
+              type="button"
               onClick={buttonHandler}
-              className="ActionButton__ContinueRegistration"
+              className="ActionButton__Continue"
               disabled={!isComplete(pin)}
             >
               {appString.translations.onboarding.continue}
             </button>
+            <div className="ActionButton__Ghost" />
           </div>
+
         </Main>
       </PhoneNumberConfirmationScreen>
     </WebView>

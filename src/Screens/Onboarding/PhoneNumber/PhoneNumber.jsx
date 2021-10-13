@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import countryFlagHelper from '../../../Helpers/countryFlagHelper';
@@ -12,6 +12,7 @@ const PhoneNumber = () => {
   const dispatch = storeSetter();
   const { app } = storeGetter();
   const history = useHistory();
+  const { demoflow } = useParams();
   const { appString } = useLocale(app.language);
   const [validPhone, setValidPhone] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -42,7 +43,11 @@ const PhoneNumber = () => {
       },
     );
     setPhoneNumber('');
-    history.push('/registration/onboarding/phonenumber/confirmation');
+    if (demoflow === 'status') {
+      history.push('/registration/onboarding/confirmation/status');
+    } else {
+      history.push('/registration/onboarding/confirmation');
+    }
   };
 
   /**
@@ -96,13 +101,19 @@ const PhoneNumber = () => {
         >
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.enterPhone}</h1>
-            <h2>{appString.translations.onboarding.forAccountSettup}</h2>
+            <h2>
+              {
+                demoflow === 'status'
+                  ? appString.translations.onboarding.checkRegistrationStatus
+                  : appString.translations.onboarding.forAccountSettup
+              }
+            </h2>
           </div>
 
           <div className="PhoneNumber">
             <div className="PhoneNumber__CountryCodeField">
               <div className="PhoneNumber__CountryCodeField-IconFlag">
-                <img src={countryFlagHelper(CountryCode)} alt="img" />
+                <img src={countryFlagHelper(CountryCode)} alt="country flag" />
               </div>
               <select
                 defaultValue={countryCode}

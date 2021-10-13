@@ -16,11 +16,11 @@ export const PhoneNumberConfirmationScreen = styled.div`
 `;
 
 export const Modal = styled.div`
+  width: 100%;
+  height: 100%;
   z-index: 100;
   position: fixed;
   background-color: ${themeProvider.day.modalColor};
-  width: 100%;
-  height: 100%;
   display: ${(props) => (props.status ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
@@ -52,7 +52,6 @@ export const Modal = styled.div`
       position: absolute;
       top: ${ConvertorPixel2Rem(14)};
       right: ${ConvertorPixel2Rem(14)};
-
     }
 
     div.Modal__Pane-Icon {
@@ -93,13 +92,14 @@ export const Modal = styled.div`
 export const Main = styled.main`
   grid-area: main;
   width: 100%;
-  padding: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(27)};
+  padding: ${ConvertorPixel2Rem(10)} 0;
   display: flex;
   align-items: center;
   flex-flow: column;
 
   div.HeadingText {
-    width: ${ConvertorPixel2Rem(312)};
+    padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     color: ${themeProvider.day.fontColor};
     letter-spacing: 0;
     margin: ${ConvertorPixel2Rem(24)} 0 0 0;
@@ -159,8 +159,11 @@ export const Main = styled.main`
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
-    margin: ${ConvertorPixel2Rem(70)} auto ${ConvertorPixel2Rem(20)} auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
 
     div.ActionButton__ResendPin {
       width: 80%;
@@ -171,18 +174,26 @@ export const Main = styled.main`
       margin: 0 auto ${ConvertorPixel2Rem(16)} auto;
       color: ${themeProvider.day.errorColor};
     }
-    button {
+
+    button.ActionButton__Continue {
       width: 100%;
+      height: ${ConvertorPixel2Rem(44)};
+      margin: 0 0 ${ConvertorPixel2Rem(10)} 0;
+      border-radius: ${ConvertorPixel2Rem(6)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
-      font-size: ${ConvertorPixel2Rem(16)};
-      height: ${ConvertorPixel2Rem(44)};
-      border-radius: ${ConvertorPixel2Rem(6)};
-      border: 0;
 
       &[disabled] {
         background-color: ${themeProvider.day.disableColor};
       }
+    }
+
+    div.ActionButton__Ghost {
+      width: 100%;
+      height: ${ConvertorPixel2Rem(44)};
+      background-color: ${themeProvider.day.backgroundColor};
+      border-radius: ${ConvertorPixel2Rem(6)};
+      padding: 0 0 ${ConvertorPixel2Rem(15)} 0;
     }
   }
 `;

@@ -64,15 +64,24 @@ const Status = () => {
           <div className="ActionButton">
             {
               status === 'error' ? (
-                <button type="button" onClick={() => history.push('/registration/onboarding/phonenumber')}>
+                <button
+                  type="button"
+                  onClick={() => history.push('/registration/onboarding/phonenumber')}
+                  className="ActionButton__Go"
+                >
                   {appString.translations.status.tryAgain}
                 </button>
               ) : (
-                <button type="button" onClick={() => history.push('/registration/onboarding')}>
+                <button
+                  type="button"
+                  onClick={() => history.push('/registration/onboarding')}
+                  className="ActionButton__Go"
+                >
                   {appString.translations.status.ok}
                 </button>
               )
             }
+            <div className="ActionButton__Ghost" />
           </div>
         </Main>
       </StatusScreen>

@@ -46,6 +46,8 @@ export const initialState = {
   ],
   demo: {
     errorOnSubmitAndValidation: '840005720',
+    successSubmissionStatus: '840005720',
+    errorSubmissionStatus: '847841000',
   },
 };
 

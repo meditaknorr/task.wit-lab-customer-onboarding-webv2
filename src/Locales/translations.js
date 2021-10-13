@@ -73,6 +73,7 @@ export const translations = [
         verificationSentTo: 'We’ve just sent a verification code to',
         codeIncorrect: 'Incorrect code',
         tryAgainCode: 'Please try again to insert another number or code.',
+        checkRegistrationStatus: 'If you have already submitted your account creation documents and would like to check the status.',
         resendCode: 'Resend code',
       },
       scanVoterCard: {
@@ -212,6 +213,7 @@ export const translations = [
         verificationSentTo: 'Enviamos um código de verificação de para',
         codeIncorrect: 'Código incorreto',
         tryAgainCode: 'Por favor, tente inserir outro número de código. Use a opcao de reenviar código.',
+        checkRegistrationStatus: 'Case já tenhas submetido os seus documentos para criação da conta e queria verificar o estado.',
         resendCode: 'Reenviar código',
       },
       scanVoterCard: {
@@ -272,7 +274,7 @@ export const translations = [
         successStatusHeading: 'Criando a sua conta',
         successStatusText: 'Os seus dados foram validados com sucesso. Em breve você receberá ums SMS para confirmar a criação da sua conta',
         ok: 'Ok',
-        loadingStatusHeading: 'Validando os seus dadose',
+        loadingStatusHeading: 'Validando os seus dados',
         loadingStatusText: 'Ainda estamos validando sua identidade. Em breve você receberá um SMS para confirmar a criação da sua conta',
       },
     },
@@ -352,6 +354,7 @@ export const translations = [
         verificationSentTo: 'Abbiamo appena inviato un codice di verifica a',
         codeIncorrect: 'Codice errato',
         tryAgainCode: "Prova a inserire un altro numero di codice. Usa l'opzione di reinvio del codice.",
+        checkRegistrationStatus: 'Se hai già inviato i documenti per la creazione del tuo account e desideri verificarne lo stato.',
         reendCode: 'Reinvia codice',
       },
       scanVoterCard: {

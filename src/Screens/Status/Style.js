@@ -28,7 +28,7 @@ export const Main = styled.main`
   justify-content: center;
 
   div.Status__Pane {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     height: ${ConvertorPixel2Rem(250.55)};
     padding: 0;
     margin: 0;
@@ -88,24 +88,27 @@ export const Main = styled.main`
     bottom: 0;
     left: 0;
     width: 100%;
-    height: ${ConvertorPixel2Rem(84)};
-    background-color: ${themeProvider.day.backgroundColor};
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding:
+      0
+      ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)}
+      ${ConvertorPixel2Rem(10)}
+      ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
 
-    button {
-      width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
-      margin: 0 ${ConvertorPixel2Rem(24)};
+    button.ActionButton__Go {
+      width: 100%;
+      height: ${ConvertorPixel2Rem(44)};
+      margin: 0 0 ${ConvertorPixel2Rem(10)} 0;
+      border-radius: ${ConvertorPixel2Rem(6)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
-      font-size: ${ConvertorPixel2Rem(16)};
+    }
+
+    div.ActionButton__Ghost {
+      width: 100%;
       height: ${ConvertorPixel2Rem(44)};
+      background-color: ${themeProvider.day.backgroundColor};
       border-radius: ${ConvertorPixel2Rem(6)};
-      border: 0;
-      &[disabled] {
-        background-color: ${themeProvider.day.disableColor};
-      }
+      padding: 0 0 ${ConvertorPixel2Rem(15)} 0;
     }
   }
 `;

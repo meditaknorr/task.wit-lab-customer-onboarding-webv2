@@ -213,6 +213,10 @@ export const Main = styled.main`
       border-radius: ${ConvertorPixel2Rem(6)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
+
+      &[disabled] {
+        background-color: ${themeProvider.day.disableColor};
+      }
     }
 
     div.ActionButton__Ghost {
