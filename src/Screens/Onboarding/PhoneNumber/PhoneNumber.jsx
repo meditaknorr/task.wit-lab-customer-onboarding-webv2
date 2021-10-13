@@ -161,11 +161,12 @@ const PhoneNumber = () => {
             <button
               type="button"
               onClick={continueButton}
-              className="ActionButton-ContinueRegistration"
+              className="ActionButton__Continue"
               disabled={(!validPhone)}
             >
               {appString.translations.onboarding.continue}
             </button>
+            <div className="ActionButton__Ghost" />
           </div>
         </Main>
       </PhoneNumberScreen>

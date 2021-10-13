@@ -19,15 +19,12 @@ export const Main = styled.main`
   grid-area: main;
   width: 100%;
   height: 100%;
-  padding: 0 ${ConvertorPixel2Rem(24)};
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   position: relative;
   overflow-y: auto;
 
   div.HeadingText {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     height: auto;
     color: ${themeProvider.day.fontColor};
     letter-spacing: 0;
@@ -54,24 +51,24 @@ export const Main = styled.main`
 
   div.PhoneNumber {
     position: relative;
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: ${ConvertorPixel2Rem(100)} 1fr;
+    grid-template-rows: ${ConvertorPixel2Rem(70)};
+    grid-column-gap: ${ConvertorPixel2Rem(10)};
+    padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     margin: ${ConvertorPixel2Rem(59)} 0 0 0;
-    padding: 0 0 ${ConvertorPixel2Rem(25)} 0;
 
     div.PhoneNumber__CountryCodeField{
       position: relative;
-      display: inline-block;
       height: ${ConvertorPixel2Rem(49)};
-      margin: 0 ${ConvertorPixel2Rem(8)} 0 0;
 
       select.PhoneNumber__CountryCodeField-SelectBox {
         -webkit-appearance: none;
         -moz-appearance: none;
         text-indent: 1px;
         text-overflow: '';
-        width: ${ConvertorPixel2Rem(96)};
+        width: 100%;
         height: 100%;
         text-align: right;
         background-color: ${themeProvider.day.backgroundColor};
@@ -124,17 +121,14 @@ export const Main = styled.main`
           height: ${ConvertorPixel2Rem(25)};
         }
       }
-
     }
 
     div.PhoneNumber__NumberField {
       position: relative;
-      display: inline-block;
-      width: ${ConvertorPixel2Rem(208)};
       height: ${ConvertorPixel2Rem(49)};
 
       input.PhoneNumber__NumberField-Input {
-        width: ${ConvertorPixel2Rem(208)};
+        width: 100%;
         height: 100%;
         padding: 0 ${ConvertorPixel2Rem(15)};
         border-radius: ${ConvertorPixel2Rem(6)};
@@ -191,32 +185,42 @@ export const Main = styled.main`
     div.PhoneNumber__ErrorText {
       position: absolute;
       left: 0;
-      bottom: ${ConvertorPixel2Rem(-3)};
-      display: block;
-      width: 100%;
-      height: ${ConvertorPixel2Rem(30)};
+      bottom: ${ConvertorPixel2Rem(0)};
+      padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
+      width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+      height: ${ConvertorPixel2Rem(18)};
+      line-height: ${ConvertorPixel2Rem(18)};
       font-size: ${ConvertorPixel2Rem(14)};
-      padding: ${ConvertorPixel2Rem(5)} 0;
       color: ${themeProvider.day.errorColor};
     }
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
-    margin: ${ConvertorPixel2Rem(70)} auto ${ConvertorPixel2Rem(20)} auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding:
+      0
+      ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)}
+      ${ConvertorPixel2Rem(10)}
+      ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
 
-    button {
+    button.ActionButton__Continue {
       width: 100%;
+      height: ${ConvertorPixel2Rem(44)};
+      margin: 0 0 ${ConvertorPixel2Rem(10)} 0;
+      border-radius: ${ConvertorPixel2Rem(6)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
-      font-size: ${ConvertorPixel2Rem(16)};
-      height: ${ConvertorPixel2Rem(44)};
-      border-radius: ${ConvertorPixel2Rem(6)};
-      border: 0;
+    }
 
-      &[disabled] {
-        background-color: ${themeProvider.day.disableColor};
-      }
+    div.ActionButton__Ghost {
+      width: 100%;
+      height: ${ConvertorPixel2Rem(44)};
+      background-color: ${themeProvider.day.backgroundColor};
+      border-radius: ${ConvertorPixel2Rem(6)};
+      padding: 0 0 ${ConvertorPixel2Rem(15)} 0;
     }
   }
 `;
