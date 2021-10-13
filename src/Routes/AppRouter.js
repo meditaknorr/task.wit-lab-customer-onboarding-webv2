@@ -11,12 +11,16 @@ import Details from '../Screens/Details/Details';
 import Additional from '../Screens/Details/Additional/Additional';
 import Confirmation from '../Screens/Details/Confirmation/Confirmation';
 import Status from '../Screens/Status/Status';
+import AppReRouter from './AppReRouter';
 
 const AppRouter = () => (
   <Router>
     <Switch>
+      <Route exact path="/" component={Onboarding} />
+
       <Route exact path="/registration/onboarding/" component={Onboarding} />
       <Route exact path="/registration/onboarding/phonenumber" component={PhoneNumber} />
+      <Route exact path="/registration/onboarding/phonenumber/:flow" component={PhoneNumber} />
       <Route exact path="/registration/onboarding/phonenumber/confirmation" component={PhoneNumberConfirmation} />
 
       <Route exact path="/registration/validation/scan/front" component={ScanVoterCardFront} />
@@ -29,6 +33,8 @@ const AppRouter = () => (
       <Route exact path="/registration/details/confirmation/:status" component={Confirmation} />
 
       <Route exact path="/registration/status/:status" component={Status} />
+
+      <Route exact path="/demo-flow/:from/:to" component={AppReRouter} />
     </Switch>
   </Router>
 );
