@@ -5,7 +5,7 @@ import Validate from '../../Assets/Images/icons/ic_details.png';
 import Scan from '../../Assets/Images/icons/ic_scan.png';
 import Selfie from '../../Assets/Images/icons/ic_selfie.png';
 
-export const OnborardingScreen = styled.div`
+export const OnboardingScreen = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -22,14 +22,10 @@ export const Main = styled.main`
   overflow-y: auto;
   height: 100%;
   width: 100%;
-  padding: 0 ${ConvertorPixel2Rem(24)};
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
 
   div.HeadingText {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     height: ${ConvertorPixel2Rem(80)};
     margin: ${ConvertorPixel2Rem(41.5)} 0 ${ConvertorPixel2Rem(38)} 0;
     font-family: Inter, sans-serif;
@@ -41,6 +37,7 @@ export const Main = styled.main`
       color: ${themeProvider.day.fontColor};
       line-height: ${ConvertorPixel2Rem(36)};
       font-size: ${ConvertorPixel2Rem(32)};
+
       &:nth-of-type(2) {
         color: ${themeProvider.day.highlightColor};
       }
@@ -48,7 +45,8 @@ export const Main = styled.main`
   }
 
   h2 {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     height: ${ConvertorPixel2Rem(25)};
     font-size: ${ConvertorPixel2Rem(16)};
     font-weight: normal;
@@ -57,17 +55,20 @@ export const Main = styled.main`
   }
 
   div.Registration {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     min-height: ${ConvertorPixel2Rem(180)};
     display: flex;
     flex-flow: column;
     margin: ${ConvertorPixel2Rem(36)} 0 0 0;
+
     div.Registration-Step {
       width: 100%;
       height: ${ConvertorPixel2Rem(34)};
       margin: ${ConvertorPixel2Rem(36)} 0 0 0;
       display: flex;
       align-items: center;
+
       p {
         width: 100%;
         height: ${ConvertorPixel2Rem(34)};
@@ -76,29 +77,29 @@ export const Main = styled.main`
         margin: 0;
         padding: 0;
       }
+
+      div {
+        width: ${ConvertorPixel2Rem(34)};
+        height: ${ConvertorPixel2Rem(34)};
+        margin: 0 ${ConvertorPixel2Rem(25)} 0 0;
+      }
+
       &:nth-of-type(1) {
         div.Registration-Step__Icon {
-          width: ${ConvertorPixel2Rem(34)};
-          height: ${ConvertorPixel2Rem(34)};
-          margin: 0 ${ConvertorPixel2Rem(25)} 0 0;
           background: url(${Validate}) no-repeat center;
           background-size: contain;
         }
       }
+
       &:nth-of-type(2) {
         div.Registration-Step__Icon {
-          width: ${ConvertorPixel2Rem(34)};
-          height: ${ConvertorPixel2Rem(34)};
-          margin: 0 ${ConvertorPixel2Rem(25)} 0 0;
           background: url(${Scan}) no-repeat center;
           background-size: contain;
         }
       }
+
       &:nth-of-type(3) {
         div.Registration-Step__Icon {
-          width: ${ConvertorPixel2Rem(34)};
-          height: ${ConvertorPixel2Rem(34)};
-          margin: 0 ${ConvertorPixel2Rem(25)} 0 0;
           background: url(${Selfie}) no-repeat center;
           background-size: contain;
         }
@@ -107,22 +108,31 @@ export const Main = styled.main`
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
-    margin: ${ConvertorPixel2Rem(180)} 0 ${ConvertorPixel2Rem(50)} 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding:
+      0
+      ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)}
+      ${ConvertorPixel2Rem(10)}
+      ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
 
-    button.ActionButton-StartRegistration {
+    button.ActionButton__StartRegistration {
       width: 100%;
       height: ${ConvertorPixel2Rem(44)};
-      margin: 0 0 ${ConvertorPixel2Rem(15)} 0;
+      margin: 0 0 ${ConvertorPixel2Rem(10)} 0;
       border-radius: ${ConvertorPixel2Rem(6)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
     }
-    div.ActionButton-CheckStatus {
+
+    button.ActionButton__CheckStatus {
       width: 100%;
-      font-size: ${ConvertorPixel2Rem(16)};
-      height: ${ConvertorPixel2Rem(14)};
-      margin: ${ConvertorPixel2Rem(0)} 0 0 0;
+      height: ${ConvertorPixel2Rem(44)};
+      background-color: ${themeProvider.day.backgroundColor};
+      border-radius: ${ConvertorPixel2Rem(6)};
+      padding: 0 0 ${ConvertorPixel2Rem(15)} 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -132,7 +142,7 @@ export const Main = styled.main`
         &:nth-of-type(2) {
           text-align: left;
           color: ${themeProvider.day.highlightColor};
-          margin: 0 0 0 ${ConvertorPixel2Rem(10)};
+          margin: 0 0 0 ${ConvertorPixel2Rem(5)};
         }
       }
     }
