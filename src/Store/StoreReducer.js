@@ -96,16 +96,16 @@ export const reducer = (state, action) => {
           ...state,
           media: [
             ...state.media.filter((block) => block.id !== action.payload.id),
-            action.payload
-          ]
+            action.payload,
+          ],
         };
       }
       return {
         ...state,
         media: [
           ...state.media,
-          action.payload
-        ]
+          action.payload,
+        ],
       };
     }
     case 'UPDATE_MEDIA':
