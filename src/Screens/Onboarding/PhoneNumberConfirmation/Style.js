@@ -3,7 +3,6 @@ import { themeProvider } from '../../../Configs/Themes/themeProvider';
 import { ConvertorPixel2Rem } from '../../../Hooks/useDimension';
 import Close from '../../../Assets/Images/icons/ic_close.svg';
 import RedClose from '../../../Assets/Images/icons/ic_close_red.png';
-import ModalCard from '../../../Assets/Images/icons/modal_card_elevetaion.svg';
 
 export const PhoneNumberConfirmationScreen = styled.div`
   width: 100%;
@@ -32,18 +31,18 @@ export const Modal = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: ${themeProvider.day.backgroundColor};
     border-radius: ${ConvertorPixel2Rem(6)};
     width: ${ConvertorPixel2Rem(296)};
     height: ${ConvertorPixel2Rem(189)};
-
-    div.Modal__Pane-Card {
-      position: absolute;
-      top: -46px;
-      background: url(${ModalCard}) no-repeat center;
-      background-size: contain;
-      width: ${ConvertorPixel2Rem(450)};
-      height: ${ConvertorPixel2Rem(300)};
-    }
+    box-shadow:
+      0 ${ConvertorPixel2Rem(24)} ${ConvertorPixel2Rem(38)} ${ConvertorPixel2Rem(3)} rgba(0,0,0,0.14),
+      0 ${ConvertorPixel2Rem(9)} ${ConvertorPixel2Rem(46)} ${ConvertorPixel2Rem(8)} rgba(0,0,0,0.12),
+      0 ${ConvertorPixel2Rem(11)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(-7)} rgba(0,0,0,0.2);
+    -webkit-box-shadow:
+      0 ${ConvertorPixel2Rem(24)} ${ConvertorPixel2Rem(38)} ${ConvertorPixel2Rem(3)} rgba(0,0,0,0.14),
+      0 ${ConvertorPixel2Rem(9)} ${ConvertorPixel2Rem(46)} ${ConvertorPixel2Rem(8)} rgba(0,0,0,0.12),
+      0 ${ConvertorPixel2Rem(11)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(-7)} rgba(0,0,0,0.2);
 
     div.Modal__Pane-CloseButton {
       width: ${ConvertorPixel2Rem(18)};
@@ -160,7 +159,7 @@ export const Main = styled.main`
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     margin: ${ConvertorPixel2Rem(70)} auto ${ConvertorPixel2Rem(20)} auto;
 
     div.ActionButton__ResendPin {

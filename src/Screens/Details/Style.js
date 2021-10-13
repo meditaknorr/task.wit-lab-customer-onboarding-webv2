@@ -32,7 +32,14 @@ export const Modal = styled.div`
     justify-content: space-between;
     flex-direction: column;
     background-color: ${themeProvider.day.backgroundColor};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(3)} rgba(0, 0, 0, 0.13);
+    box-shadow:
+      0 ${ConvertorPixel2Rem(24)} ${ConvertorPixel2Rem(38)} ${ConvertorPixel2Rem(3)} rgba(0,0,0,0.14),
+      0 ${ConvertorPixel2Rem(9)} ${ConvertorPixel2Rem(46)} ${ConvertorPixel2Rem(8)} rgba(0,0,0,0.12),
+      0 ${ConvertorPixel2Rem(11)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(-7)} rgba(0,0,0,0.2);
+    -webkit-box-shadow:
+      0 ${ConvertorPixel2Rem(24)} ${ConvertorPixel2Rem(38)} ${ConvertorPixel2Rem(3)} rgba(0,0,0,0.14),
+      0 ${ConvertorPixel2Rem(9)} ${ConvertorPixel2Rem(46)} ${ConvertorPixel2Rem(8)} rgba(0,0,0,0.12),
+      0 ${ConvertorPixel2Rem(11)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(-7)} rgba(0,0,0,0.2);
     border-radius: ${ConvertorPixel2Rem(6)};
     width: ${ConvertorPixel2Rem(296)};
     height: ${ConvertorPixel2Rem(210)};
