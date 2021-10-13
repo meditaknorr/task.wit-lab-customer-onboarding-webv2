@@ -26,7 +26,7 @@ export const Main = styled.main`
   flex-direction: column;
 
   div.HeadingText {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     margin: ${ConvertorPixel2Rem(25)} 0 0 0;
     letter-spacing: 0;
 
@@ -52,7 +52,7 @@ export const Main = styled.main`
   }
 
   div.AdditionalInformation {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     margin: ${ConvertorPixel2Rem(31)} 0 0 0;
     padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(16)};
     box-shadow: 0 ${ConvertorPixel2Rem(2)} ${ConvertorPixel2Rem(8)} 0 ${themeProvider.day.detailsShadow};
@@ -179,7 +179,7 @@ export const Main = styled.main`
     justify-content: center;
 
     button {
-      width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+      width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
       margin: 0 ${ConvertorPixel2Rem(24)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};

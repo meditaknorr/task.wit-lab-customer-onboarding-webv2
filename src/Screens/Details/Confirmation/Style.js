@@ -27,7 +27,7 @@ export const Main = styled.main`
   justify-content: center;
 
   div.Confirmation__Pane {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     height: ${ConvertorPixel2Rem(250.55)};
     padding: 0;
     margin: 0;
@@ -80,7 +80,7 @@ export const Main = styled.main`
     justify-content: center;
 
     button {
-      width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+      width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
       margin: 0 ${ConvertorPixel2Rem(24)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
