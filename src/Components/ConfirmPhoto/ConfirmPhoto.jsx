@@ -69,7 +69,7 @@ const ConfirmPhoto = ({
             <img
               className="confirm-photo__image"
               src={photo[storeProperty.storePropertyName]}
-              alt="Scanned Document"
+              alt={storeProperty.storePropertyName}
             />
           </div>
 
