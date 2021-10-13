@@ -81,13 +81,13 @@ const Header = ({
         <div className="App-GhostBlock" />
         <div className="App-Logo"><Logo /></div>
 
-        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
         <div
           className="App-BackButton"
           onClick={backButtonHandler}
           onKeyPress={backButtonHandler}
           role="button"
           tabIndex="0"
+          aria-label="back button"
         />
 
         <div
