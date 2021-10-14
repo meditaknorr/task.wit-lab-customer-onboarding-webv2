@@ -14,5 +14,7 @@ export const availableCountries = (targetCountries.map((data) => ({
 
 export const phoneNumberValidator = (phoneNumber, countryCode) => {
   const countrySetting = targetCountryHelper('countryRegex', countryCode);
-  return countrySetting.test(phoneNumber);
+  const result = countrySetting.test(phoneNumber);
+  countrySetting.lastIndex = 0;
+  return result;
 };

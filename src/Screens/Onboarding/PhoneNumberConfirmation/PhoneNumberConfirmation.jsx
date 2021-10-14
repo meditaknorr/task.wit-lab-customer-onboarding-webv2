@@ -1,11 +1,7 @@
-import React,
-{
-  useContext, useRef, useState,
-}
-  from 'react';
-import { Button } from 'reactstrap';
+import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import { StateContext } from '../../../Contexts/AppStoreContexts';
+import { storeGetter } from '../../../Hooks/useStore';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
 import { PhoneNumberConfirmationScreen, Main, Modal } from './Style';
@@ -13,10 +9,9 @@ import { useLocale } from '../../../Hooks/useLocale';
 
 const PhoneNumberConfirmation = () => {
   const inputRef = useRef([]);
-  const state = useContext(StateContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const userData = (state.filter((data) => data.id === 3))[0];
-  const { appString } = useLocale(language.language);
+  const history = useHistory();
+  const { app, user } = storeGetter();
+  const { appString } = useLocale(app.language);
   const [modal, setModal] = useState(false);
   const [pin, setPIN] = useState([undefined, undefined, undefined, undefined]);
   let items;
@@ -62,40 +57,47 @@ const PhoneNumberConfirmation = () => {
 
   const buttonHandler = () => {
     const thePIN = pin.join('');
-    setModal(thePIN !== '1010');
+    setModal(thePIN !== user.OTP);
+    if (thePIN === user.OTP) {
+      history.push('/registration/validation/scan/front');
+    }
   };
 
   return (
     <WebView>
       <PhoneNumberConfirmationScreen>
         <Header
-          logo={0}
+          greyBack={1}
           backButton={1}
-          screenLabel=""
+          screenLabel={appString.translations.header.regPhoneNumber}
           languageButton={1}
-          language={language.language}
+          progressBar={1}
+          language={app.language}
         />
 
         <Modal status={modal}>
           <div className="Modal__Pane">
+            <div className="Modal__Pane-Card" />
             {/* eslint-disable-next-line max-len */}
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label,jsx-a11y/interactive-supports-focus */}
-            <div className="Modal__Pane--CloseButton" role="button" onClick={closeModal} />
-            <div className="Modal__Pane--Icon" />
-            <div className="Modal__Pane--Information">
+            <div className="Modal__Pane-CloseButton" role="button" onClick={closeModal} />
+            <div className="Modal__Pane-Icon" />
+            <div className="Modal__Pane-Information">
               <h1>{appString.translations.onboarding.codeIncorrect}</h1>
               <h2>{appString.translations.onboarding.tryAgainCode}</h2>
             </div>
           </div>
-        </Modal>
 
+        </Modal>
         <Main>
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.pleaseConfirm}</h1>
             <h2>
               {appString.translations.onboarding.verificationSentTo}
-              <span>{userData.callingCode}</span>
-              {userData.userPhoneNumber}
+              {' '}
+              {(user.phoneCallingCode || app.defaultCountryCallingCode)}
+              {' '}
+              {user.phone}
             </h2>
           </div>
 
@@ -125,7 +127,7 @@ const PhoneNumberConfirmation = () => {
             <div className="ActionButton__ResendPin">
               {isComplete(pin) && appString.translations.onboarding.resendCode }
             </div>
-            <Button
+            <button
               type="button"
               tabIndex={0}
               onClick={buttonHandler}
@@ -133,7 +135,7 @@ const PhoneNumberConfirmation = () => {
               disabled={!isComplete(pin)}
             >
               {appString.translations.onboarding.continue}
-            </Button>
+            </button>
           </div>
         </Main>
       </PhoneNumberConfirmationScreen>

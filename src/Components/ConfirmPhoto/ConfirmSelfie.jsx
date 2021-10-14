@@ -11,8 +11,7 @@ import Button from '../Button/Button';
  * @param description  { a String that defines the description of the photo
  * that is ging to be displayed }
  * @param photo {a String containing the base64 text of the image}
- * @param takeAnotherPhoto {a FUNCTION to discard the current photo and
- * open the camera again}
+ * @param takeAnotherPhoto {a FUNCTION to discard the current photo and open the camera again}
  * @param usePhoto {a FUNCTION that uses the taken photo and sends it to te store}
  * @param storeProperty {a String containing the key value of the property that
  * needs to be sent to the store}
@@ -24,10 +23,11 @@ import Button from '../Button/Button';
  * @returns {JSX.Element}
  * @constructor
  */
-const ConfirmPhoto = ({
+const ConfirmSelfie = ({
   description,
   photo,
   usePhoto,
+  backButtonURL,
   takeAnotherPhoto,
   storeProperty,
   screenLabel,
@@ -49,15 +49,42 @@ const ConfirmPhoto = ({
     usePhoto();
   };
 
+  const removeBackPhoto = () => {
+    dispatch({
+      type: 'UPDATE_MEDIA',
+      payload: {
+        id: 5,
+        voterCardBack: null,
+      },
+    });
+  };
+
+  const removeFrontPhoto = () => {
+    dispatch({
+      type: 'UPDATE_MEDIA',
+      payload: {
+        id: 4,
+        voterCardFront: null,
+      },
+    });
+  };
+
+  const backButtonFunc = () => {
+    removeBackPhoto();
+    removeFrontPhoto();
+  };
+
   return (
     <>
       <Header
-        greyBack={1}
+        backButton={1}
+        backButtonFunctions={backButtonFunc}
+        backButtonURL={backButtonURL}
         screenLabel={screenLabel}
         languageButton={1}
+        greyBack={1}
         language={app.language}
         progressBar={progressBar}
-        ghostBlock={1}
       />
 
       <ConfirmPhotoScreen overlayMode={overlayMode}>
@@ -69,7 +96,7 @@ const ConfirmPhoto = ({
             <img
               className="confirm-photo__image"
               src={photo[storeProperty.storePropertyName]}
-              alt={storeProperty.storePropertyName}
+              alt="Selfie"
             />
           </div>
 
@@ -92,17 +119,16 @@ const ConfirmPhoto = ({
   );
 };
 
-ConfirmPhoto.propTypes = {
+ConfirmSelfie.propTypes = {
   description: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  photo: PropTypes.object.isRequired,
+  photo: PropTypes.objectOf(PropTypes.array).isRequired,
   takeAnotherPhoto: PropTypes.func.isRequired,
   usePhoto: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  storeProperty: PropTypes.object.isRequired,
+  storeProperty: PropTypes.objectOf(PropTypes.func).isRequired,
   screenLabel: PropTypes.string.isRequired,
+  backButtonURL: PropTypes.string.isRequired,
   progressBar: PropTypes.number.isRequired,
   overlayMode: PropTypes.number.isRequired,
 };
 
-export default ConfirmPhoto;
+export default ConfirmSelfie;

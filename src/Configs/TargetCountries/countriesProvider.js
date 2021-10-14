@@ -8,7 +8,7 @@ export const targetCountries = [
     nationalNumberLength: 9,
     operatorPrefixLength: 2,
     dummyNumber: '85 12 34 567',
-    countryRegex: new RegExp('(84|85|82|83|87|86)\\d{7}', 'g'),
+    countryRegex: new RegExp('[8][2-7]\\d{7}', 'gm'),
   },
   {
     id: 2,

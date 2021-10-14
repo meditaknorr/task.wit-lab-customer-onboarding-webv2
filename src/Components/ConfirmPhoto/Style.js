@@ -8,37 +8,47 @@ export const ConfirmPhotoScreen = styled.div`
     justify-content: center;
     grid-template-columns: 100%;
     align-content: space-between;
+    margin: ${ConvertorPixel2Rem(56)} 0 0 0;
     grid-gap: ${ConvertorPixel2Rem(10)};
     overflow-x: hidden;
     text-align: center;
     font-family: 'Inter', sans-serif;
 
-    .confirm-photo__description{
-        padding: 0 ${ConvertorPixel2Rem(24)};
-        margin-top: ${ConvertorPixel2Rem(58)};
-        font-weight: bold;
-        font-size: ${ConvertorPixel2Rem(18)};
-        line-height: 1.3;
-        color: ${themeProvider.day.fontColor};
+    .confirm-photo__description {
+      width: 312px;
+      text-align: center;
+      padding: 0 ${ConvertorPixel2Rem(24)};
+      margin: ${ConvertorPixel2Rem(58)} auto 0 auto;
+      font-weight: bold;
+      font-size: ${ConvertorPixel2Rem(18)};
+      line-height: 1.3;
+      color: ${themeProvider.day.fontColor};
     }
 
-    .confirm-photo__image-wrapper{
-        padding: ${({ overlayMode }) => (overlayMode === 0 ? ConvertorPixel2Rem(15) : ConvertorPixel2Rem(10))};
-        ${({ overlayMode }) => (overlayMode === 0 ? `height: ${ConvertorPixel2Rem(200)}; width: ${ConvertorPixel2Rem(298)};` : `height: ${ConvertorPixel2Rem(236)}; width: ${ConvertorPixel2Rem(236)};`)};
-        margin: ${ConvertorPixel2Rem(41)} auto ${ConvertorPixel2Rem(120)} auto;
-        overflow: hidden;
-        position: relative;
-
+    .confirm-photo__image-wrapper {
+      padding: ${({ overlayMode }) => (overlayMode === 0 ? ConvertorPixel2Rem(15) : ConvertorPixel2Rem(10))};
+      ${({ overlayMode }) => (overlayMode === 0 ? `height: ${ConvertorPixel2Rem(200)}; width: ${ConvertorPixel2Rem(298)};` : `height: ${ConvertorPixel2Rem(236)}; width: ${ConvertorPixel2Rem(236)};`)};
+      margin: ${ConvertorPixel2Rem(41)} auto ${ConvertorPixel2Rem(120)} auto;
+      overflow: hidden;
+      position: relative;
     }
 
-    .confirm-photo__image{
+    .confirm-photo__image {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      border-radius: ${({ overlayMode }) => (overlayMode === 0 ? ConvertorPixel2Rem(6) : '50%')};
+    }
+
+    .footer {
+      width: ${ConvertorPixel2Rem(312)};
+      margin: 0 auto;
+      bottom: 0;
+      button {
         width: 100%;
-        height: 100%;
-        padding: 0;
-        border-radius: ${({ overlayMode }) => (overlayMode === 0 ? ConvertorPixel2Rem(6) : '50%')};
-    }
-
-    .footer{
-        padding: 0 ${ConvertorPixel2Rem(24)};
+        font-size: ${ConvertorPixel2Rem(16)};
+        height: ${ConvertorPixel2Rem(44)};
+        border-radius: ${ConvertorPixel2Rem(6)};
+        border: 0;
     }
 `;

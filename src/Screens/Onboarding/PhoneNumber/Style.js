@@ -8,8 +8,8 @@ export const PhoneNumberScreen = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-areas: "header" "main" "footer";
-  grid-template-rows: minmax(${ConvertorPixel2Rem(56)}, ${ConvertorPixel2Rem(60)}) minmax(1fr, max-content) minmax(${ConvertorPixel2Rem(56)}, ${ConvertorPixel2Rem(60)});
+  grid-template-areas: "header" "main";
+  grid-template-rows: ${ConvertorPixel2Rem(56)} 1fr;
   grid-template-columns: 1fr;
   grid-gap: 0;
   row-gap: 0;
@@ -18,64 +18,74 @@ export const PhoneNumberScreen = styled.div`
 export const Main = styled.main`
   grid-area: main;
   width: 100%;
-  padding: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(27)};
+  height: 100%;
+  padding: 0 ${ConvertorPixel2Rem(24)};
   display: flex;
   align-items: center;
-  flex-flow: column;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
 
   div.HeadingText {
-    width: ${ConvertorPixel2Rem(312)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    height: auto;
     color: ${themeProvider.day.fontColor};
     letter-spacing: 0;
-    margin: ${ConvertorPixel2Rem(17)} 0 0 0;
+    margin: ${ConvertorPixel2Rem(24)} 0 0 0;
 
     h1 {
       width: 100%;
-      height: ${ConvertorPixel2Rem(60)};
+      min-height: ${ConvertorPixel2Rem(29)};
       font-size: ${ConvertorPixel2Rem(24)};
       line-height: ${ConvertorPixel2Rem(29)};
-      margin: 0 0 ${ConvertorPixel2Rem(14)} 0;
       font-weight: bold;
     }
     h2 {
+      width: 100%;
       font-weight: normal;
       font-size: ${ConvertorPixel2Rem(14)};
-      height: ${ConvertorPixel2Rem(55)};
-      width: 100%;
+      min-height: ${ConvertorPixel2Rem(30)};
+      line-height: ${ConvertorPixel2Rem(20)};
+      text-align: justify-all;
       display: flex;
       align-items: center;
     }
   }
 
   div.PhoneNumber {
-    width: ${ConvertorPixel2Rem(312)};
-    margin: ${ConvertorPixel2Rem(59)} 0 ${ConvertorPixel2Rem(70)} 0;
+    position: relative;
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    display: flex;
+    justify-content: space-between;
+    margin: ${ConvertorPixel2Rem(59)} 0 0 0;
+    padding: 0 0 ${ConvertorPixel2Rem(25)} 0;
 
     div.PhoneNumber__CountryCodeField{
       position: relative;
       display: inline-block;
-      width: ${ConvertorPixel2Rem(96)};
       height: ${ConvertorPixel2Rem(49)};
-      margin: 0 ${ConvertorPixel2Rem(13)} 0 0;
+      margin: 0 ${ConvertorPixel2Rem(8)} 0 0;
 
       select.PhoneNumber__CountryCodeField-SelectBox {
         -webkit-appearance: none;
         -moz-appearance: none;
         text-indent: 1px;
         text-overflow: '';
-        width: 100%;
+        width: ${ConvertorPixel2Rem(96)};
         height: 100%;
         text-align: right;
         background-color: ${themeProvider.day.backgroundColor};
         padding: 0 ${ConvertorPixel2Rem(15)};
         border-radius: ${ConvertorPixel2Rem(6)};
         border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
-        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
+        border-color: ${(props) => props.nationalNumberLenght >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
         overflow: hidden;
+
         option {
-          width: 100px;
+          width: ${ConvertorPixel2Rem(100)};
           text-align: right;
         }
+
         &:focus {
           border: 1px solid ${themeProvider.day.highlightColor};
           font-size: ${ConvertorPixel2Rem(16)};
@@ -85,7 +95,9 @@ export const Main = styled.main`
             color: ${themeProvider.day.highlightColor};
           }
         }
+
       }
+
       label.PhoneNumber__CountryCodeField-Label {
         padding: ${ConvertorPixel2Rem(3)};
         background-color: ${themeProvider.day.backgroundColor};
@@ -95,36 +107,39 @@ export const Main = styled.main`
         left: ${ConvertorPixel2Rem(10)};
         top: ${ConvertorPixel2Rem(-15)};
       }
+
       div.PhoneNumber__CountryCodeField-IconFlag {
         width: ${ConvertorPixel2Rem(22)};
         height: ${ConvertorPixel2Rem(22)};
-        border-radius: ${ConvertorPixel2Rem(11.66)};
-        background-size: cover;
+        border-radius: 100%;
         position: absolute;
         left: ${ConvertorPixel2Rem(15)};
-        top: ${ConvertorPixel2Rem(11)};
+        top: ${ConvertorPixel2Rem(12)};
         margin: 0;
         overflow: hidden;
+
         img {
-          width: 100%;
-          height: 100%;
+          margin: ${ConvertorPixel2Rem(-5)} 0 0 0;
+          width: ${ConvertorPixel2Rem(25)};
+          height: ${ConvertorPixel2Rem(25)};
         }
       }
+
     }
 
     div.PhoneNumber__NumberField {
       position: relative;
       display: inline-block;
-      width: ${ConvertorPixel2Rem(202)};
+      width: ${ConvertorPixel2Rem(208)};
       height: ${ConvertorPixel2Rem(49)};
 
       input.PhoneNumber__NumberField-Input {
-        width: 100%;
+        width: ${ConvertorPixel2Rem(208)};
         height: 100%;
         padding: 0 ${ConvertorPixel2Rem(15)};
         border-radius: ${ConvertorPixel2Rem(6)};
         border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
-        border-color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
+        border-color: ${(props) => props.phoneLength >= props.nationalNumberLength && !props.checkSignal && themeProvider.day.errorColor} !important;
 
         &:focus {
           border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor};
@@ -134,6 +149,7 @@ export const Main = styled.main`
             display: inline-block;
             color: ${themeProvider.day.highlightColor};
           }
+
         }
 
         &::-webkit-input-placeholder {
@@ -147,11 +163,12 @@ export const Main = styled.main`
         &::placeholder {
           color: ${themeProvider.day.disableColor};
         }
+
       }
 
       label.PhoneNumber__NumberField-Label {
         padding: ${ConvertorPixel2Rem(3)};
-        color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor}!important;
+        color: ${(props) => props.phoneLength >= props.nationalNumberLength && !props.checkSignal && themeProvider.day.errorColor}!important;
         background-color: ${themeProvider.day.backgroundColor};
         font-size: ${ConvertorPixel2Rem(12)};
         position: absolute;
@@ -160,7 +177,7 @@ export const Main = styled.main`
       }
 
       div.PhoneNumber__NumberField-Status {
-        display: ${(props) => (props.phoneLength >= props.nnumberLenght ? 'inline-block' : 'none')};
+        display: ${(props) => (props.phoneLength >= props.nationalNumberLength ? 'inline-block' : 'none')};
         width: ${ConvertorPixel2Rem(20)};
         height: ${ConvertorPixel2Rem(20)};
         background: url(${(props) => (props.checkSignal ? Success : Error)}) no-repeat;
@@ -172,8 +189,11 @@ export const Main = styled.main`
     }
 
     div.PhoneNumber__ErrorText {
+      position: absolute;
+      left: 0;
+      bottom: ${ConvertorPixel2Rem(-3)};
       display: block;
-      width: ${ConvertorPixel2Rem(312)};
+      width: 100%;
       height: ${ConvertorPixel2Rem(30)};
       font-size: ${ConvertorPixel2Rem(14)};
       padding: ${ConvertorPixel2Rem(5)} 0;
@@ -182,15 +202,18 @@ export const Main = styled.main`
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(312)};
-    margin: 0 auto;
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    margin: ${ConvertorPixel2Rem(70)} auto ${ConvertorPixel2Rem(20)} auto;
+
     button {
       width: 100%;
+      color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
       font-size: ${ConvertorPixel2Rem(16)};
       height: ${ConvertorPixel2Rem(44)};
       border-radius: ${ConvertorPixel2Rem(6)};
       border: 0;
+
       &[disabled] {
         background-color: ${themeProvider.day.disableColor};
       }

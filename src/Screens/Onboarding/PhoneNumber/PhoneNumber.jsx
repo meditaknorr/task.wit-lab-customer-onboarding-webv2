@@ -1,76 +1,99 @@
-import React, { useContext, useState } from 'react';
-import { Button } from 'reactstrap';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StateContext, DispatchContext } from '../../../Contexts/AppStoreContexts';
-import { availableCountries, phoneNumberValidator, targetCountryHelper } from '../../../Helpers/targetCountryHelper';
+import { storeGetter, storeSetter } from '../../../Hooks/useStore';
+import { useLocale } from '../../../Hooks/useLocale';
 import countryFlagHelper from '../../../Helpers/countryFlagHelper';
+import { availableCountries, targetCountryHelper, phoneNumberValidator } from '../../../Helpers/targetCountryHelper';
 import Header from '../../../Components/Header/Header';
 import WebView from '../../../Layouts/WebView/WebView';
-import { useLocale } from '../../../Hooks/useLocale';
 import { PhoneNumberScreen, Main } from './Style';
 
 const PhoneNumber = () => {
+  const dispatch = storeSetter();
+  const { app } = storeGetter();
   const history = useHistory();
+  const { appString } = useLocale(app.language);
   const [validPhone, setValidPhone] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [countryCallingCode, setCountryCallingCode] = useState('');
+  const [countryCode, setCountryCode] = useState('+258');
+  const NationalNumberLength = targetCountryHelper('nationalNumberLength', parseInt((countryCode.slice(1)), 10));
+  const CountryCode = targetCountryHelper('code', parseInt((countryCode.slice(1)), 10));
+  const PlaceHolder = targetCountryHelper('dummyNumber', parseInt((countryCode.slice(1)), 10));
 
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const { appString } = useLocale(language.language);
-  const { countryCode } = (state.filter((data) => data.id === 2))[0];
-
-  const countryCodeSetter = (e) => {
-    setPhoneNumber('');
-    setValidPhone(false);
-    const CountryCodeNumber = (parseInt(((e.target.value).slice(1)), 10));
-    setCountryCallingCode(e.target.value);
-    dispatch(
-      {
-        type: 'CHANGE_APP_COUNTRY',
-        payload: {
-          countryName: targetCountryHelper('CountryName', CountryCodeNumber),
-          countryCode: CountryCodeNumber,
-          id: 2,
-        },
-      },
-    );
-  };
-  const phonenumberChecker = (e) => {
-    setPhoneNumber(e.target.value);
-    if ((e.target.value.length) === targetCountryHelper('nationalNumberLength', countryCode)) {
-      setValidPhone(phoneNumberValidator((e.target.value), countryCode));
+  const inputHandler = (e) => {
+    if (e.target.id === 'CountryCode') {
+      setPhoneNumber('');
+      setCountryCode(e.target.value);
     } else {
-      setValidPhone(false);
+      setPhoneNumber(e.target.value);
     }
   };
+
   const continueButton = () => {
     dispatch(
       {
-        type: 'UPDATE_STATE',
+        type: 'SET_USER',
         payload: {
-          callingCode: (countryCallingCode || `+${countryCode}`),
-          userPhoneNumber: phoneNumber,
-          id: 3,
+          countryCode: parseInt((countryCode.slice(1)), 10),
+          phoneCallingCode: countryCode,
+          countryName: targetCountryHelper('CountryName', parseInt((countryCode.slice(1)), 10)),
+          phone: phoneNumber,
         },
       },
     );
+    setPhoneNumber('');
     history.push('/registration/onboarding/phonenumber/confirmation');
   };
-  const errorSignalizer = () => (phoneNumber.length >= targetCountryHelper('nationalNumberLength', countryCode) && !validPhone);
+
+  /**
+   * Enter Key Listener
+   * If input is valid and user presses ENTER,
+   * It calls the same function created for our screen action button
+   * @param e
+   */
+  const keyListener = (e) => {
+    if (validPhone) {
+      if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+        e.preventDefault();
+        continueButton();
+      }
+    }
+  };
+
+  useEffect(() => {
+    if ((phoneNumber).length === NationalNumberLength) {
+      setValidPhone(
+        phoneNumberValidator((phoneNumber),
+          parseInt((countryCode.slice(1)), 10)),
+      );
+    }
+  }, [phoneNumber]);
+
+  useEffect(() => {
+    document.addEventListener('keydown', keyListener);
+    return () => {
+      document.removeEventListener('keydown', keyListener);
+    };
+  }, [validPhone]);
 
   return (
     <WebView>
       <PhoneNumberScreen>
+
         <Header
-          logo={0}
           backButton={1}
-          screenLabel={1}
+          greyBack={1}
+          screenLabel={appString.translations.header.regPhoneNumber}
           languageButton={1}
-          language={language.language}
+          progressBar={1}
+          language={app.language}
         />
-        <Main checkSignal={validPhone} phoneLength={(phoneNumber.length)} nnumberLenght={targetCountryHelper('nationalNumberLength', countryCode)}>
+
+        <Main
+          checkSignal={validPhone}
+          phoneLength={(phoneNumber.length)}
+          nationalNumberLength={NationalNumberLength}
+        >
           <div className="HeadingText">
             <h1>{appString.translations.onboarding.enterPhone}</h1>
             <h2>{appString.translations.onboarding.forAccountSettup}</h2>
@@ -79,13 +102,14 @@ const PhoneNumber = () => {
           <div className="PhoneNumber">
             <div className="PhoneNumber__CountryCodeField">
               <div className="PhoneNumber__CountryCodeField-IconFlag">
-                <img src={countryFlagHelper(targetCountryHelper('code', countryCode))} alt="img" />
+                <img src={countryFlagHelper(CountryCode)} alt="img" />
               </div>
               <select
+                defaultValue={countryCode}
                 name="CountryCode"
                 id="CountryCode"
                 className="PhoneNumber__CountryCodeField-SelectBox"
-                onChange={countryCodeSetter}
+                onChange={inputHandler}
               >
                 {
                   availableCountries.map((data) => (
@@ -95,19 +119,25 @@ const PhoneNumber = () => {
                   ))
                 }
               </select>
-              <label htmlFor="CountryCode" className="PhoneNumber__CountryCodeField-Label">{appString.translations.onboarding.code}</label>
+              <label
+                htmlFor="CountryCode"
+                className="PhoneNumber__CountryCodeField-Label"
+              >
+                {appString.translations.onboarding.code}
+              </label>
             </div>
+
             <div className="PhoneNumber__NumberField">
               <input
                 type="tel"
                 id="phoneNumber"
-                minLength={targetCountryHelper('nationalNumberLength', countryCode)}
-                maxLength={targetCountryHelper('nationalNumberLength', countryCode)}
-                size={targetCountryHelper('nationalNumberLength', countryCode)}
-                placeholder={targetCountryHelper('dummyNumber', countryCode)}
+                minLength={NationalNumberLength}
+                maxLength={NationalNumberLength}
+                size={NationalNumberLength}
+                placeholder={PlaceHolder}
                 className="PhoneNumber__NumberField-Input"
                 value={phoneNumber}
-                onChange={phonenumberChecker}
+                onChange={inputHandler}
                 autoComplete="off"
               />
               <label
@@ -120,20 +150,22 @@ const PhoneNumber = () => {
             </div>
             <div className="PhoneNumber__ErrorText">
               {
-                errorSignalizer() && `${appString.translations.onboarding.validNumber}`
+                phoneNumber.length >= NationalNumberLength
+                && !validPhone
+                && `${appString.translations.onboarding.validNumber}`
               }
             </div>
           </div>
 
           <div className="ActionButton">
-            <Button
+            <button
               type="button"
               onClick={continueButton}
               className="ActionButton-ContinueRegistration"
-              disabled={(validPhone) ? null : true}
+              disabled={(!validPhone)}
             >
               {appString.translations.onboarding.continue}
-            </Button>
+            </button>
           </div>
         </Main>
       </PhoneNumberScreen>

@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { AppHeader } from './Style';
+import { useHistory } from 'react-router-dom';
+import { storeSetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
-import ProgressBar from '../ProgressBar/ProgressBar';
-import Logo from '../Logo/Logo';
 import countryFlagHelper from '../../Helpers/countryFlagHelper';
-import { DispatchContext } from '../../Contexts/AppStoreContexts';
+import ProgressBar from '../ProgressBar/Progressbar';
+import Logo from '../Logo/Logo';
+import { AppHeader } from './Style';
 
 /**
  * Returns a React Header Component, each parameter accepts [zero] or [one].
@@ -14,59 +15,100 @@ import { DispatchContext } from '../../Contexts/AppStoreContexts';
  * >> Display selectable only languages that are not equal to the device's browser.
  * @param logo {0/1}
  * @param backButton {0/1}
- * @param screenLabel {String with the header label for the screen}
+ * @param backButtonFunctions {any}
+ * @param backButtonURL {string}
+ * @param screenLabel {string}
  * @param languageButton {0/1}
  * @param language {string}
  * @param languageSetter {setter}
- * @param progressBarPercent {a Number with the percent of the
- * progress bar divided by 10 (must be from 0 - 10)}
+ * @param greyBack {0/1}
+ * @param ghostBlock {0/1}
+ * @param progressBar {0/1}
  * @returns {JSX.Element}
  * @constructor
  */
 const Header = ({
-  logo,
-  backButton,
-  screenLabel,
-  languageButton,
+  logo = 0,
+  backButton = 0,
+  backButtonFunctions,
+  backButtonURL,
+  screenLabel = '',
+  languageButton = 0,
+  greyBack = 0,
+  progressBar = 0,
+  ghostBlock = 0,
   language,
 }) => {
+  const history = useHistory();
+  const dispatch = storeSetter();
   const [trigger, setTrigger] = useState(false);
   const { appLanguages } = useLocale(language);
-
-  const dispatch = useContext(DispatchContext);
   const languageSetter = (selectedLanguage) => {
     dispatch(
       {
-        type: 'CHANGE_APP_LANGUAGE',
+        type: 'SET_APP',
         payload: {
           language: selectedLanguage,
-          id: 1,
         },
       },
     );
   };
   const languageSwitcher = () => setTrigger(!trigger);
   const languageSelector = (e) => ((e.target.className === 'Trigger-Pane__Option')
-    ? languageSetter(`${e.target.id}`) : languageSetter(`${e.target.parentNode.id}`));
+    ? languageSetter(`${e.target.id}`)
+    : languageSetter(`${e.target.parentNode.id}`));
+
+  const backButtonHandler = () => {
+    if (backButtonURL !== '') {
+      backButtonFunctions();
+      history.push(backButtonURL);
+    } else {
+      history.goBack();
+    }
+  };
 
   return (
     <>
       <AppHeader
         logo={logo}
         backbutton={backButton}
-        screenlabel={screenLabel}
         trigger={trigger}
         languagebutton={languageButton}
+        greyback={greyBack}
+        progressbar={progressBar}
+        ghostblock={ghostBlock}
       >
-        <div className="App-logo"><Logo /></div>
-        <div className="App-BackButton" onClick={() => window.history.back()} onKeyPress={() => window.history.back()} role="button" tabIndex="0"> </div>
-        <div className="App-ScreenLabel">{screenLabel}</div>
-        <div className="App-LanguageSwitcher" onClick={languageSwitcher} onKeyPress={languageSwitcher} role="button" tabIndex="0">
+        <div className="App-GhostBlock" />
+        <div className="App-Logo"><Logo /></div>
+
+        <div
+          className="App-BackButton"
+          onClick={backButtonHandler}
+          onKeyPress={backButtonHandler}
+          role="button"
+          tabIndex="0"
+          aria-label="back button"
+        />
+
+        <div
+          className="App-ScreenLabel"
+        >
+          {screenLabel}
+        </div>
+
+        <div
+          className="App-LanguageSwitcher"
+          onClick={languageSwitcher}
+          onKeyPress={languageSwitcher}
+          role="button"
+          tabIndex="0"
+        >
+
           <span className="App-Language__Current">{language}</span>
           <div className="App-Language__ArrowDown" />
           <div className="App-Language__Trigger">
-            <div className="Trigger-Pane">
 
+            <div className="Trigger-Pane">
               {
                 (appLanguages.translatedAvailableLanguages).map((string) => (
                   <div
@@ -79,31 +121,55 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
-                      <img src={countryFlagHelper(string.code)} alt="img" />
+                      <img src={countryFlagHelper(string.code)} alt="flag icon" />
                     </div>
                     <span className="Pane-Name">{string.name}</span>
-                    {(language === string.code) ? <div className="Pane-Check" /> : <div className="Pane-GhostCheck" />}
+                    {
+                      (language === string.code)
+                        ? <div className="Pane-Check" />
+                        : <div className="Pane-GhostCheck" />
+                    }
                   </div>
                 ))
               }
-
             </div>
+
           </div>
         </div>
+
         <div className="App-ProgressBar">
           <ProgressBar />
         </div>
+
       </AppHeader>
     </>
   );
 };
 
+Header.defaultProps = {
+  logo: 0,
+  backButton: 0,
+  backButtonFunctions: () => null,
+  backButtonURL: '',
+  screenLabel: '',
+  languageButton: 0,
+  greyBack: 0,
+  progressBar: 0,
+  ghostBlock: 0,
+  language: '',
+};
+
 Header.propTypes = {
-  logo: PropTypes.number.isRequired,
-  backButton: PropTypes.number.isRequired,
-  screenLabel: PropTypes.string.isRequired,
-  languageButton: PropTypes.number.isRequired,
-  language: PropTypes.string.isRequired,
+  logo: PropTypes.number,
+  backButton: PropTypes.number,
+  backButtonFunctions: PropTypes.func,
+  backButtonURL: PropTypes.string,
+  screenLabel: PropTypes.string,
+  languageButton: PropTypes.number,
+  greyBack: PropTypes.number,
+  progressBar: PropTypes.number,
+  ghostBlock: PropTypes.number,
+  language: PropTypes.string,
 };
 
 export default Header;

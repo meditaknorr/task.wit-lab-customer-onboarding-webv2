@@ -1,24 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StateContext, DispatchContext } from '../../../Contexts/AppStoreContexts';
+import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import CaptureImage from '../../../Components/CaptureImage/CaptureImage';
 import ConfirmPhoto from '../../../Components/ConfirmPhoto/ConfirmPhoto';
 
 const ScanVoterCardFront = () => {
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
+  const dispatch = storeSetter();
+  const { app, media } = storeGetter();
   // eslint-disable-next-line max-len
-  const [photo, setPhoto] = useState(state.find((storeProperty) => (storeProperty.id === 4 && storeProperty.voterCardFront)));
-  const language = (state.filter((data) => data.id === 1))[0];
-  const { appString } = useLocale(language.language);
+  const [photo, setPhoto] = useState(media.find((storeProperty) => (storeProperty.id === 4 && storeProperty.voterCardFront)));
+  const { appString } = useLocale(app.language);
   const router = useHistory();
   const overlayMode = 0;
   const voterCardFront = { id: 4, storePropertyName: 'voterCardFront' };
 
   const takeAnotherPhoto = () => {
     dispatch({
-      type: 'UPDATE_STATE',
+      type: 'UPDATE_MEDIA',
       payload: {
         id: 4,
         [voterCardFront.storePropertyName]: null,
@@ -37,7 +36,10 @@ const ScanVoterCardFront = () => {
             footer={appString.translations.scanVoterCard.centerPhoto}
             overlayMode={overlayMode}
             setPhoto={setPhoto}
-            closeCamera={() => { router.push('/registration/onboarding'); }}
+            closeCamera={() => {
+              takeAnotherPhoto(); // clear any data stored on store, force to null on click close
+              router.push('/registration/onboarding/phonenumber');
+            }}
             storeProperty={voterCardFront}
           />
         )
@@ -46,10 +48,12 @@ const ScanVoterCardFront = () => {
             description={appString.translations.confirmPhoto.frontSidePhoto}
             photo={photo}
             takeAnotherPhoto={takeAnotherPhoto}
-            usePhoto={() => { router.push('/registration/validation/scan-voter-card-back'); }}
+            usePhoto={() => {
+              router.push('/registration/validation/scan/back');
+            }}
             storeProperty={voterCardFront}
             screenLabel={appString.translations.confirmPhoto.voterCard}
-            progressBar={2}
+            progressBar={1}
             overlayMode={overlayMode}
           />
         )}

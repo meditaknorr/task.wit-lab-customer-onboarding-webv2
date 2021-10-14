@@ -7,6 +7,7 @@ import ScanVoterCardFront from '../Screens/Validation/ScanVoterCard/ScanVoterCar
 import ScanVoterCardBack from '../Screens/Validation/ScanVoterCard/ScanVoterCardBack';
 import Selfie from '../Screens/Validation/Selfie/Selfie';
 import SubmitAndValidate from '../Screens/Validation/SubmitAndValidate/SubmitAndValidate';
+import Details from '../Screens/Details/Details';
 
 const AppRouter = () => (
   <Router>
@@ -14,11 +15,13 @@ const AppRouter = () => (
       <Route exact path="/registration/onboarding/" component={Onboarding} />
       <Route exact path="/registration/onboarding/phonenumber" component={PhoneNumber} />
       <Route exact path="/registration/onboarding/phonenumber/confirmation" component={PhoneNumberConfirmation} />
-      <Route exact path="/registration/validation/scan-voter-card-front" component={ScanVoterCardFront} />
-      <Route exact path="/registration/validation/scan-voter-card-back" component={ScanVoterCardBack} />
+
+      <Route exact path="/registration/validation/scan/front" component={ScanVoterCardFront} />
+      <Route exact path="/registration/validation/scan/back" component={ScanVoterCardBack} />
       <Route exact path="/registration/validation/selfie" component={Selfie} />
-      <Route exact path="/registration/validation/submit-and-validate" component={SubmitAndValidate} />
-      <Route path="/home" component="Home" />
+      <Route exact path="/registration/validation/submit" component={SubmitAndValidate} />
+
+      <Route exact path="/registration/details" component={Details} />
     </Switch>
   </Router>
 );

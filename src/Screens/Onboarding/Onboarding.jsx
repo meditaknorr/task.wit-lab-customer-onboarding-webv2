@@ -1,27 +1,23 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'reactstrap';
-import { StateContext } from '../../Contexts/AppStoreContexts';
-import Header from '../../Components/Header/Header';
-import WebView from '../../Layouts/WebView/WebView';
-import { OnborardingScreen, Main } from './Style';
+import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
+import { OnborardingScreen, Main } from './Style';
+import WebView from '../../Layouts/WebView/WebView';
+import Header from '../../Components/Header/Header';
 
 const Onboarding = () => {
+  const { app } = storeGetter();
   const history = useHistory();
-  const state = useContext(StateContext);
-  const language = (state.filter((data) => data.id === 1))[0];
-  const { appString } = useLocale(language.language);
+  const { appString } = useLocale(app.language);
 
   return (
     <WebView>
       <OnborardingScreen>
         <Header
           logo={1}
-          backButton={0}
-          screenLabel=""
           languageButton={1}
-          language={language.language}
+          language={app.language}
         />
         <Main>
           <div className="HeadingText">
@@ -44,9 +40,9 @@ const Onboarding = () => {
             </div>
           </div>
           <div className="ActionButton">
-            <Button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/registration/onboarding/phonenumber')}>
+            <button type="button" className="ActionButton-StartRegistration" onClick={() => history.push('/registration/onboarding/phonenumber')}>
               {appString.translations.onboarding.buttonStart}
-            </Button>
+            </button>
             <div className="ActionButton-CheckStatus">
               <span>{appString.translations.onboarding.alreadyRegstered}</span>
               <span>{appString.translations.onboarding.seeStatus}</span>

@@ -3,23 +3,25 @@ import { themeProvider } from '../../../Configs/Themes/themeProvider';
 import { ConvertorPixel2Rem } from '../../../Hooks/useDimension';
 import Close from '../../../Assets/Images/icons/ic_close.svg';
 import RedClose from '../../../Assets/Images/icons/ic_close_red.png';
+import ModalCard from '../../../Assets/Images/icons/modal_card_elevetaion.svg';
 
 export const PhoneNumberConfirmationScreen = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-areas: "header" "main" "footer";
-  grid-template-rows: minmax(${ConvertorPixel2Rem(56)}, ${ConvertorPixel2Rem(60)}) minmax(1fr, max-content) minmax(${ConvertorPixel2Rem(56)}, ${ConvertorPixel2Rem(60)});
+  grid-template-areas: "header" "main";
+  grid-template-rows: ${ConvertorPixel2Rem(56)} 1fr;
   grid-template-columns: 1fr;
   grid-gap: 0;
   row-gap: 0;
 `;
+
 export const Modal = styled.div`
   z-index: 100;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  background-color: ${themeProvider.day.modalColor};
+  width: 100%;
+  height: 100%;
   display: ${(props) => (props.status ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
@@ -30,13 +32,20 @@ export const Modal = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: ${themeProvider.day.backgroundColor};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} 3px ${themeProvider.day.modalShadow};
     border-radius: ${ConvertorPixel2Rem(6)};
     width: ${ConvertorPixel2Rem(296)};
     height: ${ConvertorPixel2Rem(189)};
 
-    div.Modal__Pane--CloseButton {
+    div.Modal__Pane-Card {
+      position: absolute;
+      top: -46px;
+      background: url(${ModalCard}) no-repeat center;
+      background-size: contain;
+      width: ${ConvertorPixel2Rem(450)};
+      height: ${ConvertorPixel2Rem(300)};
+    }
+
+    div.Modal__Pane-CloseButton {
       width: ${ConvertorPixel2Rem(18)};
       height: ${ConvertorPixel2Rem(18)};
       background: url(${Close}) no-repeat;
@@ -44,25 +53,32 @@ export const Modal = styled.div`
       position: absolute;
       top: ${ConvertorPixel2Rem(14)};
       right: ${ConvertorPixel2Rem(14)};
+
     }
 
-    div.Modal__Pane--Icon {
-      width: ${ConvertorPixel2Rem(42)};
-      height: ${ConvertorPixel2Rem(42)};
-      background: url(${RedClose}) no-repeat;
+    div.Modal__Pane-Icon {
+      position: relative;
+      width: ${ConvertorPixel2Rem(43)};
+      height: ${ConvertorPixel2Rem(43)};
+      background: url(${RedClose}) no-repeat center;
+      background-size: contain;
       margin: ${ConvertorPixel2Rem(32)} 0 ${ConvertorPixel2Rem(16)} 0;
-      background-size: cover;
+      overflow: visible;
     }
 
-    div.Modal__Pane--Information {
+    div.Modal__Pane-Information {
+      position: relative;
       display: block;
       text-align: center;
       width: ${ConvertorPixel2Rem(240)};
+      margin: 0 0 ${ConvertorPixel2Rem(30)} 0;
 
       h1 {
         height: ${ConvertorPixel2Rem(24)};
+        line-height: ${ConvertorPixel2Rem(24)};
         font-size: ${ConvertorPixel2Rem(18)};
         margin: 0 0 ${ConvertorPixel2Rem(4)} 0;
+        letter-spacing: ${ConvertorPixel2Rem(0.17)};
       }
 
       h2 {
@@ -74,6 +90,7 @@ export const Modal = styled.div`
     }
   }
 `;
+
 export const Main = styled.main`
   grid-area: main;
   width: 100%;
@@ -86,29 +103,26 @@ export const Main = styled.main`
     width: ${ConvertorPixel2Rem(312)};
     color: ${themeProvider.day.fontColor};
     letter-spacing: 0;
-    margin: ${ConvertorPixel2Rem(17)} 0 0 0;
+    margin: ${ConvertorPixel2Rem(24)} 0 0 0;
 
     h1 {
+      text-align: left;
       width: 100%;
-      height: ${ConvertorPixel2Rem(60)};
+      min-height: ${ConvertorPixel2Rem(29)};
       font-size: ${ConvertorPixel2Rem(24)};
       line-height: ${ConvertorPixel2Rem(29)};
-      margin: 0 0 ${ConvertorPixel2Rem(14)} 0;
       font-weight: bold;
-      text-align: left;
     }
     h2 {
+      margin: ${ConvertorPixel2Rem(14)} 0 0 0;
       font-weight: normal;
-      text-align: left;
-      font-size: ${ConvertorPixel2Rem(14)};
-      height: ${ConvertorPixel2Rem(55)};
+      text-align: justify-all;
       width: 100%;
-
-      span {
-        display: inline-block;
-        margin: 0 ${ConvertorPixel2Rem(5)};
-        line-height: ${ConvertorPixel2Rem(20)};
-      }
+      font-size: ${ConvertorPixel2Rem(14)};
+      min-height: ${ConvertorPixel2Rem(30)};
+      line-height: ${ConvertorPixel2Rem(20)};
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -129,15 +143,25 @@ export const Main = styled.main`
       font-weight: bold;
       font-size: ${ConvertorPixel2Rem(18)};
       border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.pinBorderColor};
+
       &:focus {
         content: "";
         border: ${ConvertorPixel2Rem(2)} solid ${themeProvider.day.highlightColor};
+      }
+
+      &::-moz-selection {
+        background: ${themeProvider.day.backgroundColor};
+      }
+
+      &::selection {
+        background: ${themeProvider.day.backgroundColor};
       }
     }
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(312)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    margin: ${ConvertorPixel2Rem(70)} auto ${ConvertorPixel2Rem(20)} auto;
 
     div.ActionButton__ResendPin {
       width: 80%;
@@ -145,16 +169,18 @@ export const Main = styled.main`
       height: ${ConvertorPixel2Rem(17)};
       line-height: ${ConvertorPixel2Rem(17)};
       font-size: ${ConvertorPixel2Rem(14)};
-      margin: ${ConvertorPixel2Rem(38)} auto ${ConvertorPixel2Rem(16)} auto;
+      margin: 0 auto ${ConvertorPixel2Rem(16)} auto;
       color: ${themeProvider.day.errorColor};
     }
     button {
       width: 100%;
+      color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
       font-size: ${ConvertorPixel2Rem(16)};
       height: ${ConvertorPixel2Rem(44)};
       border-radius: ${ConvertorPixel2Rem(6)};
       border: 0;
+
       &[disabled] {
         background-color: ${themeProvider.day.disableColor};
       }

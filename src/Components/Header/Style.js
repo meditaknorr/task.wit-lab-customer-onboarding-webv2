@@ -9,17 +9,21 @@ export const AppHeader = styled.header`
   grid-area: header;
   width: 100%;
   height: ${ConvertorPixel2Rem(56)};
-  background-color: ${(props) => (props.screenlabel ? themeProvider.day.headerColor : themeProvider.day.backgroundColor)};
+  background-color: ${(props) => (props.greyback ? themeProvider.day.headerColor : themeProvider.day.backgroundColor)};
   padding: 0 ${ConvertorPixel2Rem(24)};
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${themeProvider.day.headerColor};
 
-  /* image size scalled to try fit well on screen*/
-  div.App-logo {
-    display: ${(props) => (props.logo ? 'inline-block' : 'none')};
+  div.App-Logo {
+    display: ${(props) => (props.logo ? 'flex' : 'none')};
+    width: ${ConvertorPixel2Rem(36)};
+    height: ${ConvertorPixel2Rem(28)};
+  }
+
+  div.App-GhostBlock {
+    display: ${(props) => (props.ghostblock ? 'flex' : 'none')};
     width: ${ConvertorPixel2Rem(35)};
     height: ${ConvertorPixel2Rem(25)};
   }
@@ -35,11 +39,10 @@ export const AppHeader = styled.header`
   }
 
   div.App-ScreenLabel {
-    display: ${(props) => (props.screenlabel ? 'flex' : 'none')};
+    display: flex;
     width: ${ConvertorPixel2Rem(200)};
     height: ${ConvertorPixel2Rem(42)};
     font-size: ${ConvertorPixel2Rem(16)};
-    text-transform: capitalize;
     font-weight: 400;
     align-items: center;
     justify-content: center;
@@ -50,7 +53,7 @@ export const AppHeader = styled.header`
     position: relative;
     display: ${(props) => (props.languagebutton ? 'flex' : 'none')};
     width: ${ConvertorPixel2Rem(35)};
-    height: ${ConvertorPixel2Rem(35)};
+    height: ${ConvertorPixel2Rem(25)};
     font-size: ${ConvertorPixel2Rem(14)};
     align-items: center;
     justify-content: space-between;
@@ -63,7 +66,7 @@ export const AppHeader = styled.header`
     div.App-Language__ArrowDown {
       position: absolute;
       right: 0;
-      bottom: ${ConvertorPixel2Rem(7)};
+      bottom: ${ConvertorPixel2Rem(3)};
       width: ${ConvertorPixel2Rem(14)};
       height: ${ConvertorPixel2Rem(14)};
       background: url(${ArrowDown}) no-repeat center;
@@ -88,6 +91,7 @@ export const AppHeader = styled.header`
         margin: 0;
         padding: 0;
         border: 0;
+
         div.Trigger-Pane__Option {
           width: 100%;
           text-transform: uppercase;
@@ -97,15 +101,18 @@ export const AppHeader = styled.header`
           display: flex;
           align-items: center;
           justify-content: space-between;
+
           &:hover {
             cursor: pointer;
           }
+
           div.Pane-IconFlag {
             width: ${ConvertorPixel2Rem(27)};
             height: ${ConvertorPixel2Rem(27)};
             border-radius: ${ConvertorPixel2Rem(13.5)};
             overflow: hidden;
           }
+
           span.Pane-Name {
             width: 100px;
             height: ${ConvertorPixel2Rem(27)};
@@ -115,6 +122,7 @@ export const AppHeader = styled.header`
             align-items: center;
             text-transform: capitalize;
           }
+
           div.Pane-Check {
             width: ${ConvertorPixel2Rem(16)};
             height: ${ConvertorPixel2Rem(12)};
@@ -126,6 +134,7 @@ export const AppHeader = styled.header`
             align-items: center;
             justify-content: space-between;
           }
+
           div.Pane-GhostCheck {
             width: ${ConvertorPixel2Rem(27)};
             height: ${ConvertorPixel2Rem(27)};
@@ -137,6 +146,7 @@ export const AppHeader = styled.header`
   }
 
   div.App-ProgressBar {
+    display: ${(props) => (props.progressbar ? 'flex' : 'none')};
     position: absolute;
     left: 0;
     bottom: 0;

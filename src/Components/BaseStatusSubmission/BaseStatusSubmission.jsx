@@ -18,24 +18,22 @@ const BaseStatusSubmission = ({ submissionStatus }) => (
       </div>
 
       {submissionStatus.title
-        && (
+      && (
         <div className="submission-status__title">
           <span>{submissionStatus.title}</span>
         </div>
-        )}
+      )}
 
       <div className="submission-status__description">
         <span>
           {submissionStatus.description.description1}
-          {
-            submissionStatus.description.description2
-            && (
-              <span>
-                <br />
-                {submissionStatus.description.description2}
-              </span>
-            )
-          }
+          {submissionStatus.description.description2
+          && (
+            <span>
+              <br />
+              {submissionStatus.description.description2}
+            </span>
+          )}
         </span>
       </div>
 
