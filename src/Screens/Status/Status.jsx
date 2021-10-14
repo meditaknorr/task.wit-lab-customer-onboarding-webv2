@@ -35,9 +35,16 @@ const Status = () => {
           </>
         );
       default:
-        break;
+        return (
+          <>
+            <div className="Status__Pane-Icon Waiting" />
+            <div className="Status__Pane-HeadingText">
+              <h1>{appString.translations.status.loadingStatusHeading}</h1>
+              <h2>{appString.translations.status.loadingStatusText}</h2>
+            </div>
+          </>
+        );
     }
-    return false;
   };
 
   return (

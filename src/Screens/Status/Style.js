@@ -3,6 +3,7 @@ import { themeProvider } from '../../Configs/Themes/themeProvider';
 import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import Error from '../../Assets/Images/icons/ic_illustrations_error.svg';
 import Success from '../../Assets/Images/icons/ic_illustrations_success.png';
+import Waiting from '../../Assets/Images/icons/ic_illustrations_waiting.png';
 
 export const StatusScreen = styled.div`
   width: 100%;
@@ -44,6 +45,11 @@ export const Main = styled.main`
 
       &.Success {
         background: url(${Success}) no-repeat center;
+        background-size: contain;
+      }
+
+      &.Waiting {
+        background: url(${Waiting}) no-repeat center;
         background-size: contain;
       }
     }

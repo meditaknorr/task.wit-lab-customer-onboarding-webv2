@@ -272,7 +272,7 @@ export const translations = [
         successStatusHeading: 'Criando a sua conta',
         successStatusText: 'Os seus dados foram validados com sucesso. Em breve você receberá ums SMS para confirmar a criação da sua conta',
         ok: 'Ok',
-        loadingStatusHeading: 'Validando os seus dados de identidade',
+        loadingStatusHeading: 'Validando os seus dados',
         loadingStatusText: 'Ainda estamos validando sua identidade. Em breve você receberá um SMS para confirmar a criação da sua conta',
       },
     },
