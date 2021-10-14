@@ -10,6 +10,7 @@ import SubmitAndValidate from '../Screens/Validation/SubmitAndValidate/SubmitAnd
 import Details from '../Screens/Details/Details';
 import Additional from '../Screens/Details/Additional/Additional';
 import Confirmation from '../Screens/Details/Confirmation/Confirmation';
+import Status from '../Screens/Status/Status';
 
 const AppRouter = () => (
   <Router>
@@ -26,6 +27,8 @@ const AppRouter = () => (
       <Route exact path="/registration/details" component={Details} />
       <Route exact path="/registration/details/additional" component={Additional} />
       <Route exact path="/registration/details/confirmation/:status" component={Confirmation} />
+
+      <Route exact path="/registration/status/:status" component={Status} />
     </Switch>
   </Router>
 );
