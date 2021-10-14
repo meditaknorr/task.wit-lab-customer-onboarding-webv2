@@ -96,11 +96,10 @@ const ConfirmSelfie = ({
             <span>{description}</span>
           </div>
           <div className="confirm-photo__image-wrapper row">
-            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
             <img
               className="confirm-photo__image"
               src={photo[storeProperty.storePropertyName]}
-              alt="The image that was captured in the previous page"
+              alt="Selfie"
             />
           </div>
 
@@ -125,12 +124,10 @@ const ConfirmSelfie = ({
 
 ConfirmSelfie.propTypes = {
   description: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  photo: PropTypes.object.isRequired,
+  photo: PropTypes.objectOf(PropTypes.array).isRequired,
   takeAnotherPhoto: PropTypes.func.isRequired,
   usePhoto: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  storeProperty: PropTypes.object.isRequired,
+  storeProperty: PropTypes.objectOf(PropTypes.func).isRequired,
   screenLabel: PropTypes.string.isRequired,
   backButtonURL: PropTypes.string.isRequired,
   progressBar: PropTypes.number.isRequired,

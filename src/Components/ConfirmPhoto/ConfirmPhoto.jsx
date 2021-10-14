@@ -68,11 +68,10 @@ const ConfirmPhoto = ({
             <span>{description}</span>
           </div>
           <div className="confirm-photo__image-wrapper row">
-            {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
             <img
               className="confirm-photo__image"
               src={photo[storeProperty.storePropertyName]}
-              alt="The image that was captured in the previous page"
+              alt={storeProperty.storePropertyName}
             />
           </div>
 
