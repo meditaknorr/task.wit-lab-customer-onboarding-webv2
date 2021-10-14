@@ -100,7 +100,7 @@ export const Main = styled.main`
   flex-direction: column;
 
   div.HeadingText {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     margin: ${ConvertorPixel2Rem(25)} 0 0 0;
     letter-spacing: 0;
 
@@ -152,7 +152,7 @@ export const Main = styled.main`
 
   div.PersonalInformation {
     margin: ${ConvertorPixel2Rem(22)} 0 0 0;
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(1)} ${themeProvider.day.detailsShadow};
     padding: ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(45)} ${ConvertorPixel2Rem(16)};
     border-radius: ${ConvertorPixel2Rem(6)};
@@ -285,8 +285,8 @@ export const Main = styled.main`
   }
 
   div.AttachedPhotos {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
-    margin: ${ConvertorPixel2Rem(20)} 0 ${ConvertorPixel2Rem(120)} 0;
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    margin: ${ConvertorPixel2Rem(20)} 0 ${ConvertorPixel2Rem(150)} 0;
     padding: ${ConvertorPixel2Rem(16)};
     box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(1)} ${themeProvider.day.detailsShadow};
     border-radius: ${ConvertorPixel2Rem(6)};
@@ -378,7 +378,7 @@ export const Main = styled.main`
     justify-content: center;
 
     button {
-      width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+      width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
       margin: 0 ${ConvertorPixel2Rem(24)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};

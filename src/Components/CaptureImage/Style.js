@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
+import closeIcon from '../../Assets/Images/icons/ic_close_white.svg';
 
 export const CaptureImageScreen = styled.div`
   display: grid;
@@ -52,6 +53,8 @@ export const CaptureImageScreen = styled.div`
       position: fixed;
       text-align: center;
       z-index: 100;
+      background: url(${closeIcon}) no-repeat;
+      background-size: contain;
       top: ${ConvertorPixel2Rem(20)};
       font-size: ${ConvertorPixel2Rem(13)};
       left: ${ConvertorPixel2Rem(22)};
