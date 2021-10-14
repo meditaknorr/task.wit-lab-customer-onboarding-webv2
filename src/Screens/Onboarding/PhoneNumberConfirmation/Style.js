@@ -160,7 +160,7 @@ export const Main = styled.main`
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     margin: ${ConvertorPixel2Rem(70)} auto ${ConvertorPixel2Rem(20)} auto;
 
     div.ActionButton__ResendPin {
