@@ -45,6 +45,25 @@ const Details = () => {
     voterNumber: '',
   });
 
+  const buttonHandler = () => {
+    dispatch(
+      {
+        type: 'SET_USER_PERSONALDETAILS',
+        payload: {
+          id: 1,
+          firstName: inputField.firstName,
+          lastName: inputField.lastName,
+          birthDate: inputField.birthDate,
+          birthPlace: inputField.birthPlace,
+          humanGender: inputField.humanGender,
+          citizenNationality: inputField.citizenNationality,
+          voterNumber: inputField.voterNumber,
+        },
+      },
+    );
+    history.push('/registration/details/additional');
+  };
+
   const closeModal = () => {
     setModal(false);
   };
@@ -306,6 +325,7 @@ const Details = () => {
           <div className="ActionButton">
             <button
               type="button"
+              onClick={buttonHandler}
               disabled={isDisabled}
             >
               {appString.translations.onboarding.continue}

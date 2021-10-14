@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { CaptureImageScreen } from './Style';
+import { AppConfigs } from '../../Configs/AppConfigs';
+import closeIcon from '../../Assets/Images/icons/ic_close_white.svg';
 
 /**
  * Returns a React Component to capture an image.
@@ -30,12 +32,13 @@ const CaptureImage = ({
   const overlayRef = useRef();
   let video;
 
+  const AppMode = () => (AppConfigs.debuggingMode ? 'environment' : { exact: 'environment' });
   const getVideo = () => {
     navigator.mediaDevices.getUserMedia({
       video: {
         width: window.screen.height,
         height: window.screen.width,
-        facingMode: overlayMode === 0 ? 'environment' : 'user',
+        facingMode: overlayMode === 0 ? AppMode() : 'user',
       },
 
     })

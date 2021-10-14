@@ -4,7 +4,6 @@ import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import CaptureImage from '../../../Components/CaptureImage/CaptureImage';
 import ConfirmSelfie from '../../../Components/ConfirmPhoto/ConfirmSelfie';
-import { photo as scanHelper } from '../../../Helpers/scanHelper';
 
 const Selfie = () => {
   const router = useHistory();
@@ -15,8 +14,6 @@ const Selfie = () => {
   const [photo, setPhoto] = useState(media.find((storeProperty) => (storeProperty.id === 6 && storeProperty.selfie)));
   const selfie = { id: 6, storePropertyName: 'selfie' };
   const overlayMode = 1;
-  const back = scanHelper(media, 5);
-  const front = scanHelper(media, 4);
 
   const takeAnotherPhoto = () => {
     dispatch({
@@ -78,11 +75,7 @@ const Selfie = () => {
             takeAnotherPhoto={takeAnotherPhoto}
             backButtonURL="/registration/onboarding/phonenumber"
             usePhoto={() => {
-              if (back.voterCardBack !== null && front.voterCardFront !== null) {
-                router.push('/registration/details');
-              } else {
-                router.push('/registration/validation/submit');
-              }
+              router.push('/registration/validation/submit');
             }}
             storeProperty={selfie}
             screenLabel={appString.translations.selfie.selfie}

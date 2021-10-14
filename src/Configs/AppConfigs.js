@@ -1,22 +1,13 @@
-export const AppConfigs = [
-  {
-    id: 1,
-    appName: 'WIT App',
-    targetCountry: [
-      {
-        id: 258,
-        countryCode: '+258',
-        countryName: 'Mozambique',
-        mobileNumber: 841234567,
-        networkOperatorsPrefix: [82, 83, 84, 85, 86, 87],
-      },
-      {
-        id: 258,
-        countryCode: '+258',
-        countryName: 'Portugal',
-        mobileNumber: 841234567,
-        networkOperatorsPrefix: [82, 83, 84, 85, 86, 87],
-      },
-    ],
-  },
-];
+/**
+ * Settings related to the app
+ * debuggingMode -> false blocks computer camera and store logs.
+ * demoMode -> false will make the app follow the normal flow
+ * without warnings screens or loading screen
+ * @type Object
+ */
+export const AppConfigs = {
+  id: 1,
+  appName: 'WIT App',
+  debuggingMode: true,
+  demoMode: false,
+};
