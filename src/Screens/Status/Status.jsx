@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { storeGetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import Header from '../../Components/Header/Header';
@@ -9,6 +9,7 @@ import { Main, StatusScreen } from './Style';
 const Status = () => {
   const { status } = useParams();
   const { app } = storeGetter();
+  const history = useHistory();
   const { appString } = useLocale(app.language);
 
   const statusSwitcher = (params) => {
@@ -54,7 +55,17 @@ const Status = () => {
           </div>
 
           <div className="ActionButton">
-            <button type="button">{appString.translations.status.tryAgain}</button>
+            {
+              status === 'error' ? (
+                <button type="button" onClick={() => history.push('/registration/onboarding/phonenumber')}>
+                  {appString.translations.status.tryAgain}
+                </button>
+              ) : (
+                <button type="button" onClick={() => history.push('/registration/onboarding')}>
+                  {appString.translations.status.ok}
+                </button>
+              )
+            }
           </div>
         </Main>
       </StatusScreen>

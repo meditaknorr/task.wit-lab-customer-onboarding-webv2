@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import Error from '../../Assets/Images/icons/ic_illustrations_error.svg';
+import Success from '../../Assets/Images/icons/ic_illustrations_success.png';
 
 export const StatusScreen = styled.div`
   width: 100%;
@@ -38,6 +39,11 @@ export const Main = styled.main`
 
       &.Error {
         background: url(${Error}) no-repeat center;
+        background-size: contain;
+      }
+
+      &.Success {
+        background: url(${Success}) no-repeat center;
         background-size: contain;
       }
     }
