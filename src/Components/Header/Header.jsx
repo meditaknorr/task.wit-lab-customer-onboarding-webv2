@@ -91,6 +91,7 @@ const Header = ({
           role="button"
           label="Back Button"
           tabIndex="0"
+          aria-label="back button"
         />
 
         <div
@@ -126,7 +127,7 @@ const Header = ({
                     tabIndex="0"
                   >
                     <div className="Pane-IconFlag">
-                      <img src={countryFlagHelper(string.code)} alt="language" />
+                      <img src={countryFlagHelper(string.code)} alt="flag icon" />
                     </div>
                     <span className="Pane-Name">{string.name}</span>
                     {

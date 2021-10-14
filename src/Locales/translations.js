@@ -96,7 +96,7 @@ export const translations = [
         tryAgain: 'Try Again',
         seeStatus: 'See status',
       },
-      additionalinformation: {
+      additionalInformation: {
         addLastDetails: 'Add the last details',
         provideMoreDetails: 'Provide some more details to complete your registration.',
         addressInformation: 'Address information',
@@ -235,7 +235,7 @@ export const translations = [
         tryAgain: 'Tente novamente',
         seeStatus: 'Visualizar o estado',
       },
-      additionalinformation: {
+      additionalInformation: {
         addLastDetails: 'Adicionar os últimos detalhes',
         provideMoreDetails: 'Forneça mais alguns detalhes para concluir seu registro.',
         addressInformation: 'Informações de endereço',
@@ -375,7 +375,7 @@ export const translations = [
         tryAgain: 'Riprova',
         seeStatus: 'Visualizza stato',
       },
-      additionalinformation: {
+      additionalInformation: {
         addLastDetails: 'Aggiungi ultimi dettagli',
         provideMoreDetails: 'Fornisci ulteriori dettagli per completare la registrazione.',
         addressInformation: "Informazioni sull'indirizzo",

@@ -102,8 +102,7 @@ export const reducer = (state, action) => {
         },
       };
     // MEDIA ACTIONS
-    case 'ADD_MEDIA':
-      // eslint-disable-next-line no-case-declarations
+    case 'ADD_MEDIA': {
       const alreadyExists = state.media.find((block) => block.id === action.payload.id);
       if (alreadyExists) {
         return {
@@ -121,6 +120,7 @@ export const reducer = (state, action) => {
           action.payload,
         ],
       };
+    }
     case 'UPDATE_MEDIA':
       return {
         ...state,

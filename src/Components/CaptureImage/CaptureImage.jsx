@@ -6,14 +6,14 @@ import closeIcon from '../../Assets/Images/icons/ic_close_white.svg';
 
 /**
  * Returns a React Component to capture an image.
- * @param title  { a String that helps the user to understand the context in the page}
- * @param type {a String that defines what is the type of the photo that is about to be taken}
- * @param footer {a String that helps the user to position the frame}
- * @param overlayMode {a Number containing key that indicates either the
- * frame is rounded or squared - 1 for rounded and 0 for squared}
- * @param setPhoto {a FUNCTION to inform the parent component that the photo was captured}
- * @param closeCamera {a FUNCTION to close de camera and return to the previous route}
- * @param storeProperty {an Object used to define whats the name of the store property
+ * @param title -> a String that helps the user to understand the context in the page
+ * @param type  -> a String that defines what is the type of the photo that is about to be taken
+ * @param footer -> a String that helps the user to position the frame
+ * @param overlayMode -> a Number containing key that indicates either the
+ * frame is rounded or squared - 1 for rounded and 0 for squared
+ * @param setPhoto -> a FUNCTION to inform the parent component that the photo was captured}
+ * @param closeCamera -> a FUNCTION to close de camera and return to the previous route}
+ * @param storeProperty -> an Object used to define whats the name of the store property
  * that is going to hold the photo object}
  * @returns {JSX.Element}
  * @constructor
@@ -88,22 +88,30 @@ const CaptureImage = ({
   return (
     <>
       <CaptureImageScreen overlayMode={overlayMode} backgroundHeight={window.screen.height}>
-        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-        <video className="video-background" ref={videoRef} />
+        <video className="video-background" ref={videoRef}>
+          <track
+            default
+            kind="captions"
+          />
+        </video>
         <div className="video-background-wrapper">
           <div className="video-container">
             <div className="camera" ref={overlayRef}>
-              {/* eslint-disable-next-line max-len */}
-              {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
-              <img onClick={closeCamera} className="camera--close-icon" src={closeIcon} alt="Close Icon" />
+              <div
+                role="button"
+                onClick={closeCamera}
+                onKeyDown={closeCamera}
+                className="camera--close-icon"
+                aria-label="close camera"
+                tabIndex={0}
+              />
               <span className="camera__title">{title}</span>
 
               <span className="camera__photo-type">{type}</span>
 
               <span className="camera__footer-note">{footer}</span>
 
-              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-              <button type="button" onClick={takePhoto} className="camera__shoot-button" />
+              <button aria-label="shoot button" type="button" onClick={takePhoto} className="camera__shoot-button" />
               <canvas className="photo" ref={photoRef} />
             </div>
           </div>
