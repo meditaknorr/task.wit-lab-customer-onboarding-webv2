@@ -29,7 +29,7 @@ export const Main = styled.main`
   flex-direction: column;
 
   div.HeadingText {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     height: ${ConvertorPixel2Rem(80)};
     margin: ${ConvertorPixel2Rem(41.5)} 0 ${ConvertorPixel2Rem(38)} 0;
     font-family: Inter, sans-serif;
@@ -48,7 +48,7 @@ export const Main = styled.main`
   }
 
   h2 {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     height: ${ConvertorPixel2Rem(25)};
     font-size: ${ConvertorPixel2Rem(16)};
     font-weight: normal;
@@ -57,7 +57,7 @@ export const Main = styled.main`
   }
 
   div.Registration {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     min-height: ${ConvertorPixel2Rem(180)};
     display: flex;
     flex-flow: column;
@@ -107,7 +107,7 @@ export const Main = styled.main`
   }
 
   div.ActionButton {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     margin: ${ConvertorPixel2Rem(180)} 0 ${ConvertorPixel2Rem(50)} 0;
 
     button.ActionButton-StartRegistration {
