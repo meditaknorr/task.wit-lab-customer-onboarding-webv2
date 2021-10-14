@@ -199,7 +199,7 @@ export const translations = [
         toOpen: 'Para poder criar a sua conta, você precisa:',
         validatePhone: 'Validar o seu número de telefone.',
         scanDocument: 'Digitalizar o seu cartão de eleitor.',
-        takeSelfie: 'Tire ou carregar uma foto sua, selfie.',
+        takeSelfie: 'Tirar uma foto selfie.',
         buttonStart: 'Criar uma conta',
         alreadyRegstered: 'já se registrou?',
         seeStatus: 'Verifique o estado',
@@ -218,8 +218,8 @@ export const translations = [
       },
       scanVoterCard: {
         scanCard: 'Digitalize o cartão de eleitor',
-        takePhotoFront: 'Tire uma foto da frente do seu cartão de eleitor',
-        takePhotoBack: 'Tire uma foto do verso do seu cartão de eleitor',
+        takePhotoFront: 'Faça uma foto da frente do seu cartão de eleitor',
+        takePhotoBack: 'Faça uma foto do verso do seu cartão de eleitor',
         centerPhoto: 'Mova e centralize o cartão dentro da moldura',
       },
       confirmPhoto: {

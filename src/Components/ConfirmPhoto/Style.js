@@ -2,13 +2,24 @@ import styled from 'styled-components';
 import { ConvertorPixel2Rem } from '../../Hooks/useDimension';
 import { themeProvider } from '../../Configs/Themes/themeProvider';
 
-export const ConfirmPhotoScreen = styled.div`
+export const PhotoConfirmationScreen = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "header" "main";
+  grid-template-rows: ${ConvertorPixel2Rem(56)} 1fr;
+  grid-template-columns: 1fr;
+  grid-gap: 0;
+  row-gap: 0;
+`;
+
+export const Main = styled.div`
+    grid-area: main;
     display: grid;
     height: auto;
     justify-content: center;
     grid-template-columns: 100%;
     align-content: space-between;
-    margin: ${ConvertorPixel2Rem(56)} 0 0 0;
     grid-gap: ${ConvertorPixel2Rem(10)};
     overflow-x: hidden;
     text-align: center;
@@ -27,7 +38,9 @@ export const ConfirmPhotoScreen = styled.div`
 
     .confirm-photo__image-wrapper {
       padding: ${({ overlayMode }) => (overlayMode === 0 ? ConvertorPixel2Rem(15) : ConvertorPixel2Rem(10))};
-      ${({ overlayMode }) => (overlayMode === 0 ? `height: ${ConvertorPixel2Rem(200)}; width: ${ConvertorPixel2Rem(298)};` : `height: ${ConvertorPixel2Rem(236)}; width: ${ConvertorPixel2Rem(236)};`)};
+      ${({ overlayMode }) => (overlayMode === 0
+    ? `height: ${ConvertorPixel2Rem(206)}; width: ${ConvertorPixel2Rem(298)};`
+    : `height: ${ConvertorPixel2Rem(236)}; width: ${ConvertorPixel2Rem(236)};`)};
       margin: ${ConvertorPixel2Rem(41)} auto ${ConvertorPixel2Rem(120)} auto;
       overflow: hidden;
       position: relative;

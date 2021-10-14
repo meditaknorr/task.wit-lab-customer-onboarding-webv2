@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { storeGetter, storeSetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import Header from '../Header/Header';
-import { ConfirmPhotoScreen } from './Style';
+import { Main } from './Style';
 import Button from '../Button/Button';
 
 /**
@@ -90,7 +90,7 @@ const ConfirmSelfie = ({
         progressBar={progressBar}
       />
 
-      <ConfirmPhotoScreen overlayMode={overlayMode}>
+      <Main overlayMode={overlayMode}>
         <div className="confirm-photo">
           <div className="confirm-photo__description">
             <span>{description}</span>
@@ -118,7 +118,7 @@ const ConfirmSelfie = ({
             />
           </div>
         </div>
-      </ConfirmPhotoScreen>
+      </Main>
     </>
   );
 };

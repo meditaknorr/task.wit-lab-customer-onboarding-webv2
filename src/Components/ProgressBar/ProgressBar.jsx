@@ -10,9 +10,11 @@ const ProgressBar = () => {
     if (location.pathname) {
       switch (location.pathname) {
         case '/registration/onboarding/phonenumber':
+        case '/registration/onboarding/phonenumber/status':
           setProgressLevel(1);
           break;
         case '/registration/onboarding/phonenumber/confirmation':
+        case '/registration/onboarding/confirmation/status':
           setProgressLevel(2);
           break;
         case '/registration/validation/submit':
