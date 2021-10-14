@@ -1,28 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { storeGetter, storeSetter } from '../../Hooks/useStore';
 import { useLocale } from '../../Hooks/useLocale';
 import Header from '../../Components/Header/Header';
 import WebView from '../../Layouts/WebView/WebView';
-import { dateValidator, textValidator, voterValidator } from '../../Helpers/inputFormHelper';
+import {
+  inputStatus,
+  inputDateValidator,
+  inputTextValidator,
+  inputVoterValidator,
+} from '../../Helpers/inputFormHelper';
+import { photo } from '../../Helpers/scanHelper';
 import { DetailsScreen, Main, Modal } from './Style';
 
 const Details = () => {
-  const { app, user } = storeGetter();
+  const { app, user, media } = storeGetter();
   const dispatch = storeSetter();
-  const { appString } = useLocale(app.language);
   const history = useHistory();
+  const { appString } = useLocale(app.language);
+  const front = photo(media, 4);
+  const back = photo(media, 5);
+  const selfie = photo(media, 6);
+  const [modal, setModal] = useState(false);
+  const [selectedMedia, setSelectedMedia] = useState(0);
   const [isDisabled, setIsDisabled] = useState(true);
-  const [inputData, setInputData] = useState({
-    firstName: '',
-    lastName: '',
-    birthDate: '',
-    birthPlace: '',
-    humanGender: '',
-    citizenNationality: '',
-    voterNumber: '',
+  const [inputField, setInputField] = useState({
+    firstName: 'Agostinho',
+    lastName: 'Raposo',
+    birthDate: '04/04/1993',
+    birthPlace: 'Beira',
+    humanGender: 'Masculino',
+    citizenNationality: 'Moçambicana',
+    voterNumber: '000000/01',
   });
-  const [inputError, setInputErrors] = useState({
+  // InputBox gets object's [keys], and from [keys] we generate input fields with .map().
+  const InputBox = Object.keys(inputField);
+  const [inputError, setInputError] = useState({
     firstName: '',
     lastName: '',
     birthDate: '',
@@ -32,119 +45,119 @@ const Details = () => {
     voterNumber: '',
   });
 
-  const continueButton = () => {
-    dispatch(
-      {
-        type: 'SET_USER_PERSONALDETAILS',
-        payload: {
-          id: 10,
-          ...inputData,
-        },
-      },
-    );
-    history.push('/registration/details/additionalInformation');
+  const closeModal = () => {
+    setModal(false);
+  };
+
+  // Media Handlers
+  const deleteMedia = () => {
+    switch (selectedMedia) {
+      case 4:
+        dispatch({ type: 'REMOVE_MEDIA', payload: { id: 4 } });
+        history.push('/registration/validation/scan/front');
+        break;
+      case 5:
+        dispatch({ type: 'REMOVE_MEDIA', payload: { id: 5 } });
+        history.push('/registration/validation/scan/back');
+        break;
+      case 6:
+        dispatch({ type: 'REMOVE_MEDIA', payload: { id: 6 } });
+        history.push('/registration/validation/selfie');
+        break;
+      default:
+        break;
+    }
   };
 
   const mediaHandler = (e) => {
     switch (e.target.id) {
       case 'Delete_Front':
-        console.log('front');
+        setSelectedMedia(4);
+        setModal(true);
         break;
       case 'Delete_Back':
-        console.log('back');
+        setSelectedMedia(5);
+        setModal(true);
         break;
       case 'Delete_Selfie':
-        console.log('selfie');
+        setSelectedMedia(6);
+        setModal(true);
         break;
       default:
-        console.log('inconditional');
+        console.log('--default--');
+        break;
     }
   };
 
-  const handleInputBlur = (e) => {
-    if (!e.target.value) {
-      setInputErrors((prevState) => ({
-        ...prevState,
-        [e.target.id]: '* is Required',
-      }));
-    }
+  // Input Handlers
+  const inputClickHandler = (e) => {
+    e.target.focus();
+    e.target.scrollIntoView();
   };
 
-  const handleInput = (e) => {
-    if (e.target.value) {
-      setInputErrors((prevState) => ({
-        ...prevState,
-        [e.target.id]: '',
-      }));
+  const inputChangeHandler = (e) => {
+    setInputField({
+      ...inputField,
+      [e.target.id]: e.target.value,
+    });
+  };
 
+  const inputErrorHandler = (e) => {
+    const errorSetter = (id, value = undefined) => {
+      setInputError({
+        ...inputError,
+        [id]: value,
+      });
+    };
+
+    if (!inputStatus(e.target.value)) {
+      errorSetter(e.target.id, '* is required.');
+    } else {
       switch (e.target.id) {
         case 'birthDate':
-          if ((e.target.value).length >= 10) {
-            if (!dateValidator(e.target.value)) {
-              setInputErrors((prevState) => ({
-                ...prevState,
-                birthDate: '* is invalid',
-              }));
-            } else {
-              setInputData((prevState) => ({
-                ...prevState,
-                [e.target.id]: e.target.value,
-              }));
-            }
+          if (!inputDateValidator(e.target.value)) {
+            errorSetter(e.target.id, '* is invalid.');
+          } else {
+            errorSetter(e.target.id);
           }
           break;
-
         case 'voterNumber':
-          if (!voterValidator(e.target.value)) {
-            setInputErrors((prevState) => ({
-              ...prevState,
-              voterNumber: '* is invalid',
-            }));
+          if (!inputVoterValidator(e.target.value)) {
+            errorSetter(e.target.id, '* is invalid.');
           } else {
-            setInputData((prevState) => ({
-              ...prevState,
-              [e.target.id]: e.target.value,
-            }));
+            errorSetter(e.target.id);
           }
           break;
-
         default:
-          if (!textValidator(e.target.value)) {
-            setInputErrors((prevState) => ({
-              ...prevState,
-              [e.target.id]: '* is invalid',
-            }));
+          if (!inputTextValidator(e.target.value)) {
+            errorSetter(e.target.id, '* is invalid.');
           } else {
-            setInputData((prevState) => ({
-              ...prevState,
-              [e.target.id]: e.target.value,
-            }));
+            errorSetter(e.target.id);
           }
-          break;
       }
     }
   };
 
-  const isChecked = () => {
-    if (textValidator(inputData.firstName)
-    && textValidator(inputData.lastName)
-    && dateValidator(inputData.birthDate)
-    && textValidator(inputData.birthPlace)
-    && textValidator(inputData.humanGender)
-    && textValidator(inputData.citizenNationality)
-    && voterValidator(inputData.voterNumber)) {
+  const isSuccessfulValidated = () => {
+    if (inputTextValidator(inputField.firstName)
+      && inputTextValidator(inputField.lastName)
+      && inputDateValidator(inputField.birthDate)
+      && inputTextValidator(inputField.birthPlace)
+      && inputTextValidator(inputField.humanGender)
+      && inputTextValidator(inputField.citizenNationality)
+      && inputVoterValidator(inputField.voterNumber)) {
       return true;
     }
     return false;
   };
 
   useEffect(() => {
-    if (isChecked() && Object.values(inputData).indexOf('') <= -1) {
+    if (isSuccessfulValidated() && Object.values(inputField).indexOf('') <= -1) {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
     }
-  }, [inputData]);
+  }, [inputField]);
 
   return (
     <WebView>
@@ -152,21 +165,29 @@ const Details = () => {
         <Header
           greyBack={1}
           backButton={1}
+          backButtonURL="/registration/onboarding/phonenumber"
           screenLabel={appString.translations.header.regGeneralInformation}
           languageButton={1}
           progressBar={1}
           language={app.language}
         />
-        <Modal>
+        <Modal modalStatus={modal}>
           <div className="Modal__Pane">
             <div className="Modal__Pane-Information">
-              <h1>{appString.translations.modal.deleteCardPhoto}</h1>
-              {/* eslint-disable-next-line max-len */}
-              <h2>{appString.translations.modal.deleteFrontPhotoConfirmation}</h2>
+              <h1>
+                {appString.translations.modal.deleteCardPhoto}
+              </h1>
+              <h2>
+                {appString.translations.modal.deleteFrontPhotoConfirmation}
+              </h2>
             </div>
             <div className="Modal__Pane-ActionButton">
-              <button type="button" className="Modal__Pane-ActionButton-Cancel">{appString.translations.modal.cancel}</button>
-              <button type="button" className="Modal__Pane-ActionButton-Delete">{appString.translations.modal.delete}</button>
+              <button type="button" onClick={closeModal} className="Modal__Pane-ActionButton-Cancel">
+                {appString.translations.modal.cancel}
+              </button>
+              <button type="button" id={selectedMedia} onClick={deleteMedia} className="Modal__Pane-ActionButton-Delete">
+                {appString.translations.modal.delete}
+              </button>
             </div>
           </div>
         </Modal>
@@ -199,170 +220,43 @@ const Details = () => {
               {appString.translations.generalInformation.personalInformation}
             </h3>
             <div className="PersonalInformation__UserDetails-Field">
-
-              <div className="InputBox">
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  minLength={3}
-                  maxLength={20}
-                  size={20}
-                  onChange={handleInput}
-                  onBlur={handleInputBlur}
-                  placeholder={appString.translations.generalInformation.firstName}
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label
-                  className="firstName"
-                  htmlFor="firstName"
-                >
-                  {appString.translations.generalInformation.firstName}
-                </label>
-                <div className="InputBox__Error">{inputError.firstName}</div>
-              </div>
-
-              <div className="InputBox">
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  minLength={3}
-                  maxLength={20}
-                  size={20}
-                  onChange={handleInput}
-                  onBlur={handleInputBlur}
-                  placeholder={appString.translations.generalInformation.lastName}
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label
-                  className="lastName"
-                  htmlFor="lastName"
-                >
-                  {appString.translations.generalInformation.lastName}
-                </label>
-                <div className="InputBox__Error">{inputError.lastName}</div>
-              </div>
-
-              <div className="InputBox">
-                <input
-                  type="text"
-                  id="birthDate"
-                  name="birthDate"
-                  minLength={10}
-                  maxLength={10}
-                  size={10}
-                  onChange={handleInput}
-                  onBlur={handleInputBlur}
-                  placeholder={appString.translations.generalInformation.dateOfBirth}
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label
-                  className="birthDate"
-                  htmlFor="birthDate"
-                >
-                  {appString.translations.generalInformation.dateOfBirth}
-                </label>
-                <div className="InputBox__Error">{inputError.birthDate}</div>
-              </div>
-
-              <div className="InputBox">
-                <input
-                  type="text"
-                  id="birthPlace"
-                  name="birthPlace"
-                  minLength={3}
-                  maxLength={15}
-                  size={15}
-                  onChange={handleInput}
-                  onBlur={handleInputBlur}
-                  placeholder={appString.translations.generalInformation.placeOfBirth}
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label
-                  className="birthPlace"
-                  htmlFor="birthPlace"
-                >
-                  {appString.translations.generalInformation.placeOfBirth}
-                </label>
-                <div className="InputBox__Error">{inputError.birthPlace}</div>
-              </div>
-
-              <div className="InputBox">
-                <input
-                  type="text"
-                  id="humanGender"
-                  name="humanGender"
-                  minLength={4}
-                  maxLength={10}
-                  size={10}
-                  onChange={handleInput}
-                  onBlur={handleInputBlur}
-                  placeholder={appString.translations.generalInformation.gender}
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label
-                  className="humanGender"
-                  htmlFor="humanGender"
-                >
-                  {appString.translations.generalInformation.gender}
-                </label>
-                <div className="InputBox__Error">{inputError.humanGender}</div>
-              </div>
-
-              <div className="InputBox">
-                <input
-                  type="text"
-                  id="citizenNationality"
-                  name="citizenNationality"
-                  minLength={3}
-                  maxLength={15}
-                  size={15}
-                  onChange={handleInput}
-                  onBlur={handleInputBlur}
-                  placeholder={appString.translations.generalInformation.citizenNationality}
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label
-                  className="citizenNationality"
-                  htmlFor="citizenNationality"
-                >
-                  {appString.translations.generalInformation.citizenNationality}
-                </label>
-                <div className="InputBox__Error">{inputError.citizenNationality}</div>
-              </div>
-
-              <div className="InputBox">
-                <input
-                  type="text"
-                  id="voterNumber"
-                  name="voterNumber"
-                  minLength={3}
-                  maxLength={32}
-                  size={32}
-                  onChange={handleInput}
-                  onBlur={handleInputBlur}
-                  placeholder={appString.translations.generalInformation.voterNumber}
-                />
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label
-                  className="voterNumber"
-                  htmlFor="voterNumber"
-                >
-                  {appString.translations.generalInformation.voterNumber}
-                </label>
-                <div className="InputBox__Error">{inputError.voterNumber}</div>
-              </div>
+              {
+                InputBox.map((data) => (
+                  <div key={data} className="InputBox">
+                    <input
+                      id={data}
+                      name={data}
+                      type="text"
+                      size={20}
+                      minLength={0}
+                      maxLength={20}
+                      onChange={inputChangeHandler}
+                      onBlur={inputErrorHandler}
+                      onClick={inputClickHandler}
+                      value={inputField[data]}
+                      placeholder={appString.translations.generalInformation[data]}
+                    />
+                    <label className={data} htmlFor={data}>
+                      {appString.translations.generalInformation[data]}
+                    </label>
+                    <div className="InputBox__Error">{inputError[data]}</div>
+                  </div>
+                ))
+              }
             </div>
           </div>
 
           <div className="AttachedPhotos">
-
             <h3 className="AttachedPhotos__Label">
               {appString.translations.generalInformation.attachedPhotos}
             </h3>
 
             <div className="AttachedPhotos__Document-Front">
+              <img
+                className="photo__image"
+                src={front.voterCardFront}
+                alt="front id"
+              />
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
               <div
@@ -375,6 +269,11 @@ const Details = () => {
             </div>
 
             <div className="AttachedPhotos__Document-Back">
+              <img
+                className="photo__image"
+                src={back.voterCardBack}
+                alt="back id"
+              />
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
               <div
@@ -387,6 +286,11 @@ const Details = () => {
             </div>
 
             <div className="AttachedPhotos__Selfie">
+              <img
+                className="photo__image"
+                src={selfie.selfie}
+                alt="selfie"
+              />
               {/* eslint-disable-next-line max-len */}
               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/control-has-associated-label */}
               <div
@@ -397,19 +301,16 @@ const Details = () => {
                 role="button"
               />
             </div>
-
           </div>
 
           <div className="ActionButton">
             <button
               type="button"
-              onClick={continueButton}
-              disabled={(isDisabled)}
+              disabled={isDisabled}
             >
               {appString.translations.onboarding.continue}
             </button>
           </div>
-
         </Main>
       </DetailsScreen>
     </WebView>

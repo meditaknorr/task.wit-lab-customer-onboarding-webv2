@@ -27,6 +27,7 @@ import Button from '../Button/Button';
 const ConfirmPhoto = ({
   description,
   photo,
+  sidePhoto,
   usePhoto,
   takeAnotherPhoto,
   storeProperty,
@@ -44,6 +45,7 @@ const ConfirmPhoto = ({
       payload: {
         id: storeProperty.id,
         [storeProperty.storePropertyName]: photo[storeProperty.storePropertyName],
+        side: sidePhoto,
       },
     });
     usePhoto();
@@ -101,6 +103,7 @@ ConfirmPhoto.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   storeProperty: PropTypes.object.isRequired,
   screenLabel: PropTypes.string.isRequired,
+  sidePhoto: PropTypes.string.isRequired,
   progressBar: PropTypes.number.isRequired,
   overlayMode: PropTypes.number.isRequired,
 };

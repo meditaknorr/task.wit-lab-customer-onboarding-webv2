@@ -60,6 +60,9 @@ const Header = ({
 
   const backButtonHandler = () => {
     if (backButtonURL !== '') {
+      dispatch({
+        type: 'RESET_STATE', // Clean data stored
+      }); // back with URL clear media
       backButtonFunctions();
       history.push(backButtonURL);
     } else {
@@ -86,12 +89,15 @@ const Header = ({
           onClick={backButtonHandler}
           onKeyPress={backButtonHandler}
           role="button"
+          label="Back Button"
           tabIndex="0"
           aria-label="back button"
         />
 
         <div
           className="App-ScreenLabel"
+          role="button"
+          tabIndex="0"
         >
           {screenLabel}
         </div>

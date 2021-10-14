@@ -4,6 +4,7 @@ import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import CaptureImage from '../../../Components/CaptureImage/CaptureImage';
 import ConfirmPhoto from '../../../Components/ConfirmPhoto/ConfirmPhoto';
+import { photo as scanHelper } from '../../../Helpers/scanHelper';
 
 const ScanVoterCardBack = () => {
   const dispatch = storeSetter();
@@ -14,6 +15,8 @@ const ScanVoterCardBack = () => {
   const [photo, setPhoto] = useState(media.find((storeProperty) => (storeProperty.id === 5 && storeProperty.voterCardBack)));
   const voterCardBack = { id: 5, storePropertyName: 'voterCardBack' };
   const overlayMode = 0;
+  const front = scanHelper(media, 4);
+  const selfie = scanHelper(media, 6);
 
   const takeAnotherPhoto = () => {
     dispatch({
@@ -21,6 +24,7 @@ const ScanVoterCardBack = () => {
       payload: {
         id: 5,
         [voterCardBack.storePropertyName]: null,
+        side: null,
       },
     });
     setPhoto(null);
@@ -46,9 +50,14 @@ const ScanVoterCardBack = () => {
           <ConfirmPhoto
             description={appString.translations.confirmPhoto.backSidePhoto}
             photo={photo}
+            sidePhoto="Back"
             takeAnotherPhoto={takeAnotherPhoto}
             usePhoto={() => {
-              router.push('/registration/validation/selfie');
+              if (front.voterCardBack !== null && selfie.selfie !== null) {
+                router.push('/registration/details');
+              } else {
+                router.push('/registration/validation/selfie');
+              }
             }}
             storeProperty={voterCardBack}
             screenLabel={appString.translations.confirmPhoto.voterCard}

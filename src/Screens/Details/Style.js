@@ -20,7 +20,7 @@ export const Modal = styled.div`
   background-color: ${themeProvider.day.modalColor};
   width: 100%;
   height: 100%;
-  display: ${(props) => (props.status ? 'flex' : 'none')};
+  display: ${(props) => (props.modalStatus ? 'flex' : 'none')};
   align-items: center;
   justify-content: center;
 
@@ -32,7 +32,7 @@ export const Modal = styled.div`
     justify-content: space-between;
     flex-direction: column;
     background-color: ${themeProvider.day.backgroundColor};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(3)} ${themeProvider.day.modalShadow};
+    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(3)} rgba(0, 0, 0, 0.13);
     border-radius: ${ConvertorPixel2Rem(6)};
     width: ${ConvertorPixel2Rem(296)};
     height: ${ConvertorPixel2Rem(210)};
@@ -93,7 +93,7 @@ export const Main = styled.main`
   overflow-y: auto;
   height: 100%;
   width: 100%;
-  padding: 0 ${ConvertorPixel2Rem(24)};
+  padding: 0 ${ConvertorPixel2Rem(24)} 0 ${ConvertorPixel2Rem(24)};
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -126,10 +126,11 @@ export const Main = styled.main`
   }
 
   div.PhoneDetails {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.ChildrenWidth)};
+    height: ${ConvertorPixel2Rem(80)};
     margin: ${ConvertorPixel2Rem(31)} 0 0 0;
     padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(16)};
-    box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(1)} ${themeProvider.day.detailsShadow};
+    box-shadow: 0 ${ConvertorPixel2Rem(2)} ${ConvertorPixel2Rem(8)} 0 ${themeProvider.day.detailsShadow};
     border-radius: ${ConvertorPixel2Rem(6)};
     text-align: left;
 
@@ -166,122 +167,120 @@ export const Main = styled.main`
     div.PersonalInformation__UserDetails-Field {
       position: relative;
       display: inline-block;
-      width: ${ConvertorPixel2Rem(277)};
+      width: ${ConvertorPixel2Rem(300)};
       height: ${ConvertorPixel2Rem(49)};
       margin: ${ConvertorPixel2Rem(16)} 0 0 0;
 
       div.InputBox {
-          position: relative;
+        position: relative;
+        width: 100%;
+        margin: 0 0 ${ConvertorPixel2Rem(29)} 0;
+
+        input {
           width: 100%;
           height: ${ConvertorPixel2Rem(49)};
-          margin: 0 0 ${ConvertorPixel2Rem(29)} 0;
+          padding: 0 ${ConvertorPixel2Rem(15)};
+          border-radius: ${ConvertorPixel2Rem(6)};
+          border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
 
-          input {
-            width: 100%;
-            height: 100%;
-            padding: 0 ${ConvertorPixel2Rem(15)};
-            border-radius: ${ConvertorPixel2Rem(6)};
-            border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
+          &:focus {
+            border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor}!important;
+            font-size: ${ConvertorPixel2Rem(16)};
 
-            &:focus {
-              border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.highlightColor}!important;
-              font-size: ${ConvertorPixel2Rem(16)};
-
-              & + label {
-                display: inline-block;
-                color: ${themeProvider.day.highlightColor};
-              }
-            }
-
-            &::-webkit-input-placeholder {
-              color: ${themeProvider.day.disableColor};
-            }
-
-            &:-ms-input-placeholder {
-              color: ${themeProvider.day.disableColor};
-            }
-
-            &::placeholder {
-              color: ${themeProvider.day.disableColor};
-            }
-
-            &#firstName {
-              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)};
-            }
-
-            &#lastName {
-              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)};
-            }
-
-            &#birthDate {
-              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)};
-            }
-
-            &#birthPlace {
-              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)};
-            }
-
-            &#humanGender {
-              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)};
-            }
-
-            &#citizenNationality {
-              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)};
-            }
-
-            &#voterNumber {
-              border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)};
+            & + label {
+              display: inline-block;
+              color: ${themeProvider.day.highlightColor};
             }
           }
 
-          label {
-            padding: ${ConvertorPixel2Rem(3)};
-            background-color: ${themeProvider.day.backgroundColor};
-            font-size: ${ConvertorPixel2Rem(12)};
-            position: absolute;
-            left: ${ConvertorPixel2Rem(10)};
-            top: ${ConvertorPixel2Rem(-15)};
-
-            &.firstName {
-              color: ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)}!important;
-            }
-
-            &.lastName {
-              color: ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)}!important;
-            }
-
-            &.birthDate {
-              color: ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)}!important;
-            }
-
-            &.birthPlace {
-              color: ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)}!important;
-            }
-
-            &.humanGender {
-              color: ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)}!important;
-            }
-
-            &.citizenNationality {
-              color: ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)}!important;
-            }
-
-            &.voterNumber {
-              color: ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)}!important;
-            }
+          &::-webkit-input-placeholder {
+            color: ${themeProvider.day.disableColor};
           }
 
-          div.InputBox__Error {
-            width: 100%;
-            position: absolute;
-            bottom: 8px;
-            right: 15px;
-            text-align: right;
-            font-style: italic;
-            font-size: ${ConvertorPixel2Rem(10)};
-            color: ${themeProvider.day.errorColor};
+          &:-ms-input-placeholder {
+            color: ${themeProvider.day.disableColor};
+          }
+
+          &::placeholder {
+            color: ${themeProvider.day.disableColor};
+          }
+
+          &#firstName {
+            border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)};
+          }
+
+          &#lastName {
+            border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)};
+          }
+
+          &#birthDate {
+            border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)};
+          }
+
+          &#birthPlace {
+            border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)};
+          }
+
+          &#humanGender {
+            border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)};
+          }
+
+          &#citizenNationality {
+            border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)};
+          }
+
+          &#voterNumber {
+            border: ${ConvertorPixel2Rem(1)} solid ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)};
           }
         }
+
+        label {
+          padding: ${ConvertorPixel2Rem(3)};
+          background-color: ${themeProvider.day.backgroundColor};
+          font-size: ${ConvertorPixel2Rem(12)};
+          position: absolute;
+          left: ${ConvertorPixel2Rem(10)};
+          top: ${ConvertorPixel2Rem(-15)};
+
+          &.firstName {
+            color: ${(props) => (props.errorOnFirstName && themeProvider.day.errorColor)}!important;
+          }
+
+          &.lastName {
+            color: ${(props) => (props.errorOnLastName && themeProvider.day.errorColor)}!important;
+          }
+
+          &.birthDate {
+            color: ${(props) => (props.errorOnBirthDate && themeProvider.day.errorColor)}!important;
+          }
+
+          &.birthPlace {
+            color: ${(props) => (props.errorOnBirthPlace && themeProvider.day.errorColor)}!important;
+          }
+
+          &.humanGender {
+            color: ${(props) => (props.errorOnHumanGender && themeProvider.day.errorColor)}!important;
+          }
+
+          &.citizenNationality {
+            color: ${(props) => (props.errorOnCitizenNationality && themeProvider.day.errorColor)}!important;
+          }
+
+          &.voterNumber {
+            color: ${(props) => (props.errorOnVoterNumber && themeProvider.day.errorColor)}!important;
+          }
+        }
+
+        div.InputBox__Error {
+          position: absolute;
+          bottom: ${ConvertorPixel2Rem(8)};
+          right: ${ConvertorPixel2Rem(15)};
+          text-align: right;
+          font-style: italic;
+          font-size: ${ConvertorPixel2Rem(10)};
+          color: ${themeProvider.day.errorColor};
+        }
+      }
     }
   }
 
@@ -302,11 +301,18 @@ export const Main = styled.main`
     div.AttachedPhotos__Document-Front, div.AttachedPhotos__Document-Back {
       position: relative;
       display: inline-block;
-      border-radius: ${ConvertorPixel2Rem(6)};
       margin: ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(16)} 0;
       width: ${ConvertorPixel2Rem(94)};
       height: ${ConvertorPixel2Rem(94)};
+      border-radius: ${ConvertorPixel2Rem(6)};
       border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: ${ConvertorPixel2Rem(6)};
+        overflow: hidden;
+      }
 
       div.DocumentFront-Remover, div.DocumentBack-Remover {
         width: ${ConvertorPixel2Rem(24)};
@@ -329,11 +335,18 @@ export const Main = styled.main`
     div.AttachedPhotos__Selfie {
       display: block;
       position: relative;
-      border-radius: ${ConvertorPixel2Rem(6)};
-      width: ${ConvertorPixel2Rem(280)};
+      width: 100%;
       height: ${ConvertorPixel2Rem(280)};
+      border-radius: ${ConvertorPixel2Rem(6)};
       border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
       margin: 0 auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: ${ConvertorPixel2Rem(6)};
+        overflow: hidden;
+      }
 
       div.Selfie-Remover {
         width: ${ConvertorPixel2Rem(24)};
@@ -356,6 +369,7 @@ export const Main = styled.main`
   div.ActionButton {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: ${ConvertorPixel2Rem(84)};
     background-color: ${themeProvider.day.backgroundColor};

@@ -4,6 +4,7 @@ import { storeGetter, storeSetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import CaptureImage from '../../../Components/CaptureImage/CaptureImage';
 import ConfirmSelfie from '../../../Components/ConfirmPhoto/ConfirmSelfie';
+import { photo as scanHelper } from '../../../Helpers/scanHelper';
 
 const Selfie = () => {
   const router = useHistory();
@@ -14,6 +15,8 @@ const Selfie = () => {
   const [photo, setPhoto] = useState(media.find((storeProperty) => (storeProperty.id === 6 && storeProperty.selfie)));
   const selfie = { id: 6, storePropertyName: 'selfie' };
   const overlayMode = 1;
+  const back = scanHelper(media, 5);
+  const front = scanHelper(media, 4);
 
   const takeAnotherPhoto = () => {
     dispatch({
@@ -21,6 +24,7 @@ const Selfie = () => {
       payload: {
         id: 6,
         [selfie.storePropertyName]: null,
+        side: null,
       },
     });
     setPhoto(null);
@@ -32,6 +36,7 @@ const Selfie = () => {
       payload: {
         id: 5,
         voterCardBack: null,
+        side: null,
       },
     });
   };
@@ -42,6 +47,7 @@ const Selfie = () => {
       payload: {
         id: 4,
         voterCardFront: null,
+        side: null,
       },
     });
   };
@@ -68,9 +74,16 @@ const Selfie = () => {
           <ConfirmSelfie
             description={appString.translations.selfie.selfie}
             photo={photo}
+            sidePhoto="Selfie"
             takeAnotherPhoto={takeAnotherPhoto}
             backButtonURL="/registration/onboarding/phonenumber"
-            usePhoto={() => { router.push('/registration/validation/submit'); }}
+            usePhoto={() => {
+              if (back.voterCardBack !== null && front.voterCardFront !== null) {
+                router.push('/registration/details');
+              } else {
+                router.push('/registration/validation/submit');
+              }
+            }}
             storeProperty={selfie}
             screenLabel={appString.translations.selfie.selfie}
             progressBar={1}
