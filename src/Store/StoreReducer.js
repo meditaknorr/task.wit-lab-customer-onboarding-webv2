@@ -131,6 +131,24 @@ export const reducer = (state, action) => {
           action.payload,
         ],
       };
+    case 'REMOVE_ALL_MEDIA':
+      return {
+        ...state,
+        media: [
+          {
+            id: 4,
+            voterCardFront: null,
+          },
+          {
+            id: 5,
+            voterCardBack: null,
+          },
+          {
+            id: 6,
+            selfie: null,
+          },
+        ],
+      };
     case 'REMOVE_MEDIA':
       return {
         ...state,

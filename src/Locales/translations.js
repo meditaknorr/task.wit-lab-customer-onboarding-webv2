@@ -218,8 +218,8 @@ export const translations = [
       },
       scanVoterCard: {
         scanCard: 'Digitalize o cartão de eleitor',
-        takePhotoFront: 'Faça uma foto da frente do seu cartão de eleitor',
-        takePhotoBack: 'Faça uma foto do verso do seu cartão de eleitor',
+        takePhotoFront: 'Tire uma foto da frente do seu cartão de eleitor',
+        takePhotoBack: 'Tire uma foto do verso do seu cartão de eleitor',
         centerPhoto: 'Mova e centralize o cartão dentro da moldura',
       },
       confirmPhoto: {

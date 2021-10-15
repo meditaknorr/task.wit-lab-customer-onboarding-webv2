@@ -75,7 +75,7 @@ export const Main = styled.main`
         padding: 0 ${ConvertorPixel2Rem(15)};
         border-radius: ${ConvertorPixel2Rem(6)};
         border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.fontColor};
-        border-color: ${(props) => props.nationalNumberLenght >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor} !important;
+        border-color: ${(props) => props.phoneLength >= props.nationalNumberLength && !props.checkSignal && themeProvider.day.errorColor} !important;
         overflow: hidden;
 
         option {
@@ -100,7 +100,7 @@ export const Main = styled.main`
         background-color: ${themeProvider.day.backgroundColor};
         font-size: ${ConvertorPixel2Rem(12)};
         position: absolute;
-        color: ${(props) => props.phoneLength >= props.nnumberLenght && !props.checkSignal && themeProvider.day.errorColor}!important;
+        color: ${(props) => props.phoneLength >= props.nationalNumberLength && !props.checkSignal && themeProvider.day.errorColor}!important;
         left: ${ConvertorPixel2Rem(10)};
         top: ${ConvertorPixel2Rem(-15)};
       }

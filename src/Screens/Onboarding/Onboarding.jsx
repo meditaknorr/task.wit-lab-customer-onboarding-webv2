@@ -25,6 +25,7 @@ const Onboarding = () => {
           logo={1}
           languageButton={1}
           language={app.language}
+          progressBar={1}
         />
         <Main>
           <div className="HeadingText">

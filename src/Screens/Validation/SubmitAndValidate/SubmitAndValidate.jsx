@@ -17,16 +17,14 @@ const SubmitAndValidate = () => {
   const submissionResult = demo.errorOnSubmitAndValidation === user.phone; // this is a mock value to define if the submission was sucessfully submitted or not
   const [submissionStatus, setSubmissionStatus] = useState({
     image: validatingImage,
-    alt: 'Icon that indicates that the submission is being validated',
+    alt: 'Loading',
     description: {
       description1: appString.translations.submitAndValidate.validating,
     },
   });
 
   const restartTheSubmissionProcess = () => {
-    dispatch({ type: 'REMOVE_MEDIA', payload: { id: 4 } });
-    dispatch({ type: 'REMOVE_MEDIA', payload: { id: 5 } });
-    dispatch({ type: 'REMOVE_MEDIA', payload: { id: 6 } });
+    dispatch({ type: 'REMOVE_ALL_MEDIA' });
 
     router.push('/registration/validation/scan/front');
   };
