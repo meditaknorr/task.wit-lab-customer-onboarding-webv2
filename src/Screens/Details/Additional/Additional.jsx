@@ -171,6 +171,7 @@ const Details = () => {
                     onClick={inputClickHandler}
                     value={inputField[data]}
                     placeholder={appString.translations.additionalinformation[data]}
+                    autoComplete={false}
                   />
                   <label className={data} htmlFor={data}>
                     {appString.translations.additionalinformation[data]}
@@ -180,14 +181,14 @@ const Details = () => {
               ))
             }
           </div>
-
+          <div className="ghostBlock" />
           <div className="ActionButton">
             <button
               type="button"
               onClick={buttonHandler}
               disabled={isDisabled}
             >
-              {appString.translations.onboarding.continue}
+              {appString.translations.additionalinformation.submit}
             </button>
           </div>
         </Main>

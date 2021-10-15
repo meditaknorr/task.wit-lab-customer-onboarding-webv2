@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { storeGetter } from '../../../Hooks/useStore';
 import { useLocale } from '../../../Hooks/useLocale';
 import Header from '../../../Components/Header/Header';
@@ -9,13 +9,22 @@ import { Main, ConfirmationScreen } from './Style';
 const Confirmation = () => {
   const { status } = useParams();
   const { app } = storeGetter();
+  const history = useHistory();
   const { appString } = useLocale(app.language);
+
+  const buttonHandler = () => {
+    if (status === 'success') {
+      history.push('/registration/status/loading');
+    } else {
+      history.push('/registration/details/additional');
+    }
+  };
 
   return (
     <WebView>
       <ConfirmationScreen>
         <Header
-          backButton={1}
+          ghostBlock={1}
           screenLabel={appString.translations.header.regConfirmation}
           languageButton={1}
           greyBack={1}
@@ -45,6 +54,7 @@ const Confirmation = () => {
           <div className="ActionButton">
             <button
               type="button"
+              onClick={buttonHandler}
             >
               {
                 status === 'success'

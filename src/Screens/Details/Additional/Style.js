@@ -16,8 +16,8 @@ export const DetailsScreen = styled.div`
 export const Main = styled.main`
   grid-area: main;
   position: relative;
-  overflow-y: auto;
-  height: 100%;
+  overflow-y: scroll;
+  height: 100vh;
   width: 100%;
   padding: 0 ${ConvertorPixel2Rem(24)} 0 ${ConvertorPixel2Rem(24)};
   display: flex;
@@ -53,7 +53,7 @@ export const Main = styled.main`
 
   div.AdditionalInformation {
     width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
-    margin: ${ConvertorPixel2Rem(31)} 0 0 0;
+    margin: ${ConvertorPixel2Rem(31)} 0 ${ConvertorPixel2Rem(100)} 0;
     padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(16)};
     box-shadow: 0 ${ConvertorPixel2Rem(2)} ${ConvertorPixel2Rem(8)} 0 ${themeProvider.day.detailsShadow};
     border-radius: ${ConvertorPixel2Rem(6)};
@@ -167,6 +167,11 @@ export const Main = styled.main`
     }
   }
 
+  div.ghostBlock {
+    height: 300px;
+    width: 100%;
+  }
+
   div.ActionButton {
     position: fixed;
     bottom: 0;
@@ -179,7 +184,7 @@ export const Main = styled.main`
     justify-content: center;
 
     button {
-      width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+      width: ${themeProvider.dimensions.childrenWidth};
       margin: 0 ${ConvertorPixel2Rem(24)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};

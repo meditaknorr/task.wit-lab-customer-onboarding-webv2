@@ -100,7 +100,7 @@ const ConfirmSelfie = ({
             <img
               className="confirm-photo__image"
               src={photo[storeProperty.storePropertyName]}
-              alt="The image that was captured in the previous page"
+              alt={storeProperty.storePropertyName}
             />
           </div>
 

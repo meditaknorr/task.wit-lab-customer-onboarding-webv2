@@ -20,10 +20,12 @@ export const Main = styled.div`
     justify-content: center;
     grid-template-columns: 100%;
     align-content: space-between;
+    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
     grid-gap: ${ConvertorPixel2Rem(10)};
     overflow-x: hidden;
     text-align: center;
     font-family: 'Inter', sans-serif;
+    position: relative;
 
     .confirm-photo__description {
       width: 312px;
@@ -54,11 +56,14 @@ export const Main = styled.div`
     }
 
     .footer {
-      width: ${ConvertorPixel2Rem(312)};
-      margin: 0 auto;
+      position: fixed;
+      width: 100vw;
+      padding: 0 ${ConvertorPixel2Rem(themeProvider.dimensions.horizontalMargin)};
       bottom: 0;
+      left: 0;
+
       button {
-        width: 100%;
+        width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
         font-size: ${ConvertorPixel2Rem(16)};
         height: ${ConvertorPixel2Rem(44)};
         border-radius: ${ConvertorPixel2Rem(6)};

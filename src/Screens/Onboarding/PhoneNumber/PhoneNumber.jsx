@@ -88,6 +88,7 @@ const PhoneNumber = () => {
         <Header
           backButton={1}
           greyBack={1}
+          backButtonURL="/registration/onboarding/"
           screenLabel={appString.translations.header.regPhoneNumber}
           languageButton={1}
           progressBar={1}

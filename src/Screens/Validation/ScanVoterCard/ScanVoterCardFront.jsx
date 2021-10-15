@@ -55,7 +55,7 @@ const ScanVoterCardFront = () => {
             takeAnotherPhoto={takeAnotherPhoto}
             usePhoto={() => {
               if (back.voterCardBack !== null && selfie.selfie !== null) {
-                router.push('/registration/details');
+                router.push('/registration/validation/submit');
               } else {
                 router.push('/registration/validation/scan/back');
               }

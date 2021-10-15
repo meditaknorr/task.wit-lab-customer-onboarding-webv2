@@ -8,8 +8,8 @@ export const ConfirmationScreen = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-areas: "header" "main" "footer";
-  grid-template-rows: minmax(${ConvertorPixel2Rem(56)}, ${ConvertorPixel2Rem(60)}) minmax(1fr, max-content) minmax(${ConvertorPixel2Rem(56)}, ${ConvertorPixel2Rem(60)});
+  grid-template-areas: "header" "main";
+  grid-template-rows: ${ConvertorPixel2Rem(56)} 1fr;
   grid-template-columns: 1fr;
   grid-gap: 0;
   row-gap: 0;
@@ -27,7 +27,7 @@ export const Main = styled.main`
   justify-content: center;
 
   div.Confirmation__Pane {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    width: ${themeProvider.dimensions.childrenWidth};
     height: ${ConvertorPixel2Rem(250.55)};
     padding: 0;
     margin: 0;
@@ -80,7 +80,7 @@ export const Main = styled.main`
     justify-content: center;
 
     button {
-      width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+      width: ${themeProvider.dimensions.childrenWidth};
       margin: 0 ${ConvertorPixel2Rem(24)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
@@ -88,6 +88,7 @@ export const Main = styled.main`
       height: ${ConvertorPixel2Rem(44)};
       border-radius: ${ConvertorPixel2Rem(6)};
       border: 0;
+
       &[disabled] {
         background-color: ${themeProvider.day.disableColor};
       }

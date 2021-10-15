@@ -45,14 +45,13 @@ const SubmitAndValidate = () => {
   };
 
   useEffect(() => {
-    console.log(submissionResult);
     const timer = setTimeout(() => {
       if (submissionResult) {
         router.push('/registration/details');
       } else {
         setResultOnScreen();
       }
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [submissionResult, appString]);// appString
 

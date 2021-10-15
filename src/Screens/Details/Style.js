@@ -99,7 +99,7 @@ export const Main = styled.main`
   position: relative;
   overflow-y: auto;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   padding: 0 ${ConvertorPixel2Rem(24)} 0 ${ConvertorPixel2Rem(24)};
   display: flex;
   align-items: center;
@@ -133,7 +133,7 @@ export const Main = styled.main`
   }
 
   div.PhoneDetails {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    width: ${themeProvider.dimensions.childrenWidth};
     height: ${ConvertorPixel2Rem(80)};
     margin: ${ConvertorPixel2Rem(31)} 0 0 0;
     padding: ${ConvertorPixel2Rem(17)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(15)} ${ConvertorPixel2Rem(16)};
@@ -159,7 +159,7 @@ export const Main = styled.main`
 
   div.PersonalInformation {
     margin: ${ConvertorPixel2Rem(22)} 0 0 0;
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    width: ${themeProvider.dimensions.childrenWidth};
     box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(1)} ${themeProvider.day.detailsShadow};
     padding: ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(16)} ${ConvertorPixel2Rem(45)} ${ConvertorPixel2Rem(16)};
     border-radius: ${ConvertorPixel2Rem(6)};
@@ -174,7 +174,7 @@ export const Main = styled.main`
     div.PersonalInformation__UserDetails-Field {
       position: relative;
       display: inline-block;
-      width: ${ConvertorPixel2Rem(300)};
+      width: ${themeProvider.dimensions.childrenWidth};
       height: ${ConvertorPixel2Rem(49)};
       margin: ${ConvertorPixel2Rem(16)} 0 0 0;
 
@@ -184,7 +184,7 @@ export const Main = styled.main`
         margin: 0 0 ${ConvertorPixel2Rem(29)} 0;
 
         input {
-          width: 100%;
+          width: ${themeProvider.dimensions.childrenWidth};
           height: ${ConvertorPixel2Rem(49)};
           padding: 0 ${ConvertorPixel2Rem(15)};
           border-radius: ${ConvertorPixel2Rem(6)};
@@ -292,7 +292,7 @@ export const Main = styled.main`
   }
 
   div.AttachedPhotos {
-    width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+    width: ${themeProvider.dimensions.childrenWidth};
     margin: ${ConvertorPixel2Rem(20)} 0 ${ConvertorPixel2Rem(120)} 0;
     padding: ${ConvertorPixel2Rem(16)};
     box-shadow: 0 ${ConvertorPixel2Rem(4)} ${ConvertorPixel2Rem(10)} ${ConvertorPixel2Rem(1)} ${themeProvider.day.detailsShadow};
@@ -343,7 +343,7 @@ export const Main = styled.main`
       display: block;
       position: relative;
       width: 100%;
-      height: ${ConvertorPixel2Rem(280)};
+      height: ${ConvertorPixel2Rem(350)};
       border-radius: ${ConvertorPixel2Rem(6)};
       border: ${ConvertorPixel2Rem(1)} solid ${themeProvider.day.lineColor};
       margin: 0 auto;
@@ -377,7 +377,7 @@ export const Main = styled.main`
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: ${themeProvider.dimensions.childrenWidth};
     height: ${ConvertorPixel2Rem(84)};
     background-color: ${themeProvider.day.backgroundColor};
     display: flex;
@@ -385,7 +385,7 @@ export const Main = styled.main`
     justify-content: center;
 
     button {
-      width: ${ConvertorPixel2Rem(themeProvider.dimensions.childrenWidth)};
+      width: ${themeProvider.dimensions.childrenWidth};
       margin: 0 ${ConvertorPixel2Rem(24)};
       color: ${themeProvider.day.backgroundColor};
       background-color: ${themeProvider.day.highlightColor};
