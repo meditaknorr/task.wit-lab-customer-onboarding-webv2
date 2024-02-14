@@ -27,6 +27,8 @@
       {
         "extensions": [
           ".js",
+          ".jsx",
+          ".js",
           ".jsx"
         ]
       }
